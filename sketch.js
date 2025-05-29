@@ -36,6 +36,10 @@ function draw() {
     drawPlayScreen();
   } else if (currentScreen === "work") {
     drawWorkscreen();
+    else if(currentScreen==='diary'){
+      drawDiary()
+      
+    }
   }
  
 
