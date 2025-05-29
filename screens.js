@@ -1,4 +1,3 @@
-// let selectedItem = null
 function drawPlayScreen() {
   image(assets.room, 0, 0, width, height);
   let elapsed = millis() - startTime;
@@ -25,7 +24,7 @@ function drawPlayScreen() {
       diaryItem.display();
       diaryItem.drawLabel(20, 0);
 
-      chooseitem = new Button(
+      chooseitem = new pixelbutton(
         width / 2 - 150,
         100,
         300,
