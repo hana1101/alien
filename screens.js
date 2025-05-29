@@ -3,6 +3,7 @@ function drawPlayScreen() {
 
   let elapsed = millis() - startTime;
 
+<<<<<<< HEAD
   if (elapsed < 1300) {
     // Fully opaque
     textSize(100);
@@ -20,6 +21,24 @@ function drawPlayScreen() {
     text("D-1", width / 2, height / 2);
   }
    else {
+=======
+  if (elapsed < 1500) {
+    // D-1
+    fill(0);
+    textSize(50);
+    textAlign(CENTER, CENTER);
+    stroke(10);
+    fill(255);
+    text("D-1", width / 2, height / 2);
+  } else if (elapsed < 2000) {
+    let alphaVal = map(elapsed, 1900, 2300, 255, 0);
+    textSize(50);
+    textAlign(CENTER, CENTER);
+    stroke(0, alphaVal);
+    fill(255, alphaVal); // apply alpha to the white text
+    text("D-1", width / 2, height / 2);
+  } else {
+>>>>>>> feac860ede0b7549b1a9e7f959388fa3e63d1c59
 
 
  walletItem.display();
@@ -58,6 +77,7 @@ function drawWorkscreen() {
   image(assets.workplace, 0, 0, width, height);
   if (box) box.display();
 }
+<<<<<<< HEAD
 
 function diaryscreen() {
   if (!boxInitialized) {
@@ -74,3 +94,5 @@ function diaryscreen() {
   if (box) box.display();
 }
 
+=======
+>>>>>>> feac860ede0b7549b1a9e7f959388fa3e63d1c59
