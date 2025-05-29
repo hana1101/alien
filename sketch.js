@@ -7,6 +7,7 @@ let box;
 let currentScreen = "start";
 let assets = [];
 let btn = { x: 0, y: 0, w: 130, h: 60 };
+let selectedItem = null;  // track selected item
 
 function preload() {
   for (let name of assetname) {
@@ -30,6 +31,8 @@ function setup() {
 }
 
 function draw() {
+  textFont("Press Start 2P");
+
   if (currentScreen === "start") {
     drawStartScreen();
   } else if (currentScreen === "play") {
@@ -53,28 +56,49 @@ function drawStartScreen() {
 }
 
 
+// function mousePressed() {
+//   if (currentScreen === "start" && isHovering()) {
+//     currentScreen = "play";
+//     startTime = millis();
+//   } else if (currentScreen === "play" && walletItem.isClicked()) {
+//     currentScreen = "work";
+//     boxInitialized = false; // reset dialogue setup
+//   } else if (currentScreen === "play" && diaryItem.isClicked()) {
+//     currentScreen = "home";
+//     boxInitialized = false; // reset dialogue setup
+//   }
+//   else if (currentScreen === "work" && box) {
+//     box.next();
+//   }
+// }
+
 function mousePressed() {
   if (currentScreen === "start" && isHovering()) {
     currentScreen = "play";
     startTime = millis();
-  } else if (currentScreen === "play" && walletItem.isClicked()) {
-    currentScreen = "work";
-    boxInitialized = false; // reset dialogue setup
-  } else if (currentScreen === "play" && diaryItem.isClicked()) {
-    currentScreen = "home";
-    boxInitialized = false; // reset dialogue setup
-  }
-  else if (currentScreen === "work" && box) {
+  } else if (currentScreen === "play") {
+    if (!selectedItem) {
+      if (walletItem.isHovered()) selectedItem = "wallet";
+      else if (phoneItem.isHovered()) selectedItem = "phone";
+      else if (diaryItem.isHovered()) selectedItem = "diary";
+    }
+  } else if (currentScreen === "work" && box) {
     box.next();
   }
 }
 
 function keyPressed() {
   if (keyCode === ESCAPE) {
-    currentScreen = 'start';
+    if (currentScreen === "play" && selectedItem) {
+      selectedItem = null;  // back to showing all items
+    } else {
+      currentScreen = 'start';
+      selectedItem = null;
+    }
   }
 }
 
 function isHovering() {
   return mouseX > btn.x && mouseX < btn.x + btn.w && mouseY > btn.y && mouseY < btn.y + btn.h;
 }
+
