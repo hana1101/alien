@@ -138,7 +138,7 @@ function drawWallet(x, y) {
       noStroke();
       fill(cyanblue);
       textFont("Press Start 2P");
-      textSize(12);
+      textSize(19);
       textAlign(LEFT, TOP);
       let padding = 20;
       text(this.lines[this.currentLine], this.x + padding, this.y + padding, this.w - 2 * padding);
@@ -156,6 +156,12 @@ function drawWallet(x, y) {
       return mouseX > this.x && mouseX < this.x + this.w &&
              mouseY > this.y && mouseY < this.y + this.h;
     }
+    handleClick() {
+      if (this.isHovered() && !this.finished) {
+        this.next();
+      }
+    }
+    
   }
   
   function isHovering() {
