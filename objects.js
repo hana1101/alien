@@ -162,15 +162,12 @@ function drawWallet(x, y) {
       }
     }
     
-<<<<<<< HEAD
     setLines(newLines) {
       this.lines = newLines;
       this.currentLine = 0;
       this.finished = false;
     }
   
-=======
->>>>>>> feac860ede0b7549b1a9e7f959388fa3e63d1c59
   }
   
   function isHovering() {

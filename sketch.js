@@ -36,19 +36,8 @@ function draw() {
     drawPlayScreen();
   } else if (currentScreen === "work") {
     drawWorkscreen();
-<<<<<<< HEAD
-    else if(currentScreen==='diary'){
-      drawDiary()
-      
-    }
   }
- 
-=======
-  }
-  if (keyPressed=ESCAPE){
-    currentscreen='start'
-  }
->>>>>>> feac860ede0b7549b1a9e7f959388fa3e63d1c59
+
 
 }
 
@@ -80,15 +69,12 @@ function mousePressed() {
   }
 }
 
-function isHovering() {
-  return mouseX > btn.x && mouseX < btn.x + btn.w && mouseY > btn.y && mouseY < btn.y + btn.h;
-}
-
-<<<<<<< HEAD
 function keyPressed() {
   if (keyCode === ESCAPE) {
     currentScreen = 'start';
   }
 }
-=======
->>>>>>> feac860ede0b7549b1a9e7f959388fa3e63d1c59
+
+function isHovering() {
+  return mouseX > btn.x && mouseX < btn.x + btn.w && mouseY > btn.y && mouseY < btn.y + btn.h;
+}
