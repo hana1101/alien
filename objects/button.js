@@ -1,44 +1,172 @@
 
 
 class Button {
-    constructor(x, y, w, h, label) {
-      this.x = x;
-      this.y = y;
-      this.w = w;
-      this.h = h;
-      this.label = label
-      this.isHovered = false;
-    }
-    display() {
-      // Background block with pixel art vibe (blocky shadows)
-  noStroke();
-  // Draw shadow (offset bottom-right)
-  fill(160, 144, 124);
-  rect(this.x + 4, this.y + 4, this.w, this.h, 6);
+  constructor(x, y, w, h, label, action) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.label = label
+    this.action=action
+    // this.isHovered = false;
+  }
+display() {
+  let isHovered = this.isHovered();
   
-  // Draw button base with outline
+  // Background block with pixel art vibe (blocky shadows)
+  noStroke();
+  
+  // Draw shadow (offset bottom-right) - darker when hovered
+  if (isHovered) {
+    fill(140, 124, 104); // Darker shadow when hovered
+  } else {
+    fill(160, 144, 124); // Normal shadow
+  }
+  rect(this.x + 4, this.y + 4, this.w, this.h, 6);
+
   stroke(120, 94, 77);
   strokeWeight(2);
-  fill(255, 226, 195);
-  rect(this.x, this.y, this.w, this.h, 6);
   
-  // Draw label
-  noStroke();
-  fill(120, 94, 77);
-  textAlign(CENTER, CENTER);
-  textSize(26); // Adjust for your button size
-  textFont('Press Start 2P'); // Or another pixel font
-  text(this.label, this.x + this.w / 2, this.y + this.h / 2 + 2);}
-  
-    isHovered() {
-      return mouseX > this.x && mouseX < this.x + this.w &&
-             mouseY > this.y && mouseY < this.y + this.h;
-    }
-  
-    isClicked() {
-      return this.isHovered() && mouseIsPressed;
-    }
+  // Change button color when hovered
+  if (isHovered) {
+    fill(245, 216, 185); // Slightly darker when hovered
+  } else {
+    fill(255, 226, 195); // Normal color
   }
+  rect(this.x, this.y, this.w, this.h, 6);
+
+  // Draw label - change text color when hovered
+  noStroke();
+  if (isHovered) {
+    fill(100, 74, 57); // Darker text when hovered
+  } else {
+    fill(120, 94, 77); // Normal text color
+  }
+  textAlign(CENTER, CENTER);
+  textSize(15);
+  textFont('Press Start 2P');
+  text(this.label, this.x + this.w / 2, this.y + this.h / 2 + 2);
+}
+
+  isHovered() {
+    return mouseX > this.x && mouseX < this.x + this.w &&
+           mouseY > this.y && mouseY < this.y + this.h;
+  }
+
+  isClicked() {
+    return this.isHovered() && mouseIsPressed;
+  }
+}
+
+
+function drawSelectedScreen(selectedItem) {
+image(assets.room, 0, 0, width, height);
+
+let panelWidth = width / 3;
+let centerX = panelWidth / 2;
+let centerY = height / 2;
+let scaleFactor = 1.5;
+
+// Get item height
+let itemHeight;
+if (selectedItem === "wallet") itemHeight = walletItem.baseHeight;
+else if (selectedItem === "phone") itemHeight = phoneItem.baseHeight;
+else if (selectedItem === "diary") itemHeight = diaryItem.baseHeight;
+
+let drawY = centerY - (itemHeight * scaleFactor) / 2;
+
+// Draw selected item centered in the left panel
+push();
+translate(centerX-10, drawY);
+scale(scaleFactor);
+if (selectedItem === "wallet") drawWallet(0, 0);
+else if (selectedItem === "phone") drawPhone(0, 0);
+else if (selectedItem === "diary") drawDiary(0, 0);
+pop();
+
+let btnX = width - 400;
+let btnW = 300;
+let btnH = 60;
+let btnSpacing = 20;
+
+let buttonConfigs = getButtonConfig(selectedItem);
+
+// Calculate starting Y position to center buttons vertically
+let totalButtonsHeight = (buttonConfigs.length * btnH) + ((buttonConfigs.length - 1) * btnSpacing);
+let startY = (height - totalButtonsHeight) / 2;
+
+let buttons = buttonConfigs.map((config, index) => {
+let y = startY + index * (btnH + btnSpacing);
+return new Button(btnX, y, btnW, btnH, config.label, config.action);
+
+});
+
+// Display all buttons
+buttons.forEach(btn => btn.display());
+
+// Handle button clicks
+buttons.forEach(btn => {
+  if (btn.isClicked()) {
+    handleButtonAction(btn.action);
+  }
+});
+}
+
+function getButtonConfig(selectedItem) {
+const configs = {
+  wallet: [
+    { label: "Check Wallet", action: "checkWallet" },
+    { label: "Go To Work", action: "drawing" },
+  ],
+  phone: [
+    { label: "Check Messages", action: "checkMessages" },
+    { label: "Call Girlfriend", action: "callGF" },
+    { label: "Set up Date", action: "dateGF" }
+  ],
+  diary: [
+    { label: "Read Diary", action: "readDiary" },
+    { label: "Play with Buddy", action: "dogpet" },
+  ]
+};
+
+return configs[selectedItem] || configs.wallet;
+}
+
+function handleButtonAction(action) {
+switch(action) {
+  case "checkWallet":
+    console.log("Checking wallet...");
+    // Add your wallet checking logic here
+    break;
+  case "drawing":
+    console.log("Going to work...");
+    // Add work/drawing logic here
+    break;
+  case "checkMessages":
+    console.log("Checking messages...");
+    // Add message checking logic here
+    break;
+  case "callGF":
+    console.log("Calling girlfriend...");
+    // Add calling logic here
+    break;
+  case "dateGF":
+    console.log("Setting up date...");
+    // Add date setup logic here
+    break;
+  case "readDiary":
+    console.log("Reading diary...");
+    // Add diary reading logic here
+    break;
+  case "dogpet":
+    console.log("Playing with Buddy...");
+    // Add pet playing logic here
+    break;
+  default:
+    console.log("Unknown action:", action);
+}
+}
+
   
   function drawSelectedScreen(selectedItem) {
     image(assets.room, 0, 0, width, height);
@@ -80,4 +208,6 @@ class Button {
   
     buttons.forEach(btn => btn.display());
   }
+  
+
   
