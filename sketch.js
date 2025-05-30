@@ -32,15 +32,19 @@ function setup() {
 
 function draw() {
   textFont("Press Start 2P");
-
-  if (currentScreen === "start") {
-    drawStartScreen();
-  } else if (currentScreen === "play") {
-    drawPlayScreen();
-  } else if (currentScreen === "work") {
-    drawWorkscreen();
+  switch (currentScreen) {
+    case "start":
+      drawStartScreen();
+      break;
+    case "play":
+      drawPlayScreen();
+      break;
+    case "work":
+      drawWorkscreen();
+      break;
+    
   }
-
+  
 
 }
 
