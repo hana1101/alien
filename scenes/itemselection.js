@@ -91,4 +91,5 @@ function drawWalletScreen() {
   textAlign(CENTER, CENTER);
   text("Open Wallet", buttonX + buttonW / 2, buttonY + 30);
   text("Go to Work", buttonX + buttonW / 2, buttonY + 30 + buttonH + 20);
-  text("Go to Work", buttonX + buttonW / 2, buttonY + 30
+  text("Go to Work", buttonX + buttonW / 2, buttonY + 30 + 2 * (buttonH + 20));
+}
