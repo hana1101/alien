@@ -119,4 +119,17 @@
 
 //   checkClick(mx, my) {
 //     let d = dist(mx, my, this.x, this.y);
-//     if
+//     if (d < this.outerRadius) {
+//       if (this.isPenalty) {
+//         return -3; // penalty zone
+//       }
+//       let diff = abs(this.innerRadius - this.outerRadius);
+//       if (diff < 3) {
+//         return 3; // perfect timing
+//       } else if (diff < 13) {
+//         return 1; // slightly off
+//       }
+//     }
+//     return 0;
+//   }
+// }
