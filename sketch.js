@@ -19,7 +19,6 @@ function preload() {
   assets["startbutton"] = loadImage(`assets/startbutton.png`);
   myFont = loadFont('assets/DungGeunMo.ttf'); 
 
-
 }
 
 function setup() {
