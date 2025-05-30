@@ -8,6 +8,9 @@ let currentScreen = "start";
 let assets = [];
 let btn = { x: 0, y: 0, w: 130, h: 60 };
 let selectedItem = null;  // track selected item
+let relationshipValue = 0; 
+let careerValue = 0;       
+let wellBeingValue = 0;  
 
 function preload() {
   for (let name of assetname) {
