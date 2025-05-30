@@ -56,6 +56,8 @@ function drawWorkscreen() {
   if (box) box.display();
 }
 
+
+//choosing wallet
 function drawWalletScreen() {
   image(assets.room, 0, 0, width, height);
 
@@ -87,7 +89,7 @@ function drawWalletScreen() {
   textSize(22);
   noStroke();
   textAlign(CENTER, CENTER);
-  text("Button 1", buttonX + buttonW / 2, buttonY + 30);
-  text("Button 2", buttonX + buttonW / 2, buttonY + 30 + buttonH + 20);
-  text("Button 3", buttonX + buttonW / 2, buttonY + 30 + 2 * (buttonH + 20));
+  text("Open Wallet", buttonX + buttonW / 2, buttonY + 30);
+  text("Go to Work", buttonX + buttonW / 2, buttonY + 30 + buttonH + 20);
+  text("Go to Work", buttonX + buttonW / 2, buttonY + 30 + 2 * (buttonH + 20));
 }

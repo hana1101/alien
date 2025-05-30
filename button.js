@@ -40,7 +40,7 @@ class Button {
     }
   }
   
-  function drawSelectedScreen(selectedItem, buttontext1, buttontext2, buttontext3) {
+  function drawSelectedScreen(selectedItem) {
     image(assets.room, 0, 0, width, height);
   
     // Center position for the item (in the left third)
@@ -73,9 +73,9 @@ class Button {
     let btnH = 60;
   
     let buttons = [
-      new Button(btnX, btnY, btnW, btnH, buttontext1),
-      new Button(btnX, btnY + btnH + 20, btnW, btnH, buttontext2),
-      new Button(btnX, btnY + 2 * (btnH + 20), btnW, btnH, buttontext3),
+      new Button(btnX, btnY, btnW, btnH, 'Look inside'),
+      new Button(btnX, btnY + btnH + 20, btnW, btnH, 'Task 1'),
+      new Button(btnX, btnY + 2 * (btnH + 20), btnW, btnH, 'Task 2'),
     ];
   
     buttons.forEach(btn => btn.display());

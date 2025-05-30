@@ -29,7 +29,7 @@ async function setup() {
   drawingCanvas = createGraphics(500, 400);
   drawingCanvas.clear();
 
-  workspaceImg = await loadImage('assets/workplace.png');
+  workspaceImg = await loadImage('assets/workplace.jpg');
   drawingBoardImg = await loadImage('assets/drawingboard.png');
 
   clearButton = createButton('clear');
