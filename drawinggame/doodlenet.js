@@ -1,44 +1,69 @@
-let clearButton;
+let clearButton, resetButton;
 let drawingCanvas;
 let doodleClassifier;
 
-let workspaceImg, drawingBoardImg;
+let workspaceImg;
 
-let resultLabel = '';
+let resultLabel = "";
 let resultConfidence = 0;
-let gameResult = '';
+let gameResult = "";
+let results = [];
 
 const keywords = [
-  'alarm clock', 'cello', 'carrot', 'mushroom', 'sword', 'lipstick', 'cake',
-  'cat', 'grass', 'strawberry', 'lion', 'light bulb', 'sun', 'smiley face',
-  'cactus', 'ice cream', 'snowflake', 'cookie', 'beach', 'leg'
+  "alarm clock",
+  "cello",
+  "carrot",
+  "mushroom",
+  "sword",
+  "lipstick",
+  "cake",
+  "cat",
+  "grass",
+  "strawberry",
+  "lion",
+  "light bulb",
+  "sun",
+  "smiley face",
+  "cactus",
+  "ice cream",
+  "snowflake",
+  "cookie",
+  "beach",
+  "leg",
 ];
 
-let targetLabel = '';
+let targetLabel = "";
 let timer = 20;
 let timerInterval;
 let gameOver = false;
 
-const drawAreaX = 60;
-const drawAreaY = 60;
-const drawAreaW = 380;
-const drawAreaH = 280;
+let drawAreaX = 60;
+let drawAreaY = 60;
+let drawAreaW = 400;
+let drawAreaH = 400;
 
 async function setup() {
   createCanvas(1200, 700);
-  drawingCanvas = createGraphics(500, 400);
-  drawingCanvas.clear();
+  drawingCanvas = createGraphics(400, 400);
+  drawingCanvas.background(255); // 흰 배경으로 초기화
 
-  workspaceImg = await loadImage('assets/workplace.jpg');
-  drawingBoardImg = await loadImage('assets/drawingboard.png');
+  workspaceImg = await loadImage("assets/workplace.png");
 
-  clearButton = createButton('clear');
+  clearButton = createButton("clear");
   clearButton.position(600, 630);
-  clearButton.mousePressed(resetGame);
+  clearButton.mousePressed(clearDrawing);
 
-  doodleClassifier = ml5.imageClassifier('DoodleNet', modelReady);
+  resetButton = createButton("reset");
+  resetButton.position(720, 630);
+  resetButton.mousePressed(resetGame);
+
+  doodleClassifier = ml5.imageClassifier("DoodleNet", modelReady);
   pickRandomKeyword();
   startTimer();
+}
+
+function clearDrawing() {
+  drawingCanvas.background(255); // ✅ 캔버스만 흰색으로 초기화
 }
 
 function pickRandomKeyword() {
@@ -48,7 +73,7 @@ function pickRandomKeyword() {
 function startTimer() {
   timer = 20;
   gameOver = false;
-  gameResult = '';
+  gameResult = "";
   timerInterval = setInterval(() => {
     timer--;
     if (timer <= 0) {
@@ -60,34 +85,38 @@ function startTimer() {
 }
 
 function resetGame() {
-  drawingCanvas.clear();
-  resultLabel = '';
+  drawingCanvas.background(255); // 흰 배경으로 리셋
+  resultLabel = "";
   resultConfidence = 0;
   pickRandomKeyword();
   startTimer();
 }
 
 function modelReady() {
-  console.log('model loaded');
+  console.log("model loaded");
   classifyCanvas();
 }
 
 function classifyCanvas() {
   if (!gameOver) {
-    doodleClassifier.classify(drawingCanvas.canvas, gotResults);
+    let resizedCanvas = drawingCanvas.get();
+    resizedCanvas.resize(400, 280);
+    doodleClassifier.classify(resizedCanvas.canvas, gotResults);
   }
 }
 
-function gotResults(error, results) {
+function gotResults(error, res) {
   if (error) {
     console.error(error);
     return;
   }
-  resultLabel = results[0].label;
-  resultConfidence = nf(100 * results[0].confidence, 2, 1);
 
-  if (resultLabel === targetLabel && !gameOver) {
-    gameResult = '✅ Correct!';
+  results = res;
+  resultLabel = res[0].label;
+  resultConfidence = nf(100 * res[0].confidence, 2, 1);
+
+  if (!gameOver && results.slice(0, 5).some((r) => r.label === targetLabel)) {
+    gameResult = "✅ Correct!";
     gameOver = true;
     clearInterval(timerInterval);
   }
@@ -96,10 +125,19 @@ function gotResults(error, results) {
 }
 
 function checkResult() {
-  if (resultLabel === targetLabel) {
-    gameResult = '✅ Correct!';
+  let isCorrect = false;
+
+  for (let i = 0; i < 5; i++) {
+    if (results[i] && results[i].label === targetLabel) {
+      isCorrect = true;
+      break;
+    }
+  }
+
+  if (isCorrect) {
+    gameResult = "✅ Correct!";
   } else {
-    gameResult = `❌ Wrong! It looks like "${resultLabel}".`;
+    gameResult = `❌ Wrong! It looks like "${results[0].label}".`;
   }
 }
 
@@ -107,11 +145,11 @@ function draw() {
   background(255);
 
   if (workspaceImg) image(workspaceImg, 0, 0, width, height);
-  if (drawingBoardImg) image(drawingBoardImg, 550, 150, 500, 400);
 
+  // 그린 내용 보여주기
   image(drawingCanvas, 550, 150);
 
-  // Text UI
+  // 텍스트 UI
   fill(255);
   stroke(0);
   strokeWeight(3);
@@ -119,22 +157,23 @@ function draw() {
   textAlign(LEFT, BOTTOM);
   text(`Draw: ${targetLabel}`, 50, 60);
   text(`Time Left: ${timer}s`, 50, 100);
+
   if (gameResult) {
-  textAlign(CENTER, CENTER);
-  textSize(48);
-  textStyle(BOLD);
-  fill(gameResult.includes('Correct') ? 'green' : 'red');
-  noStroke();
-  text(gameResult, width / 2, height / 2);
-}
+    textAlign(CENTER, CENTER);
+    textSize(48);
+    textStyle(BOLD);
+    fill(gameResult.includes("Correct") ? "green" : "red");
+    noStroke();
+    text(gameResult, width / 2, height / 2);
+  }
 
   // 그릴 수 있는 영역 제한
   if (
     mouseIsPressed &&
-    mouseX > 550 + drawAreaX &&
-    mouseX < 550 + drawAreaX + drawAreaW &&
-    mouseY > 150 + drawAreaY &&
-    mouseY < 150 + drawAreaY + drawAreaH &&
+    mouseX > 550 &&
+    mouseX < 550 + drawAreaW &&
+    mouseY > 150 &&
+    mouseY < 150 + drawAreaH &&
     !gameOver
   ) {
     drawingCanvas.strokeWeight(16);
