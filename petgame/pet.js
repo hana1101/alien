@@ -55,7 +55,7 @@
 // }
 
 // function spawnCircle() {
-//   if (totalSpawned >= 40) {
+//   if (totalSpawned >= 35) {
 //     clearInterval(interval);
 //     gameOver = true;
 //     return;
