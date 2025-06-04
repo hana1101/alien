@@ -17,8 +17,8 @@ let gameEnded = false;
 
 function preload() {
   handPose = ml5.handPose();
-  bgImage_notlook = loadImage("assets/notlooking.PNG");
-  bgImage_look = loadImage("assets/looking.PNG");
+  bgImage_notlook = loadImage("assets/notlooking.jpg");
+  bgImage_look = loadImage("assets/looking.jpg");
 }
 
 function setup() {
