@@ -47,7 +47,7 @@ async function setup() {
   drawingCanvas = createGraphics(400, 400);
   drawingCanvas.background(255); // 흰 배경으로 초기화
 
-  workspaceImg = await loadImage("assets/workplace.png");
+  workspaceImg = await loadImage("assets/workplace.jpg");
 
   clearButton = createButton("clear");
   clearButton.position(600, 630);
