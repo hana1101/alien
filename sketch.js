@@ -110,28 +110,6 @@ function drawStartScreen() {
   }
 }
 
-// function mousePressed() {
-//   if (currentScreen === "start" && startisHovering()) {
-//     changeScreen('play');
-//     startTime = millis();
-//   } else if (currentScreen === "play") {
-//     if (!selectedItem) {
-//       if (walletItem.isHovered()) {
-//         selectedItem = "wallet";
-//         changeScreen("work"); // go to work screen when selecting wallet (example)
-//       } else if (phoneItem.isHovered()) {
-//         selectedItem = "phone";
-//         changeScreen("work"); // same here
-//       } else if (diaryItem.isHovered()) {
-//         selectedItem = "diary";
-//         changeScreen("work");
-//       }
-//     }
-//   } else if (currentScreen === "work" && dialogue) {
-//     dialogue.next();
-//   }
-// }
-
 function mousePressed() {
   //change screen wehn click
   console.log("mouse pressed at screen:", currentScreen); // Debug line
