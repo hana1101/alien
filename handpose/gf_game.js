@@ -54,7 +54,7 @@ function initializeGirlfriendHand(){
 
 
     //start button
-  gameStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+190, 130,60, "Start", gameStartPressed)
+  gameStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start", gameStartPressed)
   
 
   initialSetStats();
