@@ -4,14 +4,15 @@ class stats{
     this.currentStat = 0;
     this.completed = false;
     this.leftX = _leftX
+    
   }
   
   display(){
-    stroke(0);
+    strokeWeight(2);
+    stroke(255);
     fill("grey");
-    rect(this.leftX,50,150,30);
+    rect(this.leftX,55,150,30);
     
-    stroke(0);
     if (this.completed == true){
       fill("green");
       this.currentStat = 100;
@@ -19,11 +20,13 @@ class stats{
     else{
       fill("red");
     }
-    rect(this.leftX,50, 150*(this.currentStat/100),30);
+    // noStroke();
+    rect(this.leftX,55, 150*(this.currentStat/100),30);
     
-    fill("black");
+    noStroke();
+    fill("white");
     textSize(20);
-    text(this.currentStat+'%',this.leftX+160,70);
+    text(this.currentStat+'%',this.leftX+160,75);
   }
   
   increase(){
@@ -49,4 +52,5 @@ class stats{
     this.currentStat = 0;
     this.completed = false;
   }
-}
+  
+  }

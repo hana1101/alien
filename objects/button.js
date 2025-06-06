@@ -1,5 +1,4 @@
 
-
 class Button {
   constructor(x, y, w, h, label, action) {
     this.x = x;
@@ -13,11 +12,8 @@ class Button {
 display() {
   let isHovered = this.isHovered();
   
-  // Background block with pixel art vibe (blocky shadows)
   noStroke();
-  
-  // Draw shadow (offset bottom-right) - darker when hovered
-  if (isHovered) {
+      if (isHovered) {
     fill(140, 124, 104); // Darker shadow when hovered
   } else {
     fill(160, 144, 124); // Normal shadow
@@ -35,7 +31,6 @@ display() {
   }
   rect(this.x, this.y, this.w, this.h, 6);
 
-  // Draw label - change text color when hovered
   noStroke();
   if (isHovered) {
     fill(100, 74, 57); // Darker text when hovered
@@ -89,7 +84,7 @@ let btnW = 300;
 let btnH = 60;
 let btnSpacing = 20;
 
-let buttonConfigs = getButtonConfig(selectedItem);
+let buttonConfigs = SettingButtons(selectedItem);
 
 // Calculate starting Y position to center buttons vertically
 let totalButtonsHeight = (buttonConfigs.length * btnH) + ((buttonConfigs.length - 1) * btnSpacing);
@@ -107,12 +102,12 @@ buttons.forEach(btn => btn.display());
 // Handle button clicks
 buttons.forEach(btn => {
   if (btn.isClicked()) {
-    handleButtonAction(btn.action);
+    ButtonAction(btn.action);
   }
 });
 }
 
-function getButtonConfig(selectedItem) {
+function SettingButtons(selectedItem) {
 const configs = {
   wallet: [
     { label: "Check Wallet", action: "checkWallet" },
@@ -132,18 +127,20 @@ const configs = {
 return configs[selectedItem] || configs.wallet;
 }
 
-function handleButtonAction(action) {
+function ButtonAction(action) {
 switch(action) {
   case "checkWallet":
     console.log("Checking wallet...");
-    // Add your wallet checking logic here
+    currentScreen = "work";
     break;
   case "drawing":
     console.log("Going to work...");
+    currentScreen = "drawing";
     // Add work/drawing logic here
     break;
   case "checkMessages":
     console.log("Checking messages...");
+    currentScreen='checkMsg'
     // Add message checking logic here
     break;
   case "callGF":
@@ -152,7 +149,7 @@ switch(action) {
     break;
   case "dateGF":
     console.log("Setting up date...");
-    // Add date setup logic here
+    currentScreen='girlfriendGame'
     break;
   case "readDiary":
     console.log("Reading diary...");
@@ -167,47 +164,3 @@ switch(action) {
 }
 }
 
-  
-  function drawSelectedScreen(selectedItem) {
-    image(assets.room, 0, 0, width, height);
-  
-    // Center position for the item (in the left third)
-    let panelWidth = width / 3;
-    let centerX = panelWidth / 2;
-    let centerY = height / 2;
-    let scaleFactor = 1.5;
-  
-    // Get item height
-    let itemHeight;
-    if (selectedItem === "wallet") itemHeight = walletItem.baseHeight;
-    else if (selectedItem === "phone") itemHeight = phoneItem.baseHeight;
-    else if (selectedItem === "diary") itemHeight = diaryItem.baseHeight;
-  
-    let drawY = centerY - (itemHeight * scaleFactor) / 2;
-  
-    // Draw selected item centered in the left panel
-    push();
-    translate(centerX-10, drawY);
-    scale(scaleFactor);
-    if (selectedItem === "wallet") drawWallet(0, 0);
-    else if (selectedItem === "phone") drawPhone(0, 0);
-    else if (selectedItem === "diary") drawDiary(0, 0);
-    pop();
-  
-    // Create 3 buttons on the right
-    let btnX = width - 400;
-    let btnY = height / 3;
-    let btnW = 300;
-    let btnH = 60;
-  
-    let buttons = [
-      new Button(btnX, btnY, btnW, btnH, 'Look inside'),
-      new Button(btnX, btnY + btnH + 20, btnW, btnH, 'Task 1'),
-      new Button(btnX, btnY + 2 * (btnH + 20), btnW, btnH, 'Task 2'),
-    ];
-  
-    buttons.forEach(btn => btn.display());
-  }
-  
-
-  

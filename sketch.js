@@ -1,58 +1,107 @@
-
-let myFont;
-let assetname = ["background", "room", "workplace"];
+let mgr;
+let assetname = ["background", "room", "workplace", "drawingrule", "roomblur"];
 let startTime;
 let walletItem, phoneItem, diaryItem;
-let box;
+let dialogue;
 let currentScreen = "start";
 let assets = [];
 let btn = { x: 0, y: 0, w: 130, h: 60 };
-let selectedItem = null;  // track selected item
-let relationshipValue = 0; 
-let careerValue = 0;       
-let wellBeingValue = 0;  
+let spaceblue,
+  neongreen,
+  brightpink,
+  cyanblue,
+  lightblue,
+  ufoPurple,
+  starcolor,
+  zibgreen;
+let gfGameStarted;
 
 function preload() {
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
   }
   assets["startbutton"] = loadImage(`assets/startbutton.png`);
-  myFont = loadFont('assets/DungGeunMo.ttf'); 
+  assets["phone"] = loadImage(`assets/phone.png`);
+  // assets["buddyrule1"] = loadImage(`assets/buddyrule1.jpeg`);
+  // assets["figma"] = loadImage(`assets/figma.jpeg`);
+  handPose = ml5.handPose();
 
+  bgImage_notlook = loadImage("assets/notlooking.jpg");
+  bgImage_look = loadImage("assets/looking.jpg");
+  hand_gameRules = loadImage("assets/powerrule!.jpg");
+  success_gfbg = loadImage("assets/laughend.jpg");
+  fail_gfbg = loadImage("assets/relationend.jpg");
 }
 
 function setup() {
+  textFont("Press Start 2P");
   createCanvas(1000, 625);
   btn.x = width / 2 - btn.w / 2;
   btn.y = height / 2 + 50;
   startTime = millis();
 
-  walletItem = new item(width / 5 - 100, height / 3 + 50, drawWallet, "Wallet", 0.8, 250, 180);
-  phoneItem = new item(width / 5 + 270, height / 3 + 20, drawPhone, "Phone", 0.8, 130, 250);
-  diaryItem = new item(width / 5 + 550, height / 3 - 10, drawDiary, "Diary", 0.8, 200, 280);
+  walletItem = new item(
+    width / 5 - 100,
+    height / 3 + 50,
+    drawWallet,
+    "Wallet",
+    0.8,
+    250,
+    180
+  );
+  phoneItem = new item(
+    width / 5 + 270,
+    height / 3 + 20,
+    drawPhone,
+    "Phone",
+    0.8,
+    130,
+    250
+  );
+  diaryItem = new item(
+    width / 5 + 550,
+    height / 3 - 10,
+    drawDiary,
+    "Diary",
+    0.8,
+    200,
+    280
+  );
+
+  spaceblue = color(10, 10, 40);
+  neongreen = color(0, 255, 153);
+  brightpink = color(255, 0, 255);
+  cyanblue = color(114, 255, 251);
+  lightblue = color(98, 176, 255);
+  ufoPurple = color(167, 91, 255);
+  starcolor = color(255, 235, 59);
+  zibgreen = color("#92C367");
 }
 
 function draw() {
-  textFont("Press Start 2P");
-  switch (currentScreen) {
-    case "start":
-      drawStartScreen();
-      break;
-    case "play":
-      drawPlayScreen();
-      break;
-    case "work":
-      drawWorkscreen();
-      break;
-    
+  if (currentScreen === "start") {
+    drawStartScreen();
+  } else if (currentScreen === "play") {
+    drawPlayScreen();
+  } else if (currentScreen === "work") {
+    drawWorkscreen();
+  } else if (currentScreen === "drawing") {
+    drawingScreen();
+  } else if (currentScreen === "checkMsg") {
+    checkMsg();
+  } else if (currentScreen === "girlfriendGame") {
+    if (!gfGameStarted) {
+      initializeGirlfriendHand();
+      gfGameStarted = true;
+    }
+    playGirlfriendHand();
   }
-  
-
 }
 
 function drawStartScreen() {
   image(assets.background, 0, 0, width, height);
-  if (isHovering()) {
+  //start button hover -> click
+  if (startisHovering()) {
     cursor(HAND);
     image(assets.startbutton, btn.x - 5, btn.y - 5, btn.w + 10, btn.h + 10);
   } else {
@@ -61,25 +110,35 @@ function drawStartScreen() {
   }
 }
 
-
 // function mousePressed() {
-//   if (currentScreen === "start" && isHovering()) {
-//     currentScreen = "play";
+//   if (currentScreen === "start" && startisHovering()) {
+//     changeScreen('play');
 //     startTime = millis();
-//   } else if (currentScreen === "play" && walletItem.isClicked()) {
-//     currentScreen = "work";
-//     boxInitialized = false; // reset dialogue setup
-//   } else if (currentScreen === "play" && diaryItem.isClicked()) {
-//     currentScreen = "home";
-//     boxInitialized = false; // reset dialogue setup
-//   }
-//   else if (currentScreen === "work" && box) {
-//     box.next();
+//   } else if (currentScreen === "play") {
+//     if (!selectedItem) {
+//       if (walletItem.isHovered()) {
+//         selectedItem = "wallet";
+//         changeScreen("work"); // go to work screen when selecting wallet (example)
+//       } else if (phoneItem.isHovered()) {
+//         selectedItem = "phone";
+//         changeScreen("work"); // same here
+//       } else if (diaryItem.isHovered()) {
+//         selectedItem = "diary";
+//         changeScreen("work");
+//       }
+//     }
+//   } else if (currentScreen === "work" && dialogue) {
+//     dialogue.next();
 //   }
 // }
 
 function mousePressed() {
-  if (currentScreen === "start" && isHovering()) {
+  //change screen wehn click
+  console.log("mouse pressed at screen:", currentScreen); // Debug line
+
+  if (currentScreen === "start" && startisHovering()) {
+        console.log("START BUTTON CLICKED"); // Debug line
+
     currentScreen = "play";
     startTime = millis();
   } else if (currentScreen === "play") {
@@ -88,23 +147,37 @@ function mousePressed() {
       else if (phoneItem.isHovered()) selectedItem = "phone";
       else if (diaryItem.isHovered()) selectedItem = "diary";
     }
-  } else if (currentScreen === "work" && box) {
-    box.next();
+  } else if (currentScreen === "work" && dialogue) {
+    dialogue.next();
   }
+  if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
+    gameStartBtn.action();
+  }
+
 }
 
 function keyPressed() {
   if (keyCode === ESCAPE) {
     if (currentScreen === "play" && selectedItem) {
-      selectedItem = null;  // back to showing all items
+      selectedItem = null;
+    }
+    if (
+      currentScreen === "work" ||
+      (currentScreen === "drawing" && selectedItem)
+    ) {
+      currentScreen = "play";
     } else {
-      currentScreen = 'start';
+      currentScreen = "start";
       selectedItem = null;
     }
   }
 }
 
-function isHovering() {
-  return mouseX > btn.x && mouseX < btn.x + btn.w && mouseY > btn.y && mouseY < btn.y + btn.h;
+function startisHovering() {
+  return (
+    mouseX > btn.x &&
+    mouseX < btn.x + btn.w &&
+    mouseY > btn.y &&
+    mouseY < btn.y + btn.h
+  );
 }
-
