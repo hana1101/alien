@@ -14,6 +14,28 @@ const keywords = [
   "cat", "grass", "strawberry", "lion", "light bulb", "sun", "smiley face",
   "cactus", "ice cream", "snowflake", "cookie", "beach", "leg",
 ];
+// const keywords = [
+//   "alarm clock",
+//   "cello",
+//   "carrot",
+//   "mushroom",
+//   "sword",
+//   "lipstick",
+//   "cake",
+//   "cat",
+//   "grass",
+//   "strawberry",
+//   "lion",
+//   "light bulb",
+//   "sun",
+//   "smiley face",
+//   "cactus",
+//   "ice cream",
+//   "snowflake",
+//   "cookie",
+//   "beach",
+//   "leg",
+// ];
 
 let targetLabel = "";
 let timer = 20;
