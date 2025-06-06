@@ -1,33 +1,33 @@
-let scene = 1;
-let currentImage;
-let box;
-let img1;
+// let scene = 1;
+// let currentImage;
+// let box;
+// let img1;
 
-function preload() {
-  img1 = loadImage("assets/alien1.png");
-}
+// function preload() {
+//   img1 = loadImage("assets/alien1.png");
+// }
 
-function setup() {
-  createCanvas(1000, 625);
-  loadScene(scene); // 첫 씬 로드
-}
+// function setup() {
+//   createCanvas(1000, 625);
+//   loadScene(scene); // 첫 씬 로드
+// }
 
-function draw() {
-  background(0);
-  image(currentImage, 0, 0, width, height);
-  if (box) {
-    box.display();
-  }
-}
+// function draw() {
+//   background(0);
+//   image(currentImage, 0, 0, width, height);
+//   if (box) {
+//     box.display();
+//   }
+// // }
 
-function mousePressed() {
-  if (box && !box.finished && box.isHovered()) {
-    box.next();
-  } else if (box && box.finished) {
-    scene++; // 다음 씬으로 전환
-    loadScene(scene);
-  }
-}
+// function mousePressed() {
+//   if (box && !box.finished && box.isHovered()) {
+//     box.next();
+//   } else if (box && box.finished) {
+//     scene++; // 다음 씬으로 전환
+//     loadScene(scene);
+//   }
+// }
 function loadScene(sceneNumber) {
   if (sceneNumber === 1) {
     currentImage = img1;
