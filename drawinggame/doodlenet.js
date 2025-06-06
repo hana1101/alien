@@ -10,26 +10,9 @@ let gameResult = "";
 let results = [];
 
 const keywords = [
-  "alarm clock",
-  "cello",
-  "carrot",
-  "mushroom",
-  "sword",
-  "lipstick",
-  "cake",
-  "cat",
-  "grass",
-  "strawberry",
-  "lion",
-  "light bulb",
-  "sun",
-  "smiley face",
-  "cactus",
-  "ice cream",
-  "snowflake",
-  "cookie",
-  "beach",
-  "leg",
+  "alarm clock", "cello", "carrot", "mushroom", "sword", "lipstick", "cake",
+  "cat", "grass", "strawberry", "lion", "light bulb", "sun", "smiley face",
+  "cactus", "ice cream", "snowflake", "cookie", "beach", "leg",
 ];
 
 let targetLabel = "";
@@ -42,28 +25,31 @@ let drawAreaY = 60;
 let drawAreaW = 400;
 let drawAreaH = 400;
 
-async function setup() {
+function startDrawingGame() {
   createCanvas(1200, 700);
   drawingCanvas = createGraphics(400, 400);
-  drawingCanvas.background(255); // 흰 배경으로 초기화
+  drawingCanvas.background(255);
 
-  workspaceImg = await loadImage("assets/workplace.jpg");
+  loadImage("assets/workplace.png", (img) => {
+    workspaceImg = img;
+  });
 
   clearButton = createButton("clear");
   clearButton.position(600, 630);
-  clearButton.mousePressed(clearDrawing);
+  clearButton.mousePressed(() => {
+    drawingCanvas.background(255);
+  });
 
   resetButton = createButton("reset");
   resetButton.position(720, 630);
   resetButton.mousePressed(resetGame);
 
-  doodleClassifier = ml5.imageClassifier("DoodleNet", modelReady);
+  doodleClassifier = ml5.imageClassifier("DoodleNet", () => {
+    classifyCanvas();
+  });
+
   pickRandomKeyword();
   startTimer();
-}
-
-function clearDrawing() {
-  drawingCanvas.background(255); // ✅ 캔버스만 흰색으로 초기화
 }
 
 function pickRandomKeyword() {
@@ -74,6 +60,7 @@ function startTimer() {
   timer = 20;
   gameOver = false;
   gameResult = "";
+  clearInterval(timerInterval);
   timerInterval = setInterval(() => {
     timer--;
     if (timer <= 0) {
@@ -85,16 +72,11 @@ function startTimer() {
 }
 
 function resetGame() {
-  drawingCanvas.background(255); // 흰 배경으로 리셋
+  drawingCanvas.background(255);
   resultLabel = "";
   resultConfidence = 0;
   pickRandomKeyword();
   startTimer();
-}
-
-function modelReady() {
-  console.log("model loaded");
-  classifyCanvas();
 }
 
 function classifyCanvas() {
@@ -125,26 +107,23 @@ function gotResults(error, res) {
 }
 
 function checkResult() {
-  let isCorrect = false;
+  let isCorrect = results.slice(0, 5).some(r => r.label === targetLabel);
 
-  for (let i = 0; i < 5; i++) {
-    if (results[i] && results[i].label === targetLabel) {
-      isCorrect = true;
-      break;
-    }
-  }
-
-  if (isCorrect) {
-    gameResult = "✅ Correct!";
-  } else {
-    gameResult = `❌ Wrong! It looks like "${results[0].label}".`;
-  }
+  gameResult = isCorrect
+    ? "✅ Correct!"
+    : `❌ Wrong! It looks like "${results[0].label}".`;
 }
 
 function draw() {
   background(255);
 
   if (workspaceImg) image(workspaceImg, 0, 0, width, height);
+
+  // 흰 네모 영역
+  fill(255);
+  stroke(0);
+  strokeWeight(2);
+  rect(550, 150, drawAreaW, drawAreaH);
 
   // 그린 내용 보여주기
   image(drawingCanvas, 550, 150);
@@ -167,7 +146,6 @@ function draw() {
     text(gameResult, width / 2, height / 2);
   }
 
-  // 그릴 수 있는 영역 제한
   if (
     mouseIsPressed &&
     mouseX > 550 &&
