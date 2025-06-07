@@ -135,7 +135,7 @@ switch(action) {
     break;
   case "drawing":
     console.log("Going to work...");
-    currentScreen = "drawing";
+    currentScreen = "doodleGame"
     // Add work/drawing logic here
     break;
   case "checkMessages":
