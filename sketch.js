@@ -141,13 +141,14 @@ function keyPressed() {
     }
     if (
       currentScreen === "work" ||
-      (currentScreen === "drawing" && selectedItem)
+     ((currentScreen === "drawing" || currentScreen==='checkMsg') && selectedItem)
     ) {
       currentScreen = "play";
-    } else {
-      currentScreen = "start";
-      selectedItem = null;
-    }
+    } 
+    // else {
+    //   currentScreen = "start";
+    //   selectedItem = null;
+    // }
   }
 }
 
