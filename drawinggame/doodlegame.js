@@ -168,7 +168,6 @@ function showDGameStart() {
 
 function dGameStartPressed() {
   doodleStarted = true;
-  currentScreen = "doodleGame"
 }
 
 function doodleGameResults() {
