@@ -156,7 +156,7 @@ function gotDResults(error, res) {
 }
 
 function checkDResult() {
-  isCorrect = results.slice(0, 5).some(r => r.label === targetLabel);
+  isCorrect = results.slice(0, 3).some(r => r.label === targetLabel);
   dGameResult = isCorrect ? "정답입니다!" : `Wrong. This looks like a \"${results[0].label}\"`;
   dGameOver = true;
 }
