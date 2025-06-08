@@ -14,7 +14,7 @@ class life{
     fill("red");
     
     for (let i=0; i<this.lifeCount;i++){
-      drawHeart(-7+this.x+i*40,60,20);
+      drawHeart(-7+this.x+i*40,63,20);
       // circle(this.x+i*30, 65 ,20); 
     }
     
