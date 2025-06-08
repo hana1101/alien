@@ -101,8 +101,8 @@ function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
   }else if (currentScreen==="startscene/zib1"){
+    drawStartScene/Zib1();
     console.log(currentscreen);
-   drawStartScene/Zib1();
   }else if (currentScreen === "startscene/zib2"){
     drawStartScene/Zib2();
   }else if (currentScreen === "startscene/zib3"){
