@@ -147,11 +147,6 @@ function mousePressed() {
     currentScreen='zib2'}
 }
 
-  if (currentScreen === "zib2" && dialoguezib_2) {
-    currentScreen = "play";
-    startTime = millis();
-  } 
-
  if (currentScreen === "play") {
     if (!selectedItem) {
       if (walletItem.isHovered()) selectedItem = "wallet";
