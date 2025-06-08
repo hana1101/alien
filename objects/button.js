@@ -157,7 +157,7 @@ switch(action) {
     break;
   case "dogpet":
     console.log("Playing with Buddy...");
-    // Add pet playing logic here
+    currentScreen="dogGame"
     break;
   default:
     console.log("Unknown action:", action);
