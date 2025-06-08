@@ -95,12 +95,15 @@ function setup() {
 function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
+  }else if (currentScreen === "play") {
+    drawPlayScreen();
   } else if (currentScreen==="zib1"){ 
     drawZib1();
   }else if (currentScreen === "zib2"){
     drawZib2();
-  }else if (currentScreen === "play") {
-    drawPlayScreen();
+  }else if (currentScreen === "zib3"){
+    drawZib3(); 
+
   } else if (currentScreen === "work") {
     drawWorkscreen();
   } else if (currentScreen === "drawing") {
@@ -137,8 +140,9 @@ function mousePressed() {
 
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
-    currentScreen ="zib1"
-  } 
+    currentScreen="play";
+    startTime=millis();}
+
   if (currentScreen === "zib1" && dialoguezib) {
    dialoguezib.next();
   } if (currentScreen === "zib2" && dialoguezib_2) {
