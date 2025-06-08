@@ -15,9 +15,9 @@ let spaceblue,
   starcolor,
   zibgreen;
 let gfGameStarted;
-let dialoguezib = null;
-let dialoguezib_2 = null;
-let dialoguezib_3 = null;
+// let dialoguezib = null;
+// let dialoguezib_2 = null;
+// let dialoguezib_3 = null;
 
 //stats declare
 let relationship_stats;
@@ -100,13 +100,12 @@ function setup() {
 function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
-  }else if (currentScreen==="startscene/zib1"){
-    drawStartScene/Zib1();
-    console.log("startscene/zib1",currentscreen);
-  }else if (currentScreen === "startscene/zib2"){
-    drawStartScene/Zib2();
-  }else if (currentScreen === "startscene/zib3"){
-    drawStartScene/Zib3(); 
+  // }else if (currentScreen==="startscene/zib1"){
+  //   drawStartscene/Zib1();
+  // }else if (currentScreen === "startscene/zib2"){
+  //   drawStartScene/Zib2();
+  // }else if (currentScreen === "startscene/zib3"){
+  //   drawStartScene/Zib3(); 
 
   }else if (currentScreen === "play") {
     drawPlayScreen();
@@ -145,18 +144,19 @@ function mousePressed() {
 
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
-   if (currentScreen === "startscene/zib1" && dialoguezib) {
-   dialoguezib.next(); 
-   if (currentScreen === "startscene/zib2" && dialoguezib_2) {
-   dialoguezib_2.next();} 
-   if (currentScreen==='startscene/zib1' && dialoguezib.finished == true){
-    currentScreen='startscene/zib2'}
-  if (currentScreen === "startscene/zib2" && dialoguezib_2) {
-   dialoguezib_2.next();}
-  if (currentScreen === "startscene/zib3" && dialoguezib_3) {
-   dialoguezib_3.next();}
-  if (currentScreen==='startscene/zib2' && dialoguezib_2.finished == true){
-    currentScreen='startscene/zib3'}
+  //  if (currentScreen === "startscene/zib1" && dialoguezib) {
+  //   console.log ("startsceme/zib1");
+  //  dialoguezib.next(); 
+  //  if (currentScreen === "startscene/zib2" && dialoguezib_2) {
+  //  dialoguezib_2.next();} 
+  //  if (currentScreen==='startscene/zib1' && dialoguezib.finished == true){
+  //   currentScreen='startscene/zib2'}
+  // if (currentScreen === "startscene/zib2" && dialoguezib_2) {
+  //  dialoguezib_2.next();}
+  // if (currentScreen === "startscene/zib3" && dialoguezib_3) {
+  //  dialoguezib_3.next();}
+  // if (currentScreen==='startscene/zib2' && dialoguezib_2.finished == true){
+  //   currentScreen='startscene/zib3'}
 
 if (currentScreen="play");
     startTime=millis();
@@ -194,7 +194,6 @@ function keyPressed() {
 }
   }
   }
-}
 
 function startisHovering() {
   return (
