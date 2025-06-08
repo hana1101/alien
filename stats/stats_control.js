@@ -9,7 +9,8 @@ function initialSetStats(){
     push();
     fill("white");
     textSize(15);
-    text("Relationship",100,43);
+    textAlign(LEFT);
+    text("Relationship",50,43);
     text("Career",300,43);
     text("Well-being",550,43);
     text("Life", 780,43);

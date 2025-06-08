@@ -26,7 +26,7 @@ class stats{
     noStroke();
     fill("white");
     textSize(20);
-    text(this.currentStat+'%',this.leftX+160,75);
+    text(this.currentStat+'%',this.leftX+190,73);
   }
   
   increase(){
