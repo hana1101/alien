@@ -100,12 +100,6 @@ function setup() {
 function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
-  } else if (currentScreen==="zib1"){ 
-    drawZib1();
-  }else if (currentScreen === "zib2"){
-    drawZib2();
-  }else if (currentScreen === "zib3"){
-    drawZib3(); 
   }else if (currentScreen === "play") {
     drawPlayScreen();
   } else if (currentScreen === "work") {
@@ -135,6 +129,16 @@ function drawStartScreen() {
     cursor(ARROW);
     image(assets.startbutton, btn.x, btn.y, btn.w, btn.h);
   }
+}
+
+function draw(){
+   if (currentScreen==="zib1"){ 
+    drawZib1();
+  }else if (currentScreen === "zib2"){
+    drawZib2();
+  }else if (currentScreen === "zib3"){
+    drawZib3(); 
+}
 }
 
 function mousePressed() {
