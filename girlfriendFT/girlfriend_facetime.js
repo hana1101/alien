@@ -7,7 +7,7 @@ let facetimeOver = false;
 let facetimeLife = false;
 
 let faceTimeStart = false;
-let autoTimerfT = false;
+let autoTimerfT;
 
 //button
 let ftStartBtn;
@@ -130,7 +130,7 @@ function dialogueSequence() {
   if (!dialogueFaceTime.finished) {
     autoTimerfT.update();
 
-    if (autoTimerfT.isComplete()) {
+    if (autoTimerfT.completed) {
       dialogueFaceTime.next();
       if (!dialogueFaceTime.finished) {
         autoTimerfT.reset();
