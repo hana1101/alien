@@ -40,6 +40,9 @@ function preload() {
   success_gfbg = loadImage("assets/laughend.jpg");
   fail_gfbg = loadImage("assets/relationend.jpg");
   zib1 = loadImage("assets/zib1.jpg");
+
+  facetimebg = loadImage("assets/facetime.jpg");
+
   preloadDoodleAssets();
 }
 
