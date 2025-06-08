@@ -1,5 +1,5 @@
 let mgr;
-let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1"];
+let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1", "zib2","zib3"];
 let startTime;
 let walletItem, phoneItem, diaryItem;
 let dialogue;
@@ -40,6 +40,7 @@ function preload() {
   success_gfbg = loadImage("assets/laughend.jpg");
   fail_gfbg = loadImage("assets/relationend.jpg");
   zib1 = loadImage("assets/zib1.jpg");
+  zib2 = loadImage("assets/zib2.jpg");
   preloadDoodleAssets();
 }
 
@@ -96,6 +97,8 @@ function draw() {
     drawStartScreen();
   } else if (currentScreen==="zib1"){ 
     drawZib1();
+  }else if (currentScreen === "zib2"){
+    drawZib2();
   }else if (currentScreen === "play") {
     drawPlayScreen();
   } else if (currentScreen === "work") {
@@ -134,8 +137,7 @@ function mousePressed() {
 
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
-    currentScreen = "play";
-    startTime = millis();
+    currentScreen ="zib1"
   } 
   if (currentScreen === "zib1" && dialoguezib) {
    dialoguezib.next();
@@ -144,6 +146,11 @@ function mousePressed() {
   if (currentScreen==='zib1' && dialoguezib.finished == true){
     currentScreen='zib2'}
 }
+
+  if (currentScreen === "zib2" && dialoguezib_2) {
+    currentScreen = "play";
+    startTime = millis();
+  } 
 
  if (currentScreen === "play") {
     if (!selectedItem) {
