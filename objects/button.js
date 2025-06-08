@@ -145,7 +145,7 @@ switch(action) {
     break;
   case "callGF":
     console.log("Calling girlfriend...");
-    // Add calling logic here
+    currentScreen = 'girlfriendFT'
     break;
   case "dateGF":
     console.log("Setting up date...");
