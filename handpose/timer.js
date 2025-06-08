@@ -30,10 +30,14 @@ class Timer {
     }
   
     display(_x, _y, label = "Timer") {
+      
       fill(255);
       noStroke();
       textSize(20);
+      push();
+      textAlign(LEFT);
       text(`${label}: ${this.timeLeft.toFixed(0)}`, _x, _y);
+      pop();
     }
   
     isComplete() {
