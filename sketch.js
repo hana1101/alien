@@ -31,6 +31,7 @@ function preload() {
   hand_gameRules = loadImage("assets/powerrule!.jpg");
   success_gfbg = loadImage("assets/laughend.jpg");
   fail_gfbg = loadImage("assets/relationend.jpg");
+  preloadDoodleAssets();
 }
 
 function setup() {
@@ -95,6 +96,9 @@ function draw() {
       gfGameStarted = true;
     }
     playGirlfriendHand();
+  } else if (currentScreen === "doodleGame"){
+    initDoodleGame();
+    playDoodleGame();
   }
 }
 
@@ -127,6 +131,8 @@ function mousePressed() {
     }
   } else if (currentScreen === "work" && dialogue) {
     dialogue.next();
+  } else if (currentScreen === "doodleGame") {
+    mousePressedDoodleGame(); // 낙서 게임용 클릭 핸들러
   }
   if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
     gameStartBtn.action();
