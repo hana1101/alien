@@ -101,7 +101,8 @@ function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
   if (currentScreen==="zib1"){
-    drawZib1();
+    console.log(currentscreen);
+    drawZib1();}
   }else if (currentScreen === "zib2"){
     drawZib2();
   }else if (currentScreen === "zib3"){
@@ -125,7 +126,6 @@ function draw() {
       playDoodleGame();
   }
   }
-}
 
 function drawStartScreen() {
   image(assets.background, 0, 0, width, height);
