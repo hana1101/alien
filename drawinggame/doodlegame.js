@@ -65,6 +65,8 @@ function playDoodleGame() {
     resetBtn.display();
   }
 
+  displayStats();
+
   doodleTime.start();
   doodleTime.update();
 
