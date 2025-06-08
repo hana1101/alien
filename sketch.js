@@ -90,6 +90,8 @@ function setup() {
 
   //initialize stats
   initialSetStats();
+  if (currentScreen === "doodleGame"){
+    initDoodleGame();
 }
 
 function draw() {
@@ -117,7 +119,6 @@ function draw() {
     }
     playGirlfriendHand();
   } else if (currentScreen === "doodleGame"){
-    initDoodleGame();
     playDoodleGame();
   }
 }
