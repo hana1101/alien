@@ -33,11 +33,6 @@ function initializeFaceTime() {
   autoTimerfT.start();
 }
 
-function preload(){
-  facetimebg = loadImage("assets/facetime.jpg");
-}
-
-
 
 function playFaceTime() {
   
