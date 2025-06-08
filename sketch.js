@@ -15,8 +15,9 @@ let spaceblue,
   starcolor,
   zibgreen;
 let gfGameStarted;
-let sceneIndex=0;
 let dialoguezib = null;
+let dialoguezib_2 = null;
+let dialoguezib_3 = null;
 
 //stats declare
 let relationship_stats;
@@ -41,6 +42,7 @@ function preload() {
   fail_gfbg = loadImage("assets/relationend.jpg");
   zib1 = loadImage("assets/zib1.jpg");
   zib2 = loadImage("assets/zib2.jpg");
+  zib3 = loadImage("assets/zib3.jpg");
   preloadDoodleAssets();
 }
 
