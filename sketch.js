@@ -145,6 +145,12 @@ function mousePressed() {
    dialoguezib_2.next();}
   if (currentScreen==='zib1' && dialoguezib.finished == true){
     currentScreen='zib2'}
+  if ((currentScreen === "zib2") && dialoguezib_2) {
+   dialoguezib_2.next();}
+  if ((currentScreen === "zib3") && dialoguezib_3) {
+   dialoguezib_3.next();}
+  if (currentScreen==='zib2' && dialoguezib_2.finished == true){
+    currentScreen='zib3'}
 }
 
  if (currentScreen === "play") {
