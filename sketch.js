@@ -94,6 +94,7 @@ function setup() {
     initDoodleGame();
 }
 }
+
 function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
