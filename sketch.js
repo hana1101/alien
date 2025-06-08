@@ -1,5 +1,5 @@
 let mgr;
-let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1"];
+let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1", "zib2","zib3"];
 let startTime;
 let walletItem, phoneItem, diaryItem;
 let dialogue;
@@ -40,9 +40,7 @@ function preload() {
   success_gfbg = loadImage("assets/laughend.jpg");
   fail_gfbg = loadImage("assets/relationend.jpg");
   zib1 = loadImage("assets/zib1.jpg");
-
-  facetimebg = loadImage("assets/facetime.jpg");
-
+  zib2 = loadImage("assets/zib2.jpg");
   preloadDoodleAssets();
 }
 
@@ -97,9 +95,11 @@ function setup() {
 function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
-  } else if (currentScreen === "zib1") {
+  } else if (currentScreen==="zib1"){ 
     drawZib1();
-  } else if (currentScreen === "play") {
+  }else if (currentScreen === "zib2"){
+    drawZib2();
+  }else if (currentScreen === "play") {
     drawPlayScreen();
   } else if (currentScreen === "work") {
     drawWorkscreen();
@@ -113,9 +113,6 @@ function draw() {
       gfGameStarted = true;
     }
     playGirlfriendHand();
-  } else if(currentScreen === "girlfriendFT"){
-    initializeFaceTime();
-    playFaceTime();
   } else if (currentScreen === "doodleGame"){
     initDoodleGame();
     playDoodleGame();
@@ -139,14 +136,23 @@ function mousePressed() {
   console.log("mouse pressed at screen:", currentScreen); // Debug line
 
   if (currentScreen === "start" && startisHovering()) {
-        console.log("START BUTTON CLICKED"); // Debug line
+    console.log("START BUTTON CLICKED"); // Debug line
+    currentScreen ="zib1"
+  } 
+  if (currentScreen === "zib1" && dialoguezib) {
+   dialoguezib.next();
+  } if (currentScreen === "zib2" && dialoguezib_2) {
+   dialoguezib_2.next();}
+  if (currentScreen==='zib1' && dialoguezib.finished == true){
+    currentScreen='zib2'}
+}
 
-  if ((currentScreen === "zib1") && dialoguezib) {
-   dialoguezib.next();}
-   
+  if (currentScreen === "zib2" && dialoguezib_2) {
     currentScreen = "play";
     startTime = millis();
-  } else if (currentScreen === "play") {
+  } 
+
+ if (currentScreen === "play") {
     if (!selectedItem) {
       if (walletItem.isHovered()) selectedItem = "wallet";
       else if (phoneItem.isHovered()) selectedItem = "phone";
@@ -160,8 +166,6 @@ function mousePressed() {
   if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
     gameStartBtn.action();
   }
-
-}
 
 function keyPressed() {
   if (keyCode === ESCAPE) {
