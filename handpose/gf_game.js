@@ -231,7 +231,6 @@ function handleGameLogic(percentageInside) {
   }
 
 function displayTimers() {
-  textAlign(LEFT);
   totalTimer.display(50, 125, "남은 시간");
   
 }
