@@ -93,7 +93,7 @@ function setup() {
   if (currentScreen === "doodleGame"){
     initDoodleGame();
 }
-
+}
 function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
@@ -119,7 +119,7 @@ function draw() {
     }
     playGirlfriendHand();
   } else if (currentScreen === "doodleGame"){
-    playDoodleGame();
+      playDoodleGame();
   }
 }
 
