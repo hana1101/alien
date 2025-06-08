@@ -38,7 +38,6 @@ function playFaceTime() {
     ftRules();
     return;
   }
-  //console.log(faceTimeStart);
   
   image(facetimebg,0,0,width,height);  
   
@@ -73,27 +72,28 @@ function playFaceTime() {
 }
 
 function choice1Action() {
-  //relationship_stats.decrease();
+  relationship_stats.decrease();
   facetimeOver = true;
 }
 
 function choice2Action() {
-  //relationship_stats.increase();
+  relationship_stats.increase();
   success = true;
   facetimeOver = true;
   
 }
 
 function choice3Action() {
-  //life_stats.decrease();
+  life_stats.decrease();
   facetimeLife = true;
   facetimeOver = true;
   
 }
 
 function facetimeEnd(){
-  textSize(40)
   background("white");
+  displayStats();
+  textSize(40);
   if (success){
     push();
     textAlign(CENTER);
