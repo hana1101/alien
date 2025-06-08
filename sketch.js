@@ -93,19 +93,19 @@ function setup() {
   if (currentScreen === "doodleGame"){
     initDoodleGame();
 }
+}
 
 function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
-  }else if (currentScreen === "play") {
-    drawPlayScreen();
   } else if (currentScreen==="zib1"){ 
     drawZib1();
   }else if (currentScreen === "zib2"){
     drawZib2();
   }else if (currentScreen === "zib3"){
     drawZib3(); 
-
+  }else if (currentScreen === "play") {
+    drawPlayScreen();
   } else if (currentScreen === "work") {
     drawWorkscreen();
   } else if (currentScreen === "drawing") {
@@ -141,21 +141,22 @@ function mousePressed() {
 
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
-    currentScreen="play";
-    startTime=millis();}
-
-  if (currentScreen === "zib1" && dialoguezib) {
+  
+    if (currentScreen === "zib1" && dialoguezib) {
    dialoguezib.next();
   } if (currentScreen === "zib2" && dialoguezib_2) {
    dialoguezib_2.next();}
   if (currentScreen==='zib1' && dialoguezib.finished == true){
     currentScreen='zib2'}
-  if ((currentScreen === "zib2") && dialoguezib_2) {
+  if (currentScreen === "zib2") && dialoguezib_2) {
    dialoguezib_2.next();}
-  if ((currentScreen === "zib3") && dialoguezib_3) {
+  if (currentScreen === "zib3") && dialoguezib_3) {
    dialoguezib_3.next();}
   if (currentScreen==='zib2' && dialoguezib_2.finished == true){
     currentScreen='zib3'}
+
+  if (currentScreen="play");
+    startTime=millis();}
 }
 
  if (currentScreen === "play") {
