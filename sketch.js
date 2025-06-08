@@ -113,6 +113,9 @@ function draw() {
       gfGameStarted = true;
     }
     playGirlfriendHand();
+  } else if(currentScreen === "girlfriendFT"){
+    initializeFaceTime();
+    playFaceTime();
   } else if (currentScreen === "doodleGame"){
     initDoodleGame();
     playDoodleGame();
