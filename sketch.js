@@ -1,5 +1,5 @@
 let mgr;
-let assetname = ["background", "room", "workplace", "drawingrule", "roomblur"];
+let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1"];
 let startTime;
 let walletItem, phoneItem, diaryItem;
 let dialogue;
@@ -15,6 +15,8 @@ let spaceblue,
   starcolor,
   zibgreen;
 let gfGameStarted;
+let sceneIndex=0;
+let dialoguezib = null;
 
 //stats declare
 let relationship_stats;
@@ -37,6 +39,7 @@ function preload() {
   hand_gameRules = loadImage("assets/powerrule!.jpg");
   success_gfbg = loadImage("assets/laughend.jpg");
   fail_gfbg = loadImage("assets/relationend.jpg");
+  zib1 = loadImage("assets/zib1.jpg");
   preloadDoodleAssets();
 }
 
@@ -91,6 +94,8 @@ function setup() {
 function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
+  } else if (currentScreen === "zib1") {
+    drawZib1();
   } else if (currentScreen === "play") {
     drawPlayScreen();
   } else if (currentScreen === "work") {
@@ -130,6 +135,9 @@ function mousePressed() {
   if (currentScreen === "start" && startisHovering()) {
         console.log("START BUTTON CLICKED"); // Debug line
 
+  if ((currentScreen === "zib1") && dialoguezib) {
+   dialoguezib.next();}
+   
     currentScreen = "play";
     startTime = millis();
   } else if (currentScreen === "play") {
