@@ -16,6 +16,12 @@ let spaceblue,
   zibgreen;
 let gfGameStarted;
 
+//stats declare
+let relationship_stats;
+let career_stats;
+let wellbeing_stats;
+let life_stats;
+
 function preload() {
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
@@ -77,6 +83,9 @@ function setup() {
   ufoPurple = color(167, 91, 255);
   starcolor = color(255, 235, 59);
   zibgreen = color("#92C367");
+
+  //initialize stats
+  initialSetStats();
 }
 
 function draw() {

@@ -28,17 +28,6 @@ let hands = [];
 
 
 
-  //create points and life instances
-// let relationship_stats;
-// let career_stats;
-// let wellbeing_stats;
-// let life_stats;
-
-  //stats changed flags
-
-
-
-
 function initializeGirlfriendHand(){
 
   
@@ -56,13 +45,6 @@ function initializeGirlfriendHand(){
     //start button
   gameStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start", gameStartPressed)
   
-
-  initialSetStats();
-    //stats
-    // relationship_stats = new stats(50);
-    // career_stats = new stats(300);
-    // wellbeing_stats = new stats(550);
-    // life_stats = new life(800);
   }
 
 function playGirlfriendHand() {
