@@ -100,6 +100,13 @@ function setup() {
 function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
+  if (currentScreen==="zib1"){
+    drawZib1();
+  }else if (currentScreen === "zib2"){
+    drawZib2();
+  }else if (currentScreen === "zib3"){
+    drawZib3(); 
+
   }else if (currentScreen === "play") {
     drawPlayScreen();
   } else if (currentScreen === "work") {
@@ -117,6 +124,7 @@ function draw() {
   } else if (currentScreen === "doodleGame"){
       playDoodleGame();
   }
+  }
 }
 
 function drawStartScreen() {
@@ -131,40 +139,50 @@ function drawStartScreen() {
   }
 }
 
-function draw(){
-   if (currentScreen==="zib1"){ 
-    drawZib1();
-  }else if (currentScreen === "zib2"){
-    drawZib2();
-  }else if (currentScreen === "zib3"){
-    drawZib3(); 
-}
-}
-
 function mousePressed() {
   //change screen wehn click
   console.log("mouse pressed at screen:", currentScreen); // Debug line
 
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
-  
-    if (currentScreen === "zib1" && dialoguezib) {
-   dialoguezib.next();
-  } if (currentScreen === "zib2" && dialoguezib_2) {
-   dialoguezib_2.next();}
-  if (currentScreen==='zib1' && dialoguezib.finished == true){
+  //   currentScreen === "zib1";
+  //   return;
+  // }
+  // if (currentScreen === "zib1" && dialoguezib) {
+  //  dialoguezib.next();
+  //  if (dialoguezib.finished) {
+  //     currentScreen = "zib2";
+  //   }
+  //   return;
+  // }
+  //  if (currentScreen === "zib2" && dialoguezib_2) {
+  //   dialoguezib_2.next();
+  //   if (dialoguezib_2.finished) {
+  //     currentScreen = "zib3";
+  //   }
+  //   return;
+  // }
+
+  // // ZIB3 대화 진행
+  // if (currentScreen === "zib3" && dialoguezib_3) {
+  //   dialoguezib_3.next();
+  //   return;
+  // }
+   if (currentScreen === "zib1" && dialoguezib) {
+   dialoguezib.next(); 
+   if (currentScreen === "zib2" && dialoguezib_2) {
+   dialoguezib_2.next();
+  } if (currentScreen==='zib1' && dialoguezib.finished == true){
     currentScreen='zib2'}
-  if ((currentScreen === "zib2") && dialoguezib_2) {
+  if (currentScreen === "zib2" && dialoguezib_2) {
    dialoguezib_2.next();}
-  if ((currentScreen === "zib3") && dialoguezib_3) {
+  if (currentScreen === "zib3" && dialoguezib_3) {
    dialoguezib_3.next();}
   if (currentScreen==='zib2' && dialoguezib_2.finished == true){
     currentScreen='zib3'}
-
-  if (currentScreen="play");
-    startTime=millis();}
-}
-
+    
+if (currentScreen="play");
+    startTime=millis();
  if (currentScreen === "play") {
     if (!selectedItem) {
       if (walletItem.isHovered()) selectedItem = "wallet";
@@ -195,6 +213,9 @@ function keyPressed() {
     //   currentScreen = "start";
     //   selectedItem = null;
     // }
+  }
+}
+  }
   }
 }
 
