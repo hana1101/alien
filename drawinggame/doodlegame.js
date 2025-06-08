@@ -1,3 +1,12 @@
+let doodlePhase = 0;
+// 0 = 게임 진행 중
+// 1 = 정답/오답 텍스트 표시
+// 2 = doodleEnd 이미지 표시
+// 3 = 클라이언트 반응 이미지 표시
+
+let clientImageTimerStarted = false;
+let endImageTimerStarted = false;
+
 let clearBtn, resetBtn, startBtnDoodle;
 let drawingCanvas, backgroundCanvas, doodleClassifier;
 let workspaceImg, doodleRules, doodleEnd, drawingBoard;
@@ -32,6 +41,8 @@ function preloadDoodleAssets() {
   doodleEnd = loadImage("assets/careerend.jpg");
   drawingBoard = loadImage("assets/drawingboard.png");
   workspaceImg = loadImage("assets/workplace.jpg");
+  happyClientImg = loadImage("assets/happy_client.jpg");
+  unhappyClientImg = loadImage("assets/unhappy_client.jpg");
 }
 
 function initDoodleGame() {
@@ -86,14 +97,47 @@ function playDoodleGame() {
   text(`Draw: ${targetLabel}`, 50, 160);
   doodleTime.display(50, 200, '남은 시간');
 
-  if (dGameOver && dGameResult && !showFinalScreen) {
+if (dGameOver && !showFinalScreen) {
+  // 단계 1: 정답/오답 텍스트 표시
+  if (doodlePhase === 0) {
     textAlign(CENTER, CENTER);
     textSize(48);
     textStyle(BOLD);
     fill(dGameResult.includes("정답") ? "green" : "red");
     noStroke();
     text(dGameResult, width / 2, height / 2);
+
+    if (!endImageTimerStarted) {
+      endImageTimerStarted = true;
+      setTimeout(() => {
+        doodlePhase = 1; // doodleEnd로 전환
+      }, 1500); // 1.5초 후 doodleEnd 이미지로 넘어감
+    }
+    return;
   }
+
+  // 단계 2: doodleEnd 이미지 표시
+  if (doodlePhase === 1) {
+    image(doodleEnd, 0, 0, width, height);
+
+    if (!clientImageTimerStarted) {
+      clientImageTimerStarted = true;
+      setTimeout(() => {
+        doodlePhase = 2; // happy/unhappy 클라이언트 이미지로 전환
+      }, 1000); // 1초 후 happy/unhappy 이미지
+    }
+    return;
+  }
+
+  // 단계 3: happy/unhappy 클라이언트 이미지 표시 (풀 사이즈)
+  if (doodlePhase === 2) {
+    let img = isCorrect ? happyClientImg : unhappyClientImg;
+    if (img) {
+      image(img, 0, 0, width, height); // 전체 화면 출력
+    }
+    return;
+  }
+}
 
   if (mouseIsPressed &&
       mouseX > drawAreaX && mouseX < drawAreaX + drawAreaW &&
@@ -117,6 +161,9 @@ function resetGame() {
   drawingCanvas.clear();
   resultLabel = "";
   resultConfidence = 0;
+  doodlePhase = 0;
+  clientImageTimerStarted = false;
+  endImageTimerStarted = false;
   pickRandomKeyword();
   doodleTime.reset();
   doodleTime.start();
