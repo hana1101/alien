@@ -145,34 +145,11 @@ function mousePressed() {
 
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
-  //   currentScreen === "zib1";
-  //   return;
-  // }
-  // if (currentScreen === "zib1" && dialoguezib) {
-  //  dialoguezib.next();
-  //  if (dialoguezib.finished) {
-  //     currentScreen = "zib2";
-  //   }
-  //   return;
-  // }
-  //  if (currentScreen === "zib2" && dialoguezib_2) {
-  //   dialoguezib_2.next();
-  //   if (dialoguezib_2.finished) {
-  //     currentScreen = "zib3";
-  //   }
-  //   return;
-  // }
-
-  // // ZIB3 대화 진행
-  // if (currentScreen === "zib3" && dialoguezib_3) {
-  //   dialoguezib_3.next();
-  //   return;
-  // }
    if (currentScreen === "zib1" && dialoguezib) {
    dialoguezib.next(); 
    if (currentScreen === "zib2" && dialoguezib_2) {
-   dialoguezib_2.next();
-  } if (currentScreen==='zib1' && dialoguezib.finished == true){
+   dialoguezib_2.next();} 
+   if (currentScreen==='zib1' && dialoguezib.finished == true){
     currentScreen='zib2'}
   if (currentScreen === "zib2" && dialoguezib_2) {
    dialoguezib_2.next();}
@@ -180,7 +157,7 @@ function mousePressed() {
    dialoguezib_3.next();}
   if (currentScreen==='zib2' && dialoguezib_2.finished == true){
     currentScreen='zib3'}
-    
+
 if (currentScreen="play");
     startTime=millis();
  if (currentScreen === "play") {
