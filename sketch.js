@@ -100,12 +100,12 @@ function setup() {
 function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
-  }else if (currentScreen==="zib1"){
+  }else if (currentScreen==="startscene/zib1"){
     console.log(currentscreen);
    drawZib1();
-  }else if (currentScreen === "zib2"){
+  }else if (currentScreen === "startscene/zib2"){
     drawZib2();
-  }else if (currentScreen === "zib3"){
+  }else if (currentScreen === "startscene/zib3"){
     drawZib3(); 
 
   }else if (currentScreen === "play") {
@@ -145,18 +145,18 @@ function mousePressed() {
 
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
-   if (currentScreen === "zib1" && dialoguezib) {
+   if (currentScreen === "startscene/zib1" && dialoguezib) {
    dialoguezib.next(); 
-   if (currentScreen === "zib2" && dialoguezib_2) {
+   if (currentScreen === "startscene/zib2" && dialoguezib_2) {
    dialoguezib_2.next();} 
-   if (currentScreen==='zib1' && dialoguezib.finished == true){
-    currentScreen='zib2'}
-  if (currentScreen === "zib2" && dialoguezib_2) {
+   if (currentScreen==='startscene/zib1' && dialoguezib.finished == true){
+    currentScreen='startscene/zib2'}
+  if (currentScreen === "startscene/zib2" && dialoguezib_2) {
    dialoguezib_2.next();}
-  if (currentScreen === "zib3" && dialoguezib_3) {
+  if (currentScreen === "startscene/zib3" && dialoguezib_3) {
    dialoguezib_3.next();}
-  if (currentScreen==='zib2' && dialoguezib_2.finished == true){
-    currentScreen='zib3'}
+  if (currentScreen==='startscene/zib2' && dialoguezib_2.finished == true){
+    currentScreen='startscene/zib3'}
 
 if (currentScreen="play");
     startTime=millis();
