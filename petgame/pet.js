@@ -68,8 +68,8 @@ function mousePressedDogClickGame() {
     let result = circles[i].checkClick(mouseX, mouseY);
     if (result !== 0) {
       score += result;
-      floatingTexts.push(new FloatingText(circles[i].x, circles[i].y, result));
-      haloEffects.push(new HaloEffect(circles[i].x, circles[i].y, result));
+      floatingTexts.push(new DogFloatingText(circles[i].x, circles[i].y, result));
+      haloEffects.push(new DogHaloEffect(circles[i].x, circles[i].y, result));
       circles.splice(i, 1);
       break;
     }
@@ -100,6 +100,109 @@ function spawnCircle() {
   }
 
   let isPenalty = (x >= 620 && x <= 760 && y >= 480 && y <= 540);
-  circles.push(new Circle(x, y, isPenalty));
+  circles.push(new DogCircle(x, y, isPenalty));
   totalSpawned++;
+}
+
+class DogCircle {
+  constructor(x, y, isPenalty) {
+    this.x = x;
+    this.y = y;
+    this.outerRadius = 50;
+    this.innerRadius = 0;
+    this.growthRate = 1.5;
+    this.clicked = false;
+    this.isPenalty = isPenalty;
+  }
+
+  update() {
+    if (this.innerRadius < this.outerRadius) {
+      this.innerRadius += this.growthRate;
+    }
+  }
+
+  show() {
+    noFill();
+    stroke(this.isPenalty ? color(255, 0, 0) : 200);
+    strokeWeight(2);
+    ellipse(this.x, this.y, this.outerRadius * 2);
+
+    fill(100, 150, 255, 150);
+    noStroke();
+    ellipse(this.x, this.y, this.innerRadius * 2);
+  }
+
+  done() {
+    return this.innerRadius >= this.outerRadius;
+  }
+
+  checkClick(mx, my) {
+    let d = dist(mx, my, this.x, this.y);
+    if (d < this.outerRadius) {
+      if (this.isPenalty) {
+        return -3; // penalty zone
+      }
+      let diff = abs(this.innerRadius - this.outerRadius);
+      if (diff < 3) {
+        return 3; // perfect timing
+      } else if (diff < 13) {
+        return 1; // slightly off
+      }
+    }
+    return 0;
+  }
+}
+
+//score effect
+class DogFloatingText {
+  constructor(x, y, value) {
+    this.x = x;
+    this.y = y;
+    this.value = value;
+    this.opacity = 255;
+    this.lifetime = 60; // frames
+  }
+
+  update() {
+    this.y -= 1;
+    this.opacity -= 4;
+    this.lifetime--;
+  }
+
+  show() {
+    textSize(20);
+    fill(this.value > 0 ? color(255, this.opacity) : color(255,0,0, this.opacity));
+    text((this.value > 0 ? "+" : "") + this.value, this.x, this.y);
+  }
+
+  finished() {
+    return this.lifetime <= 0 || this.opacity <= 0;
+  }
+}
+
+class DogHaloEffect {
+  constructor(x, y, value) {
+    this.x = x;
+    this.y = y;
+    this.radius = 50;
+    this.maxRadius = 100;
+    this.opacity = 150;
+    this.value=value;
+  }
+
+  update() {
+    this.radius += 3;
+    this.opacity -= 5;
+  }
+
+  show() {
+    noFill();
+    stroke(this.value > 0 ? color(255, this.opacity) : color(255,0,0, this.opacity));
+    strokeWeight(4);
+    ellipse(this.x, this.y, this.radius * 2);
+  }
+
+  finished() {
+    return this.opacity <= 0 || this.radius >= this.maxRadius;
+  }
 }
