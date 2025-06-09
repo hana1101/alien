@@ -1,14 +1,20 @@
 // 🟡 전역 변수 (초기화는 init 함수에서)
+let dogEndImg, happyDogImg, sadDogImg, patMyDog;
+let dogPhase = 0;
+let dogEndTimerStarted = false;
+let dogClientTimerStarted = false;
 let circles, haloEffects, floatingTexts;
 let bpm = 60;
 let interval;
-let patMyDog;
 let score, totalSpawned, penaltyCount;
 let dogGameOver;
 
 // 🟡 이미지 불러오기
 function preloadDogClickGame() {
   patMyDog = loadImage("patmydog.png");
+  dogEndImg = loadImage("assets/dogend.jpg");
+  happyDogImg = loadImage("assets/happy_dog.jpg");
+  sadDogImg = loadImage("assets/sad_dog.jpg");
 }
 
 // 🟡 초기화 함수
@@ -27,13 +33,40 @@ function initDogClickGame() {
 // 🟡 게임 메인 루프
 function playDogClickGame() {
   image(patMyDog, 0, 0, width, height);
-
   if (dogGameOver) {
+    if (dogPhase === 0) {
     fill(255);
     textAlign(CENTER, CENTER);
-    textSize(32);
+    textSize(36);
     text("Game Over\nFinal Score: " + score, width / 2, height / 2);
+      
+    if (!dogEndTimerStarted) {
+      dogEndTimerStarted = true;
+      setTimeout(() => {
+        dogPhase = 1; // dogend 화면으로 전환
+      }, 1500); // 1.5초 후 전환
+    }
     return;
+  }
+  if (dogPhase === 1) {
+    if (dogEndImg) {
+      image(dogEndImg, 0, 0, width, height);
+    }
+   if (!dogClientTimerStarted) {
+      dogClientTimerStarted = true;
+      setTimeout(() => {
+        dogPhase = 2;
+      }, 1000); // 1초 후 happy/sad 화면
+    }
+    return;
+  }
+  if (dogPhase === 2) {
+    let resultImg = score >= 55 ? happyDogImg : sadDogImg;
+    if (resultImg) {
+      image(resultImg, 0, 0, width, height);
+    }
+    return;
+  }
   }
 
   for (let i = circles.length - 1; i >= 0; i--) {
