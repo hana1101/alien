@@ -44,6 +44,7 @@ function preload() {
   zib2 = loadImage("assets/zib2.jpg");
   zib3 = loadImage("assets/zib3.jpg");
   preloadDoodleAssets();
+  preloadDogClickGame();
 }
 
 function setup() {
@@ -94,7 +95,9 @@ function setup() {
   initialSetStats();
   if (currentScreen === "doodleGame"){
     initDoodleGame();
-}
+} else if (currentScreen === "dogGame"){
+    initDogClickGame();
+  }
 }
 
 function draw() {
@@ -106,8 +109,9 @@ function draw() {
   //   drawStartScene/Zib2();
   // }else if (currentScreen === "startscene/zib3"){
   //   drawStartScene/Zib3(); 
+  //  }
 
-  }else if (currentScreen === "play") {
+  } else if (currentScreen === "play") {
     drawPlayScreen();
   } else if (currentScreen === "work") {
     drawWorkscreen();
@@ -123,7 +127,9 @@ function draw() {
     playGirlfriendHand();
   } else if (currentScreen === "doodleGame"){
       playDoodleGame();
-  }
+  } else if (currentScreen === "dogGame"){
+      playDogClickGame();
+    }
   }
 
 function drawStartScreen() {
@@ -157,7 +163,7 @@ function mousePressed() {
   //  dialoguezib_3.next();}
   // if (currentScreen==='startscene/zib2' && dialoguezib_2.finished == true){
   //   currentScreen='startscene/zib3'}
-
+  } 
 if (currentScreen="play");
     startTime=millis();
  if (currentScreen === "play") {
@@ -169,8 +175,10 @@ if (currentScreen="play");
   } else if (currentScreen === "work" && dialogue) {
     dialogue.next();
   } else if (currentScreen === "doodleGame") {
-    mousePressedDoodleGame(); // 낙서 게임용 클릭 핸들러
-  }
+    mousePressedDoodleGame();
+  } else if (currentScreen === "dogGame") {
+     mousePressedDogClickGame();
+   }
   if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
     gameStartBtn.action();
   }
@@ -192,8 +200,6 @@ function keyPressed() {
     // }
   }
 }
-  }
-  }
 
 function startisHovering() {
   return (
