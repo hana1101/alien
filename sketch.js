@@ -1,3 +1,4 @@
+
 let mgr;
 let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1", "zib2","zib3"];
 let startTime;
@@ -15,7 +16,7 @@ let spaceblue,
   starcolor,
   zibgreen;
 let gfGameStarted;
-// let dialoguezib = null;
+let dialoguezib = null;
 // let dialoguezib_2 = null;
 // let dialoguezib_3 = null;
 
@@ -101,10 +102,11 @@ function setup() {
 }
 
 function draw() {
+  
   if (currentScreen === "start") {
-    drawStartScreen();
-  // }else if (currentScreen==="startscene/zib1"){
-  //   drawStartscene/Zib1();
+      drawStartScreen();
+  }else if (currentScreen==="startscene/zib1"){
+   drawZib1()
   // }else if (currentScreen === "startscene/zib2"){
   //   drawStartScene/Zib2();
   // }else if (currentScreen === "startscene/zib3"){
