@@ -103,8 +103,8 @@ function setup() {
 function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
-  // }else if (currentScreen==="startscene/zib1"){
-  //   drawStartscene/Zib1();
+  }else if (currentScreen==="startscene/zib1"){
+    drawZib1();
   // }else if (currentScreen === "startscene/zib2"){
   //   drawStartScene/Zib2();
   // }else if (currentScreen === "startscene/zib3"){
@@ -152,7 +152,8 @@ function mousePressed() {
     console.log("START BUTTON CLICKED"); // Debug line
 
     //debug for now
-    currentScreen = "play";
+    //currentScreen = "play";
+    currentScreen = "startscene/zib1";
 
 
   //  if (currentScreen === "startscene/zib1" && dialoguezib) {

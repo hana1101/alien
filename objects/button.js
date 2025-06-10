@@ -129,6 +129,10 @@ return configs[selectedItem] || configs.wallet;
 
 function ButtonAction(action) {
 switch(action) {
+  case "//":
+    console.log("zib1_screen");
+    currentScreen = "startscene/zib1";
+  
   case "checkWallet":
     console.log("Checking wallet...");
     currentScreen = "work";
