@@ -3,7 +3,7 @@ let dogEndImg, happyDogImg, sadDogImg, patMyDog;
 let dogPhase = 0;
 let dogEndTimerStarted = false;
 let dogClientTimerStarted = false;
-let circles, haloEffects, floatingTexts;
+let circles_pet, haloEffects, floatingTexts;
 let bpm = 60;
 let interval;
 let score, totalSpawned, penaltyCount;
@@ -11,7 +11,7 @@ let dogGameOver;
 
 // 🟡 이미지 불러오기
 function preloadDogClickGame() {
-  patMyDog = loadImage("patmydog.png");
+  patMyDog = loadImage("assets/patmydog.png");
   dogEndImg = loadImage("assets/dogend.jpg");
   happyDogImg = loadImage("assets/happy_dog.jpg");
   sadDogImg = loadImage("assets/sad_dog.jpg");
@@ -19,7 +19,7 @@ function preloadDogClickGame() {
 
 // 🟡 초기화 함수
 function initDogClickGame() {
-  circles = [];
+  circles_pet = [];
   haloEffects = [];
   floatingTexts = [];
   score = 0;
@@ -69,10 +69,10 @@ function playDogClickGame() {
   }
   }
 
-  for (let i = circles.length - 1; i >= 0; i--) {
-    circles[i].update();
-    circles[i].show();
-    if (circles[i].done()) circles.splice(i, 1);
+  for (let i = circles_pet.length - 1; i >= 0; i--) {
+    circles_pet[i].update();
+    circles_pet[i].show();
+    if (circles_pet[i].done()) circles_pet.splice(i, 1);
   }
 
   for (let i = floatingTexts.length - 1; i >= 0; i--) {
@@ -97,13 +97,13 @@ function playDogClickGame() {
 function mousePressedDogClickGame() {
   if (dogGameOver) return;
 
-  for (let i = circles.length - 1; i >= 0; i--) {
-    let result = circles[i].checkClick(mouseX, mouseY);
+  for (let i = circles_pet.length - 1; i >= 0; i--) {
+    let result = circles_pet[i].checkClick(mouseX, mouseY);
     if (result !== 0) {
       score += result;
-      floatingTexts.push(new DogFloatingText(circles[i].x, circles[i].y, result));
-      haloEffects.push(new DogHaloEffect(circles[i].x, circles[i].y, result));
-      circles.splice(i, 1);
+      floatingTexts.push(new DogFloatingText(circles_pet[i].x, circles_pet[i].y, result));
+      haloEffects.push(new DogHaloEffect(circles_pet[i].x, circles_pet[i].y, result));
+      circles_pet.splice(i, 1);
       break;
     }
   }
@@ -133,7 +133,7 @@ function spawnCircle() {
   }
 
   let isPenalty = (x >= 620 && x <= 760 && y >= 480 && y <= 540);
-  circles.push(new DogCircle(x, y, isPenalty));
+  circles_pet.push(new DogCircle(x, y, isPenalty));
   totalSpawned++;
 }
 
