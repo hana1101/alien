@@ -182,6 +182,7 @@ if (currentScreen="play");
   if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
     gameStartBtn.action();
   }
+}
 
 function keyPressed() {
   if (keyCode === ESCAPE) {
