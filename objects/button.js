@@ -129,7 +129,7 @@ return configs[selectedItem] || configs.wallet;
 
 function ButtonAction(action) {
 switch(action) {
-  case "//":
+  case "startscene/zib1":
     console.log("zib1_screen");
     currentScreen = "startscene/zib1";
   
