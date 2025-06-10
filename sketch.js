@@ -150,8 +150,7 @@ function mousePressed() {
 
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
-    //debug for now
-    currentScreen === "play";
+
 
   //  if (currentScreen === "startscene/zib1" && dialoguezib) {
   //   console.log ("startsceme/zib1");
