@@ -164,23 +164,24 @@ function mousePressed() {
   // if (currentScreen==='startscene/zib2' && dialoguezib_2.finished == true){
   //   currentScreen='startscene/zib3'}
   } 
-if (currentScreen="play");
-    startTime=millis();
- if (currentScreen === "play") {
-    if (!selectedItem) {
-      if (walletItem.isHovered()) selectedItem = "wallet";
-      else if (phoneItem.isHovered()) selectedItem = "phone";
-      else if (diaryItem.isHovered()) selectedItem = "diary";
+// if (currentScreen==="play");
+//     startTime=millis();
+if (currentScreen === "play") {
+  startTime=millis();
+  if (!selectedItem) {
+    if (walletItem.isHovered()) selectedItem = "wallet";
+    else if (phoneItem.isHovered()) selectedItem = "phone";
+    else if (diaryItem.isHovered()) selectedItem = "diary";
     }
-  } else if (currentScreen === "work" && dialogue) {
+}else if (currentScreen === "work" && dialogue) {
     dialogue.next();
-  } else if (currentScreen === "doodleGame") {
-    mousePressedDoodleGame();
-  } else if (currentScreen === "dogGame") {
-     mousePressedDogClickGame();
-   }
-  if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
-    gameStartBtn.action();
+} else if (currentScreen === "doodleGame") {
+   mousePressedDoodleGame();
+} else if (currentScreen === "dogGame") {
+    mousePressedDogClickGame();
+}
+if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
+  gameStartBtn.action();
   }
 }
 
