@@ -166,8 +166,8 @@ function mousePressed() {
   // if (currentScreen==='startscene/zib2' && dialoguezib_2.finished == true){
   //   currentScreen='startscene/zib3'}
   } 
-// if (currentScreen==="play");
-//     startTime=millis();
+if (currentScreen==="play");
+    startTime=millis();
 if (currentScreen === "play") {
   startTime=millis();
   if (!selectedItem) {
@@ -186,6 +186,7 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   gameStartBtn.action();
   }
 }
+
 
 function keyPressed() {
   if (keyCode === ESCAPE) {
