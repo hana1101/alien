@@ -157,9 +157,16 @@ function mousePressed() {
     //currentScreen = "play";
     currentScreen = "startscene/zib1";
 
+//revisit later
+  if (currentScreen === "startscene/zib1") {
+    console.log ("startsceme/zib1");
+    console.log(dialogueZib.currentLine);
+    if(!dialogueZib.finished){
+      if(dialogueZib.isHovered()){
+        dialogueZib.handleClick();
+      }
+    }
 
-  //  if (currentScreen === "startscene/zib1" && dialoguezib) {
-  //   console.log ("startsceme/zib1");
   //  dialoguezib.next(); 
   //  if (currentScreen === "startscene/zib2" && dialoguezib_2) {
   //  dialoguezib_2.next();} 
@@ -191,6 +198,7 @@ if (currentScreen === "play") {
 if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   gameStartBtn.action();
   }
+}
 }
 
 
