@@ -184,6 +184,7 @@ if (currentScreen="play");
   }
 }
 
+
 function keyPressed() {
   if (keyCode === ESCAPE) {
     if (currentScreen === "play" && selectedItem) {
