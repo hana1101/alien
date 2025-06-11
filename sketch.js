@@ -327,8 +327,6 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   }
 }
 
-}
-
 
 function keyPressed() {
   if (keyCode === ESCAPE) {
