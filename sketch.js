@@ -294,20 +294,15 @@ else if (currentScreen === "startscene/zib12") {
   console.log("startscene/zib13");
 }
 
-// if (currentScreen === "startscene/zib11") {
-//       currentScreen = "startscene/zib11";
-//       console.log("startscene/zib11");
-//   } else if (currentScreen === "startscene/zib11") {
-//   currentScreen = "startscene/zib12";
-//   console.log("startscene/zib12");
-// }
-// if (currentScreen === "startscene/zib12") {
-//       currentScreen = "startscene/zib12";
-//       console.log("startscene/zib12");
-//   } else if (currentScreen === "startscene/zib12") {
-//   currentScreen = "startscene/zib13";
-//   console.log("startscene/zib13");
-// }
+else if (currentScreen === "startscene/zib13") {
+  currentScreen = "startscene/zib14";
+  console.log("startscene/zib14");
+}
+
+else if (currentScreen === "startscene/zib14") {
+  currentScreen = "startscene/zib14";
+  console.log("play");
+}
 // if (currentScreen === "startscene/zib13") {
 //       currentScreen = "startscene/zib13";
 //       console.log("startscene/zib13");
@@ -322,16 +317,7 @@ else if (currentScreen === "startscene/zib12") {
 //   currentScreen = "play";
 //   console.log("play");
 // }
-// if (currentScreen === "startscene/zib12") {
-//   if (dialogueZib_scene12 && !dialogueZib_scene12.finished) {
-//     dialogueZib_scene12.handleClick();
-//     console.log(dialogueZib_scene12.lines[dialogueZib_scene12.currentLine]);
-//     if (dialogueZib_scene12.finished) {
-//       currentScreen = "play";
-//       console.log("play");
-//     }
-//   }
-// }
+
 
 // if (currentScreen==="play"){
 //     startTime=millis();
