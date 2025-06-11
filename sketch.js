@@ -314,13 +314,13 @@ if (currentScreen === "startscene/zib13") {
   currentScreen = "startscene/zib14";
   console.log("startscene/zib14");
 }
-if (currentScreen === "startscene/zib14") {
-      currentScreen = "startscene/zib14";
-      console.log("startscene/zib14");
-  } else if (currentScreen === "startscene/zib14") {
-  currentScreen = "play";
-  console.log("play");
-}
+// if (currentScreen === "startscene/zib14") {
+//       currentScreen = "startscene/zib14";
+//       console.log("startscene/zib14");
+//   } else if (currentScreen === "startscene/zib14") {
+//   currentScreen = "play";
+//   console.log("play");
+// }
 // if (currentScreen === "startscene/zib12") {
 //   if (dialogueZib_scene12 && !dialogueZib_scene12.finished) {
 //     dialogueZib_scene12.handleClick();

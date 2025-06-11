@@ -1,3 +1,16 @@
+function drawStartScreen() {
+  image(assets.background, 0, 0, width, height);
+  //start button hover -> click
+  if (startisHovering()) {
+    cursor(HAND);
+    image(assets.startbutton, btn.x - 5, btn.y - 5, btn.w + 10, btn.h + 10);
+  } else {
+    cursor(ARROW);
+    image(assets.startbutton, btn.x, btn.y, btn.w, btn.h);
+  }
+}
+
+
 function drawingScreen() {
     image(assets.drawingrule, 0,0,width,height)
     
