@@ -300,7 +300,7 @@ else if (currentScreen === "startscene/zib13") {
 }
 
 else if (currentScreen === "startscene/zib14") {
-  currentScreen = "startscene/zib14";
+  currentScreen = "play";
   console.log("play");
 }
 // if (currentScreen === "startscene/zib13") {
