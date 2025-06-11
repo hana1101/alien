@@ -133,7 +133,11 @@ switch(action) {
     console.log("zib1_screen");
     currentScreen = "startscene/zib1";
   
-  case "checkWallet":
+  case "startscene/zib2":
+    console.log("zib2_screen");
+    currentScreen = "startscene/zib2";
+  
+    case "checkWallet":
     console.log("Checking wallet...");
     currentScreen = "work";
     break;

@@ -1,15 +1,13 @@
-let dialogueZib;
+let dialogueZib_scene1;
 
 function drawZib1() {
   image(zib1, 0, 0, width, height);
-  if(!dialogueZib){
-    let linesZib = [
+  if(!dialogueZib_scene1){
+    let linesZib_scene1 = [
       "ZIB: 나는 Asgard에서 온 Zib이다.",
-      "ZIB: 그냥 기분 전환 삼아, 우주 한 바퀴를 돌 생각이었는데...",
-  ];
-    dialogueZib = new DialogueBox(10, 500, 980, 120, linesZib);
+      "ZIB: 그냥 기분 전환 삼아, 우주 한 바퀴를 돌 생각이었는데..."];
+    dialogueZib_scene1 = new DialogueBox(10, 500, 980, 120, linesZib_scene1);
   }
 
-  dialogueZib.display();
-
+  dialogueZib_scene1.display();
 }

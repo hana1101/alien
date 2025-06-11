@@ -111,6 +111,9 @@ function draw() {
   //   drawStartScene/Zib3(); 
   //  }
 
+  } else if (currentScreen === "startscene/zib2"){
+    drawZib2();
+
   } else if (currentScreen === "play") {
     drawPlayScreen();
   } else if (currentScreen === "work") {
@@ -158,11 +161,15 @@ function mousePressed() {
 //revisit later
   if (currentScreen === "startscene/zib1") {
     console.log ("startsceme/zib1");
-    console.log(dialogueZib.lines[dialogueZib.currentLine]);
-    if(!dialogueZib.finished){
-      dialogueZib.handleClick();
-      console.log(dialogueZib.lines[dialogueZib.currentLine]);
-      }
+
+    if(!dialogueZib_scene1.finished){
+      dialogueZib_scene1.handleClick();
+      console.log(dialogueZib_scene1.lines[dialogueZib_scene1.currentLine]);
+      if(dialogueZib_scene1.finished){
+        currentScreen = "startscene/zib2";
+        console.log("startscene/zib2");
+    }
+  }
     }
 
   //  dialoguezib.next(); 
