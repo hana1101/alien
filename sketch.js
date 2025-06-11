@@ -338,6 +338,12 @@ else if (currentScreen === "play") {
 
  else if (currentScreen === "doodleGame") {
    mousePressedDoodleGame();
+      if (clearBtn && clearBtn.isHovered()) {
+        clearBtn.action();
+    }
+    if (resetBtn && resetBtn.isHovered()) {
+        resetBtn.action();
+    }
 } else if (currentScreen === "dogGame") {
     mousePressedDogClickGame();
 }
