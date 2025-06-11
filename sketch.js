@@ -289,7 +289,6 @@ if (currentScreen === "startscene/zib10") {
 if (currentScreen === "startscene/zib11") {
       currentScreen = "startscene/zib11";
       console.log("startscene/zib11");
-    }
   } else if (currentScreen === "startscene/zib11") {
   currentScreen = "startscene/zib12";
   console.log("startscene/zib12");
@@ -353,4 +352,5 @@ function startisHovering() {
     mouseY > btn.y &&
     mouseY < btn.y + btn.h
   );
+}
 }
