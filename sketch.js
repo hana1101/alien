@@ -256,6 +256,56 @@ if (currentScreen === "startscene/zib7") {
     }
   }
 }
+if (currentScreen === "startscene/zib8") {
+  if (dialogueZib_scene8 && !dialogueZib_scene8.finished) {
+    dialogueZib_scene8.handleClick();
+    console.log(dialogueZib_scene8.lines[dialogueZib_scene8.currentLine]);
+    if (dialogueZib_scene8.finished) {
+      currentScreen = "startscene/zib9";
+      console.log("startscene/zib9");
+    }
+  }
+}
+if (currentScreen === "startscene/zib9") {
+  if (dialogueZib_scene9 && !dialogueZib_scene9.finished) {
+    dialogueZib_scene9.handleClick();
+    console.log(dialogueZib_scene9.lines[dialogueZib_scene9.currentLine]);
+    if (dialogueZib_scene9.finished) {
+      currentScreen = "startscene/zib10";
+      console.log("startscene/zib10");
+    }
+  }
+}
+if (currentScreen === "startscene/zib10") {
+  if (dialogueZib_scene10 && !dialogueZib_scene10.finished) {
+    dialogueZib_scene10.handleClick();
+    console.log(dialogueZib_scene10.lines[dialogueZib_scene10.currentLine]);
+    if (dialogueZib_scene10.finished) {
+      currentScreen = "startscene/zib11";
+      console.log("startscene/zib11");
+    }
+  }
+}
+if (currentScreen === "startscene/zib11") {
+  if (dialogueZib_scene11 && !dialogueZib_scene11.finished) {
+    dialogueZib_scene11.handleClick();
+    console.log(dialogueZib_scene11.lines[dialogueZib_scene11.currentLine]);
+    if (dialogueZib_scene11.finished) {
+      currentScreen = "startscene/zib12";
+      console.log("startscene/zib12");
+    }
+  }
+}
+if (currentScreen === "startscene/zib12") {
+  if (dialogueZib_scene12 && !dialogueZib_scene12.finished) {
+    dialogueZib_scene12.handleClick();
+    console.log(dialogueZib_scene12.lines[dialogueZib_scene12.currentLine]);
+    if (dialogueZib_scene12.finished) {
+      currentScreen = "play";
+      console.log("play");
+    }
+  }
+}
 
 // if (currentScreen==="play"){
 //     startTime=millis();
