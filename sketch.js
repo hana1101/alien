@@ -303,34 +303,24 @@ else if (currentScreen === "startscene/zib14") {
   currentScreen = "play";
   console.log("play");
 }
-// if (currentScreen === "startscene/zib13") {
-//       currentScreen = "startscene/zib13";
-//       console.log("startscene/zib13");
-//   } else if (currentScreen === "startscene/zib13") {
-//   currentScreen = "startscene/zib14";
-//   console.log("startscene/zib14");
-// }
-// if (currentScreen === "startscene/zib14") {
-//       currentScreen = "startscene/zib14";
-//       console.log("startscene/zib14");
-//   } else if (currentScreen === "startscene/zib14") {
-//   currentScreen = "play";
-//   console.log("play");
-// }
-
-
-// if (currentScreen==="play"){
-//     startTime=millis();
-if (currentScreen === "play") {
-  startTime=millis();
+else if (currentScreen === "play") {
   if (!selectedItem) {
     if (walletItem.isHovered()) selectedItem = "wallet";
     else if (phoneItem.isHovered()) selectedItem = "phone";
     else if (diaryItem.isHovered()) selectedItem = "diary";
   
-}else if (currentScreen === "work" && dialogue) {
-    dialogue.next();
-} else if (currentScreen === "doodleGame") {
+  }}
+  else if (currentScreen === "work" && dialogue) {
+    dialogue.handleClick();
+  
+    if (dialogue.finishedClicked) {
+      currentScreen = "play";
+      selectedItem = 'wallet'; // if you're using returnToItem
+      dialogue = null;
+    }
+  }
+
+ else if (currentScreen === "doodleGame") {
    mousePressedDoodleGame();
 } else if (currentScreen === "dogGame") {
     mousePressedDogClickGame();
@@ -338,7 +328,7 @@ if (currentScreen === "play") {
 if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   gameStartBtn.action();
   }
-}
+
 }
 
 function keyPressed() {
