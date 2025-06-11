@@ -1,6 +1,6 @@
 
 let mgr;
-let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1", "zib2","zib3"];
+let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1", "zib2","zib3","zib4","zib5","zib6","zib7","zib8","zib9","zib10","zib11","zib12"];
 let startTime;
 let walletItem, phoneItem, diaryItem;
 let dialogue;
@@ -17,8 +17,6 @@ let spaceblue,
   zibgreen;
 let gfGameStarted;
 let dialoguezib = null;
-// let dialoguezib_2 = null;
-// let dialoguezib_3 = null;
 
 //stats declare
 let relationship_stats;
@@ -44,6 +42,10 @@ function preload() {
   zib1 = loadImage("assets/zib1.jpg");
   zib2 = loadImage("assets/zib2.jpg");
   zib3 = loadImage("assets/zib3.jpg");
+  zib4 = loadImage("assets/zib4.jpg");
+  zib5 = loadImage("assets/zib5.jpg");
+  zib6 = loadImage("assets/zib6.jpg");
+  zib7 = loadImage("assets/zib7.jpg");
   preloadDoodleAssets();
   preloadDogClickGame();
 }
@@ -107,13 +109,19 @@ function draw() {
   if (currentScreen === "start") {
     drawStartScreen();
   }else if (currentScreen==="startscene/zib1"){
-    drawZib1();
+  drawZib1();
   }else if (currentScreen === "startscene/zib2"){
   drawZib2();
   }else if (currentScreen === "startscene/zib3"){
   drawZib3(); 
   }else if (currentScreen === "startscene/zib4"){
   drawZib4(); 
+  }else if (currentScreen === "startscene/zib5"){
+  drawZib5();
+  }else if (currentScreen === "startscene/zib6"){
+  drawZib6();
+  }else if (currentScreen === "startscene/zib7"){
+  drawZib7();
   
 
   } else if (currentScreen === "play") {
