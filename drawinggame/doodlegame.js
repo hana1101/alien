@@ -7,7 +7,8 @@ let doodlePhase = 0;
 let clientImageTimerStarted = false;
 let endImageTimerStarted = false;
 
-let clearBtn, resetBtn, startBtnDoodle;
+let clearBtn, resetBtn
+let startBtnDoodle;
 let drawingCanvas, backgroundCanvas, doodleClassifier;
 let workspaceImg, doodleRules, doodleEnd, drawingBoard;
 
@@ -213,6 +214,7 @@ function checkDResult() {
 function showDGameStart() {
   image(doodleRules, 0, 0, width, height);
   startBtnDoodle.display();
+  console.log('button displayed');
 }
 
 function dGameStartPressed() {

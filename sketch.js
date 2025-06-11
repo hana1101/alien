@@ -104,12 +104,14 @@ function setup() {
 
   //initialize stats
   initialSetStats();
+  initDoodleGame();
+  initDogClickGame();
 
-  if (currentScreen === "doodleGame"){
-    initDoodleGame();
-} else if (currentScreen === "dogGame"){
-    initDogClickGame();
-  }
+//   if (currentScreen === "doodleGame"){
+//     initDoodleGame();
+// } else if (currentScreen === "dogGame"){
+//     initDogClickGame();
+//   }
 }
 
 function draw() {
