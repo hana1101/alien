@@ -29,7 +29,8 @@ const drawAreaH = 400;
 
 function preloadDoodleAssets() {
   doodleRules = loadImage("assets/drawingrule.jpg");
-  // doodleEnd = loadImage("assets/careerend.jpg");
+  doodleEnd = loadImage("assets/careerend.jpg");
+  
   drawingBoard = loadImage("assets/drawingboard.png");
   workspaceImg = loadImage("assets/workplace.jpg");
 }
