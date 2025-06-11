@@ -172,7 +172,6 @@ function mousePressed() {
     }
   }
 
-  //  dialoguezib.next(); 
   //  if (currentScreen === "startscene/zib2" && dialoguezib_2) {
   //  dialoguezib_2.next();} 
   //  if (currentScreen==='startscene/zib1' && dialoguezib.finished == true){
