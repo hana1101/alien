@@ -325,7 +325,7 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   gameStartBtn.action();
   }
 }
-
+}
 
 function keyPressed() {
   if (keyCode === ESCAPE) {
@@ -353,4 +353,4 @@ function startisHovering() {
     mouseY < btn.y + btn.h
   );
 }
-}
+
