@@ -98,7 +98,7 @@ function playDoodleGame() {
   text(`Draw: ${targetLabel}`, 50, 160);
   doodleTime.display(50, 200, '남은 시간');
 
-if (dGameOver && !showFinalScreen) {
+if (dGameOver&& !showFinalScreen) {
   // 단계 1: 정답/오답 텍스트 표시
   if (doodlePhase === 0) {
     textAlign(CENTER, CENTER);
@@ -191,6 +191,10 @@ function gotDResults(error, res) {
     return;
   }
 
+  if (!res || res.length === 0) {
+    console.warn("분류 결과 없음!");
+    return;
+  }
   results = res;
   resultLabel = res[0].label;
   resultConfidence = nf(100 * res[0].confidence, 2, 1);
@@ -206,6 +210,12 @@ function gotDResults(error, res) {
 }
 
 function checkDResult() {
+   if (!results || results.length === 0) {
+    dGameResult = "분류 실패 (no results)";
+    isCorrect = false;
+    dGameOver = true;
+    return;
+  }
   isCorrect = results.slice(0, 3).some(r => r.label === targetLabel);
   dGameResult = isCorrect ? "정답입니다!" : `Wrong. This looks like a \"${results[0].label}\"`;
   dGameOver = true;
