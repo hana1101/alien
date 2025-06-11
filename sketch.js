@@ -49,8 +49,8 @@ function preload() {
   zib8 = loadImage("assets/zib8.jpg");
   zib9 = loadImage("assets/zib9.jpg");
   zib10 = loadImage("assets/zib10.jpg");
-  zib11 = loadImage("assets/zib11.jpg");
-  zib12 = loadImage("assets/zib12.jpg");
+  // zib11 = loadImage("assets/zib11.jpg");
+  // zib12 = loadImage("assets/zib12.jpg");
   preloadDoodleAssets();
   preloadDogClickGame();
 }
@@ -133,10 +133,10 @@ function draw() {
   drawZib9();
   }else if (currentScreen === "startscene/zib10"){
   drawZib10();
-  }else if (currentScreen === "startscene/zib11"){
-  drawZib11();
-  }else if (currentScreen === "startscene/zib12"){
-  drawZib12();
+  // }else if (currentScreen === "startscene/zib11"){
+  // drawZib11();
+  // }else if (currentScreen === "startscene/zib12"){
+  // drawZib12();
 
   } else if (currentScreen === "play") {
     drawPlayScreen();
@@ -286,26 +286,26 @@ if (currentScreen === "startscene/zib10") {
     }
   }
 }
-if (currentScreen === "startscene/zib11") {
-  if (dialogueZib_scene11 && !dialogueZib_scene11.finished) {
-    dialogueZib_scene11.handleClick();
-    console.log(dialogueZib_scene11.lines[dialogueZib_scene11.currentLine]);
-    if (dialogueZib_scene11.finished) {
-      currentScreen = "startscene/zib12";
-      console.log("startscene/zib12");
-    }
-  }
-}
-if (currentScreen === "startscene/zib12") {
-  if (dialogueZib_scene12 && !dialogueZib_scene12.finished) {
-    dialogueZib_scene12.handleClick();
-    console.log(dialogueZib_scene12.lines[dialogueZib_scene12.currentLine]);
-    if (dialogueZib_scene12.finished) {
-      currentScreen = "play";
-      console.log("play");
-    }
-  }
-}
+// if (currentScreen === "startscene/zib11") {
+//   if (dialogueZib_scene11 && !dialogueZib_scene11.finished) {
+//     dialogueZib_scene11.handleClick();
+//     console.log(dialogueZib_scene11.lines[dialogueZib_scene11.currentLine]);
+//     if (dialogueZib_scene11.finished) {
+//       currentScreen = "startscene/zib12";
+//       console.log("startscene/zib12");
+//     }
+//   }
+// }
+// if (currentScreen === "startscene/zib12") {
+//   if (dialogueZib_scene12 && !dialogueZib_scene12.finished) {
+//     dialogueZib_scene12.handleClick();
+//     console.log(dialogueZib_scene12.lines[dialogueZib_scene12.currentLine]);
+//     if (dialogueZib_scene12.finished) {
+//       currentScreen = "play";
+//       console.log("play");
+//     }
+//   }
+// }
 
 // if (currentScreen==="play"){
 //     startTime=millis();
