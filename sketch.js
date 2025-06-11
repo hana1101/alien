@@ -154,14 +154,14 @@ function mousePressed() {
     //debug for now
     //currentScreen = "play";
     currentScreen = "startscene/zib1";
-
+  }
 //revisit later
   if (currentScreen === "startscene/zib1") {
     console.log ("startsceme/zib1");
-    console.log(dialogueZib.currentLine);
+    console.log(dialogueZib.lines[dialogueZib.currentLine]);
     if(!dialogueZib.finished){
-      if(dialogueZib.isHovered()){
-        dialogueZib.handleClick();
+      dialogueZib.handleClick();
+      console.log(dialogueZib.lines[dialogueZib.currentLine]);
       }
     }
 
@@ -176,7 +176,8 @@ function mousePressed() {
   //  dialoguezib_3.next();}
   // if (currentScreen==='startscene/zib2' && dialoguezib_2.finished == true){
   //   currentScreen='startscene/zib3'}
-  } 
+   
+
 if (currentScreen==="play");
     startTime=millis();
 if (currentScreen === "play") {
@@ -197,7 +198,7 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   gameStartBtn.action();
   }
 }
-}
+
 
 
 function keyPressed() {
