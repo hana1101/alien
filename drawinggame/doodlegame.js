@@ -53,7 +53,7 @@ function initDoodleGame() {
 
   startBtnDoodle = new Button(width / 2 - 65, height / 2 + 245, 130, 55, "Start", dGameStartPressed);
   clearBtn = new Button(620, height / 2 + 245, 100, 40, "CLEAR", clearDrawing);
-  resetBtn = new Button(780, height / 2 + 245, 100, 40, "RESET", resetGame);
+  resetBtn = new Button(780, height / 2 + 245, 100, 40, "RESET", resetDoodle);
 
   doodleClassifier = ml5.imageClassifier("DoodleNet", modelReady);
   pickRandomKeyword();
@@ -158,7 +158,7 @@ function clearDrawing() {
   drawingCanvas.clear();
 }
 
-function resetGame() {
+function resetDoodle() {
   drawingCanvas.clear();
   resultLabel = "";
   resultConfidence = 0;
