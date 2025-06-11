@@ -46,6 +46,11 @@ function preload() {
   zib5 = loadImage("assets/zib5.jpg");
   zib6 = loadImage("assets/zib6.jpg");
   zib7 = loadImage("assets/zib7.jpg");
+  zib8 = loadImage("assets/zib8.jpg");
+  zib9 = loadImage("assets/zib9.jpg");
+  zib10 = loadImage("assets/zib10.jpg");
+  zib11 = loadImage("assets/zib11.jpg");
+  zib12 = loadImage("assets/zib12.jpg");
   preloadDoodleAssets();
   preloadDogClickGame();
 }
@@ -122,7 +127,16 @@ function draw() {
   drawZib6();
   }else if (currentScreen === "startscene/zib7"){
   drawZib7();
-  
+  }else if (currentScreen === "startscene/zib8"){
+  drawZib8();
+  }else if (currentScreen === "startscene/zib9"){
+  drawZib9();
+  }else if (currentScreen === "startscene/zib10"){
+  drawZib10();
+  }else if (currentScreen === "startscene/zib11"){
+  drawZib11();
+  }else if (currentScreen === "startscene/zib12"){
+  drawZib12();
 
   } else if (currentScreen === "play") {
     drawPlayScreen();
@@ -212,7 +226,36 @@ function mousePressed() {
     }
   }
 }
-
+if (currentScreen === "startscene/zib5") {
+  if (dialogueZib_scene5 && !dialogueZib_scene5.finished) {
+    dialogueZib_scene5.handleClick();
+    console.log(dialogueZib_scene5.lines[dialogueZib_scene5.currentLine]);
+    if (dialogueZib_scene5.finished) {
+      currentScreen = "startscene/zib6";
+      console.log("startscene/zib6");
+    }
+  }
+}
+if (currentScreen === "startscene/zib6") {
+  if (dialogueZib_scene6 && !dialogueZib_scene6.finished) {
+    dialogueZib_scene6.handleClick();
+    console.log(dialogueZib_scene6.lines[dialogueZib_scene6.currentLine]);
+    if (dialogueZib_scene6.finished) {
+      currentScreen = "startscene/zib7";
+      console.log("startscene/zib7");
+    }
+  }
+}
+if (currentScreen === "startscene/zib7") {
+  if (dialogueZib_scene7 && !dialogueZib_scene7.finished) {
+    dialogueZib_scene7.handleClick();
+    console.log(dialogueZib_scene7.lines[dialogueZib_scene7.currentLine]);
+    if (dialogueZib_scene7.finished) {
+      currentScreen = "startscene/zib8";
+      console.log("startscene/zib8");
+    }
+  }
+}
 
 // if (currentScreen==="play"){
 //     startTime=millis();
