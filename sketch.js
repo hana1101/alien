@@ -93,6 +93,7 @@ function setup() {
 
   //initialize stats
   initialSetStats();
+
   if (currentScreen === "doodleGame"){
     initDoodleGame();
 } else if (currentScreen === "dogGame"){
@@ -146,7 +147,7 @@ function drawStartScreen() {
 }
 
 function mousePressed() {
-  //change screen wehn click
+  //change screen when click
   console.log("mouse pressed at screen:", currentScreen); // Debug line
 
   if (currentScreen === "start" && startisHovering()) {
@@ -183,6 +184,19 @@ function mousePressed() {
     }
   }
 
+//only for now -> change later
+  if (currentScreen === "startscene/zib3") {
+    console.log ("startsceme/zib3");
+
+    if(!dialogueZib_scene3.finished){
+      dialogueZib_scene3.handleClick();
+      console.log(dialogueZib_scene3.lines[dialogueZib_scene3.currentLine]);
+      if(dialogueZib_scene3.finished){
+        currentScreen = "play";
+        console.log("play for now");
+      }
+    }
+  }
 
 
 if (currentScreen==="play");
