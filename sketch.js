@@ -168,9 +168,9 @@ function mousePressed() {
       if(dialogueZib_scene1.finished){
         currentScreen = "startscene/zib2";
         console.log("startscene/zib2");
+      }
     }
   }
-    }
 
   //  dialoguezib.next(); 
   //  if (currentScreen === "startscene/zib2" && dialoguezib_2) {
