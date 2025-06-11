@@ -105,14 +105,12 @@ function draw() {
     drawStartScreen();
   }else if (currentScreen==="startscene/zib1"){
     drawZib1();
-  // }else if (currentScreen === "startscene/zib2"){
-  //   drawStartScene/Zib2();
-  // }else if (currentScreen === "startscene/zib3"){
-  //   drawStartScene/Zib3(); 
-  //  }
 
   } else if (currentScreen === "startscene/zib2"){
     drawZib2();
+  
+  } else if (currentScreen === "startscene/zib3"){
+    drawZib3();
 
   } else if (currentScreen === "play") {
     drawPlayScreen();
@@ -172,17 +170,20 @@ function mousePressed() {
     }
   }
 
-  //  if (currentScreen === "startscene/zib2" && dialoguezib_2) {
-  //  dialoguezib_2.next();} 
-  //  if (currentScreen==='startscene/zib1' && dialoguezib.finished == true){
-  //   currentScreen='startscene/zib2'}
-  // if (currentScreen === "startscene/zib2" && dialoguezib_2) {
-  //  dialoguezib_2.next();}
-  // if (currentScreen === "startscene/zib3" && dialoguezib_3) {
-  //  dialoguezib_3.next();}
-  // if (currentScreen==='startscene/zib2' && dialoguezib_2.finished == true){
-  //   currentScreen='startscene/zib3'}
-   
+  if (currentScreen === "startscene/zib2") {
+    console.log ("startsceme/zib2");
+
+    if(!dialogueZib_scene2.finished){
+      dialogueZib_scene2.handleClick();
+      console.log(dialogueZib_scene2.lines[dialogueZib_scene2.currentLine]);
+      if(dialogueZib_scene2.finished){
+        currentScreen = "startscene/zib3";
+        console.log("startscene/zib3");
+      }
+    }
+  }
+
+
 
 if (currentScreen==="play");
     startTime=millis();
