@@ -7,6 +7,7 @@ let facetimeOver = false;
 let facetimeLife = false;
 
 let faceTimeStart = false;
+let choices_show = false;
 
 //button
 let ftStartBtn;
@@ -27,8 +28,6 @@ function initializeFaceTime() {
   //start button
   ftStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start")
   
-//   //autoTimer
-//   autoTimerfT = new Timer(3);
 }
 
 
@@ -48,24 +47,24 @@ function playFaceTime() {
     return;
   }
   
-  dialogueFaceTime.display();
+  if(dialogueFaceTime){
+    dialogueFaceTime.display();
+  }
   
-//   if(dialogueFaceTime.finished){
-//     choice1.display();
-//     choice2.display();
-//     choice3.display();
-//   }
-     choice1.display();
-     choice2.display();
-     choice3.display();
+  if(dialogueFaceTime.finished){
+    choice1.display();
+    choice2.display();
+    choice3.display();
+    choices_show = true;
+  }
   
-  if(choice1.isClicked()){
+  if(choice1.isClicked() && choices_show){
     choice1Action();
   }
-  else if (choice2.isClicked()){
+  else if (choice2.isClicked() && choices_show){
     choice2Action();
   }
-  else if (choice3.isClicked()){
+  else if (choice3.isClicked() && choices_show){
     choice3Action();
   }
   
@@ -124,14 +123,3 @@ function ftRules(){
     faceTimeStart = true;
   }
 }
-
-// function dialogueSequence() {
-//   dialogueFaceTime.display();
-
-//   if (!dialogueFaceTime.finished) {
-//     if (mouseIsPressed && !mouseWasPressedfT && dialogueFaceTime.isHovered()) {
-//       dialogueFaceTime.next();
-//     }
-//   }
-//   mouseWasPressedfT = mouseIsPressed;
-// }

@@ -16,6 +16,7 @@ let spaceblue,
   starcolor,
   zibgreen;
 let gfGameStarted;
+let faceTimeStarted;
 let dialoguezib = null;
 
 //stats declare
@@ -53,6 +54,9 @@ function preload() {
   zib12 = loadImage("assets/zib12.jpg");
   zib13 = loadImage("assets/zib13.jpg");
   zib14 = loadImage("assets/zib14.jpg");
+
+  facetimebg = loadImage("assets/facetime.jpg");
+
   // zib12 = loadImage("assets/zib12.jpg");
   preloadDoodleAssets();
   preloadDogClickGame();
@@ -163,6 +167,14 @@ function draw() {
       gfGameStarted = true;
     }
     playGirlfriendHand();
+
+  } else if (currentScreen === "girlfriendFT") {
+    if (!faceTimeStarted) {
+      initializeFaceTime();
+      faceTimeStarted = true;
+    }
+    playFaceTime();
+    
   } else if (currentScreen === "doodleGame"){
       playDoodleGame();
   } else if (currentScreen === "dogGame"){
@@ -333,6 +345,9 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   gameStartBtn.action();
   }
 
+if (currentScreen === "girlfriendFT" && dialogueFaceTime && !dialogueFaceTime.finished) {
+  dialogueFaceTime.handleClick();
+}
 }
 
 function keyPressed() {
