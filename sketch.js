@@ -1,5 +1,6 @@
+
 let mgr;
-let assetname = ["background", "room", "workplace", "drawingrule", "roomblur"];
+let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1", "zib2","zib3"];
 let startTime;
 let walletItem, phoneItem, diaryItem;
 let dialogue;
@@ -15,6 +16,9 @@ let spaceblue,
   starcolor,
   zibgreen;
 let gfGameStarted;
+let dialoguezib = null;
+// let dialoguezib_2 = null;
+// let dialoguezib_3 = null;
 
 //stats declare
 let relationship_stats;
@@ -37,7 +41,11 @@ function preload() {
   hand_gameRules = loadImage("assets/powerrule!.jpg");
   success_gfbg = loadImage("assets/laughend.jpg");
   fail_gfbg = loadImage("assets/relationend.jpg");
+  zib1 = loadImage("assets/zib1.jpg");
+  zib2 = loadImage("assets/zib2.jpg");
+  zib3 = loadImage("assets/zib3.jpg");
   preloadDoodleAssets();
+  preloadDogClickGame();
 }
 
 function setup() {
@@ -86,11 +94,28 @@ function setup() {
 
   //initialize stats
   initialSetStats();
+
+  if (currentScreen === "doodleGame"){
+    initDoodleGame();
+} else if (currentScreen === "dogGame"){
+    initDogClickGame();
+  }
 }
 
 function draw() {
+  
   if (currentScreen === "start") {
     drawStartScreen();
+  }else if (currentScreen==="startscene/zib1"){
+    drawZib1();
+  }else if (currentScreen === "startscene/zib2"){
+  drawZib2();
+  }else if (currentScreen === "startscene/zib3"){
+  drawZib3(); 
+  }else if (currentScreen === "startscene/zib4"){
+  drawZib4(); 
+  
+
   } else if (currentScreen === "play") {
     drawPlayScreen();
   } else if (currentScreen === "work") {
@@ -106,10 +131,11 @@ function draw() {
     }
     playGirlfriendHand();
   } else if (currentScreen === "doodleGame"){
-    initDoodleGame();
-    playDoodleGame();
+      playDoodleGame();
+  } else if (currentScreen === "dogGame"){
+      playDogClickGame();
+    }
   }
-}
 
 function drawStartScreen() {
   image(assets.background, 0, 0, width, height);
@@ -124,30 +150,85 @@ function drawStartScreen() {
 }
 
 function mousePressed() {
-  //change screen wehn click
+  //change screen when click
   console.log("mouse pressed at screen:", currentScreen); // Debug line
 
   if (currentScreen === "start" && startisHovering()) {
-        console.log("START BUTTON CLICKED"); // Debug line
+    console.log("START BUTTON CLICKED"); // Debug line
 
-    currentScreen = "play";
-    startTime = millis();
-  } else if (currentScreen === "play") {
-    if (!selectedItem) {
-      if (walletItem.isHovered()) selectedItem = "wallet";
-      else if (phoneItem.isHovered()) selectedItem = "phone";
-      else if (diaryItem.isHovered()) selectedItem = "diary";
+    //debug for now
+    //currentScreen = "play";
+    currentScreen = "startscene/zib1";
+  }
+//revisit later
+  if (currentScreen === "startscene/zib1") {
+  if (dialogueZib_scene1 && !dialogueZib_scene1.finished) {
+    dialogueZib_scene1.handleClick();
+    console.log(dialogueZib_scene1.lines[dialogueZib_scene1.currentLine]);
+    if (dialogueZib_scene1.finished) {
+      currentScreen = "startscene/zib2";
+      console.log("startscene/zib2");
     }
-  } else if (currentScreen === "work" && dialogue) {
+  }
+}
+
+  if (currentScreen === "startscene/zib2") {
+  if (dialogueZib_scene2 && !dialogueZib_scene2.finished) {
+    dialogueZib_scene2.handleClick();
+    console.log(dialogueZib_scene2.lines[dialogueZib_scene2.currentLine]);
+    if (dialogueZib_scene2.finished) {
+      currentScreen = "startscene/zib3";
+      console.log("startscene/zib3");
+    }
+  }
+}
+
+//only for now -> change later
+  if (currentScreen === "startscene/zib3") {
+  if (dialogueZib_scene3 && !dialogueZib_scene3.finished) {
+    dialogueZib_scene3.handleClick();
+    console.log(dialogueZib_scene3.lines[dialogueZib_scene3.currentLine]);
+    if (dialogueZib_scene3.finished) {
+      currentScreen = "startscene/zib4";
+      console.log("startscene/zib4");
+    }
+  }
+}
+  if (currentScreen === "startscene/zib4") {
+  if (dialogueZib_scene4 && !dialogueZib_scene4.finished) {
+    dialogueZib_scene4.handleClick();
+    console.log(dialogueZib_scene4.lines[dialogueZib_scene4.currentLine]);
+    if (dialogueZib_scene4.finished) {
+      currentScreen = "startscene/zib5";
+      console.log("startscene/zib5");
+    }
+  }
+}
+
+
+// if (currentScreen==="play"){
+//     startTime=millis();
+if (currentScreen === "play") {
+  startTime=millis();
+  if (!selectedItem) {
+    if (walletItem.isHovered()) selectedItem = "wallet";
+    else if (phoneItem.isHovered()) selectedItem = "phone";
+    else if (diaryItem.isHovered()) selectedItem = "diary";
+  
+}else if (currentScreen === "work" && dialogue) {
     dialogue.next();
-  } else if (currentScreen === "doodleGame") {
-    mousePressedDoodleGame(); // 낙서 게임용 클릭 핸들러
+} else if (currentScreen === "doodleGame") {
+   mousePressedDoodleGame();
+} else if (currentScreen === "dogGame") {
+    mousePressedDogClickGame();
+}
+if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
+  gameStartBtn.action();
   }
-  if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
-    gameStartBtn.action();
-  }
+}
 
 }
+
 
 function keyPressed() {
   if (keyCode === ESCAPE) {

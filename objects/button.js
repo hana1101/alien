@@ -129,7 +129,23 @@ return configs[selectedItem] || configs.wallet;
 
 function ButtonAction(action) {
 switch(action) {
-  case "checkWallet":
+  case "startscene/zib1":
+    console.log("zib1_screen");
+    currentScreen = "startscene/zib1";
+  
+  case "startscene/zib2":
+    console.log("zib2_screen");
+    currentScreen = "startscene/zib2";
+  
+  case "startscene/zib3":
+    console.log("zib3_screen");
+    currentScreen = "startscene/zib3";
+      
+  case "startscene/zib4":
+    console.log("zib4_screen");
+    currentScreen = "startscene/zib4";
+  
+    case "checkWallet":
     console.log("Checking wallet...");
     currentScreen = "work";
     break;
@@ -145,11 +161,11 @@ switch(action) {
     break;
   case "callGF":
     console.log("Calling girlfriend...");
-    // Add calling logic here
+    currentScreen = 'girlfriendFT'
     break;
   case "dateGF":
     console.log("Setting up date...");
-    currentScreen='girlfriendGame'
+    currentScreen='girlfriendGame';
     break;
   case "readDiary":
     console.log("Reading diary...");
@@ -157,7 +173,7 @@ switch(action) {
     break;
   case "dogpet":
     console.log("Playing with Buddy...");
-    // Add pet playing logic here
+    currentScreen="dogGame"
     break;
   default:
     console.log("Unknown action:", action);
