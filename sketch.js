@@ -372,12 +372,5 @@ function keyPressed() {
   }
 }
 
-function startisHovering() {
-  return (
-    mouseX > btn.x &&
-    mouseX < btn.x + btn.w &&
-    mouseY > btn.y &&
-    mouseY < btn.y + btn.h
-  );
-}
+
 

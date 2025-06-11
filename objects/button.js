@@ -145,6 +145,46 @@ switch(action) {
     console.log("zib4_screen");
     currentScreen = "startscene/zib4";
   
+  case "startscene/zib5":
+    console.log("zib5_screen");
+    currentScreen = "startscene/zib5";
+  
+  case "startscene/zib6":
+    console.log("zib6_screen");
+    currentScreen = "startscene/zib6";
+  
+  case "startscene/zib7":
+    console.log("zib7_screen");
+    currentScreen = "startscene/zib7";
+  
+  case "startscene/zib8":
+    console.log("zib8_screen");
+    currentScreen = "startscene/zib8";
+  
+  case "startscene/zib9":
+    console.log("zib9_screen");
+    currentScreen = "startscene/zib9";
+
+  case "startscene/zib10":
+    console.log("zib10_screen");
+    currentScreen = "startscene/zib10";
+  
+  case "startscene/zib11":
+    console.log("zib11_screen");
+    currentScreen = "startscene/zib11";
+
+  case "startscene/zib12":
+    console.log("zib12_screen");
+    currentScreen = "startscene/zib12";
+  
+  case "startscene/zib13":
+    console.log("zib13_screen");
+    currentScreen = "startscene/zib13";
+  
+  case "startscene/zib14":
+    console.log("zib14_screen");
+    currentScreen = "startscene/zib14";
+
     case "checkWallet":
     console.log("Checking wallet...");
     currentScreen = "work";
