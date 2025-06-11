@@ -207,7 +207,7 @@ if (currentScreen === "play") {
     if (walletItem.isHovered()) selectedItem = "wallet";
     else if (phoneItem.isHovered()) selectedItem = "phone";
     else if (diaryItem.isHovered()) selectedItem = "diary";
-    }
+  
 }else if (currentScreen === "work" && dialogue) {
     dialogue.next();
 } else if (currentScreen === "doodleGame") {
@@ -220,6 +220,7 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   }
 }
 
+}
 
 
 function keyPressed() {

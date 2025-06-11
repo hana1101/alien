@@ -161,7 +161,7 @@ switch(action) {
     break;
   case "dateGF":
     console.log("Setting up date...");
-    currentScreen='girlfriendGame'
+    currentScreen='girlfriendGame';
     break;
   case "readDiary":
     console.log("Reading diary...");
