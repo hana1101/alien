@@ -149,9 +149,11 @@ function draw() {
     drawPlayScreen();
   } else if (currentScreen === "work") {
     drawWorkscreen();
-  } else if (currentScreen === "drawing") {
-    drawingScreen();
-  } else if (currentScreen === "checkMsg") {
+  }
+  // else if (currentScreen === "drawing") {
+  //   drawingScreen();
+  // }
+   else if (currentScreen === "checkMsg") {
     checkMsg();
   } else if (currentScreen === "girlfriendGame") {
     if (!gfGameStarted) {
