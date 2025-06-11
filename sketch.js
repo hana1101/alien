@@ -108,11 +108,13 @@ function draw() {
     drawStartScreen();
   }else if (currentScreen==="startscene/zib1"){
     drawZib1();
-  // }else if (currentScreen === "startscene/zib2"){
-  //   drawStartScene/Zib2();
-  // }else if (currentScreen === "startscene/zib3"){
-  //   drawStartScene/Zib3(); 
-  //  }
+  }else if (currentScreen === "startscene/zib2"){
+  drawZib2();
+  }else if (currentScreen === "startscene/zib3"){
+  drawZib3(); 
+  }else if (currentScreen === "startscene/zib4"){
+  drawZib4(); 
+  
 
   } else if (currentScreen === "play") {
     drawPlayScreen();
@@ -160,44 +162,48 @@ function mousePressed() {
   }
 //revisit later
   if (currentScreen === "startscene/zib1") {
-    console.log ("startsceme/zib1");
-
-    if(!dialogueZib_scene1.finished){
-      dialogueZib_scene1.handleClick();
-      console.log(dialogueZib_scene1.lines[dialogueZib_scene1.currentLine]);
-      if(dialogueZib_scene1.finished){
-        currentScreen = "startscene/zib2";
-        console.log("startscene/zib2");
-      }
+  if (dialogueZib_scene1 && !dialogueZib_scene1.finished) {
+    dialogueZib_scene1.handleClick();
+    console.log(dialogueZib_scene1.lines[dialogueZib_scene1.currentLine]);
+    if (dialogueZib_scene1.finished) {
+      currentScreen = "startscene/zib2";
+      console.log("startscene/zib2");
     }
   }
+}
 
   if (currentScreen === "startscene/zib2") {
-    console.log ("startsceme/zib2");
-
-    if(!dialogueZib_scene2.finished){
-      dialogueZib_scene2.handleClick();
-      console.log(dialogueZib_scene2.lines[dialogueZib_scene2.currentLine]);
-      if(dialogueZib_scene2.finished){
-        currentScreen = "startscene/zib3";
-        console.log("startscene/zib3");
-      }
+  if (dialogueZib_scene2 && !dialogueZib_scene2.finished) {
+    dialogueZib_scene2.handleClick();
+    console.log(dialogueZib_scene2.lines[dialogueZib_scene2.currentLine]);
+    if (dialogueZib_scene2.finished) {
+      currentScreen = "startscene/zib3";
+      console.log("startscene/zib3");
     }
   }
+}
 
 //only for now -> change later
   if (currentScreen === "startscene/zib3") {
-    console.log ("startsceme/zib3");
-
-    if(!dialogueZib_scene3.finished){
-      dialogueZib_scene3.handleClick();
-      console.log(dialogueZib_scene3.lines[dialogueZib_scene3.currentLine]);
-      if(dialogueZib_scene3.finished){
-        currentScreen = "play";
-        console.log("play for now");
-      }
+  if (dialogueZib_scene3 && !dialogueZib_scene3.finished) {
+    dialogueZib_scene3.handleClick();
+    console.log(dialogueZib_scene3.lines[dialogueZib_scene3.currentLine]);
+    if (dialogueZib_scene3.finished) {
+      currentScreen = "startscene/zib4";
+      console.log("startscene/zib4");
     }
   }
+}
+  if (currentScreen === "startscene/zib4") {
+  if (dialogueZib_scene4 && !dialogueZib_scene4.finished) {
+    dialogueZib_scene4.handleClick();
+    console.log(dialogueZib_scene4.lines[dialogueZib_scene4.currentLine]);
+    if (dialogueZib_scene4.finished) {
+      currentScreen = "startscene/zib5";
+      console.log("startscene/zib5");
+    }
+  }
+}
 
 
 // if (currentScreen==="play"){
