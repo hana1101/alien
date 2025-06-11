@@ -199,8 +199,8 @@ function mousePressed() {
   }
 
 
-if (currentScreen==="play");
-    startTime=millis();
+// if (currentScreen==="play"){
+//     startTime=millis();
 if (currentScreen === "play") {
   startTime=millis();
   if (!selectedItem) {
