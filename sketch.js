@@ -1,6 +1,6 @@
 
 let mgr;
-let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1", "zib2","zib3","zib4","zib5","zib6","zib7","zib8","zib9","zib10","zib11","zib12"];
+let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1", "zib2","zib3","zib4","zib5","zib6","zib7","zib8","zib9","zib10","zib11","zib12","zib13","zib14"];
 let startTime;
 let walletItem, phoneItem, diaryItem;
 let dialogue;
@@ -50,6 +50,9 @@ function preload() {
   zib9 = loadImage("assets/zib9.jpg");
   zib10 = loadImage("assets/zib10.jpg");
   zib11 = loadImage("assets/zib11.jpg");
+  zib12 = loadImage("assets/zib12.jpg");
+  zib13 = loadImage("assets/zib13.jpg");
+  zib14 = loadImage("assets/zib14.jpg");
   // zib12 = loadImage("assets/zib12.jpg");
   preloadDoodleAssets();
   preloadDogClickGame();
@@ -135,8 +138,12 @@ function draw() {
   drawZib10();
   }else if (currentScreen === "startscene/zib11"){
   drawZib11();
-  // }else if (currentScreen === "startscene/zib12"){
-  // drawZib12();
+  }else if (currentScreen === "startscene/zib12"){
+  drawZib12();
+  }else if (currentScreen === "startscene/zib13"){
+  drawZib13();
+  }else if (currentScreen === "startscene/zib14"){
+  drawZib14();
 
   } else if (currentScreen === "play") {
     drawPlayScreen();
@@ -293,7 +300,27 @@ if (currentScreen === "startscene/zib11") {
   currentScreen = "startscene/zib12";
   console.log("startscene/zib12");
 }
-
+if (currentScreen === "startscene/zib12") {
+      currentScreen = "startscene/zib12";
+      console.log("startscene/zib12");
+  } else if (currentScreen === "startscene/zib12") {
+  currentScreen = "startscene/zib13";
+  console.log("startscene/zib13");
+}
+if (currentScreen === "startscene/zib13") {
+      currentScreen = "startscene/zib13";
+      console.log("startscene/zib13");
+  } else if (currentScreen === "startscene/zib13") {
+  currentScreen = "startscene/zib14";
+  console.log("startscene/zib14");
+}
+if (currentScreen === "startscene/zib14") {
+      currentScreen = "startscene/zib14";
+      console.log("startscene/zib14");
+  } else if (currentScreen === "startscene/zib14") {
+  currentScreen = "play";
+  console.log("play");
+}
 // if (currentScreen === "startscene/zib12") {
 //   if (dialogueZib_scene12 && !dialogueZib_scene12.finished) {
 //     dialogueZib_scene12.handleClick();
