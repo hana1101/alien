@@ -233,6 +233,7 @@ function dGameStartPressed() {
 
 function doodleGameResults() {
   image(doodleEnd, 0, 0, width, height);
+  displayStats();
 }
 
 function mousePressedDoodleGame() {

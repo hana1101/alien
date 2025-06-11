@@ -1,5 +1,5 @@
 // 🟡 전역 변수 (초기화는 init 함수에서)
-let dogEndImg, happyDogImg, sadDogImg, patMyDog;
+let dogEndImg, happyDogImg, sadDogImg, patMyDog, buddyRules;
 let dogPhase = 0;
 let dogEndTimerStarted = false;
 let dogClientTimerStarted = false;
@@ -8,9 +8,13 @@ let bpm = 60;
 let interval;
 let score, totalSpawned, penaltyCount;
 let dogGameOver;
+let buddyStart;
+
+let buddyStartBtn;
 
 // 🟡 이미지 불러오기
 function preloadDogClickGame() {
+  buddyRules = loadImage("assets/buddyrule.jpg");
   patMyDog = loadImage("assets/patmydog.png");
   dogEndImg = loadImage("assets/dogend.jpg");
   happyDogImg = loadImage("assets/happy_dog.jpg");
@@ -19,6 +23,7 @@ function preloadDogClickGame() {
 
 // 🟡 초기화 함수
 function initDogClickGame() {
+  buddyStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start");
   circles_pet = [];
   haloEffects = [];
   floatingTexts = [];
@@ -26,13 +31,22 @@ function initDogClickGame() {
   totalSpawned = 0;
   penaltyCount = 0;
   dogGameOver = false;
+  buddyStart = false;
 
   interval = setInterval(spawnCircle, 1000); // 60 bpm
+  
 }
 
 // 🟡 게임 메인 루프
 function playDogClickGame() {
+  if(!buddyStart){
+    buddyRulesShow();
+    return;
+  }
+
   image(patMyDog, 0, 0, width, height);
+  displayStats();
+
   if (dogGameOver) {
     if (dogPhase === 0) {
     fill(255);
@@ -90,7 +104,7 @@ function playDogClickGame() {
   fill(255);
   textSize(24);
   noStroke();
-  text("Score: " + score, width / 2, 30);
+  text("Score: " + score, width/2, height-30);
 }
 
 // 🟡 클릭 처리
@@ -237,5 +251,13 @@ class DogHaloEffect {
 
   finished() {
     return this.opacity <= 0 || this.radius >= this.maxRadius;
+  }
+}
+
+function buddyRulesShow(){
+  image(buddyRules, 0, 0, width, height);
+  buddyStartBtn.display();
+  if(buddyStartBtn.isClicked()){
+    buddyStart = true;
   }
 }
