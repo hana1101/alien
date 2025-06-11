@@ -129,11 +129,19 @@ return configs[selectedItem] || configs.wallet;
 
 function ButtonAction(action) {
 switch(action) {
-  case "//":
+  case "startscene/zib1":
     console.log("zib1_screen");
     currentScreen = "startscene/zib1";
   
-  case "checkWallet":
+  case "startscene/zib2":
+    console.log("zib2_screen");
+    currentScreen = "startscene/zib2";
+  
+  case "startscene/zib3":
+    console.log("zib3_screen");
+    currentScreen = "startscene/zib3";
+  
+    case "checkWallet":
     console.log("Checking wallet...");
     currentScreen = "work";
     break;
@@ -153,7 +161,7 @@ switch(action) {
     break;
   case "dateGF":
     console.log("Setting up date...");
-    currentScreen='girlfriendGame'
+    currentScreen='girlfriendGame';
     break;
   case "readDiary":
     console.log("Reading diary...");

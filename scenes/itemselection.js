@@ -1,4 +1,4 @@
-let selectedItem=null
+let selectedItem=null;
 
 function drawPlayScreen() {
   image(assets.room, 0, 0, width, height);
