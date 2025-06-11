@@ -166,17 +166,7 @@ function draw() {
     }
   }
 
-function drawStartScreen() {
-  image(assets.background, 0, 0, width, height);
-  //start button hover -> click
-  if (startisHovering()) {
-    cursor(HAND);
-    image(assets.startbutton, btn.x - 5, btn.y - 5, btn.w + 10, btn.h + 10);
-  } else {
-    cursor(ARROW);
-    image(assets.startbutton, btn.x, btn.y, btn.w, btn.h);
-  }
-}
+
 
 function mousePressed() {
   //change screen when click
@@ -293,27 +283,38 @@ if (currentScreen === "startscene/zib10") {
     }
   }
 }
-if (currentScreen === "startscene/zib11") {
-      currentScreen = "startscene/zib11";
-      console.log("startscene/zib11");
-  } else if (currentScreen === "startscene/zib11") {
+else if (currentScreen === "startscene/zib11") {
   currentScreen = "startscene/zib12";
   console.log("startscene/zib12");
 }
-if (currentScreen === "startscene/zib12") {
-      currentScreen = "startscene/zib12";
-      console.log("startscene/zib12");
-  } else if (currentScreen === "startscene/zib12") {
+
+// zib12 → zib13 (화면 클릭 시)
+else if (currentScreen === "startscene/zib12") {
   currentScreen = "startscene/zib13";
   console.log("startscene/zib13");
 }
-if (currentScreen === "startscene/zib13") {
-      currentScreen = "startscene/zib13";
-      console.log("startscene/zib13");
-  } else if (currentScreen === "startscene/zib13") {
-  currentScreen = "startscene/zib14";
-  console.log("startscene/zib14");
-}
+
+// if (currentScreen === "startscene/zib11") {
+//       currentScreen = "startscene/zib11";
+//       console.log("startscene/zib11");
+//   } else if (currentScreen === "startscene/zib11") {
+//   currentScreen = "startscene/zib12";
+//   console.log("startscene/zib12");
+// }
+// if (currentScreen === "startscene/zib12") {
+//       currentScreen = "startscene/zib12";
+//       console.log("startscene/zib12");
+//   } else if (currentScreen === "startscene/zib12") {
+//   currentScreen = "startscene/zib13";
+//   console.log("startscene/zib13");
+// }
+// if (currentScreen === "startscene/zib13") {
+//       currentScreen = "startscene/zib13";
+//       console.log("startscene/zib13");
+//   } else if (currentScreen === "startscene/zib13") {
+//   currentScreen = "startscene/zib14";
+//   console.log("startscene/zib14");
+// }
 // if (currentScreen === "startscene/zib14") {
 //       currentScreen = "startscene/zib14";
 //       console.log("startscene/zib14");
@@ -371,6 +372,5 @@ function keyPressed() {
     // }
   }
 }
-
 
 
