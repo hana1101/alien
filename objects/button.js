@@ -111,7 +111,7 @@ function SettingButtons(selectedItem) {
 const configs = {
   wallet: [
     { label: "Check Wallet", action: "checkWallet" },
-    { label: "Go To Work", action: "drawing" },
+    { label: "Go To Work", action: "doodleGame" },
   ],
   phone: [
     { label: "Check Messages", action: "checkMessages" },
@@ -148,7 +148,7 @@ switch(action) {
   case "startscene/zib5":
     console.log("zib5_screen");
     currentScreen = "startscene/zib5";
-  
+
   case "startscene/zib6":
     console.log("zib6_screen");
     currentScreen = "startscene/zib6";
@@ -189,7 +189,7 @@ switch(action) {
     console.log("Checking wallet...");
     currentScreen = "work";
     break;
-  case "drawing":
+  case "doodleGame":
     console.log("Going to work...");
     currentScreen = "doodleGame"
     // Add work/drawing logic here
@@ -209,6 +209,7 @@ switch(action) {
     break;
   case "readDiary":
     console.log("Reading diary...");
+    currentScreen='read_diary'
     // Add diary reading logic here
     break;
   case "dogpet":
