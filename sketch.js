@@ -168,7 +168,7 @@ function draw() {
   } else if (currentScreen === "work") {
     drawWorkscreen();
   }else if (currentScreen ==="readDiary") {
-    drawWellbeingscreen(); //수정
+    drawDiaryscreen(); //수정
 
   // else if (currentScreen === "drawing") {
   //   drawingScreen();
@@ -361,7 +361,7 @@ else if (currentScreen === "play") {
     }
   }
   
-  else if (currentScreen==="wellbeing" && dialogue1) { // 수정함
+  else if (currentScreen==="readDiary" && dialogue1) { // 수정함
     dialogue1.handleClick();
   
     if (dialogue1.finishedClicked) {
@@ -423,7 +423,7 @@ function keyPressed() {
       selectedItem = null;
     }
     if (
-      (currentScreen === "work" || currentScreen === "drawing" || currentScreen==='checkMsg'|| currentScreen==='wellbeing') && selectedItem)
+      (currentScreen === "work" || currentScreen === "drawing" || currentScreen==='checkMsg'|| currentScreen==='readDiary') && selectedItem)
      {
       currentScreen = "play";
     } 
