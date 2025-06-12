@@ -101,8 +101,6 @@ function choice3Action() {
 }
 
 function facetimeEnd(){
-  background("white");
-  displayStats();
   textSize(40);
   if (success){
     push();
@@ -130,6 +128,7 @@ function facetimeEnd(){
   if (nextBtnFT.isClicked()){
      nextGame();
   }
+  displayStats();
 }
 
 function ftRules(){
