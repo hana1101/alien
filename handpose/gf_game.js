@@ -46,7 +46,7 @@ function initializeGirlfriendHand(){
 
     //start button
   gameStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start", gameStartPressed)
-  nextBtnHand = new Button(width-100, height / 2 + 50+195, 130,55, "Next", nextHandGame);
+  nextBtnHand = new Button(width-90, height / 2 + 50+195, 130,55, "Next", nextHandGame);
   
   }
 
@@ -301,13 +301,14 @@ function displayGameResults() {
       pop();
       if (!statsAlreadyChanged){
         life_stats.decrease();
-        life_stats.decrease();
-        life_stats.decrease();
         statsAlreadyChanged = true;
       }
     }
   displayStats();
   nextBtnHand.display();
+  if (nextBtnHand.isClicked()){
+    nextHandGame();
+  }
 
   console.log("calculate page");
 

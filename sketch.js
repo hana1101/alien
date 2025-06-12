@@ -188,9 +188,14 @@ function draw() {
       playDoodleGame();
   } else if (currentScreen === "dogGame"){
       playDogClickGame();
-    }
-  }
 
+  } else if (currentScreen ==="lifeOver"){
+      lifeOverPage();
+  }
+    else if (currentScreen ==="gameSuccess"){
+      calculatePointsPage();
+  }
+}
 
 
 function mousePressed() {
@@ -360,9 +365,9 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   gameStartBtn.action();
   }
 
-if (nextBtnHand && nextBtnHand.isHovered()){
-   //
-}
+// if (nextBtnHand && nextBtnHand.isHovered()){
+//    nextHandGame();
+// }
 
 if (currentScreen === "girlfriendFT" && dialogueFaceTime && !dialogueFaceTime.finished) {
   dialogueFaceTime.handleClick();

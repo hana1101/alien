@@ -27,19 +27,19 @@ function pointsMinimumMet(){
   console.log(total_stats);
 
   if (life_stats.end){
-    lifeOverPage(); //그냥 게임overscene
+    currentScreen = "lifeOver";
     return;
   }
 
   if(!life_stats.end){
     if (total_stats<80 && countGamePlayed == 5){
-      calculatePointsPage(); //그냥 게임씬
+      currentScreen = "gameFail"
       //gamescene - 이후 minimum Met 확인
     }
     if(total_stats>=80){
       console.log("criteria met");
       totalSuccess = true;
-      calculatePointsPage();
+      currentScreen = "gameSuccess";
       return;
 
     }
