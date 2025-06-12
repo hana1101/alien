@@ -350,6 +350,7 @@ else if (currentScreen === "play") {
       dialogue = null;
     }
   }
+  
   else if (currentScreen==="wellbeing" && dialogue) { // 수정함
     dialogue.handleClick();
   
