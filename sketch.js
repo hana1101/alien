@@ -25,6 +25,9 @@ let career_stats;
 let wellbeing_stats;
 let life_stats;
 
+let minimumMet = false;
+let countGamePlayed = false;
+
 function preload() {
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
