@@ -26,7 +26,7 @@ function pointsMinimumMet(){
   total_stats = relationship_stats.currentStat+career_stats.currentStat+wellbeing_stats.currentStat;
   console.log(total_stats);
 
-  if (life_stats.end){
+  if (life_stats.lifeCount === 0){
     currentScreen = "lifeOver";
     endGame = true;
     return;

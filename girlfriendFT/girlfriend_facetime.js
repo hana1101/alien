@@ -26,12 +26,12 @@ function initializeFaceTime() {
   choice3 = new Button(500,460,300,50,"해산물 리조또 어때?",choice3Action);
   
   let linesGf = [
-    "자기야! 우리 진짜 오랜만인 것 같아... \n잘 지냈어??\n...",
-    "요즘 너무 보고싶당.. \n\n이번주 토요일 데이트가 너무 기대돼!!\n...",
-    "\n우리 뭐 먹을까??\n..."
+    "자기야 ! 우리 진짜 오랜만인 것 같아... \n잘 지냈어 ??\n...",
+    "요즘 너무 보고싶당.. \n\n이번주 토요일 데이트가 너무 기대돼 !!\n...",
+    "\n우리 뭐 먹을까 ??\n..."
   ];
   
-  dialogueFaceTime = new DialogueBox(460, 150, 380, 130, linesGf);
+  dialogueFaceTime = new DialogueBox(460, 150, 380, 180, linesGf);
   
   //start button
   ftStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start")

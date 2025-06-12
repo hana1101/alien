@@ -392,14 +392,24 @@ else if (currentScreen === "play") {
     }
   }
   // Dog Game 관련 마우스 클릭 처리 추가
-  else if (currentScreen === "dogGame") {
+  // else if (currentScreen === "dogGame") {
+  //   // phase 2에서 클릭 시 홈 화면으로
+  //   if (dogGameOver && dogPhase === 2) {
+  //     currentScreen = "play";
+  //     selectedItem=!selectedItem;
+  //     resetDogGameVariables();
+  //     dogGame_initialized = false; // Dog Game 초기화 플래그 리셋
+  //   } else if (!buddyStart && buddyStartBtn && buddyStartBtn.isHovered()) {
+  //       // buddyRulesShow() 내에서 처리됨, 여기서 직접 호출할 필요는 없음
+  //       // buddyStartBtn.isClicked() 로직이 pet.js 내에 있음
+  //       mousePressedDogClickGame(); // 원 클릭 처리 (이전에 buddyStart가 true가 되었다면)
+  //   } else {
+  //       mousePressedDogClickGame(); // 원 클릭 처리
+  //   }
+  // }
+    else if (currentScreen === "dogGame") {
     // phase 2에서 클릭 시 홈 화면으로
-    if (dogGameOver && dogPhase === 2) {
-      currentScreen = "play";
-      selectedItem=!selectedItem;
-      resetDogGameVariables();
-      dogGame_initialized = false; // Dog Game 초기화 플래그 리셋
-    } else if (!buddyStart && buddyStartBtn && buddyStartBtn.isHovered()) {
+      if (!buddyStart && buddyStartBtn && buddyStartBtn.isHovered()) {
         // buddyRulesShow() 내에서 처리됨, 여기서 직접 호출할 필요는 없음
         // buddyStartBtn.isClicked() 로직이 pet.js 내에 있음
         mousePressedDogClickGame(); // 원 클릭 처리 (이전에 buddyStart가 true가 되었다면)
@@ -407,13 +417,11 @@ else if (currentScreen === "play") {
         mousePressedDogClickGame(); // 원 클릭 처리
     }
   }
+
+
 if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   gameStartBtn.action();
   }
-
-// if (nextBtnHand && nextBtnHand.isHovered()){
-//    nextHandGame();
-// }
 
 if (currentScreen === "girlfriendFT" && dialogueFaceTime && !dialogueFaceTime.finished) {
   dialogueFaceTime.handleClick();
@@ -439,6 +447,7 @@ function keyPressed() {
 
 
 function nextGame(){
+  console.log('came here');
   pointsMinimumMet();
   if (!endGame){
     selectedItem=null;

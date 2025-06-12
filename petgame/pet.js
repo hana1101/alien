@@ -11,6 +11,7 @@ let dogGameOver;
 let buddyStart;
 
 let buddyStartBtn;
+let nextBtnBuddy;
 
 let statsAlreadChangedBuddy;
 
@@ -29,6 +30,8 @@ function initDogClickGame() {
     clearInterval(interval);
   }
   buddyStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start");
+  nextBtnBuddy = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextGame);
+
   circles_pet = [];
   haloEffects = [];
   floatingTexts = [];
@@ -105,6 +108,11 @@ function playDogClickGame() {
       }
     }
     displayStats();
+
+    nextBtnBuddy.display();
+    if (nextBtnBuddy.isClicked()){
+      nextGame();
+  }
 
     return;
   }

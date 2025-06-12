@@ -23,7 +23,7 @@ class life{
   
     decrease(){
       this.lifeCount--;
-      if (this.lifeCount == 0){
+      if (this.lifeCount === 0){
         this.end = true;
       }
   
