@@ -27,7 +27,7 @@ function pointsMinimumMet(){
   console.log(total_stats);
 
   if (life_stats.end){
-    calculatePointsPage(); //그냥 게임scene
+    calculatePointsPage(); //그냥 게임overscene
     return;
   }
 
