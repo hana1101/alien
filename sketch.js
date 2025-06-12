@@ -361,7 +361,7 @@ else if (currentScreen === "play") {
     }
   }
   
-  else if (currentScreen==="diaryscreen" && dialogue1) { // 수정함
+  else if (currentScreen==="readDiary" && dialogue1) { // 수정함
     dialogue1.handleClick();
   
     if (dialogue1.finishedClicked) {
