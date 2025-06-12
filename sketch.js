@@ -66,7 +66,8 @@ function preload() {
 
   facetimebg = loadImage("assets/facetime.jpg");
   callgamerule= loadImage("assets/callgamerule.jpg");
-
+  ftfail = loadImage("assets/ftfail.jpg");
+  ftsuccess = loadImage("assets/ftsuccess.jpg");
   // zib12 = loadImage("assets/zib12.jpg");
   preloadDoodleAssets();
   preloadDogClickGame();

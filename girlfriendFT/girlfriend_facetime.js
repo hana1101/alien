@@ -105,21 +105,22 @@ function facetimeEnd(){
   if (success){
     push();
     textAlign(CENTER);
-    fill(0,255,0);
+    image(ftsuccess, 0, 0, width, height);
+    // fill(0,255,0);
     text('성공! 여자친구가 좋아해요!', width / 2, height / 2);
     pop();
   }
   else if (!success && facetimeLife){
     push();
     textAlign(CENTER);
-    fill(255,0,0);
+    image(ftfail, 0, 0, width, height);
     text('실패! 여자친구는 해산물 알러지가 있어요', width / 2, height / 2);
     pop();
   }
   else{
     push();
     textAlign(CENTER);
-    fill('gray');
+    image(ftfail, 0, 0, width, height);
     text('실패! 여자친구가 싫어해요', width / 2, height / 2);
     pop();
   }
@@ -130,7 +131,7 @@ function facetimeEnd(){
 }
 
 function ftRules(){
-   image(callgamerule, 0, 0, width, height); // ← 이미지 배경 추가
+  image(callgamerule, 0, 0, width, height); // ← 이미지 배경 추가
   ftStartBtn.display();
   if(ftStartBtn.isClicked()){
     faceTimeStart = true;
