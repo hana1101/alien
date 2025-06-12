@@ -25,6 +25,8 @@ let showFinalScreen = false;
 let dGameOver = false;
 
 let countDoodle = 0;
+let countFlagDoodle;
+let statsAlreadyChangedDoodle;
 
 const keywords = [
   "cello", "carrot", "mushroom", "sword",
@@ -61,18 +63,28 @@ function initDoodleGame() {
   doodleClassifier = ml5.imageClassifier("DoodleNet", modelReady);
   pickRandomKeyword();
   doodleTime = new Timer(20);
+  countFlagDoodle = false;
+  statsAlreadyChangedDoodle = false;
+
 }
 
 function playDoodleGame() {
   if (!doodleStarted) {
+    resetDoodleGameVariables();
+    resetDoodle();
+    console.log("Doodle Phase",doodlePhase);
     showDGameStart();
     return;
   }
 
   // doodlePhase가 2일 때는 다른 게임 요소들이 그려지지 않도록 확실히 처리
   if (doodlePhase === 2) {
-    countGamePlayed++;
-    countDoodle++;
+    if(!countFlagDoodle){
+      countGamePlayed++;
+      countDoodle++;
+      countFlagDoodle = true;
+    }
+
     console.log(countGamePlayed);
     console.log(countDoodle);
     console.log("🎯 phase 2: 클라이언트 반응 이미지 표시 단계");
@@ -82,6 +94,21 @@ function playDoodleGame() {
     background(0); // 임시로 검은색 배경을 그려 이미지가 제대로 올라오는지 확인
     let clientImg = isCorrect ? happyClientImg : unhappyClientImg;
 
+    if (isCorrect){
+      image(happyClientImg, 0, 0 width, height);
+      if(!statsAlreadyChangedDoodle){
+        career_stats.increase();
+        statsAlreadyChangedDoodle = true;
+      }
+    }
+    else{
+      image(SadClientImg, 0, 0 width, height);
+      if(!statsAlreadyChangedDoodle){
+        life_stats.increase();
+        statsAlreadyChangedDoodle = true;
+      }
+    }
+    
     if (clientImg && clientImg.width > 0 && clientImg.height > 0) { // 이미지의 유효성 한 번 더 체크
       image(clientImg, 0, 0, width, height);
       console.log("✅ 이미지 그리기 완료");
@@ -92,6 +119,9 @@ function playDoodleGame() {
       text("❌ 클라이언트 이미지 로드 또는 유효성 문제", width / 2, height / 2);
       console.error("클라이언트 이미지가 로드되지 않았거나 유효하지 않습니다:", clientImg);
     }
+
+    displayStats();
+
     return; // doodlePhase 2에서는 이 화면만 표시하고 다른 로직은 실행하지 않습니다.
   }
 
@@ -136,10 +166,10 @@ function playDoodleGame() {
       if (!endImageTimerStarted) {
         endImageTimerStarted = true;
         setTimeout(() => {
-          doodlePhase = 1;
-          console.log("▶️ phase → 1 (텍스트 -> doodleEnd)");
+          doodlePhase = 2;
+          console.log("▶️ phase → 2 (텍스트 -> doodleEnd)");
           // endImageTimerStarted = false; // 여기서 플래그 초기화는 setTimeout이 한 번만 실행되도록 하는 목적이므로 유지
-        }, 1500);
+        }, 3000);
       }
       // return; // 이 return 문은 phase 0일 때만 텍스트를 그리고, 다음 프레임에 바로 phase 1으로 넘어가는 걸 방해할 수 있습니다.
                  // setTimeout으로 비동기적으로 phase를 바꾸므로, 여기서는 return을 제거하는 것이 좋습니다.
@@ -280,6 +310,8 @@ function resetDoodleGameVariables() {
   showFinalScreen = false; // 최종 화면 표시 상태 해제
   clientImageTimerStarted = false; // 타이머 플래그 초기화
   endImageTimerStarted = false; // 타이머 플래그 초기화
+  countFlagDoodle = false;
+  statsAlreadyChangedDoodle = false;
   // 필요한 경우 clearDrawing() 또는 resetDoodle()을 호출하여 캔버스를 초기화
   // clearDrawing(); // 캔버스 초기화
   // pickRandomKeyword(); // 새로운 키워드 선택 (선택 사항)
