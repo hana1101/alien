@@ -27,6 +27,7 @@ let dGameOver = false;
 let countDoodle = 0;
 let countFlagDoodle;
 let statsAlreadyChangedDoodle;
+let nextBtnDoodle;
 
 const keywords = [
   "cello", "carrot", "mushroom", "sword",
@@ -57,6 +58,8 @@ function initDoodleGame() {
   backgroundCanvas.background(255);
 
   startBtnDoodle = new Button(width / 2 - 65, height / 2 + 245, 130, 55, "Start", dGameStartPressed);
+  nextBtnDoodle = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextGame);
+
   clearBtn = new Button(620, height / 2 + 245, 100, 40, "CLEAR", clearDrawing);
   resetBtn = new Button(780, height / 2 + 245, 100, 40, "RESET", resetDoodle);
 
@@ -121,6 +124,10 @@ function playDoodleGame() {
     // }
 
     displayStats();
+    nextBtnDoodle.display();
+    if (nextBtnDoodle.isClicked()){
+      nextGame();
+  }
 
     return; // doodlePhase 2에서는 이 화면만 표시하고 다른 로직은 실행하지 않습니다.
   }

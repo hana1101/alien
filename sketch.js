@@ -123,11 +123,7 @@ function setup() {
   initDogClickGame();
   dogGame_initialized = false;
 
-//   if (currentScreen === "doodleGame"){
-//     initDoodleGame();
-// } else if (currentScreen === "dogGame"){
-//     initDogClickGame();
-//   }
+
 }
 
 function draw() {
@@ -381,7 +377,7 @@ else if (currentScreen === "play") {
       // 다른 게임의 초기화 플래그도 false로 설정하여, 다음 진입 시 해당 게임이 초기화되도록 함
       dogGame_initialized = false; // Dog Game 초기화 플래그 리셋
     } else if (countDoodle === 2) {
-      doodlePhase === 2;
+      doodlePhase =2 ;
 
     }else {
       mousePressedDoodleGame();
