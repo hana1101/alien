@@ -19,9 +19,9 @@ let glowDirection = 2;
 function drawWorkscreen() {
   if (!dialogue) {
     let lines = [
-      "ZIB: 여기 작업실이나봐",
-      "ZIB: 할 거 진짜 많다",
-      "ZIB: 돈 많이 벌어야지",
+      "ZIB: 오 작업실이네",
+      "ZIB: 내가 지구에서 있는동안 할 수 있는 경험은 다 해보고 가야지",
+      "ZIB: 그럼 이 친구 직업이..",
     ];
     dialogue = new DialogueBox(10, 500, 980, 120, lines);
   }
