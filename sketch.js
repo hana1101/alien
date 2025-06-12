@@ -28,6 +28,7 @@ let countGamePlayed = false;
 let total_stats = 0;
 let endGame = false;
 let totalSuccess = false;
+let dogGame_initialized = false;
 
 function preload() {
   for (let name of assetname) {
@@ -118,6 +119,7 @@ function setup() {
   initialSetStats();
   initDoodleGame();
   initDogClickGame();
+  dogGame_initialized = false;
 
 //   if (currentScreen === "doodleGame"){
 //     initDoodleGame();
@@ -188,7 +190,15 @@ function draw() {
   } else if (currentScreen === "doodleGame"){
       playDoodleGame();
   } else if (currentScreen === "dogGame"){
-      playDogClickGame();
+    // dogGame이 처음 시작될 때만 초기화
+    // 이 플래그는 dogGame_initialized처럼 새로운 전역 변수로 선언해야 합니다.
+    // let dogGame_initialized = false; (setup() 또는 전역 변수 선언부에 추가)
+    if (!dogGame_initialized) { // dogGame_initialized는 sketch.js의 전역 변수로 선언하고, setup()에서 false로 초기화
+      initDogClickGame();
+      dogGame_initialized = true;
+    }
+    playDogClickGame();
+  }
   }  else if (currentScreen ==="lifeOver"){
       lifeOverPage();
   }
@@ -361,18 +371,39 @@ else if (currentScreen === "play") {
     }
   }
 
- else if (currentScreen === "doodleGame") { 
-   mousePressedDoodleGame();
+ else if (currentScreen === "doodleGame") {
+    if (doodleStarted && dGameOver && doodlePhase === 2) {
+      currentScreen = "play";
+      selectedItem=!selectedItem;
+      resetDoodleGameVariables();
+      // 다른 게임의 초기화 플래그도 false로 설정하여, 다음 진입 시 해당 게임이 초기화되도록 함
+      dogGame_initialized = false; // Dog Game 초기화 플래그 리셋
+    } else {
+      mousePressedDoodleGame();
       if (clearBtn && clearBtn.isHovered()) {
         clearBtn.action();
-    }
-    if (resetBtn && resetBtn.isHovered()) {
+      }
+      if (resetBtn && resetBtn.isHovered()) {
         resetBtn.action();
+      }
     }
-
-} else if (currentScreen === "dogGame") {
-    mousePressedDogClickGame();
-}
+  }
+  // Dog Game 관련 마우스 클릭 처리 추가
+  else if (currentScreen === "dogGame") {
+    // phase 2에서 클릭 시 홈 화면으로
+    if (dogGameOver && dogPhase === 2) {
+      currentScreen = "play";
+      selectedItem=!selectedItem;
+      resetDogGameVariables();
+      dogGame_initialized = false; // Dog Game 초기화 플래그 리셋
+    } else if (!buddyStart && buddyStartBtn && buddyStartBtn.isHovered()) {
+        // buddyRulesShow() 내에서 처리됨, 여기서 직접 호출할 필요는 없음
+        // buddyStartBtn.isClicked() 로직이 pet.js 내에 있음
+        mousePressedDogClickGame(); // 원 클릭 처리 (이전에 buddyStart가 true가 되었다면)
+    } else {
+        mousePressedDogClickGame(); // 원 클릭 처리
+    }
+  }
 if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   gameStartBtn.action();
   }
