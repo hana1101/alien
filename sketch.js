@@ -161,15 +161,15 @@ function draw() {
 
   } else if (currentScreen === "play") {
     drawPlayScreen();
-  // } else if (currentScreen === "work") {
-  //   drawWorkscreen();
+  } else if (currentScreen === "work") {
+    drawWorkscreen();
   }else if (currentScreen ==="wellbeing") {
-    drawWellbeingscreen();
-  }
+    drawWellbeingscreen(); //수정
+
   // else if (currentScreen === "drawing") {
   //   drawingScreen();
   // }
-   else if (currentScreen === "checkMsg") {
+}else if (currentScreen === "checkMsg") {
     checkMsg();
   } else if (currentScreen === "girlfriendGame") {
     if (!gfGameStarted) {
@@ -350,9 +350,17 @@ else if (currentScreen === "play") {
       dialogue = null;
     }
   }
+  else if (currentScreen==="wellbeing" && dialogue) { // 수정함
+    dialogue.handleClick();
   
+    if (dialogue.finishedClicked) {
+      currentScreen = "play";
+      selectedItem = 'diary'; // if you're using returnToItem
+      dialogue = null;
+    }
+  }
 
- else if (currentScreen === "doodleGame") {
+ else if (currentScreen === "doodleGame") { 
    mousePressedDoodleGame();
       if (clearBtn && clearBtn.isHovered()) {
         clearBtn.action();
@@ -360,6 +368,7 @@ else if (currentScreen === "play") {
     if (resetBtn && resetBtn.isHovered()) {
         resetBtn.action();
     }
+
 } else if (currentScreen === "dogGame") {
     mousePressedDogClickGame();
 }
