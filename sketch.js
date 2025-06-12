@@ -199,7 +199,7 @@ function draw() {
   }  else if (currentScreen ==="lifeOver"){
       lifeOverPage();
   }
-    else if (currentScreen ==="gameSuccess"){
+    else if (currentScreen ==="gameSuccess" || currentScreen ==="gameFail"){
       calculatePointsPage();
   }
 }

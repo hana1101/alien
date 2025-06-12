@@ -27,6 +27,7 @@ function pointsMinimumMet(){
   console.log(total_stats);
 
   if (life_stats.lifeCount === 0 || life_stats.end){
+    console.log("lifeOverScreen");
     currentScreen = "lifeOver";
     endGame = true;
     return;
@@ -34,6 +35,7 @@ function pointsMinimumMet(){
 
   if(life_stats.lifeCount>0 || !life_stats.end){
     if (total_stats<80 && countGamePlayed == 5){
+      console.log("gameFailScreen");
       currentScreen = "gameFail"
       endGame = true;
       //gamescene - 이후 minimum Met 확인
