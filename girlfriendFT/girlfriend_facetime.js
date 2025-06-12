@@ -130,8 +130,7 @@ function facetimeEnd(){
 }
 
 function ftRules(){
-  background(225); //replace with image
-  image(callRulesbg,0,0,width,height);
+   image(callgameruleImg, 0, 0, width, height); // ← 이미지 배경 추가
   ftStartBtn.display();
   if(ftStartBtn.isClicked()){
     faceTimeStart = true;
