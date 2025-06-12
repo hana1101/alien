@@ -44,6 +44,7 @@ let handPose, video, videoMask;
 let hands = [];
 
 let nextBtnHand;
+let countGameHand = false;
 
 
 
@@ -88,8 +89,12 @@ function playGirlfriendHand() {
   }
 
   if (gameEnded) {
-    countGamePlayed++;
-    console.log(countGamePlayed);
+    if (!countGameHand){
+      countGameHand = true;
+      countGamePlayed++;
+      console.log(countGamePlayed);
+    }
+
     displayGameResults();
     return;
     }

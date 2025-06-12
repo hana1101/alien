@@ -14,6 +14,7 @@ let buddyStartBtn;
 let nextBtnBuddy;
 
 let statsAlreadChangedBuddy;
+let countFlagBuddy = false;
 
 // 🟡 이미지 불러오기
 function preloadDogClickGame() {
@@ -57,8 +58,11 @@ function playDogClickGame() {
   displayStats();
 
   if (dogGameOver) {
-    countGamePlayed++;
-    console.log(countGamePlayed);
+    if (!countFlagBuddy){
+      countFlagBuddy = true;
+      countGamePlayed++;
+      console.log(countGamePlayed);
+    }
     if (dogPhase === 0) {
     fill(255);
     textAlign(CENTER, CENTER);

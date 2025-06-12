@@ -26,13 +26,13 @@ function pointsMinimumMet(){
   total_stats = relationship_stats.currentStat+career_stats.currentStat+wellbeing_stats.currentStat;
   console.log(total_stats);
 
-  if (life_stats.lifeCount === 0){
+  if (life_stats.lifeCount === 0 || life_stats.end){
     currentScreen = "lifeOver";
     endGame = true;
     return;
   }
 
-  if(!life_stats.end){
+  if(life_stats.lifeCount>0 || !life_stats.end){
     if (total_stats<80 && countGamePlayed == 5){
       currentScreen = "gameFail"
       endGame = true;
