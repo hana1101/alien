@@ -65,6 +65,7 @@ function preload() {
   calculateScenebg = loadImage("assets/calculate.jpg");
 
   facetimebg = loadImage("assets/facetime.jpg");
+  callgameruleImg = loadImage("assets/callgamerule.jpg");
 
   // zib12 = loadImage("assets/zib12.jpg");
   preloadDoodleAssets();
