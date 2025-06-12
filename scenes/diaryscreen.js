@@ -2,7 +2,7 @@
 // let glowDirection = 2;
 let dialogue1
 
-function drawWellbeingscreen() {
+function drawDiaryscreen() {
 if (!dialogue1) {
     let lines1 = [
       "ZIB: 저런,, 요즘 많이 힘들구나",
