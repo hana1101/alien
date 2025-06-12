@@ -86,6 +86,8 @@ function playDogClickGame() {
     
     if (score>=55){
       image(happyDogImg,0,0,width,height);
+      textAlign(CENTER); //수정
+      text('성공! 강아지가 경계를 풀었어요!', width, height);//수정
       if (!statsAlreadChangedBuddy){
         wellbeing_stats.increase();
         statsAlreadChangedBuddy = true;
@@ -94,7 +96,7 @@ function playDogClickGame() {
     else{
       image(sadDogImg,0,0,width,height);
       textAlign(CENTER); //수정
-      text('실패! 강아지의 신뢰를 잃었어요', width / 2, height / 2);//수정
+      text('실패! 강아지의 신뢰를 잃었어요', width, height);//수정
       if(!statsAlreadChangedBuddy){
         life_stats.decrease();
         statsAlreadChangedBuddy = true;
