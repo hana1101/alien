@@ -92,33 +92,33 @@ function playDoodleGame() {
     // 화면을 확실히 덮는 배경을 그려줍니다.
     // 이전 디버깅용 보라색 사각형을 제거하고, 클라이언트 이미지만 그립니다.
     background(0); // 임시로 검은색 배경을 그려 이미지가 제대로 올라오는지 확인
-    let clientImg = isCorrect ? happyClientImg : unhappyClientImg;
+    // let clientImg = isCorrect ? happyClientImg : unhappyClientImg;
 
     if (isCorrect){
-      image(happyClientImg, 0, 0 width, height);
+      image(happyClientImg, 0, 0, width, height);
       if(!statsAlreadyChangedDoodle){
         career_stats.increase();
         statsAlreadyChangedDoodle = true;
       }
     }
     else{
-      image(SadClientImg, 0, 0 width, height);
+      image(unhappyClientImg, 0, 0, width, height);
       if(!statsAlreadyChangedDoodle){
-        life_stats.increase();
+        life_stats.decrease();
         statsAlreadyChangedDoodle = true;
       }
     }
     
-    if (clientImg && clientImg.width > 0 && clientImg.height > 0) { // 이미지의 유효성 한 번 더 체크
-      image(clientImg, 0, 0, width, height);
-      console.log("✅ 이미지 그리기 완료");
-    } else {
-      fill("red");
-      textAlign(CENTER, CENTER);
-      textSize(32);
-      text("❌ 클라이언트 이미지 로드 또는 유효성 문제", width / 2, height / 2);
-      console.error("클라이언트 이미지가 로드되지 않았거나 유효하지 않습니다:", clientImg);
-    }
+    // if (clientImg && clientImg.width > 0 && clientImg.height > 0) { // 이미지의 유효성 한 번 더 체크
+    //   image(clientImg, 0, 0, width, height);
+    //   console.log("✅ 이미지 그리기 완료");
+    // } else {
+    //   fill("red");
+    //   textAlign(CENTER, CENTER);
+    //   textSize(32);
+    //   text("❌ 클라이언트 이미지 로드 또는 유효성 문제", width / 2, height / 2);
+    //   console.error("클라이언트 이미지가 로드되지 않았거나 유효하지 않습니다:", clientImg);
+    // }
 
     displayStats();
 
