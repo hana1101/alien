@@ -370,23 +370,30 @@ else if (currentScreen === "play") {
   }
 
  else if (currentScreen === "doodleGame") {
-    if (doodleStarted && dGameOver && doodlePhase === 2) {
-      currentScreen = "play";
-      selectedItem=!selectedItem;
-      resetDoodleGameVariables();
-      // 다른 게임의 초기화 플래그도 false로 설정하여, 다음 진입 시 해당 게임이 초기화되도록 함
-      dogGame_initialized = false; // Dog Game 초기화 플래그 리셋
-    } else if (countDoodle === 2) {
-      doodlePhase =2 ;
+    // if (doodleStarted && dGameOver && doodlePhase === 2) {
+    //   currentScreen = "play";
+    //   selectedItem=!selectedItem;
+    //   resetDoodleGameVariables();
+    //   // 다른 게임의 초기화 플래그도 false로 설정하여, 다음 진입 시 해당 게임이 초기화되도록 함
+    //   dogGame_initialized = false; // Dog Game 초기화 플래그 리셋
+    // } else if (countDoodle === 2) {
+    //   doodlePhase =2 ;
 
-    }else {
-      mousePressedDoodleGame();
-      if (clearBtn && clearBtn.isHovered()) {
-        clearBtn.action();
-      }
-      if (resetBtn && resetBtn.isHovered()) {
-        resetBtn.action();
-      }
+    // }else {
+    //   mousePressedDoodleGame();
+    //   if (clearBtn && clearBtn.isHovered()) {
+    //     clearBtn.action();
+    //   }
+    //   if (resetBtn && resetBtn.isHovered()) {
+    //     resetBtn.action();
+    //   }
+    // }
+  mousePressedDoodleGame();
+    if (clearBtn && clearBtn.isHovered()) {
+      clearBtn.action();
+    }
+    if (resetBtn && resetBtn.isHovered()) {
+      resetBtn.action();
     }
   }
   // Dog Game 관련 마우스 클릭 처리 추가
@@ -448,6 +455,9 @@ function nextGame(){
   console.log('came here');
   pointsMinimumMet();
   if (!endGame){
+    if (currentScreen === "doodleGame"){
+      resetDoodleGameVariables();
+    }
     selectedItem=null;
     currentScreen = "play";
   }
