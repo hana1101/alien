@@ -1,6 +1,7 @@
 // let glowAlpha = 0;
 // let glowDirection = 2;
 let dialogue1
+
 function drawWellbeingscreen() {
 if (!dialogue1) {
     let lines1 = [
@@ -10,7 +11,7 @@ if (!dialogue1) {
     dialogue1 = new DialogueBox(10, 500, 980, 120, lines1);
   }
 
-  image(assets.diary, 0, 0, width, height);
+  image(assets.diary, 0, -50, width, height)
   dialogue1.display();
   
 if (dialogue1 && dialogue1.isOnLastLine()) {
