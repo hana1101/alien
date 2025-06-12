@@ -198,7 +198,6 @@ function draw() {
       dogGame_initialized = true;
     }
     playDogClickGame();
-  }
   }  else if (currentScreen ==="lifeOver"){
       lifeOverPage();
   }
