@@ -302,5 +302,9 @@ function displayGameResults() {
       }
     }
   displayStats();
+
+  console.log("calculate page");
+  pointsMinimumMet();
+
   }
 

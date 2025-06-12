@@ -23,26 +23,31 @@ function displayStats(){
 }
 
 function pointsMinimumMet(){
-  total_stats = relationship_stats+career_stats+wellbeing_stats;
+  total_stats = relationship_stats.currentStat+career_stats.currentStat+wellbeing_stats.currentStat;
+  console.log(total_stats);
 
   if (life_stats.end){
-    endGame = true; //그냥 게임scene
+    calculatePointsPage(); //그냥 게임scene
     return;
   }
 
   if(!life_stats.end){
     if (total_stats<80 && countGamePlayed == 5){
-      endGame = true; //그냥 게임씬
+      calculatePointsPage(); //그냥 게임씬
       //gamescene - 이후 minimum Met 확인
     }
     if(total_stats>=80){
+      console.log("criteria met");
       totalSuccess = true;
-      //gamescene
+      calculatePointsPage();
       return;
 
     }
   }
 
+  else{
+    console.log("not finished");
+  }
 
 }
 

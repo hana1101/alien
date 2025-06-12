@@ -60,6 +60,9 @@ function preload() {
   zib13 = loadImage("assets/zib13.jpg");
   zib14 = loadImage("assets/zib14.jpg");
 
+  //endingScene preloads
+  calculateScenebg = loadImage("assets/calculate.jpg");
+
   facetimebg = loadImage("assets/facetime.jpg");
 
   // zib12 = loadImage("assets/zib12.jpg");
