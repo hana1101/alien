@@ -23,7 +23,30 @@ function displayStats(){
 }
 
 function pointsMinimumMet(){
-  total_stats = 
+  total_stats = relationship_stats+career_stats+wellbeing_stats;
+
+  if (life_stats.end){
+    endGame = true; //그냥 게임scene
+    return;
+  }
+
+  if(!life_stats.end){
+    if (total_stats<80 && countGamePlayed == 5){
+      endGame = true; //그냥 게임씬
+      //gamescene - 이후 minimum Met 확인
+    }
+    if(total_stats>=80){
+      totalSuccess = true;
+      //gamescene
+      return;
+
+    }
+  }
 
 
 }
+
+// life = 없을 때 = 실패
+// life가 남았지만
+// - total이 80이 안됐을 때 & 게임 5개 모두 완료= 실패
+// - total이 80이 넘었을 때 = 성공

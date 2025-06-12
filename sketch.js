@@ -25,9 +25,10 @@ let career_stats;
 let wellbeing_stats;
 let life_stats;
 
-let minimumMet = false;
 let countGamePlayed = false;
 let total_stats = 0;
+let endGame = false;
+let totalSuccess = false;
 
 function preload() {
   for (let name of assetname) {
