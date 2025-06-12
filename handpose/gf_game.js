@@ -88,6 +88,8 @@ function playGirlfriendHand() {
   }
 
   if (gameEnded) {
+    countGamePlayed++;
+    console.log(countGamePlayed);
     displayGameResults();
     return;
     }

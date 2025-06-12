@@ -12,6 +12,7 @@ let choices_show;
 //button
 let ftStartBtn;
 let nextBtnFT;
+let counterFT = false;
 
 
 function initializeFaceTime() {
@@ -52,6 +53,7 @@ function playFaceTime() {
   displayStats();
   
   if(facetimeOver){
+    console.log(countGamePlayed);
     facetimeEnd();
     return;
   }
@@ -82,12 +84,15 @@ function playFaceTime() {
 function choice1Action() {
   facetimeOver = true;
   relationship_stats.decrease();
+  countGamePlayed++;
+  
 }
 
 function choice2Action() {
   facetimeOver = true;
   relationship_stats.increase();
   success = true;
+  countGamePlayed++;
   
 }
 
@@ -95,12 +100,11 @@ function choice3Action() {
   facetimeOver = true;
   life_stats.decrease();
   facetimeLife = true;
+  countGamePlayed++;
   
 }
 
 function facetimeEnd(){
-  background("white");
-  displayStats();
   textSize(40);
   if (success){
     push();
@@ -128,6 +132,7 @@ function facetimeEnd(){
   if (nextBtnFT.isClicked()){
      nextGame();
   }
+  displayStats();
 }
 
 function ftRules(){

@@ -24,6 +24,8 @@ let isCorrect = false;
 let showFinalScreen = false;
 let dGameOver = false;
 
+let countDoodle = 0;
+
 const keywords = [
   "cello", "carrot", "mushroom", "sword",
   "lipstick", "cake", "cat", "grass", "strawberry",
@@ -69,6 +71,10 @@ function playDoodleGame() {
 
   // doodlePhase가 2일 때는 다른 게임 요소들이 그려지지 않도록 확실히 처리
   if (doodlePhase === 2) {
+    countGamePlayed++;
+    countDoodle++;
+    console.log(countGamePlayed);
+    console.log(countDoodle);
     console.log("🎯 phase 2: 클라이언트 반응 이미지 표시 단계");
 
     // 화면을 확실히 덮는 배경을 그려줍니다.

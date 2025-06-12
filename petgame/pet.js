@@ -54,6 +54,8 @@ function playDogClickGame() {
   displayStats();
 
   if (dogGameOver) {
+    countGamePlayed++;
+    console.log(countGamePlayed);
     if (dogPhase === 0) {
     fill(255);
     textAlign(CENTER, CENTER);
@@ -83,7 +85,7 @@ function playDogClickGame() {
   if (dogPhase === 2) {
     
     if (score>=55){
-      image(happyDogImag,0,0,width,height);
+      image(happyDogImg,0,0,width,height);
       if (!statsAlreadChangedBuddy){
         wellbeing_stats.increase();
         statsAlreadChangedBuddy = true;
@@ -99,10 +101,7 @@ function playDogClickGame() {
       }
     }
     displayStats();
-    // let resultImg = score >= 55 ? happyDogImg : sadDogImg;
-    // if (resultImg) {
-    //   image(resultImg, 0, 0, width, height);
-    // }
+
     return;
   }
   }
