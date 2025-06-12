@@ -61,7 +61,7 @@ function preload() {
   zib14 = loadImage("assets/zib14.jpg");
 
   //endingScene preloads
-  lifeOverScenebg = loadImage();
+  lifeOverScenebg = loadImage("assets/lifezero.jpg");
   calculateScenebg = loadImage("assets/calculate.jpg");
 
   facetimebg = loadImage("assets/facetime.jpg");
