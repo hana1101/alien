@@ -80,21 +80,21 @@ function playFaceTime() {
 }
 
 function choice1Action() {
-  relationship_stats.decrease();
   facetimeOver = true;
+  relationship_stats.decrease();
 }
 
 function choice2Action() {
+  facetimeOver = true;
   relationship_stats.increase();
   success = true;
-  facetimeOver = true;
   
 }
 
 function choice3Action() {
+  facetimeOver = true;
   life_stats.decrease();
   facetimeLife = true;
-  facetimeOver = true;
   
 }
 
@@ -131,6 +131,7 @@ function facetimeEnd(){
 
 function ftRules(){
   background(225); //replace with image
+  image(callRulesbg,0,0,width,height);
   ftStartBtn.display();
   if(ftStartBtn.isClicked()){
     faceTimeStart = true;

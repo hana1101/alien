@@ -30,7 +30,7 @@ class stats{
   }
   
   increase(){
-    this.currentStat = this.currentStat+90;
+    this.currentStat = this.currentStat+30;
     if (this.currentStat >= 100){
       this.completed = true;
       this.currentStat = 100;
