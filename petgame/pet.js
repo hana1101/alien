@@ -12,6 +12,8 @@ let buddyStart;
 
 let buddyStartBtn;
 
+let statsAlreadChangedBuddy;
+
 // 🟡 이미지 불러오기
 function preloadDogClickGame() {
   buddyRules = loadImage("assets/buddyrule.jpg");
@@ -35,6 +37,7 @@ function initDogClickGame() {
   penaltyCount = 0;
   dogGameOver = false;
   buddyStart = false;
+  statsAlreadChangedBuddy = false;
 
   interval = setInterval(spawnCircle, 1000); // 60 bpm
   
@@ -60,8 +63,8 @@ function playDogClickGame() {
     if (!dogEndTimerStarted) {
       dogEndTimerStarted = true;
       setTimeout(() => {
-        dogPhase = 1; // dogend 화면으로 전환
-      }, 1500); // 1.5초 후 전환
+        dogPhase = 2; // dogend 화면으로 전환
+      }, 3000); // 1.5초 후 전환
     }
     return;
   }
@@ -78,10 +81,26 @@ function playDogClickGame() {
     return;
   }
   if (dogPhase === 2) {
-    let resultImg = score >= 55 ? happyDogImg : sadDogImg;
-    if (resultImg) {
-      image(resultImg, 0, 0, width, height);
+    
+    if (score>=55){
+      image(happyDogImag,0,0,width,height);
+      if (!statsAlreadChangedBuddy){
+        wellbeing_stats.increase();
+        statsAlreadChangedBuddy = true;
+      }
     }
+    else{
+      image(sadDogImg,0,0,width,height);
+      if(!statsAlreadChangedBuddy){
+        life_stats.decrease();
+        statsAlreadChangedBuddy = true;
+      }
+    }
+    displayStats();
+    // let resultImg = score >= 55 ? happyDogImg : sadDogImg;
+    // if (resultImg) {
+    //   image(resultImg, 0, 0, width, height);
+    // }
     return;
   }
   }
