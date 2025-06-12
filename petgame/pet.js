@@ -17,8 +17,8 @@ function preloadDogClickGame() {
   buddyRules = loadImage("assets/buddyrule.jpg");
   patMyDog = loadImage("assets/patmydog.png");
   dogEndImg = loadImage("assets/dogend.jpg");
-  happyDogImg = loadImage("assets/happy_dog.jpg");
-  sadDogImg = loadImage("assets/sad_dog.jpg");
+  happyDogImg = loadImage("assets/buddysuccess 1.jpg");
+  sadDogImg = loadImage("assets/buddyfail 1.jpg");
 }
 
 // 🟡 초기화 함수
