@@ -267,3 +267,15 @@ function mousePressedDoodleGame() {
   }
 }
 
+function resetDoodleGameVariables() {
+  doodlePhase = 0; // 초기 페이즈로 되돌림
+  doodleStarted = false; // 게임 시작 전 상태로 되돌림
+  dGameOver = false; // 게임 오버 상태 해제
+  showFinalScreen = false; // 최종 화면 표시 상태 해제
+  clientImageTimerStarted = false; // 타이머 플래그 초기화
+  endImageTimerStarted = false; // 타이머 플래그 초기화
+  // 필요한 경우 clearDrawing() 또는 resetDoodle()을 호출하여 캔버스를 초기화
+  // clearDrawing(); // 캔버스 초기화
+  // pickRandomKeyword(); // 새로운 키워드 선택 (선택 사항)
+  // doodleTime.reset(); // 타이머 초기화 (선택 사항)
+}
