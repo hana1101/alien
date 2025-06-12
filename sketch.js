@@ -358,6 +358,8 @@ else if (currentScreen === "play") {
     if (dialogue.finishedClicked) {
       currentScreen = "play";
       selectedItem = 'wallet'; 
+      dialogue = null;
+
     }
   }
   
