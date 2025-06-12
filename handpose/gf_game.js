@@ -8,22 +8,39 @@ let handTimer, totalTimer, lookSwitchTimer, caughtTimer, lookTime, firstTenSecon
 let firstTenDecreased = false;
   
   //declare circles
-let circles = [];
-let currentCircle = null;
-let completedCircles = 0;
-let totalRequired = 3;
+// let circles = [];
+// // let currentCircle = null;;
+// let currentCircle = null;
+// let completedCircles = 0;
+// let totalRequired = 3;
 
-  //declare flags
-let gameStarted = false;
-let isLooking = false;
-let isCaught = false;
-let fail = false; //game failed
-let gameEnded = false;
+//   //declare flags
+// let gameStarted = false;
+// let isLooking = false;
+// let isCaught = false;
+// let fail = false; //game failed
+// let gameEnded = false;
   
 //statsAlreadChanged flag
-let statsAlreadyChanged = false;
+// let statsAlreadyChanged = false;
+
+
+let circles;
+let currentCircle;
+let completedCircles;
+let totalRequired;
+
+  //declare flags
+let gameStarted;
+let isLooking;
+let isCaught;
+let fail; //game failed
+let gameEnded;
+  
+let statsAlreadChanged;
 
 let handPose, video, videoMask;
+// let hands = [];
 let hands = [];
 
 let nextBtnHand;
@@ -32,7 +49,21 @@ let nextBtnHand;
 
 function initializeGirlfriendHand(){
 
+  circles = [];
+  currentCircle = null;;
+  currentCircle = null;
+  completedCircles = 0;
+  totalRequired = 3;
+
+  //declare flags
+  gameStarted = false;
+  isLooking = false;
+  isCaught = false;
+  fail = false; //game failed
+  gameEnded = false;
+  statsAlreadyChanged = false;
   
+
   video = createCapture(VIDEO);
   video.size(width, height);
   video.hide();
@@ -46,7 +77,7 @@ function initializeGirlfriendHand(){
 
     //start button
   gameStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start", gameStartPressed)
-  nextBtnHand = new Button(width-90, height / 2 + 50+195, 130,55, "Next", nextHandGame);
+  nextBtnHand = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextGame);
   
   }
 
@@ -307,14 +338,9 @@ function displayGameResults() {
   displayStats();
   nextBtnHand.display();
   if (nextBtnHand.isClicked()){
-    nextHandGame();
+    nextGame();
   }
 
   console.log("calculate page");
 
   }
-
-  function nextHandGame(){
-    pointsMinimumMet();
-  }
-

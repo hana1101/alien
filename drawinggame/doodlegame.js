@@ -67,11 +67,29 @@ function playDoodleGame() {
     return;
   }
 
-  if (dGameOver && showFinalScreen) {
-    doodleGameResults();
-    return;
+  // doodlePhase가 2일 때는 다른 게임 요소들이 그려지지 않도록 확실히 처리
+  if (doodlePhase === 2) {
+    console.log("🎯 phase 2: 클라이언트 반응 이미지 표시 단계");
+
+    // 화면을 확실히 덮는 배경을 그려줍니다.
+    // 이전 디버깅용 보라색 사각형을 제거하고, 클라이언트 이미지만 그립니다.
+    background(0); // 임시로 검은색 배경을 그려 이미지가 제대로 올라오는지 확인
+    let clientImg = isCorrect ? happyClientImg : unhappyClientImg;
+
+    if (clientImg && clientImg.width > 0 && clientImg.height > 0) { // 이미지의 유효성 한 번 더 체크
+      image(clientImg, 0, 0, width, height);
+      console.log("✅ 이미지 그리기 완료");
+    } else {
+      fill("red");
+      textAlign(CENTER, CENTER);
+      textSize(32);
+      text("❌ 클라이언트 이미지 로드 또는 유효성 문제", width / 2, height / 2);
+      console.error("클라이언트 이미지가 로드되지 않았거나 유효하지 않습니다:", clientImg);
+    }
+    return; // doodlePhase 2에서는 이 화면만 표시하고 다른 로직은 실행하지 않습니다.
   }
 
+  // doodlePhase가 2가 아닐 때만 아래 코드 실행
   if (workspaceImg) {
     image(workspaceImg, 0, 0, width, height);
     clearBtn.display();
@@ -83,9 +101,9 @@ function playDoodleGame() {
   doodleTime.start();
   doodleTime.update();
 
-  if (doodleTime.isComplete() && !isCorrect) {
+  if (doodleTime.isComplete() && !isCorrect && !dGameOver) { // dGameOver 플래그 추가
     checkDResult();
-    setTimeout(() => showFinalScreen = true, 2000);
+    // setTimeout(() => showFinalScreen = true, 2000); // 이 부분도 doodlePhase 로직으로 대체
   }
 
   image(drawingBoard, drawAreaX, drawAreaY, drawAreaW, drawAreaH);
@@ -100,52 +118,49 @@ function playDoodleGame() {
   doodleTime.display(50, 200, '남은 시간');
 
   if (dGameOver) {
-  // phase 0: 텍스트 정답 표시
-  if (doodlePhase === 0) {
-    textAlign(CENTER, CENTER);
-    textSize(40);
-    textStyle(BOLD);
-    fill(isCorrect ? "green" : "red");
-    noStroke();
-    text(dGameResult, width / 2, height / 2);
+    // phase 0: 텍스트 정답 표시
+    if (doodlePhase === 0) {
+      textAlign(CENTER, CENTER);
+      textSize(40);
+      textStyle(BOLD);
+      fill(isCorrect ? "green" : "red");
+      noStroke();
+      text(dGameResult, width / 2, height / 2);
 
-    if (!endImageTimerStarted) {
-      endImageTimerStarted = true;
-      setTimeout(() => {
-        doodlePhase = 1;
-        console.log("▶️ phase → 1");
-      }, 1500);
+      if (!endImageTimerStarted) {
+        endImageTimerStarted = true;
+        setTimeout(() => {
+          doodlePhase = 1;
+          console.log("▶️ phase → 1 (텍스트 -> doodleEnd)");
+          // endImageTimerStarted = false; // 여기서 플래그 초기화는 setTimeout이 한 번만 실행되도록 하는 목적이므로 유지
+        }, 1500);
+      }
+      // return; // 이 return 문은 phase 0일 때만 텍스트를 그리고, 다음 프레임에 바로 phase 1으로 넘어가는 걸 방해할 수 있습니다.
+                 // setTimeout으로 비동기적으로 phase를 바꾸므로, 여기서는 return을 제거하는 것이 좋습니다.
+                 // (단, 텍스트 표시 중 다른 그리기 로직이 실행되지 않도록 주의해야 합니다.)
     }
-    return;
+
+    // phase 1: careerend 이미지
+    if (doodlePhase === 1) {
+      image(doodleEnd, 0, 0, width, height);
+
+      if (!clientImageTimerStarted) {
+        clientImageTimerStarted = true;
+        setTimeout(() => {
+          doodlePhase = 2;
+          console.log("▶️ phase → 2 (doodleEnd -> 클라이언트 반응)");
+          // clientImageTimerStarted = false; // 여기서 플래그 초기화는 setTimeout이 한 번만 실행되도록 하는 목적이므로 유지
+        }, 1000);
+      }
+      // return; // 위와 동일한 이유로 여기도 return 제거를 고려
+    }
   }
 
-  // phase 1: careerend 이미지
-  if (doodlePhase === 1) {
-    image(doodleEnd, 0, 0, width, height);
-
-    if (!clientImageTimerStarted) {
-      clientImageTimerStarted = true;
-      setTimeout(() => {
-        doodlePhase = 2;
-        console.log("▶️ phase → 2");
-      }, 1000);
-    }
-    return;
-  }
-
-  // phase 2: happy/unhappy 클라이언트
-  if (doodlePhase === 2) {
-    let clientImg = isCorrect ? happyClientImg : unhappyClientImg;
-    if (clientImg) {
-      image(clientImg, 0, 0, width, height);
-    }
-    return;
-  }
-}
-  if (mouseIsPressed &&
-      mouseX > drawAreaX && mouseX < drawAreaX + drawAreaW &&
-      mouseY > drawAreaY && mouseY < drawAreaY + drawAreaH &&
-      !dGameOver) {
+  // 마우스 드로잉 로직은 doodlePhase가 2가 아닐 때만 실행
+  if (doodlePhase !== 2 && mouseIsPressed &&
+    mouseX > drawAreaX && mouseX < drawAreaX + drawAreaW &&
+    mouseY > drawAreaY && mouseY < drawAreaY + drawAreaH &&
+    !dGameOver) {
     drawingCanvas.strokeWeight(16);
     drawingCanvas.stroke(0);
     drawingCanvas.line(mouseX - drawAreaX, mouseY - drawAreaY, pmouseX - drawAreaX, pmouseY - drawAreaY);

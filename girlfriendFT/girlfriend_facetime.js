@@ -2,17 +2,25 @@ let dialogueFaceTime;
 let choice1;
 let choice2;
 let choice3;
-let success = false;
-let facetimeOver = false;
-let facetimeLife = false;
+let success;
+let facetimeOver;
+let facetimeLife;
 
-let faceTimeStart = false;
-let choices_show = false;
+let faceTimeStart;
+let choices_show;
 
 //button
 let ftStartBtn;
+let nextBtnFT;
+
 
 function initializeFaceTime() {
+  success = false;
+  facetimeOver = false;
+  facetimeLife = false;
+  faceTimeStart = false;
+  
+  
   choice1 = new Button(500,340,300,50,"아직 시간 남았는데 이따가 결정할까?",choice1Action);
   choice2 = new Button(500,400,300,50,"스테이크 먹으로 갈까?",choice2Action);
   choice3 = new Button(500,460,300,50,"해산물 리조또 어때?",choice3Action);
@@ -27,6 +35,7 @@ function initializeFaceTime() {
   
   //start button
   ftStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start")
+  nextBtnFT = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextGame);
   
 }
 
@@ -113,6 +122,10 @@ function facetimeEnd(){
     fill('gray');
     text('실패! 여자친구가 싫어해요', width / 2, height / 2);
     pop();
+  }
+  nextBtnFT.display();
+  if (nextBtnFT.isClicked()){
+     nextGame();
   }
 }
 
