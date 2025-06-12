@@ -425,7 +425,7 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   gameStartBtn.action();
   }
 
-if (currentScreen === "girlfriendFT" && dialogueFaceTime && !dialogueFaceTime.finished) {
+if (currentScreen === "girlfriendFT" && faceTimeStart && dialogueFaceTime && !dialogueFaceTime.finished) {
   dialogueFaceTime.handleClick();
 }
 }

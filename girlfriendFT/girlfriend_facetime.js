@@ -32,6 +32,7 @@ function initializeFaceTime() {
   ];
   
   dialogueFaceTime = new DialogueBox(460, 150, 380, 180, linesGf);
+  dialogueFaceTime.currentLine = 0;
   
   //start button
   ftStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start")
