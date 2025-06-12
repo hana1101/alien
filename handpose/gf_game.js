@@ -46,7 +46,7 @@ function initializeGirlfriendHand(){
 
     //start button
   gameStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start", gameStartPressed)
-  nextBtnHand = new Button(width-90, height / 2 + 50+195, 130,55, "Next", nextHandGame);
+  nextBtnHand = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextHandGame);
   
   }
 
@@ -316,5 +316,9 @@ function displayGameResults() {
 
   function nextHandGame(){
     pointsMinimumMet();
+    if (!endGame){
+      selectedItem=null;
+      currentScreen = "play";
+    }
   }
 
