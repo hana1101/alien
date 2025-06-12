@@ -130,7 +130,7 @@ function facetimeEnd(){
 }
 
 function ftRules(){
-   image(callgameruleImg, 0, 0, width, height); // ← 이미지 배경 추가
+   image(callgamerule, 0, 0, width, height); // ← 이미지 배경 추가
   ftStartBtn.display();
   if(ftStartBtn.isClicked()){
     faceTimeStart = true;
