@@ -209,7 +209,7 @@ switch(action) {
     break;
   case "readDiary":
     console.log("Reading diary...");
-    currentScreen='wellbeing'
+    currentScreen='readDiary'
     // Add diary reading logic here
     break;
   case "dogpet":

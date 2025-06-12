@@ -26,12 +26,11 @@ function drawPlayScreen() {
       diaryItem.display();
       diaryItem.drawLabel(20, 0);
 
-      chooseitem = new pixelbutton(
+      chooseitem = new Button(
         width / 2 - 150,
         100,
         300,
         80,
-        19,
         "Choose your item"
       );
       chooseitem.display();
