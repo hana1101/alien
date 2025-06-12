@@ -23,7 +23,7 @@ function displayStats(){
 }
 
 function pointsMinimumMet(){
-  
+  total_stats = 
 
 
 }

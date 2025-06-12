@@ -27,6 +27,7 @@ let life_stats;
 
 let minimumMet = false;
 let countGamePlayed = false;
+let total_stats = 0;
 
 function preload() {
   for (let name of assetname) {
