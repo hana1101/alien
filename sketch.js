@@ -378,7 +378,10 @@ else if (currentScreen === "play") {
       resetDoodleGameVariables();
       // 다른 게임의 초기화 플래그도 false로 설정하여, 다음 진입 시 해당 게임이 초기화되도록 함
       dogGame_initialized = false; // Dog Game 초기화 플래그 리셋
-    } else {
+    } else if (countDoodle === 2) {
+      doodlePhase === 2;
+
+    }else {
       mousePressedDoodleGame();
       if (clearBtn && clearBtn.isHovered()) {
         clearBtn.action();
