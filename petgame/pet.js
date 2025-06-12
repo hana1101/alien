@@ -23,6 +23,9 @@ function preloadDogClickGame() {
 
 // 🟡 초기화 함수
 function initDogClickGame() {
+    if (interval) { // 기존 interval이 있다면 먼저 클리어
+    clearInterval(interval);
+  }
   buddyStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start");
   circles_pet = [];
   haloEffects = [];
@@ -149,6 +152,28 @@ function spawnCircle() {
   let isPenalty = (x >= 620 && x <= 760 && y >= 480 && y <= 540);
   circles_pet.push(new DogCircle(x, y, isPenalty));
   totalSpawned++;
+}
+
+function resetDogGameVariables() {
+  dogPhase = 0; // 초기 페이즈로 되돌림
+  dogEndTimerStarted = false; // 타이머 플래그 초기화
+  dogClientTimerStarted = false; // 타이머 플래그 초기화
+  circles_pet = []; // 원 배열 초기화
+  haloEffects = []; // 효과 배열 초기화
+  floatingTexts = []; // 텍스트 배열 초기화
+  score = 0; // 점수 초기화
+  totalSpawned = 0; // 생성된 원 개수 초기화
+  penaltyCount = 0; // 페널티 카운트 초기화
+  dogGameOver = false; // 게임 오버 상태 해제
+  buddyStart = false; // 버디 시작 플래그 초기화
+
+  // 기존 setInterval을 다시 시작하는 것이 중요합니다.
+  // 이전에 spawnCircle()에서 clearInterval(interval)을 호출했으므로,
+  // 게임을 다시 시작하려면 새로운 interval을 설정해야 합니다.
+  if (interval) { // 기존 interval이 있다면 일단 클리어
+    clearInterval(interval);
+  }
+  interval = setInterval(spawnCircle, 1000); // 60 bpm으로 다시 시작
 }
 
 class DogCircle {
