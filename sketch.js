@@ -24,7 +24,7 @@ let career_stats;
 let wellbeing_stats;
 let life_stats;
 
-let countGamePlayed = false;
+let countGamePlayed = 0;
 let total_stats = 0;
 let endGame = false;
 let totalSuccess = false;

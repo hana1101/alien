@@ -52,6 +52,8 @@ function playFaceTime() {
   displayStats();
   
   if(facetimeOver){
+    countGamePlayed++;
+    console.log(countGamePlayed);
     facetimeEnd();
     return;
   }
