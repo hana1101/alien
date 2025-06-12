@@ -298,7 +298,19 @@ function resetGame() {
   }
 
 function createNextCircle() {
-  currentCircle = new Circle();
+  let newCircle;
+  let maxAttempts = 100;
+  let attempt = 0;
+
+  do {
+    newCircle = new Circle();
+    attempt++;
+  } while (
+    isOverlappingFaceArea(newCircle.x, newCircle.y, newCircle.radius) &&
+    attempt < maxAttempts
+  );
+
+  currentCircle = newCircle;
   circles.push(currentCircle);
   handTimer.reset();
 }
@@ -346,3 +358,17 @@ function displayGameResults() {
   console.log("calculate page");
 
   }
+
+function isOverlappingFaceArea(x, y, radius) {
+  let faceLeft = 220;
+  let faceRight = 220 + 250;
+  let faceTop = 220;
+  let faceBottom = 220 + 500;
+
+  let circleLeft = x - radius;
+  let circleRight = x + radius;
+  let circleTop = y - radius;
+  let circleBottom = y + radius;
+
+  return !(circleRight < faceLeft || circleLeft > faceRight || circleBottom < faceTop || circleTop > faceBottom);
+}
