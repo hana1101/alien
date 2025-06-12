@@ -1,4 +1,3 @@
-
 let mgr;
 let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1", "zib2","zib3","zib4","zib5","zib6","zib7","zib8","zib9","zib10","zib11","zib12","zib13","zib14","diary"];
 let startTime;
@@ -162,8 +161,10 @@ function draw() {
 
   } else if (currentScreen === "play") {
     drawPlayScreen();
-  } else if (currentScreen === "work") {
-    drawWorkscreen();
+  // } else if (currentScreen === "work") {
+  //   drawWorkscreen();
+  }else if (currentScreen ==="wellbeing") {
+    drawWellbeingscreen();
   }
   // else if (currentScreen === "drawing") {
   //   drawingScreen();
@@ -188,14 +189,14 @@ function draw() {
       playDoodleGame();
   } else if (currentScreen === "dogGame"){
       playDogClickGame();
-
-  } else if (currentScreen ==="lifeOver"){
+  }  else if (currentScreen ==="lifeOver"){
       lifeOverPage();
   }
     else if (currentScreen ==="gameSuccess"){
       calculatePointsPage();
   }
 }
+
 
 
 function mousePressed() {
@@ -349,6 +350,7 @@ else if (currentScreen === "play") {
       dialogue = null;
     }
   }
+  
 
  else if (currentScreen === "doodleGame") {
    mousePressedDoodleGame();
@@ -366,7 +368,7 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   }
 
 // if (nextBtnHand && nextBtnHand.isHovered()){
-//    nextHandGame();
+
 // }
 
 if (currentScreen === "girlfriendFT" && dialogueFaceTime && !dialogueFaceTime.finished) {
