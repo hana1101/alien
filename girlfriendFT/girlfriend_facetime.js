@@ -12,6 +12,7 @@ let choices_show;
 //button
 let ftStartBtn;
 let nextBtnFT;
+let counterFT = false;
 
 
 function initializeFaceTime() {
@@ -52,7 +53,6 @@ function playFaceTime() {
   displayStats();
   
   if(facetimeOver){
-    countGamePlayed++;
     console.log(countGamePlayed);
     facetimeEnd();
     return;
@@ -84,12 +84,15 @@ function playFaceTime() {
 function choice1Action() {
   facetimeOver = true;
   relationship_stats.decrease();
+  countGamePlayed++;
+  
 }
 
 function choice2Action() {
   facetimeOver = true;
   relationship_stats.increase();
   success = true;
+  countGamePlayed++;
   
 }
 
@@ -97,6 +100,7 @@ function choice3Action() {
   facetimeOver = true;
   life_stats.decrease();
   facetimeLife = true;
+  countGamePlayed++;
   
 }
 
