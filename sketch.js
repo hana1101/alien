@@ -360,6 +360,10 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   gameStartBtn.action();
   }
 
+if (nextBtnHand && nextBtnHand.isHovered()){
+   //
+}
+
 if (currentScreen === "girlfriendFT" && dialogueFaceTime && !dialogueFaceTime.finished) {
   dialogueFaceTime.handleClick();
 }
