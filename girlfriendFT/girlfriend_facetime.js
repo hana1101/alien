@@ -12,7 +12,6 @@ let choices_show;
 //button
 let ftStartBtn;
 let nextBtnFT;
-let counterFT = false;
 
 
 function initializeFaceTime() {
