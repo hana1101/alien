@@ -11,6 +11,7 @@ let clearBtn, resetBtn
 let startBtnDoodle;
 let drawingCanvas, backgroundCanvas, doodleClassifier;
 let workspaceImg, doodleRules, doodleEnd, drawingBoard;
+let happyClientImg, unhappyClientImg;
 
 let resultLabel = "";
 let resultConfidence = 0;
@@ -98,48 +99,49 @@ function playDoodleGame() {
   text(`Draw: ${targetLabel}`, 50, 160);
   doodleTime.display(50, 200, '남은 시간');
 
-if (dGameOver&& !showFinalScreen) {
-  // 단계 1: 정답/오답 텍스트 표시
+  if (dGameOver) {
+  // phase 0: 텍스트 정답 표시
   if (doodlePhase === 0) {
     textAlign(CENTER, CENTER);
-    textSize(48);
+    textSize(40);
     textStyle(BOLD);
-    fill(dGameResult.includes("정답") ? "green" : "red");
+    fill(isCorrect ? "green" : "red");
     noStroke();
     text(dGameResult, width / 2, height / 2);
 
     if (!endImageTimerStarted) {
       endImageTimerStarted = true;
       setTimeout(() => {
-        doodlePhase = 1; // doodleEnd로 전환
-      }, 1500); // 1.5초 후 doodleEnd 이미지로 넘어감
+        doodlePhase = 1;
+        console.log("▶️ phase → 1");
+      }, 1500);
     }
     return;
   }
 
-  // 단계 2: doodleEnd 이미지 표시
+  // phase 1: careerend 이미지
   if (doodlePhase === 1) {
     image(doodleEnd, 0, 0, width, height);
 
     if (!clientImageTimerStarted) {
       clientImageTimerStarted = true;
       setTimeout(() => {
-        doodlePhase = 2; // happy/unhappy 클라이언트 이미지로 전환
-      }, 1000); // 1초 후 happy/unhappy 이미지
+        doodlePhase = 2;
+        console.log("▶️ phase → 2");
+      }, 1000);
     }
     return;
   }
 
-  // 단계 3: happy/unhappy 클라이언트 이미지 표시 (풀 사이즈)
+  // phase 2: happy/unhappy 클라이언트
   if (doodlePhase === 2) {
-    let img = isCorrect ? happyClientImg : unhappyClientImg;
-    if (img) {
-      image(img, 0, 0, width, height); // 전체 화면 출력
+    let clientImg = isCorrect ? happyClientImg : unhappyClientImg;
+    if (clientImg) {
+      image(clientImg, 0, 0, width, height);
     }
     return;
   }
 }
-
   if (mouseIsPressed &&
       mouseX > drawAreaX && mouseX < drawAreaX + drawAreaW &&
       mouseY > drawAreaY && mouseY < drawAreaY + drawAreaH &&
@@ -176,37 +178,45 @@ function modelReady() {
 }
 
 function classifyCanvas() {
-  if (!dGameOver) {
+if (doodleStarted && !dGameOver) {
     backgroundCanvas.background(255);
     backgroundCanvas.image(drawingCanvas, 0, 0);
+    backgroundCanvas.loadPixels();
+
     let resizedCanvas = backgroundCanvas.get();
     resizedCanvas.resize(400, 280);
+
     doodleClassifier.classify(resizedCanvas.canvas, gotDResults);
   }
+
+  // 다음 분류 예약 (항상 실행)
+  setTimeout(classifyCanvas, 500);
 }
 
-function gotDResults(error, res) {
-  if (error) {
-    console.error(error);
+function gotDResults(res) {
+
+  if (!res || res.length === 0) {
+    console.warn("❌ 분류 결과 없음");
     return;
   }
 
-  if (!res || res.length === 0) {
-    console.warn("분류 결과 없음!");
-    return;
-  }
+  // ✅ 여기까지 오면 정상적인 결과
+  console.log("✅ 분류 결과 라벨들:", res.map(r => r.label));
+
   results = res;
   resultLabel = res[0].label;
   resultConfidence = nf(100 * res[0].confidence, 2, 1);
 
-  if (!dGameOver && results.slice(0, 5).some(r => r.label === targetLabel)) {
-    dGameResult = "정답입니다!";
-    isCorrect = true;
+  // ✅ 타이머가 끝난 뒤 정답 판정
+  if (!dGameOver && doodleTime.isComplete()) {
+    const matched = results.slice(0, 3).some(r => r.label === targetLabel);
+    isCorrect = matched;
+    dGameResult = matched
+      ? "정답입니다!"
+      : `Wrong.\nThis looks like a "${results[0].label}"`;
     dGameOver = true;
-    setTimeout(() => showFinalScreen = true, 2000);
+    showFinalScreen = true;
   }
-
-  setTimeout(classifyCanvas, 500);
 }
 
 function checkDResult() {
@@ -217,7 +227,7 @@ function checkDResult() {
     return;
   }
   isCorrect = results.slice(0, 3).some(r => r.label === targetLabel);
-  dGameResult = isCorrect ? "정답입니다!" : `Wrong. This looks like a \"${results[0].label}\"`;
+  dGameResult = isCorrect ? "정답입니다!" : `Wrong.\nThis looks like a \"${results[0].label}\"`;
   dGameOver = true;
 }
 
@@ -241,3 +251,4 @@ function mousePressedDoodleGame() {
     startBtnDoodle.action();
   }
 }
+
