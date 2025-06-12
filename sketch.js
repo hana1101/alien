@@ -368,7 +368,7 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
   }
 
 // if (nextBtnHand && nextBtnHand.isHovered()){
-
+//    nextHandGame();
 // }
 
 if (currentScreen === "girlfriendFT" && dialogueFaceTime && !dialogueFaceTime.finished) {
@@ -391,6 +391,15 @@ function keyPressed() {
     //   currentScreen = "start";
     //   selectedItem = null;
     // }
+  }
+}
+
+
+function nextGame(){
+  pointsMinimumMet();
+  if (!endGame){
+    selectedItem=null;
+    currentScreen = "play";
   }
 }
 
