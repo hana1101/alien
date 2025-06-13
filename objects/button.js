@@ -212,6 +212,10 @@ switch(action) {
     currentScreen='readDiary'
     // Add diary reading logic here
     break;
+  case "replayGame":
+    console.log('replay game');
+    currentScreen='start';
+    selectedItem=null;
   case "dogpet":
     console.log("Playing with Buddy...");
     currentScreen="dogGame"
