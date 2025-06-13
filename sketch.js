@@ -364,7 +364,8 @@ else if (currentScreen === "startscene/zib14") {
   currentScreen = "play";
   console.log("play");
 }
-else if (currentScreen === "play") {
+
+ else if (currentScreen === "play") {
   if (!selectedItem) {
     if (walletItem.isHovered()) selectedItem = "wallet";
     else if (phoneItem.isHovered()) selectedItem = "phone";
@@ -374,7 +375,7 @@ else if (currentScreen === "play") {
   else if (currentScreen === "work" && dialogue) {
     dialogue.handleClick();
   
-    if (dialogue.finishedClicked) {
+    if (dialogue.finishedClicked && !isDialogueBlocking) {
       currentScreen = "play";
       selectedItem = 'wallet'; 
       dialogue = null;
@@ -390,6 +391,10 @@ else if (currentScreen === "play") {
       selectedItem = 'diary';
       dialogue1 = null;
     }
+  } else if (currentScreen==='checkMsg') {
+    currentScreen='play';
+    selectedItem='phone';
+    
   }
 
  else if (currentScreen === "doodleGame") {
@@ -494,12 +499,20 @@ function keyPressed() {
      {
       currentScreen = "play";
     } 
+    
     // else {
     //   currentScreen = "start";
     //   selectedItem = null;
     // }
   }
+  if (key === 's' || key === 'S') {
+    if (currentScreen.startsWith("startscene/zib")) {
+      currentScreen = "startscene/zib11";
+      console.log("Skipped to startscene/zib11");
+    }
+  }
 }
+
 
 
 function nextGame(){

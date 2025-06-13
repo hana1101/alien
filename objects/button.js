@@ -216,6 +216,7 @@ switch(action) {
     console.log('replay game');
     currentScreen='start';
     selectedItem=null;
+    
   case "dogpet":
     console.log("Playing with Buddy...");
     currentScreen="dogGame"

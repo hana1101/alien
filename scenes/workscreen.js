@@ -15,6 +15,7 @@
 
 let glowAlpha = 0;
 let glowDirection = 2;
+let isDialogueBlocking = false;
 
 function drawWorkscreen() {
   if (!dialogue) {
@@ -24,6 +25,8 @@ function drawWorkscreen() {
       "ZIB: 그럼 이 친구 직업이..",
     ];
     dialogue = new DialogueBox(10, 500, 980, 120, lines);
+    isDialogueBlocking= true; // 🟢 BLOCK input while dialogue is active
+
   }
 
   image(assets.workplace, 0, 0, width, height);
