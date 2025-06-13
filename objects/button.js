@@ -39,7 +39,7 @@ display() {
   }
   textAlign(CENTER, CENTER);
   textSize(15);
-  textFont('Press Start 2P');
+  textFont(neoFont);
   text(this.label, this.x + this.w / 2, this.y + this.h / 2 + 2);
 }
 

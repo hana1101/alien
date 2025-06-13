@@ -95,7 +95,7 @@ function playDogClickGame() {
       image(happyDogImg,0,0,width,height);
       textAlign(CENTER); //수정
       textSize(32);
-      text('성공! 강아지가 경계를 풀었어요!', width/2, heigh/2);//수정
+      text('성공! 강아지가 경계를 풀었어요!', width/2, height/2);//수정
       if (!statsAlreadChangedBuddy){
         wellbeing_stats.increase();
         statsAlreadChangedBuddy = true;
