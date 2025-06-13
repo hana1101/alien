@@ -34,8 +34,11 @@ function drawPlayScreen() {
         "Choose your item"
       );
       chooseitem.display();
+      displayStats();
     } else {
       drawSelectedScreen(selectedItem);
+      displayStats();
+
     }
   }
 }
