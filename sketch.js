@@ -380,6 +380,7 @@ else if (currentScreen === "startscene/zib14") {
     if (walletItem.isHovered()) selectedItem = "wallet";
     else if (phoneItem.isHovered()) selectedItem = "phone";
     else if (diaryItem.isHovered()) selectedItem = "diary";
+
 }
  }
   

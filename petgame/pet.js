@@ -43,7 +43,7 @@ function initDogClickGame() {
   buddyStart = false;
   statsAlreadChangedBuddy = false;
 
-  interval = setInterval(spawnCircle, 1000); // 60 bpm
+  // interval = setInterval(spawnCircle, 1000); // 60 bpm
   
 }
 
@@ -54,8 +54,6 @@ function playDogClickGame() {
     return;
   }
 
-  image(patMyDog, 0, 0, width, height);
-  displayStats();
 
   if (dogGameOver) {
     if (!countFlagBuddy){
@@ -122,28 +120,34 @@ function playDogClickGame() {
   }
   }
 
-  for (let i = circles_pet.length - 1; i >= 0; i--) {
-    circles_pet[i].update();
-    circles_pet[i].show();
-    if (circles_pet[i].done()) circles_pet.splice(i, 1);
-  }
+  else if (buddyStart){
+    console.log('circles started...');
+    image(patMyDog, 0, 0, width, height);
+    displayStats();
+    
+    for (let i = circles_pet.length - 1; i >= 0; i--) {
+      circles_pet[i].update();
+      circles_pet[i].show();
+      if (circles_pet[i].done()) circles_pet.splice(i, 1);
+    }
 
-  for (let i = floatingTexts.length - 1; i >= 0; i--) {
-    floatingTexts[i].update();
-    floatingTexts[i].show();
-    if (floatingTexts[i].finished()) floatingTexts.splice(i, 1);
-  }
+    for (let i = floatingTexts.length - 1; i >= 0; i--) {
+      floatingTexts[i].update();
+      floatingTexts[i].show();
+      if (floatingTexts[i].finished()) floatingTexts.splice(i, 1);
+    }
 
-  for (let i = haloEffects.length - 1; i >= 0; i--) {
-    haloEffects[i].update();
-    haloEffects[i].show();
-    if (haloEffects[i].finished()) haloEffects.splice(i, 1);
-  }
+    for (let i = haloEffects.length - 1; i >= 0; i--) {
+      haloEffects[i].update();
+      haloEffects[i].show();
+      if (haloEffects[i].finished()) haloEffects.splice(i, 1);
+    }
 
-  fill(255);
-  textSize(24);
-  noStroke();
-  text("Score: " + score, width/2, height-30);
+    fill(255);
+    textSize(24);
+    noStroke();
+    text("Score: " + score, width/2, height-30);
+  }
 }
 
 // 🟡 클릭 처리
@@ -209,7 +213,7 @@ function resetDogGameVariables() {
   if (interval) { // 기존 interval이 있다면 일단 클리어
     clearInterval(interval);
   }
-  interval = setInterval(spawnCircle, 1000); // 60 bpm으로 다시 시작
+  // interval = setInterval(spawnCircle, 1000); // 60 bpm으로 다시 시작
 }
 
 class DogCircle {
@@ -320,5 +324,6 @@ function buddyRulesShow(){
   buddyStartBtn.display();
   if(buddyStartBtn.isClicked()){
     buddyStart = true;
+    interval = setInterval(spawnCircle, 1000);
   }
 }
