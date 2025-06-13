@@ -17,6 +17,7 @@ let spaceblue,
 let gfGameStarted;
 let faceTimeStarted;
 let dialoguezib = null;
+let neoFont;
 
 
 //stats declare
@@ -53,6 +54,7 @@ function preload() {
   fail_gfbg = loadImage("assets/relationend.jpg");
   superPowerImg = loadImage("assets/sup.png");
 
+  neoFont = loadFont("assets/neodgm.ttf");
 
   zib1 = loadImage("assets/zib1.jpg");
   zib2 = loadImage("assets/zib2.jpg");
@@ -90,7 +92,8 @@ function preload() {
 }
 
 function setup() {
-  textFont("Press Start 2P");
+  textFont("neoFont");
+  // textFont("Press Start 2P");
   createCanvas(1000, 625);
   btn.x = width / 2 - btn.w / 2;
   btn.y = height / 2 + 50;
