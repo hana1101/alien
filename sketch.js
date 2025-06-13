@@ -37,6 +37,8 @@ let superPowerImg;
 
 let isDialogueBlocking = false;
 
+let diaryTimer;
+
 function preload() {
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
@@ -89,6 +91,8 @@ function preload() {
   // zib12 = loadImage("assets/zib12.jpg");
   preloadDoodleAssets();
   preloadDogClickGame();
+
+  diaryTimer = new Timer(1);
 }
 
 function setup() {
@@ -377,9 +381,17 @@ else if (currentScreen === "startscene/zib14") {
   if (!selectedItem) {
     if (walletItem.isHovered()) selectedItem = "wallet";
     else if (phoneItem.isHovered()) selectedItem = "phone";
-    else if (diaryItem.isHovered()) selectedItem = "diary";
+    else if (diaryItem.isHovered()) {
+      // diaryTimer.start();
+      // diaryTimer.update();
+      // if (diaryTimer.completed){
+      selectedItem = "diary";
+      //}
+      
   
-  }}
+  }
+}
+ }
   
   else if (currentScreen === "work" && dialogue) {
     dialogue.handleClick();
