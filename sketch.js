@@ -31,6 +31,7 @@ let totalSuccess = false;
 let dogGame_initialized = false;
 
 let happyEnding1, happyEnding2, happyEnding3, badEnding1, badEnding2, badEnding3;
+let superPowerImg;
 
 function preload() {
   for (let name of assetname) {
@@ -47,6 +48,9 @@ function preload() {
   hand_gameRules = loadImage("assets/powerrule!.jpg");
   success_gfbg = loadImage("assets/laughend.jpg");
   fail_gfbg = loadImage("assets/relationend.jpg");
+  superPowerImg = loadImage("assets/sup.png");
+
+
   zib1 = loadImage("assets/zib1.jpg");
   zib2 = loadImage("assets/zib2.jpg");
   zib3 = loadImage("assets/zib3.jpg");
@@ -76,6 +80,7 @@ function preload() {
   callgamerule= loadImage("assets/callgamerule.jpg");
   ftfail = loadImage("assets/ftfail.jpg");
   ftsuccess = loadImage("assets/ftsuccess.jpg");
+
   // zib12 = loadImage("assets/zib12.jpg");
   preloadDoodleAssets();
   preloadDogClickGame();
