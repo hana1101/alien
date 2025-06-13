@@ -22,6 +22,13 @@ function drawingScreen() {
     imageMode(CENTER);
     image(assets.phone, width/2,height/2,300,600)
     pop()
+    textAlign(RIGHT, BOTTOM);
+    textFont("Press Start 2P");
+    textSize(14);
+    fill(0, 255, 153, alpha);
+    text(
+      "CLICK HERE TO CONTINUE", width-100, height-100
+    );
   }
   
   

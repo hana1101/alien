@@ -1,3 +1,4 @@
+
 class DialogueBox {
   constructor(x, y, w, h, lines) {
     this.x = x;
@@ -70,6 +71,7 @@ class DialogueBox {
   } else {
     this.finished = true;
     this.finishedClicked = true;
+    isDialogueBlocking=false
   }
 }
 
