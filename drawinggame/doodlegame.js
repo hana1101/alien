@@ -7,7 +7,7 @@ let doodlePhase = 0;
 let clientImageTimerStarted = false;
 let endImageTimerStarted = false;
 
-let clearBtn, resetBtn
+let clearBtn, resetBtn, submitBtn;
 let startBtnDoodle;
 let drawingCanvas, backgroundCanvas, doodleClassifier;
 let workspaceImg, doodleRules, doodleEnd, drawingBoard;
@@ -61,7 +61,8 @@ function initDoodleGame() {
   nextBtnDoodle = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextGame);
 
   clearBtn = new Button(620, height / 2 + 245, 100, 40, "CLEAR", clearDrawing);
-  resetBtn = new Button(780, height / 2 + 245, 100, 40, "RESET", resetDoodle);
+  resetBtn = new Button(780, height / 2 + 245, 100, 40, "RESTART", resetDoodle);
+  submitBtn = new Button(400, height / 2 + 230, 130, 55, "SUBMIT", submitDoodleDrawing);
 
   doodleClassifier = ml5.imageClassifier("DoodleNet", modelReady);
   pickRandomKeyword();
@@ -111,17 +112,6 @@ function playDoodleGame() {
         statsAlreadyChangedDoodle = true;
       }
     }
-    
-    // if (clientImg && clientImg.width > 0 && clientImg.height > 0) { // 이미지의 유효성 한 번 더 체크
-    //   image(clientImg, 0, 0, width, height);
-    //   console.log("✅ 이미지 그리기 완료");
-    // } else {
-    //   fill("red");
-    //   textAlign(CENTER, CENTER);
-    //   textSize(32);
-    //   text("❌ 클라이언트 이미지 로드 또는 유효성 문제", width / 2, height / 2);
-    //   console.error("클라이언트 이미지가 로드되지 않았거나 유효하지 않습니다:", clientImg);
-    // }
 
     displayStats();
     nextBtnDoodle.display();
@@ -137,6 +127,9 @@ function playDoodleGame() {
     image(workspaceImg, 0, 0, width, height);
     clearBtn.display();
     resetBtn.display();
+    if (!dGameOver) { // << 게임 오버가 아닐 때만 제출 버튼 표시
+        submitBtn.display(); // << 이 줄 추가
+    }
   }
 
   displayStats();
@@ -155,7 +148,7 @@ function playDoodleGame() {
   fill(255);
   stroke(0);
   strokeWeight(3);
-  textSize(24);
+  textSize(40);
   textAlign(LEFT, BOTTOM);
   text(`Draw: ${targetLabel}`, 50, 160);
   doodleTime.display(50, 200, '남은 시간');
@@ -307,6 +300,16 @@ function doodleGameResults() {
 function mousePressedDoodleGame() {
   if (!doodleStarted && startBtnDoodle && startBtnDoodle.isHovered()) {
     startBtnDoodle.action();
+  } else if (doodleStarted && !dGameOver && submitBtn && submitBtn.isHovered()) { // << 이 else if 블록 추가
+    submitBtn.action();
+  }
+}
+
+function submitDoodleDrawing() {
+  if (doodleStarted && !dGameOver) { // 게임이 시작되었고 아직 끝나지 않았을 때만 작동
+    console.log("Submit button clicked!");
+    doodleTime.forceComplete(); // 시간을 즉시 종료
+    checkDResult(); // 결과를 판정
   }
 }
 
