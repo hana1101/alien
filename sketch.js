@@ -68,9 +68,9 @@ function preload() {
   happyEnding1 = loadImage("assets/happyending1.jpg");
   happyEnding2 = loadImage("assets/happyending2.jpg");
   happyEnding3 = loadImage("assets/happyending3.jpg");
+
   badEnding1 = loadImage("assets/badending1.jpg");
-  badEnding2 = loadImage("assets/badending1.jpg");
-  badEnding3 = loadImage("assets/badending1.jpg");
+  badEnding2 = loadImage("assets/badending2.jpg");
 
   facetimebg = loadImage("assets/facetime.jpg");
   callgamerule= loadImage("assets/callgamerule.jpg");
@@ -219,8 +219,6 @@ function draw() {
     drawBadEnding1();
   } else if (currentScreen === "gameFail2"){
     drawBadEnding2();
-  } else if (currentScreen === "gameFail3"){
-    drawBadEnding3();
   }
 }
 
@@ -467,17 +465,16 @@ if (currentScreen === "gameSuccess1"){
   console.log("gameSuccess1");
   currentScreen = "gameSuccess2";
 }
-if (currentScreen === "gameSuccess2"){
+else if (currentScreen === "gameSuccess2"){
   console.log("gameSuccess2");
-  currentScreen = "gameSuccess";
+  currentScreen = "gameSuccess3";
 }
 if (currentScreen === "gameFail1"){
   console.log("gameFail1");
   currentScreen = "gameFail2";
 }
-if (currentScreen === "gameFail2"){
+else if (currentScreen === "gameFail2"){
   console.log("gameFail2");
-  currentScreen = "gameFail3";
 }
 
 }

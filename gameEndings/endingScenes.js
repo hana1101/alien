@@ -23,6 +23,3 @@ function drawBadEnding1(){
 function drawBadEnding2(){
     image(badEnding2,0,0,width,height);
 }
-function drawBadEnding3(){
-    image(badEnding3,0,0,width,height);
-}
