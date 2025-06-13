@@ -28,7 +28,13 @@ class Timer {
         }
       }
     }
-  
+    
+    forceComplete() { // << 이 메서드 추가
+    this.currentTime = 0;
+    this.running = false;
+    this.completed = true;
+    }
+    
     display(_x, _y, label = "Timer") {
       
       fill(255);
