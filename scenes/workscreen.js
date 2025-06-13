@@ -15,7 +15,7 @@
 
 let glowAlpha = 0;
 let glowDirection = 2;
-let isDialogueActive = false;
+let isDialogueBlocking = false;
 
 function drawWorkscreen() {
   if (!dialogue) {
