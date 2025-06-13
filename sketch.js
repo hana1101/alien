@@ -93,6 +93,7 @@ function preload() {
 
 function setup() {
   textFont(neoFont);
+  textSize(28);
   // textFont("Press Start 2P");
   createCanvas(1000, 625);
   btn.x = width / 2 - btn.w / 2;
