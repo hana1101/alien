@@ -43,6 +43,54 @@ function drawPlayScreen() {
   }
 }
 
+function drawSelectedScreen(selectedItem) {
+  image(assets.room, 0, 0, width, height);
+
+  let scaleFactor = 0.8;
+  
+  // ===== 아이템 중앙 배치 =====
+  let itemX = width / 2;
+  let itemY = height / 2 - 100; // 살짝 위로
+
+  push();
+  translate(itemX, itemY+30);
+
+  scale(scaleFactor);
+  imageMode(CENTER);
+  if (selectedItem === "wallet") drawWallet(-110, -50);
+  else if (selectedItem === "phone") drawPhone(-50, -140);
+  else if (selectedItem === "diary") drawDiary(-80, -150);
+  pop();
+
+  // ===== 버튼 설정 =====
+  let btnW = 300;
+  let btnH = 60;
+  let btnSpacing = 20;
+
+  let buttonConfigs = SettingButtons(selectedItem);
+
+  // 버튼 시작 위치는 아이템 아래 충분한 공간 확보 후 배치
+  let startY = itemY + 180; // 아이템 아래로 충분히 내림
+  let centerX = width / 2;
+
+  let buttons = buttonConfigs.map((config, index) => {
+    let x = centerX - btnW / 2;
+    let y = startY + index * (btnH + btnSpacing);
+    return new Button(x, y, btnW, btnH, config.label, config.action);
+  });
+
+  // Display and handle buttons
+  buttons.forEach(btn => btn.display());
+  buttons.forEach(btn => {
+    if (btn.isClicked()) {
+      ButtonAction(btn.action);
+    }
+  });
+}
+
+
+
+
 let boxInitialized = false;
 
 function drawWorkscreen() {

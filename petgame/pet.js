@@ -91,7 +91,7 @@ function playDogClickGame() {
   }
   if (dogPhase === 2) {
     
-    if (score>=55){
+    if (score>=25){
       image(happyDogImg,0,0,width,height);
       textAlign(CENTER); //수정
       textSize(32);
