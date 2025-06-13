@@ -28,9 +28,10 @@ class DialogueBox {
     // Text
     noStroke();
     fill(cyanblue);
-    textFont("neoFont");
+    textFont(neoFont);
+    textSize(28);
     // textFont("Press Start 2P");
-    textSize(20);
+    textSize(30);
     textAlign(LEFT, TOP);
     let padding = 20;
     text(
