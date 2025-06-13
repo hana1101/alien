@@ -12,6 +12,7 @@ let choices_show;
 //button
 let ftStartBtn;
 let nextBtnFT;
+let waitFT;
 
 
 function initializeFaceTime() {
@@ -37,6 +38,10 @@ function initializeFaceTime() {
   //start button
   ftStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start")
   nextBtnFT = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextGame);
+
+  waitFT = new Timer(1.5);
+
+
   
 }
 
@@ -63,10 +68,15 @@ function playFaceTime() {
   }
   
   if(dialogueFaceTime.finished){
-    choice1.display();
-    choice2.display();
-    choice3.display();
-    choices_show = true;
+    waitFT.start();
+    waitFT.update();
+    if(waitFT.completed){
+      choice1.display();
+      choice2.display();
+      choice3.display();
+      choices_show = true;
+    }
+
   }
   
   if(choice1.isClicked() && choices_show){
