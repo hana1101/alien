@@ -17,6 +17,7 @@ let spaceblue,
 let gfGameStarted;
 let faceTimeStarted;
 let dialoguezib = null;
+let neoFont;
 
 
 //stats declare
@@ -53,6 +54,7 @@ function preload() {
   fail_gfbg = loadImage("assets/relationend.jpg");
   superPowerImg = loadImage("assets/sup.png");
 
+  neoFont = loadFont("assets/neodgm.ttf");
 
   zib1 = loadImage("assets/zib1.jpg");
   zib2 = loadImage("assets/zib2.jpg");
@@ -90,7 +92,9 @@ function preload() {
 }
 
 function setup() {
-  textFont("Press Start 2P");
+  textFont(neoFont);
+  textSize(28);
+  // textFont("Press Start 2P");
   createCanvas(1000, 625);
   btn.x = width / 2 - btn.w / 2;
   btn.y = height / 2 + 50;
@@ -235,12 +239,8 @@ function draw() {
 function mousePressed() {
   //change screen when click
   console.log("mouse pressed at screen:", currentScreen); // Debug line
-  if (isDialogueBlocking) {
-    if (dialogue) dialogue.handleClick();
-    if (dialogue1) dialogue1.handleClick();
-    return; // 🛑 stop all other click actions
-  }
-  
+
+
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
 
@@ -380,6 +380,7 @@ else if (currentScreen === "startscene/zib14") {
     else if (diaryItem.isHovered()) selectedItem = "diary";
   
   }}
+  
   else if (currentScreen === "work" && dialogue) {
     dialogue.handleClick();
   
