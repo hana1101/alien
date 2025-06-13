@@ -235,12 +235,8 @@ function draw() {
 function mousePressed() {
   //change screen when click
   console.log("mouse pressed at screen:", currentScreen); // Debug line
-  if (isDialogueBlocking) {
-    if (dialogue) dialogue.handleClick();
-    if (dialogue1) dialogue1.handleClick();
-    return; // 🛑 stop all other click actions
-  }
-  
+
+
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
 
@@ -380,6 +376,25 @@ else if (currentScreen === "startscene/zib14") {
     else if (diaryItem.isHovered()) selectedItem = "diary";
   
   }}
+if (currentScreen === "play" && selectedItem) {
+  let buttonConfigs = SettingButtons(selectedItem);
+  let btnX = width - 400;
+  let btnW = 300;
+  let btnH = 60;
+  let btnSpacing = 20;
+  let totalButtonsHeight = (buttonConfigs.length * btnH) + ((buttonConfigs.length - 1) * btnSpacing);
+  let startY = (height - totalButtonsHeight) / 2;
+
+  buttonConfigs.forEach((config, index) => {
+    let y = startY + index * (btnH + btnSpacing);
+    let btn = new Button(btnX, y, btnW, btnH, config.label, config.action);
+
+    if (btn.isHovered()) {
+      ButtonAction(config.action);
+    }
+  });
+}
+
   else if (currentScreen === "work" && dialogue) {
     dialogue.handleClick();
   
