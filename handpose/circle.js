@@ -11,7 +11,17 @@ class Circle {
       if (this.completed || handActive) {
         this.drawGlowingRotatingDots();
   
-  
+    //     if (handActive) {
+    //       let remaining = handTimer.getTimeLeft();
+    //       let elapsed = 3 - remaining;
+    //       let growScale = map(elapsed, 0, 3, 0.5, 1.5); // adjust size range
+
+    //       let imgSize = this.radius * 2 * growScale;
+    //       push();
+    //       imageMode(CENTER);
+    //       image(heartImage, this.x, this.y, imgSize, imgSize);
+    //       pop();
+    // }
   
     }else if (isLooking && percentageInside >= 0.85) {
         strokeWeight(15);
