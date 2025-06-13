@@ -28,7 +28,7 @@ class DialogueBox {
     // Text
     noStroke();
     fill(cyanblue);
-    textFont("neoFont");
+    textFont(neoFont);
     // textFont("Press Start 2P");
     textSize(20);
     textAlign(LEFT, TOP);
