@@ -467,6 +467,18 @@ if (currentScreen === "gameSuccess1"){
   console.log("gameSuccess1");
   currentScreen = "gameSuccess2";
 }
+if (currentScreen === "gameSuccess2"){
+  console.log("gameSuccess2");
+  currentScreen = "gameSuccess";
+}
+if (currentScreen === "gameFail1"){
+  console.log("gameFail1");
+  currentScreen = "gameFail2";
+}
+if (currentScreen === "gameFail2"){
+  console.log("gameFail2");
+  currentScreen = "gameFail3";
+}
 
 }
 
