@@ -23,11 +23,13 @@ function drawingScreen() {
     image(assets.phone, width/2,height/2,300,600)
     pop()
     textAlign(RIGHT, BOTTOM);
+    let alpha = 127 + 127 * sin(millis() / 300);
+
     textFont("Press Start 2P");
     textSize(14);
     fill(0, 255, 153, alpha);
     text(
-      "CLICK HERE TO CONTINUE", width-100, height-100
+      "CLICK HERE TO CONTINUE", width-80, height-50
     );
   }
   

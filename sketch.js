@@ -18,6 +18,7 @@ let gfGameStarted;
 let faceTimeStarted;
 let dialoguezib = null;
 
+
 //stats declare
 let relationship_stats;
 let career_stats;
@@ -32,6 +33,8 @@ let dogGame_initialized = false;
 
 let happyEnding1, happyEnding2, happyEnding3, badEnding1, badEnding2, badEnding3;
 let superPowerImg;
+
+let isDialogueBlocking = false;
 
 function preload() {
   for (let name of assetname) {
@@ -232,7 +235,12 @@ function draw() {
 function mousePressed() {
   //change screen when click
   console.log("mouse pressed at screen:", currentScreen); // Debug line
-
+  if (isDialogueBlocking) {
+    if (dialogue) dialogue.handleClick();
+    if (dialogue1) dialogue1.handleClick();
+    return; // 🛑 stop all other click actions
+  }
+  
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
 

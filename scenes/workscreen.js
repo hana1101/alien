@@ -15,7 +15,8 @@
 
 let glowAlpha = 0;
 let glowDirection = 2;
-let isDialogueBlocking = false;
+// let isDialogueBlocking = false;
+let waitButton
 
 function drawWorkscreen() {
   if (!dialogue) {
@@ -26,7 +27,6 @@ function drawWorkscreen() {
     ];
     dialogue = new DialogueBox(10, 500, 980, 120, lines);
     isDialogueBlocking= true; // 🟢 BLOCK input while dialogue is active
-
   }
 
   image(assets.workplace, 0, 0, width, height);
