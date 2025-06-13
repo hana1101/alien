@@ -36,14 +36,15 @@ function pointsMinimumMet(){
   if(life_stats.lifeCount>0 || !life_stats.end){
     if (total_stats<80 && countGamePlayed == 5){
       console.log("gameFailScreen");
-      currentScreen = "gameFail"
+      currentScreen = "calculateGameResults"
       endGame = true;
+      totalSuccess = false;
       //gamescene - 이후 minimum Met 확인
     }
     if(total_stats>=80){
       console.log("criteria met");
       totalSuccess = true;
-      currentScreen = "gameSuccess";
+      currentScreen = "calculateGameResults";
       endGame = true;
       return;
 

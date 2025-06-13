@@ -30,6 +30,8 @@ let endGame = false;
 let totalSuccess = false;
 let dogGame_initialized = false;
 
+let happyEnding1, happyEnding2, happyEnding3, badEnding1, badEnding2, badEnding3;
+
 function preload() {
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
@@ -63,6 +65,12 @@ function preload() {
   //endingScene preloads
   lifeOverScenebg = loadImage("assets/lifezero.jpg");
   calculateScenebg = loadImage("assets/calculate.jpg");
+  happyEnding1 = loadImage("assets/happyending1.jpg");
+  happyEnding2 = loadImage("assets/happyending2.jpg");
+  happyEnding3 = loadImage("assets/happyending3.jpg");
+  badEnding1 = loadImage("assets/badending1.jpg");
+  badEnding2 = loadImage("assets/badending1.jpg");
+  badEnding3 = loadImage("assets/badending1.jpg");
 
   facetimebg = loadImage("assets/facetime.jpg");
   callgamerule= loadImage("assets/callgamerule.jpg");
@@ -199,8 +207,20 @@ function draw() {
   }  else if (currentScreen ==="lifeOver"){
       lifeOverPage();
   }
-    else if (currentScreen ==="gameSuccess" || currentScreen ==="gameFail"){
+    else if (currentScreen === "calculateGameResults"){
       calculatePointsPage();
+  } else if (currentScreen === "gameSuccess1"){
+    drawHappyEnding1();
+  } else if (currentScreen === "gameSuccess2"){
+    drawHappyEnding2();
+  } else if (currentScreen === "gameSuccess3"){
+    drawHappyEnding3();
+  } else if (currentScreen === "gameFail1"){
+    drawBadEnding1();
+  } else if (currentScreen === "gameFail2"){
+    drawBadEnding2();
+  } else if (currentScreen === "gameFail3"){
+    drawBadEnding3();
   }
 }
 
@@ -431,6 +451,23 @@ if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
 if (currentScreen === "girlfriendFT" && faceTimeStart && dialogueFaceTime && !dialogueFaceTime.finished) {
   dialogueFaceTime.handleClick();
 }
+
+if (currentScreen === "calculateGameResults"){
+  if (totalSuccess === true){
+    currentScreen = "gameSuccess1";
+    return;
+  }
+  else{
+    currentScreen = "gameFail1";
+    return;
+  }
+}
+
+if (currentScreen === "gameSuccess1"){
+  console.log("gameSuccess1");
+  currentScreen = "gameSuccess2";
+}
+
 }
 
 function keyPressed() {
