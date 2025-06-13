@@ -64,7 +64,9 @@ function playFaceTime() {
   }
   
   if(dialogueFaceTime){
+    push();
     dialogueFaceTime.display();
+    pop();
   }
   
   if(dialogueFaceTime.finished){
