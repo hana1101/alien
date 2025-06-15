@@ -107,8 +107,8 @@ function playGirlfriendHand() {
     if (!countGameHand){
       countGameHand = true;
       countGamePlayed++;
-      console.log(countGamePlayed);
     }
+    console.log(countGamePlayed);
 
     displayGameResults();
     return;

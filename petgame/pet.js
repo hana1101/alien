@@ -59,8 +59,9 @@ function playDogClickGame() {
     if (!countFlagBuddy){
       countFlagBuddy = true;
       countGamePlayed++;
-      console.log(countGamePlayed);
     }
+    console.log(countGamePlayed);
+    
     if (dogPhase === 0) {
     fill(255);
     textAlign(CENTER, CENTER);

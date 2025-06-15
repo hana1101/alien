@@ -24,7 +24,6 @@ let isCorrect = false;
 let showFinalScreen = false;
 let dGameOver = false;
 
-let countDoodle = 0;
 let countFlagDoodle;
 let statsAlreadyChangedDoodle;
 let nextBtnDoodle;
@@ -85,12 +84,10 @@ function playDoodleGame() {
   if (doodlePhase === 2) {
     if(!countFlagDoodle){
       countGamePlayed++;
-      countDoodle++;
       countFlagDoodle = true;
     }
 
     console.log(countGamePlayed);
-    console.log(countDoodle);
     console.log("🎯 phase 2: 클라이언트 반응 이미지 표시 단계");
 
     // 화면을 확실히 덮는 배경을 그려줍니다.
@@ -320,7 +317,7 @@ function resetDoodleGameVariables() {
   showFinalScreen = false; // 최종 화면 표시 상태 해제
   clientImageTimerStarted = false; // 타이머 플래그 초기화
   endImageTimerStarted = false; // 타이머 플래그 초기화
-  countFlagDoodle = false;
+  //countFlagDoodle = false;
   statsAlreadyChangedDoodle = false;
   // 필요한 경우 clearDrawing() 또는 resetDoodle()을 호출하여 캔버스를 초기화
   // clearDrawing(); // 캔버스 초기화
