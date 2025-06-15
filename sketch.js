@@ -144,6 +144,7 @@ function setup() {
   initDoodleGame();
   initDogClickGame();
   dogGame_initialized = false;
+  initializeGirlfriendHand();
 
 
 }
@@ -195,7 +196,8 @@ function draw() {
     checkMsg();
   } else if (currentScreen === "girlfriendGame") {
     if (!gfGameStarted) {
-      initializeGirlfriendHand();
+      // initializeGirlfriendHand();
+      resetGame();
       gfGameStarted = true;
     }
     playGirlfriendHand();
@@ -536,7 +538,9 @@ function nextGame(){
     }
     else if (currentScreen === "dogGame"){
       resetDogGameVariables();
-
+    }
+    else if (currentScreen === "girlfriendGame"){
+      resetGame();
     }
     selectedItem=null;
     currentScreen = "play";

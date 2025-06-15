@@ -46,23 +46,15 @@ let hands = [];
 let nextBtnHand;
 let countGameHand = false;
 
-
+//gfGameStarted
 
 function initializeGirlfriendHand(){
 
-  circles = [];
-  currentCircle = null;;
-  currentCircle = null;
-  completedCircles = 0;
+  // circles = [];
+  // currentCircle = null;;
+  // // currentCircle = null;
+  // completedCircles = 0;
   totalRequired = 3;
-
-  //declare flags
-  gameStarted = false;
-  isLooking = false;
-  isCaught = false;
-  fail = false; //game failed
-  gameEnded = false;
-  statsAlreadyChanged = false;
   
 
   video = createCapture(VIDEO);
@@ -73,13 +65,36 @@ function initializeGirlfriendHand(){
 
   handPose.detectStart(video, gotHands);
   initializeTimers();
-  createNextCircle();
-
 
     //start button
   gameStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start", gameStartPressed)
   nextBtnHand = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextGame);
   
+  }
+
+function resetGame() {
+  gfGameStarted = false;
+  fail = false;
+  circles = [];
+  completedCircles = 0;
+  currentCircle = null;
+  gameStarted = false;
+  gameEnded = false;
+  statsAlreadyChanged = false;
+
+
+  //declare flags
+  isLooking = false;
+  isCaught = false;
+
+  createNextCircle();
+  
+  handTimer.reset();
+  totalTimer.reset();
+  caughtTimer.reset();
+  lookSwitchTimer.reset();
+  firstTenSeconds.reset();
+  lookTime.reset();
   }
 
 function playGirlfriendHand() {
@@ -285,22 +300,6 @@ function initializeTimers() {
   lookTime = new Timer(3);
   }
 
-function resetGame() {
-  fail = false;
-  completedCircles = 0;
-  currentCircle = null;
-  gameStarted = false;
-  gameEnded = false;
-  statsAlreadyChanged = false;
-  circles = [];
-
-  handTimer.reset();
-  totalTimer.reset();
-  caughtTimer.reset();
-  lookSwitchTimer.reset();
-  firstTenSeconds.reset();
-  lookTime.reset();
-  }
 
 function createNextCircle() {
   let newCircle;
