@@ -206,6 +206,7 @@ function resetDogGameVariables() {
   penaltyCount = 0; // 페널티 카운트 초기화
   dogGameOver = false; // 게임 오버 상태 해제
   buddyStart = false; // 버디 시작 플래그 초기화
+  statsAlreadChangedBuddy = false;
 
   // 기존 setInterval을 다시 시작하는 것이 중요합니다.
   // 이전에 spawnCircle()에서 clearInterval(interval)을 호출했으므로,

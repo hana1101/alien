@@ -534,6 +534,10 @@ function nextGame(){
     if (currentScreen === "doodleGame"){
       resetDoodleGameVariables();
     }
+    else if (currentScreen === "dogGame"){
+      resetDogGameVariables();
+
+    }
     selectedItem=null;
     currentScreen = "play";
   }
