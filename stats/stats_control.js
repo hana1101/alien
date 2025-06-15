@@ -32,24 +32,23 @@ function pointsMinimumMet(){
     endGame = true;
     return;
   }
-
-  if(life_stats.lifeCount>0 || !life_stats.end){
-    if (total_stats<80 && countGamePlayed == 5){
+  
+  else if (countGamePlayed >= 4){
+    if (total_stats<80){
       console.log("gameFailScreen");
       currentScreen = "calculateGameResults"
       endGame = true;
       totalSuccess = false;
-      //gamescene - 이후 minimum Met 확인
+        //gamescene - 이후 minimum Met 확인
     }
-    if(total_stats>=80){
-      console.log("criteria met");
+    else if(total_stats>=80){
+       console.log("criteria met");
       totalSuccess = true;
       currentScreen = "calculateGameResults";
       endGame = true;
       return;
-
     }
-  }
+}
 
   else{
     console.log("not finished");
