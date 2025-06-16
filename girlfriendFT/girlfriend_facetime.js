@@ -14,12 +14,15 @@ let ftStartBtn;
 let nextBtnFT;
 let waitFT;
 
+let playedFT;
+
 
 function initializeFaceTime() {
   success = false;
   facetimeOver = false;
   facetimeLife = false;
   faceTimeStart = false;
+  playedFT = false;
   
   
   choice1 = new Button(500,340,300,50,"아직 시간 남았는데 이따가 결정할까?",choice1Action);
@@ -39,10 +42,7 @@ function initializeFaceTime() {
   ftStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start")
   nextBtnFT = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextGame);
 
-  waitFT = new Timer(1.5);
-
-
-  
+  waitFT = new Timer(1);
 }
 
 
@@ -58,6 +58,10 @@ function playFaceTime() {
   displayStats();
   
   if(facetimeOver){
+    if(!playedFT){
+      countGamePlayed ++;
+      playedFT = true;
+    }
     console.log(countGamePlayed);
     facetimeEnd();
     return;
@@ -96,7 +100,7 @@ function playFaceTime() {
 function choice1Action() {
   facetimeOver = true;
   relationship_stats.decrease();
-  countGamePlayed++;
+  // countGamePlayed++;
   
 }
 
@@ -104,7 +108,7 @@ function choice2Action() {
   facetimeOver = true;
   relationship_stats.increase();
   success = true;
-  countGamePlayed++;
+  // countGamePlayed++;
   
 }
 
@@ -112,7 +116,7 @@ function choice3Action() {
   facetimeOver = true;
   life_stats.decrease();
   facetimeLife = true;
-  countGamePlayed++;
+  // countGamePlayed++;
   
 }
 
