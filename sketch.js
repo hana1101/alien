@@ -533,7 +533,7 @@ function nextGame(){
   console.log('came here');
   pointsMinimumMet();
   if (!endGame){
-    if (currentScreen !== "girlfriendGame" || currentScreen !== "girlfriendFT"){
+    if (currentScreen !== "girlfriendGame" && currentScreen !== "girlfriendFT"){
       if (currentScreen === "doodleGame"){
         resetDoodleGameVariables();
       }else if (currentScreen === "dogGame"){
@@ -544,8 +544,9 @@ function nextGame(){
       selectedItem=null;
       currentScreen = "play";
     }
-    else if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT"){
+    if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT"){
       selectedItem="phone";
+      console.log('hi');
       console.log(selectedItem);
       currentScreen = "play";
     }
