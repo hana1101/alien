@@ -534,6 +534,16 @@ function keyPressed() {
       return;
     }
 
+    //1-1. ESC while game BUT not started play yet
+    // if ((currentScreen === "girlfriendGame" && !gameStarted) ||
+    //     (currentScreen === "girlfriendFT" && !faceTimeStart) ||
+    //     (currentScreen === "doodleGame" && !doodleStarted && !dGameOver) ||
+    //     (currentScreen === "dogGame" && !buddyStart)) {
+    
+    //       console.log(selectedItem);
+    //       currentScreen = "play";
+    // }
+
     // 1. ESC while inspecting item → return to play
     if (selectedItem && currentScreen === "play") {
       selectedItem = null;
