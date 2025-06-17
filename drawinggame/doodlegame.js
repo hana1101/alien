@@ -97,6 +97,10 @@ function playDoodleGame() {
 
     if (isCorrect){
       image(happyClientImg, 0, 0, width, height);
+      textAlign(CENTER); //수정
+      textSize(32);
+      fill("green");
+      text('성공! 클라이언트가 만족했어요!', width/2, height/2);
       if(!statsAlreadyChangedDoodle){
         career_stats.increase();
         statsAlreadyChangedDoodle = true;
@@ -104,6 +108,10 @@ function playDoodleGame() {
     }
     else{
       image(unhappyClientImg, 0, 0, width, height);
+      textAlign(CENTER); //수정
+      textSize(32);
+      fill("red");
+      text('실패! 클라이언트가 실망했어요!', width/2, height/2);
       if(!statsAlreadyChangedDoodle){
         life_stats.decrease();
         statsAlreadyChangedDoodle = true;

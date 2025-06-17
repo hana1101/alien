@@ -49,7 +49,7 @@ class Circle {
           let alpha = map(t, trailCount, 1, 20, 120);
           let size = map(t, trailCount, 1, 10, 35);
   
-          fill(154, 226, 230, alpha); // lighter pink trail
+          fill(255, 220, 230, alpha); // lighter pink trail
           noStroke();
           circle(dotX, dotY, size);
         }
@@ -59,12 +59,12 @@ class Circle {
         let dotY = this.y + sin(currentAngle) * this.radius;
   
         for (let glow = 10; glow <= 30; glow += 10) {
-          fill(154, 226, 230, map(glow, 10, 30, 150, 0));
+          fill(255, 220, 230, map(glow, 10, 30, 150, 0));
           noStroke();
           circle(dotX, dotY, glow);
         }
   
-        fill(154, 226, 230);
+        fill(255, 220, 230);
         circle(dotX, dotY, 27);
       }
     }
