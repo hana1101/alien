@@ -47,7 +47,8 @@ function preload() {
   hand_gameRules = loadImage("assets/powerrule!.jpg");
   success_gfbg = loadImage("assets/laughend.jpg");
   fail_gfbg = loadImage("assets/relationend.jpg");
-  superPowerImg = loadImage("assets/sup.png");
+  // superPowerImg = loadImage("assets/sup.png");
+  superPowerImg = loadImage("assets/sup_pink.png");
 
   neoFont = loadFont("assets/neodgm.ttf");
 
