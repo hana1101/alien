@@ -67,13 +67,26 @@ class DialogueBox {
 //   }
 // }
 
-  handleClick() {
-  if (this.currentLine < this.lines.length - 1) {
-    this.currentLine++;
-  } else {
-    this.finished = true;
-    this.finishedClicked = true;
-    isDialogueBlocking=false
+//   handleClick() {
+//   if (this.currentLine < this.lines.length - 1) {
+//     this.currentLine++;
+//   } else {
+//     this.finished = true;
+//     this.finishedClicked = true;
+//     isDialogueBlocking=false
+//   }
+// }
+
+handleClick() {
+  // Only handle click if mouse is over the dialogue box
+  if (this.isHovered()) {
+    if (this.currentLine < this.lines.length - 1) {
+      this.currentLine++;
+    } else {
+      this.finished = true;
+      this.finishedClicked = true;
+      isDialogueBlocking = false;
+    }
   }
 }
 

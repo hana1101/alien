@@ -6,14 +6,6 @@ let dialogue;
 let currentScreen = "start";
 let assets = [];
 let btn = { x: 0, y: 0, w: 130, h: 60 };
-let spaceblue,
-  neongreen,
-  brightpink,
-  cyanblue,
-  lightblue,
-  ufoPurple,
-  starcolor,
-  zibgreen;
 let gfGameStarted;
 let faceTimeStarted;
 let dialoguezib = null;
@@ -36,9 +28,12 @@ let happyEnding1, happyEnding2, happyEnding3, badEnding1, badEnding2, badEnding3
 let superPowerImg;
 
 let isDialogueBlocking = false;
+let openSound;
 
 
 function preload() {
+  openSound = loadSound('assets/bg_open.mp3');
+
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
   }
@@ -130,14 +125,6 @@ function setup() {
     280
   );
 
-  spaceblue = color(10, 10, 40);
-  neongreen = color(0, 255, 153);
-  brightpink = color(255, 0, 255);
-  cyanblue = color(114, 255, 251);
-  lightblue = color(98, 176, 255);
-  ufoPurple = color(167, 91, 255);
-  starcolor = color(255, 235, 59);
-  zibgreen = color("#92C367");
 
   //initialize stats
   initialSetStats();
@@ -150,7 +137,8 @@ function setup() {
 }
 
 function draw() {
-  
+  handleOpenSound();
+
   if (currentScreen === "start") {
     drawStartScreen();
   }else if (currentScreen==="startscene/zib1"){
