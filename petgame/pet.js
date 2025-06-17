@@ -94,6 +94,7 @@ function playDogClickGame() {
       image(happyDogImg,0,0,width,height);
       textAlign(CENTER); //수정
       textSize(32);
+      fill("green");
       text('성공! 강아지가 경계를 풀었어요!', width/2, height/2);//수정
       if (!statsAlreadChangedBuddy){
         wellbeing_stats.increase();
@@ -104,6 +105,7 @@ function playDogClickGame() {
       image(sadDogImg,0,0,width,height);
       textAlign(CENTER); //수정
       textSize(32);
+      fill("red");
       text('실패! 강아지의 신뢰를 잃었어요', width/2, height/2);//수정
       if(!statsAlreadChangedBuddy){
         life_stats.decrease();
