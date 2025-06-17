@@ -580,17 +580,19 @@ function nextGame(){
         resetDoodleGameVariables();
       }else if (currentScreen === "dogGame"){
         resetDogGameVariables();
-      }else if (currentScreen === "girlfriendGame"){
-        resetGame();
       }
       selectedItem=null;
       currentScreen = "play";
     }
     if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT"){
+      if (currentScreen === "girlfriendGame"){
+        resetGame();
+      }
       selectedItem="phone";
       console.log('hi');
       console.log(selectedItem);
       currentScreen = "play";
+      
     }
 
   }

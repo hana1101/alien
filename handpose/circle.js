@@ -10,18 +10,17 @@ class Circle {
       strokeWeight(10);
       if (this.completed || handActive) {
         this.drawGlowingRotatingDots();
-  
-    //     if (handActive) {
-    //       let remaining = handTimer.getTimeLeft();
-    //       let elapsed = 3 - remaining;
-    //       let growScale = map(elapsed, 0, 3, 0.5, 1.5); // adjust size range
+        if (handActive) {
+          let remaining = handTimer.getTimeLeft();
+          let elapsed = 3 - remaining;
+          let growScale = map(elapsed, 0, 3, 0.2, 2); // adjust size range
 
-    //       let imgSize = this.radius * 2 * growScale;
-    //       push();
-    //       imageMode(CENTER);
-    //       image(heartImage, this.x, this.y, imgSize, imgSize);
-    //       pop();
-    // }
+          let imgSize = this.radius * 2 * growScale;
+          push();
+          imageMode(CENTER);
+          image(superPowerImg, this.x, this.y, imgSize, imgSize);
+          pop();
+    }
   
     }else if (isLooking && percentageInside >= 0.85) {
         strokeWeight(15);
@@ -50,7 +49,7 @@ class Circle {
           let alpha = map(t, trailCount, 1, 20, 120);
           let size = map(t, trailCount, 1, 10, 35);
   
-          fill(255, 220, 230, alpha); // lighter pink trail
+          fill(154, 226, 230, alpha); // lighter pink trail
           noStroke();
           circle(dotX, dotY, size);
         }
@@ -60,12 +59,12 @@ class Circle {
         let dotY = this.y + sin(currentAngle) * this.radius;
   
         for (let glow = 10; glow <= 30; glow += 10) {
-          fill(255, 182, 193, map(glow, 10, 30, 150, 0));
+          fill(154, 226, 230, map(glow, 10, 30, 150, 0));
           noStroke();
           circle(dotX, dotY, glow);
         }
   
-        fill(255, 182, 193);
+        fill(154, 226, 230);
         circle(dotX, dotY, 27);
       }
     }
