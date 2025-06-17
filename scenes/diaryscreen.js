@@ -1,4 +1,3 @@
-// let glowAlpha = 0;
 // let glowDirection = 2;
 let dialogue1
 

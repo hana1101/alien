@@ -11,7 +11,7 @@ class stats{
     strokeWeight(2);
     stroke(255);
     fill(10);
-    rect(this.leftX,55,150,20);
+    rect(this.leftX,55,150,20,10,10);
     
     if (this.completed == true){
       fill("green");

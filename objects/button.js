@@ -55,7 +55,7 @@
 // }
 
 class Button {
-  constructor(x, y, w, h, label, action, fontSize = 15) {
+  constructor(x, y, w, h, label, action, fontSize = 20) {
     this.x = x;
     this.y = y;
     this.w = w;
