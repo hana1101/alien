@@ -10,8 +10,8 @@ class stats{
   display(){
     strokeWeight(2);
     stroke(255);
-    fill("grey");
-    rect(this.leftX,55,150,30);
+    fill(10);
+    rect(this.leftX,55,150,20);
     
     if (this.completed == true){
       fill("green");
@@ -21,7 +21,7 @@ class stats{
       fill("red");
     }
     // noStroke();
-    rect(this.leftX,55, 150*(this.currentStat/100),30);
+    rect(this.leftX,55, 150*(this.currentStat/100),20);
     
     noStroke();
     fill("white");

@@ -10,9 +10,7 @@ let gfGameStarted;
 let faceTimeStarted;
 let dialoguezib = null;
 let neoFont;
-
-
-//stats declare
+let startPlaySound;
 let relationship_stats;
 let career_stats;
 let wellbeing_stats;
@@ -33,6 +31,7 @@ let openSound;
 
 function preload() {
   openSound = loadSound('assets/opening.mp3');
+  startPlaySound = loadSound('assets/startplay.mp3');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
@@ -137,7 +136,7 @@ function setup() {
 }
 
 function draw() {
-  handleOpenSound();
+  handleBackgroundMusic();
   if (currentScreen === "start") {
     drawStartScreen();
   }else if (currentScreen==="startscene/zib1"){
@@ -482,42 +481,92 @@ function mousePressed() {
 }
 
 
+// function keyPressed() {
+//   if (keyCode === ESCAPE) {
+//     console.log("esc pressed at screen:", currentScreen); // Debug line
+//     // Don't allow ESC during active games
+//     if ((currentScreen === "girlfriendGame" && gameStarted) ||
+//         (currentScreen === "girlfriendFT" && faceTimeStart) ||
+//         (currentScreen === "doodleGame" && doodleStarted && !dGameOver) ||
+//         (currentScreen === "dogGame" && buddyStart)) { 
+//           return;
+//     }
+    
+//     // Clear selected item first if on play screen
+//     if (currentScreen === "play" && selectedItem) {
+//       selectedItem = null;
+//       resetSelectedScreenFlag(); // Reset when clearing selectedItem
+//       return;
+//     } 
+   
+    
+//     // Go back to previous screen
+//     if (previousScreen) {
+//       resetSelectedScreenFlag(); // Reset when changing screens
+//       currentScreen = previousScreen;
+//       selectedItem = null;
+//     }
+//   }
+//   if (currentScreen==='play' && selectedItem===null) {
+//     resetSelectedScreenFlag(); 
+//     currentScreen= 'zib14'
+//   }
+//   // Skip functionality
+//   if (key === 's' || key === 'S') {
+//     console.log('s pressed', currentScreen)
+//     if (currentScreen.startsWith("startscene/zib")) {
+//       currentScreen = "startscene/zib11";
+//     }
+//   }
+// }
+
+let justInspectedItem = false
+
 function keyPressed() {
   if (keyCode === ESCAPE) {
-    console.log("esc pressed at screen:", currentScreen); // Debug line
-    // Don't allow ESC during active games
+    console.log("ESC pressed at screen:", currentScreen);
+
+    // Block ESC in active games
     if ((currentScreen === "girlfriendGame" && gameStarted) ||
         (currentScreen === "girlfriendFT" && faceTimeStart) ||
         (currentScreen === "doodleGame" && doodleStarted && !dGameOver) ||
-        (currentScreen === "dogGame" && buddyStart)) { 
-          return;
-    }
-    
-    // Clear selected item first if on play screen
-    if (currentScreen === "play" && selectedItem) {
-      selectedItem = null;
-      resetSelectedScreenFlag(); // Reset when clearing selectedItem
-
+        (currentScreen === "dogGame" && buddyStart)) {
       return;
     }
-    
-    // Go back to previous screen
+
+    // 1. ESC while inspecting item → return to play
+    if (selectedItem && currentScreen === "play") {
+      selectedItem = null;
+      resetSelectedScreenFlag();
+      justInspectedItem = true;
+      return;
+    }
+
+    // 2. ESC after returning from inspection → go to zib14
+    if (currentScreen === "play" && !selectedItem && justInspectedItem) {
+      currentScreen = "startscene/zib14";
+      justInspectedItem = false;
+      previousScreen = null;
+      return;
+    }
+
+    // 3. Normal back logic
     if (previousScreen) {
-      resetSelectedScreenFlag(); // Reset when changing screens
+      resetSelectedScreenFlag();
       currentScreen = previousScreen;
       selectedItem = null;
+
+      justInspectedItem = false;
     }
   }
-  
-  // Skip functionality
+
+  // Skip logic
   if (key === 's' || key === 'S') {
-    console.log('s pressed', currentScreen)
     if (currentScreen.startsWith("startscene/zib")) {
       currentScreen = "startscene/zib11";
     }
   }
 }
-
 
 
 function nextGame(){
