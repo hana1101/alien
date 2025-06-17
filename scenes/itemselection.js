@@ -35,7 +35,7 @@ function drawPlayScreen() {
         300,
         50,
         "Choose your item",
-        null,30
+        null
       );
       chooseitem.display();
       displayStats();
