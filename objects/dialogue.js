@@ -84,23 +84,4 @@ handleClick() {
       this.currentLine++;
     } else {
       this.finished = true;
-      this.finishedClicked = true;
-      isDialogueBlocking = false;
-    }
-  }
-}
-
-  reset() {
-    this.currentLine = 0;
-    this.finished = false;
-    this.finishedClicked = false;
-  }
-  isOnLastLine() {
-  return this.currentLine === this.lines.length - 1 && !this.finished;
-}
-
-  setLines(newLines) {
-    this.lines = newLines;
-    this.reset();
-  }
-}
+      this.finishedClicke
