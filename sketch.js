@@ -562,7 +562,9 @@ function keyPressed() {
 
   // Skip logic
   if (key === 's' || key === 'S') {
+    console.log('press S but not conditional')
     if (currentScreen.startsWith("startscene/zib")) {
+      console.log('normal run')
       currentScreen = "startscene/zib11";
     }
   }
