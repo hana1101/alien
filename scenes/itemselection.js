@@ -33,8 +33,9 @@ function drawPlayScreen() {
         width / 2 - 150,
         100,
         300,
-        80,
-        "Choose your item"
+        50,
+        "Choose your item",
+        null,30
       );
       chooseitem.display();
       displayStats();
