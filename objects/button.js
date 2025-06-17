@@ -278,4 +278,7 @@ switch(action) {
     currentScreen="dogGame"
     break;
   default:
-    console.log("Unknown action:", actio
+    console.log("Unknown action:", action);
+}
+}
+
