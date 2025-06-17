@@ -32,7 +32,7 @@ let openSound;
 
 
 function preload() {
-  openSound = loadSound('assets/bg_open.mp3');
+  openSound = loadSound('assets/opening.mp3');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
@@ -138,7 +138,6 @@ function setup() {
 
 function draw() {
   handleOpenSound();
-
   if (currentScreen === "start") {
     drawStartScreen();
   }else if (currentScreen==="startscene/zib1"){
