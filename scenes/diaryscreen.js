@@ -29,4 +29,7 @@ if (dialogue1 && dialogue1.isOnLastLine()) {
     "CLICK HERE TO CONTINUE",
     dialogue1.x + dialogue1.w - padding,
     dialogue1.y + dialogue1.h - padding
-  )
+  );
+}
+
+}
