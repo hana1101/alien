@@ -33,7 +33,12 @@ class stats{
   }
   
   increase(){
-    this.currentStat = this.currentStat+30;
+    if (currentScreen === "girlfriendFT"){
+      this.currentStat = this.currentStat+15;
+    }
+    else {
+      this.currentStat = this.currentStat+30;
+    }
     if (this.currentStat >= 100){
       this.completed = true;
       this.currentStat = 100;
