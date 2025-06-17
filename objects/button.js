@@ -1,48 +1,103 @@
 
+// class Button {
+//   constructor(x, y, w, h, label, action) {
+//     this.x = x;
+//     this.y = y;
+//     this.w = w;
+//     this.h = h;
+//     this.label = label
+//     this.action=action
+//     // fontsize=15
+//     // this.isHovered = false;
+//   }
+// display() {
+//   let isHovered = this.isHovered();
+  
+//   noStroke();
+//       if (isHovered) {
+//     fill(140, 124, 104); // Darker shadow when hovered
+//   } else {
+//     fill(160, 144, 124); // Normal shadow
+//   }
+//   rect(this.x + 4, this.y + 4, this.w, this.h, 6);
+
+//   stroke(120, 94, 77);
+//   strokeWeight(2);
+  
+//   // Change button color when hovered
+//   if (isHovered) {
+//     fill(245, 216, 185); // Slightly darker when hovered
+//   } else {
+//     fill(255, 226, 195); // Normal color
+//   }
+//   rect(this.x, this.y, this.w, this.h, 6);
+
+//   noStroke();
+//   if (isHovered) {
+//     fill(100, 74, 57); // Darker text when hovered
+//   } else {
+//     fill(120, 94, 77); // Normal text color
+//   }
+//   textAlign(CENTER, CENTER);
+//   textSize(15);
+//   textFont(neoFont);
+//   text(this.label, this.x + this.w / 2, this.y + this.h / 2 + 2);
+// }
+
+//   isHovered() {
+//     return mouseX > this.x && mouseX < this.x + this.w &&
+//            mouseY > this.y && mouseY < this.y + this.h;
+//   }
+
+//   isClicked() {
+//     return this.isHovered() && mouseIsPressed;
+//   }
+// }
+
 class Button {
-  constructor(x, y, w, h, label, action) {
+  constructor(x, y, w, h, label, action, fontSize = 15) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
-    this.label = label
-    this.action=action
-    // fontsize=15
-    // this.isHovered = false;
+    this.label = label;
+    this.action = action;
+    this.fontSize = fontSize;
   }
-display() {
-  let isHovered = this.isHovered();
-  
-  noStroke();
-      if (isHovered) {
-    fill(140, 124, 104); // Darker shadow when hovered
-  } else {
-    fill(160, 144, 124); // Normal shadow
-  }
-  rect(this.x + 4, this.y + 4, this.w, this.h, 6);
 
-  stroke(120, 94, 77);
-  strokeWeight(2);
-  
-  // Change button color when hovered
-  if (isHovered) {
-    fill(245, 216, 185); // Slightly darker when hovered
-  } else {
-    fill(255, 226, 195); // Normal color
-  }
-  rect(this.x, this.y, this.w, this.h, 6);
+  display() {
+    let isHovered = this.isHovered();
 
-  noStroke();
-  if (isHovered) {
-    fill(100, 74, 57); // Darker text when hovered
-  } else {
-    fill(120, 94, 77); // Normal text color
+    noStroke();
+    if (isHovered) {
+      fill(140, 124, 104); // Darker shadow when hovered
+    } else {
+      fill(160, 144, 124); // Normal shadow
+    }
+    rect(this.x + 4, this.y + 4, this.w, this.h, 6);
+
+    stroke(120, 94, 77);
+    strokeWeight(2);
+
+    // Change button color when hovered
+    if (isHovered) {
+      fill(245, 216, 185); // Slightly darker when hovered
+    } else {
+      fill(255, 226, 195); // Normal color
+    }
+    rect(this.x, this.y, this.w, this.h, 6);
+
+    noStroke();
+    if (isHovered) {
+      fill(100, 74, 57); // Darker text when hovered
+    } else {
+      fill(120, 94, 77); // Normal text color
+    }
+    textAlign(CENTER, CENTER);
+    textSize(this.fontSize);
+    textFont(neoFont);
+    text(this.label, this.x + this.w / 2, this.y + this.h / 2 + 2);
   }
-  textAlign(CENTER, CENTER);
-  textSize(15);
-  textFont(neoFont);
-  text(this.label, this.x + this.w / 2, this.y + this.h / 2 + 2);
-}
 
   isHovered() {
     return mouseX > this.x && mouseX < this.x + this.w &&
@@ -53,7 +108,6 @@ display() {
     return this.isHovered() && mouseIsPressed;
   }
 }
-
 
 // function drawSelectedScreen(selectedItem) {
 // image(assets.room, 0, 0, width, height);
@@ -107,6 +161,7 @@ display() {
 //   }
 // });
 // }
+
 
 function SettingButtons(selectedItem) {
 const configs = {
