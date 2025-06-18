@@ -87,6 +87,8 @@ class DialogueBox {
         this.finishedClicked = true;
         if (typeof isDialogueBlocking !== "undefined") {
           isDialogueBlocking = false;
+          console.log("handleClick called on", this.lines[this.currentLine]);
+
         }
       }
     }
