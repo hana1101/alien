@@ -25,7 +25,7 @@ function drawingScreen() {
     textAlign(RIGHT, BOTTOM);
     let alpha = 127 + 127 * sin(millis() / 300);
 
-    textFont("Press Start 2P");
+    textFont(pressfont);
     textSize(14);
     fill(0, 255, 153, alpha);
     text(

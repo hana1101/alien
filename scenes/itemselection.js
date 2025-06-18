@@ -21,13 +21,13 @@ function drawPlayScreen() {
   } else {
     if (!selectedItem) {
       walletItem.display();
-      walletItem.drawLabel(20, 40);
+      walletItem.drawLabel(30, 40);
 
       phoneItem.display();
-      phoneItem.drawLabel(20, 0);
+      phoneItem.drawLabel(30, 0);
 
       diaryItem.display();
-      diaryItem.drawLabel(20, 0);
+      diaryItem.drawLabel(30, 0);
 
       chooseitem = new Button(
         width / 2 - 150,
@@ -91,7 +91,6 @@ function drawPlayScreen() {
 //     }
 //   });
 // }
-
 
 
 
@@ -168,6 +167,7 @@ function drawSelectedScreen(selectedItem) {
 
   // Get item height
   let itemHeight;
+
   if (selectedItem === "wallet") itemHeight = walletItem.baseHeight;
   else if (selectedItem === "phone") itemHeight = phoneItem.baseHeight;
   else if (selectedItem === "diary") itemHeight = diaryItem.baseHeight;

@@ -50,7 +50,7 @@ function preload() {
   fail_gfbg = loadImage("assets/relationend.jpg");
   // superPowerImg = loadImage("assets/sup.png");
   superPowerImg = loadImage("assets/sup_pink.png");
-
+  pressfont=loadFont('assets/PressStart2P-Regular.ttf')
   // neoFont = loadFont("assets/neodgm.ttf");
   neoFont = loadFont("assets/dgm.ttf");
 

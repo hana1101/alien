@@ -97,10 +97,42 @@ function playDoodleGame() {
 
     if (isCorrect){
       image(happyClientImg, 0, 0, width, height);
-      textAlign(CENTER); //수정
+      // push()
+      // rectMode(CENTER)
+      // fill(22,22,53,100)
+      // stroke('#01FFB9')
+      // strokeWeight(3)
+      // rect(width/2, height/2,150,40)
+      // pop()
+      // textAlign(CENTER); //수정
+      // textSize(32);
+      // fill("green");
+      // text('성공! 클라이언트가 만족했어요!', width/2, height/2);
+      push();
+      rectMode(CENTER);
+      textAlign(CENTER, CENTER);
       textSize(32);
-      fill("green");
-      text('성공! 클라이언트가 만족했어요!', width/2, height/2);
+      let msg = "성공! 클라이언트가 만족했어요!";
+      let boxW = textWidth(msg) + 80;
+      let boxH = 80;
+    
+      // Glow-style background box
+      fill(22, 22, 53, 180); // darker semi-transparent
+      stroke(1, 255, 185);
+      strokeWeight(4);
+      rect(width / 2, height / 2, boxW, boxH, 12); // rounded rectangle
+    
+      // Glow effect (layered stroke)
+      stroke(1, 255, 185, 80);
+      strokeWeight(10);
+      noFill();
+      rect(width / 2, height / 2, boxW + 10, boxH + 10, 16);
+    
+      // Main Text
+      noStroke();
+      fill("#01FF70"); // neon green
+      text(msg, width / 2, height / 2);
+      pop();
       if(!statsAlreadyChangedDoodle){
         career_stats.increase();
         statsAlreadyChangedDoodle = true;
@@ -108,10 +140,31 @@ function playDoodleGame() {
     }
     else{
       image(unhappyClientImg, 0, 0, width, height);
-      textAlign(CENTER); //수정
+      push();
+      rectMode(CENTER);
+      textAlign(CENTER, CENTER);
       textSize(32);
-      fill("red");
-      text('실패! 클라이언트가 실망했어요!', width/2, height/2);
+      let msg = "💥 실패! 클라이언트가 실망했어요!";
+      let boxW = textWidth(msg) + 80;
+      let boxH = 80;
+    
+      // Glow-style background box
+      fill(40, 0, 0, 180); // deep red tint
+      stroke(255, 50, 50); // bright red
+      strokeWeight(4);
+      rect(width / 2, height / 2, boxW, boxH, 12);
+    
+      // Glow outer ring
+      stroke(255, 50, 50, 80);
+      strokeWeight(10);
+      noFill();
+      rect(width / 2, height / 2, boxW + 10, boxH + 10, 16);
+    
+      // Main text
+      noStroke();
+      fill("#FF4C4C"); // neon reddish
+      text(msg, width / 2, height / 2);
+      pop();
       if(!statsAlreadyChangedDoodle){
         life_stats.decrease();
         statsAlreadyChangedDoodle = true;
