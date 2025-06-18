@@ -104,6 +104,7 @@ function drawPlayScreen() {
       chooseitem.display();
       if (chooseitem.isClicked()) {
         ButtonAction(chooseitem.action);
+
       }
       
       displayStats();
@@ -133,10 +134,16 @@ function drawPopup() {
   text("Pick carefully. Each item tells a story.", width / 2, height / 2 - 20);
 
   textSize(16);
-  text("Press ESC to close", width / 2, height / 2 + 60);
+  text("Click anywhere to close", width / 2, height / 2 + 60);
 
-  pop(); // ← this was likely the issue before (was missing `()` at end)
+  // Simple click detection to close popup
+  if (mouseIsPressed) {
+    showItemPopup = false;
+  }
+
+  pop();
 }
+
 
 
 
