@@ -33,6 +33,7 @@ function initializeFaceTime() {
   choice1 = new Button(500,340,300,50,"아직 시간 남았는데 이따가 결정할까?",choice1Action, 20);
   choice2 = new Button(500,400,300,50,"스테이크 먹으로 갈까?",choice2Action,20);
   choice3 = new Button(500,460,300,50,"해산물 리조또 어때?",choice3Action,20);
+
   
   let linesGf = [
     "자기야 ! 우리 진짜 오랜만인 것 같아... \n잘 지냈어 ??\n...",
@@ -81,9 +82,9 @@ function playFaceTime() {
   switch (stageFT){
     case 2:
 
-      choice1.label = "Question 2 Correct";
-      choice2.label = "Question 2 LIFE WRONG";
-      choice3.label = "Qestion 2 -5";
+      choice1.label = "저번엔 충전기였는데 이번엔 무슨 일이야?"; /// 문제 수정 
+      choice2.label = "응? 모치가 뭔 사고 쳤었어?";
+      choice3.label = "헉..대박..";
       break;
 
   }
@@ -218,9 +219,7 @@ function facetimeEnd(){
       currentStageCompleteFT = false;
 
       dialogueFaceTime.setLines([
-        "Lorem ipsum is placeholder text",
-        "graphic, print, and publishing industries",
-        "layouts and visual mockups."
+        "모치가 또 난리네..ㅠ"
       ]);
       dialogueFaceTime.reset();
     } else {
