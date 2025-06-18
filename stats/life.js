@@ -1,3 +1,42 @@
+const heart = [
+  "00000000000000000",
+  "00001100000110000",
+  "00011110001111000",
+  "00111111011111100",
+  "00111111111111100",
+  "01111111111111110",
+  "01111111111111110",
+  "01111111111111110",
+  "00111111111111100",
+  "00011111111111000",
+  "00001111111110000",
+  "00000111111100000",
+  "00000011111000000",
+  "00000001110000000",
+  "00000000100000000"
+];
+
+/* ---------- 2) 픽셀 하트 그리기 ---------- */
+function drawHeart(x, y, pixelSize) {
+  push();
+  fill('#d62839');      // 빨간 픽셀 색
+  noStroke();
+  for (let r = 0; r < heart.length; r++) {
+    for (let c = 0; c < heart[r].length; c++) {
+      if (heart[r][c] === "1") {
+        rect(
+          x + c * pixelSize,
+          y + r * pixelSize,
+          pixelSize,
+          pixelSize
+        );
+      }
+    }
+  }
+  pop();
+}
+
+
 class life{
   
   constructor(_x,_y){ 
@@ -35,19 +74,3 @@ class life{
   }
   
   }
-
-function drawHeart(x, y, size) {
-  beginShape();
-  vertex(x, y);
-  bezierVertex(
-    x - size / 2, y - size * 0.8, 
-    x - size,     y + size / 3,
-    x,            y + size
-  );
-  bezierVertex(
-    x + size,     y + size / 3,
-    x + size / 2, y - size * 0.8,
-    x,            y
-  );
-  endShape(CLOSE);
-}
