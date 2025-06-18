@@ -70,7 +70,8 @@ function drawWorkscreen() {
 
 //choosing wallet
 function drawWalletScreen() {
-  image(assets.room, 0, 0, width, height);
+  // image(assets.room, 0, 0, width, height);
+  image(assets.roomnight, 0, 0, width, height);
 
   // Draw wallet large on left
   push();
@@ -114,7 +115,8 @@ function drawSelectedScreen(selectedItem) {
     screenEnterTime = millis();
   }
   
-  image(assets.room, 0, 0, width, height);
+  // image(assets.room, 0, 0, width, height);
+  image(assets.roomnight, 0, 0, width, height);
 
   let panelWidth = width / 3;
   let centerX = panelWidth / 2;
