@@ -45,7 +45,23 @@ function handleBackgroundMusic() {
       if (startPlaySound.isPlaying()) startPlaySound.stop();
     }, 1600);
   }
-}
+  //   /* ---------- Handle buddySound (pet screen) ---------- */
+  // if (currentScreen === "pet") {
+  //   // 페이드아웃 중이라면 즉시 복귀
+  //   buddySoundFadingOut = false;
+  //   if (!buddySound.isPlaying()) {
+  //     buddySound.setVolume(0.2); // 원하는 볼륨
+  //     buddySound.loop();         // 반복 재생
+  //   }
+  // } else if (buddySound.isPlaying() && !buddySoundFadingOut) {
+  //   buddySoundFadingOut = true;
+  //   buddySound.setVolume(0.0, 1.5); // 1.5초 동안 볼륨 0으로
+  //   setTimeout(() => {
+  //     if (buddySound.isPlaying()) buddySound.stop();
+  //   }, 1600); // 실제 정지는 페이드 끝난 뒤
+  // }
+} // ← 이 줄은 원래 있던 handleBackgroundMusic의 마지막 닫는 괄호
+
     // --- Handle buddySound (pet screen) ---
 
   // const petscreens = new Set([
