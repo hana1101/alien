@@ -54,6 +54,9 @@
 //     return this.isHovered() && mouseIsPressed;
 //   }
 // }
+
+// let showPopup = false;
+let closeButton;
 class Button {
   constructor(x, y, w, h, label, action, fontSize = 20) {
     this.x = x;
@@ -111,12 +114,9 @@ class Button {
 
   isClicked() {
     return this.isHovered() && mouseIsPressed;
+
   }
 }
-
-
-
-
 
 
 function SettingButtons(selectedItem) {
@@ -144,11 +144,9 @@ switch(action) {
   case "startscene/zib1":
     console.log("zib1_screen");
     currentScreen = "startscene/zib1";
-  
   case "startscene/zib2":
     console.log("zib2_screen");
     currentScreen = "startscene/zib2";
-  
   case "startscene/zib3":
     console.log("zib3_screen");
     currentScreen = "startscene/zib3";
@@ -233,6 +231,31 @@ switch(action) {
     console.log("Playing with Buddy...");
     currentScreen="dogGame"
     break;
+    case "iteminstruction":
+      console.log("item instruction");
+      showItemPopup = true;
+      break;
+
+  
+    // case "iteminstruction":
+    //   console.log("item instruction");
+    //   showPopup = true; // Set popup to show
+    //   // Create close button when popup opens
+    //   closeButton = new Button(
+    //     width/2 - 50,
+    //     height/2 + 80,
+    //     100,
+    //     40,
+    //     "Close",
+    //     "closepopup",
+    //     16
+    //   );
+    //   break;
+    // case "closepopup":
+    //   showPopup = false;
+    //   closeButton = null; // Clear the button
+    //   break;
+  
   default:
     console.log("Unknown action:", action);
 }

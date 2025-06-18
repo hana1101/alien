@@ -123,3 +123,4 @@ class DialogueBox {
     this.reset();
   }
 }
+
