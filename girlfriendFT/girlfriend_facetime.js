@@ -17,6 +17,7 @@ let playedFT;
 
 let stageFT;               // stageFT = 인덱스(0,1,…)
 let currentStageCompleteFT = false;
+let fTOverForever = false;
 
 /* ---------- 0) 스테이지 데이터 ---------- */
 const stages = [
@@ -163,6 +164,7 @@ function facetimeEnd(){
       facetimeOver = success = facetimeLife = choices_show = false;
       loadStage(stageFT);
     } else {
+      fTOverForever = true;
       nextGame();
     }
   }

@@ -198,7 +198,10 @@ function draw() {
     }
     playGirlfriendHand();
 
-  } else if (currentScreen === "girlfriendFT") {
+  } else if (currentScreen === "fTOver"){
+    endingSceneFT();
+
+  }else if (currentScreen === "girlfriendFT") {
       if (!facetimeOver && !faceTimeStarted) {
         initializeFaceTime();
         faceTimeStarted = true;
@@ -620,7 +623,7 @@ function nextGame(){
   console.log('came here');
   pointsMinimumMet();
   if (!endGame){
-    if (currentScreen !== "girlfriendGame" && currentScreen !== "girlfriendFT"){
+    if (currentScreen !== "girlfriendGame" && currentScreen !== "girlfriendFT" && currentScreen !== "fTOver"){
       if (currentScreen === "doodleGame"){
         resetDoodleGameVariables();
       }else if (currentScreen === "dogGame"){
@@ -629,7 +632,7 @@ function nextGame(){
       selectedItem=null;
       currentScreen = "play";
     }
-    if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT"){
+    if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT" || currentScreen === "fTOver"){
       if (currentScreen === "girlfriendGame"){
         resetGame();
       }

@@ -211,7 +211,13 @@ switch(action) {
     break;
   case "callGF":
     console.log("Calling girlfriend...");
-    currentScreen = 'girlfriendFT'
+    if (!fTOverForever){
+      currentScreen = 'girlfriendFT';
+    }
+    else{
+      currentScreen = 'fTOver';
+    }
+    
     break;
   case "dateGF":
     console.log("Setting up date...");
