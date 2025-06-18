@@ -22,7 +22,7 @@ let endGame = false;
 let totalSuccess = false;
 let dogGame_initialized = false;
 let pendingDialogueReset = null;
-
+let roomnight
 let happyEnding1, happyEnding2, happyEnding3, badEnding1, badEnding2, badEnding3;
 let superPowerImg;
 
@@ -33,7 +33,7 @@ let openSound;
 function preload() {
   openSound = loadSound('assets/opening.mp3');
   startPlaySound = loadSound('assets/startplay.mp3');
-  buddySound= loadSound('assets/buddybgm.mp3');
+  // buddySound= loadSound('assets/buddybgm.mp3');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
@@ -54,6 +54,7 @@ function preload() {
   pressfont=loadFont('assets/PressStart2P-Regular.ttf')
   // neoFont = loadFont("assets/neodgm.ttf");
   neoFont = loadFont("assets/dgm.ttf");
+  roomnight=  loadImage("assets/roomnight.jpg")
 
 
   zib1 = loadImage("assets/zib1.jpg");
@@ -93,10 +94,11 @@ function preload() {
 }
 
 function setup() {
+  createCanvas(1000, 625);
+
   textFont(neoFont);
   textSize(25);
   // textFont("Press Start 2P");
-  createCanvas(1000, 625);
   btn.x = width / 2 - btn.w / 2;
   btn.y = height / 2 + 50;
   startTime = millis();
