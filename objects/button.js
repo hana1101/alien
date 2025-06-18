@@ -1,48 +1,49 @@
 
 // class Button {
-//   constructor(x, y, w, h, label, action) {
+//   constructor(x, y, w, h, label, action, fontSize = 25) {
 //     this.x = x;
 //     this.y = y;
 //     this.w = w;
 //     this.h = h;
-//     this.label = label
-//     this.action=action
-//     // fontsize=15
-//     // this.isHovered = false;
+//     this.label = label;
+//     this.action = action;
+//     this.fontSize = fontSize;
 //   }
-// display() {
-//   let isHovered = this.isHovered();
-  
-//   noStroke();
-//       if (isHovered) {
-//     fill(140, 124, 104); // Darker shadow when hovered
-//   } else {
-//     fill(160, 144, 124); // Normal shadow
-//   }
-//   rect(this.x + 4, this.y + 4, this.w, this.h, 6);
 
-//   stroke(120, 94, 77);
-//   strokeWeight(2);
-  
-//   // Change button color when hovered
-//   if (isHovered) {
-//     fill(245, 216, 185); // Slightly darker when hovered
-//   } else {
-//     fill(255, 226, 195); // Normal color
-//   }
-//   rect(this.x, this.y, this.w, this.h, 6);
+//   display() {
+//     let isHovered = this.isHovered();
 
-//   noStroke();
-//   if (isHovered) {
-//     fill(100, 74, 57); // Darker text when hovered
-//   } else {
-//     fill(120, 94, 77); // Normal text color
+//     noStroke();
+//     if (isHovered) {
+//       fill(140, 124, 104); // Darker shadow when hovered
+//     } else {
+//       fill(160, 144, 124); // Normal shadow
+//     }
+//     rect(this.x + 4, this.y + 4, this.w, this.h, 6);
+
+//     stroke(120, 94, 77);
+//     strokeWeight(2);
+
+//     // Change button color when hovered
+//     if (isHovered) {
+//       fill(245, 216, 185); // Slightly darker when hovered
+//     } else {
+//       fill(255, 226, 195); // Normal color
+//     }
+//     rect(this.x, this.y, this.w, this.h, 6);
+
+//     noStroke();
+//     if (isHovered) {
+//       fill(100, 74, 57); // Darker text when hovered
+//     } else {
+//       fill(120, 94, 77); // Normal text color
+//     }
+//     textAlign(CENTER, CENTER);
+//     textSize(this.fontSize);
+//     // textFont('Press Start 2P');
+//     textFont(neoFont)
+//     text(this.label, this.x + this.w / 2, this.y + this.h / 2);
 //   }
-//   textAlign(CENTER, CENTER);
-//   textSize(15);
-//   textFont(neoFont);
-//   text(this.label, this.x + this.w / 2, this.y + this.h / 2 + 2);
-// }
 
 //   isHovered() {
 //     return mouseX > this.x && mouseX < this.x + this.w &&
@@ -53,9 +54,8 @@
 //     return this.isHovered() && mouseIsPressed;
 //   }
 // }
-
 class Button {
-  constructor(x, y, w, h, label, action, fontSize = 25) {
+  constructor(x, y, w, h, label, action, fontSize = 20) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -68,36 +68,40 @@ class Button {
   display() {
     let isHovered = this.isHovered();
 
-    noStroke();
-    if (isHovered) {
-      fill(140, 124, 104); // Darker shadow when hovered
-    } else {
-      fill(160, 144, 124); // Normal shadow
-    }
-    rect(this.x + 4, this.y + 4, this.w, this.h, 6);
-
-    stroke(120, 94, 77);
-    strokeWeight(2);
-
-    // Change button color when hovered
-    if (isHovered) {
-      fill(245, 216, 185); // Slightly darker when hovered
-    } else {
-      fill(255, 226, 195); // Normal color
-    }
-    rect(this.x, this.y, this.w, this.h, 6);
-
-    noStroke();
-    if (isHovered) {
-      fill(100, 74, 57); // Darker text when hovered
-    } else {
-      fill(120, 94, 77); // Normal text color
-    }
+    push();
+    rectMode(CORNER);
     textAlign(CENTER, CENTER);
+    textFont(neoFont);
     textSize(this.fontSize);
-    // textFont('Press Start 2P');
-    textFont(neoFont)
+
+    // --- Glow behind button ---
+    if (isHovered) {
+      noStroke();
+      fill(0, 255, 200, 40); // teal glow
+      rect(this.x - 6, this.y - 6, this.w + 12, this.h + 12, 12);
+    }
+
+    // --- Main button body ---
+    noStroke();
+    fill(10, 10, 40); // dark navy core
+    rect(this.x, this.y, this.w, this.h, 8);
+
+    // --- Neon border ---
+    strokeWeight(2.5);
+    stroke(isHovered ? '#01FFB9' : '#00CED1'); // brighter when hovered
+    noFill();
+    rect(this.x, this.y, this.w, this.h, 8);
+
+    // --- Inner Glow Ring ---
+    strokeWeight(5);
+    stroke(isHovered ? 'rgba(1, 255, 185, 0.3)' : 'rgba(0, 206, 209, 0.2)');
+    rect(this.x, this.y, this.w, this.h, 8);
+
+    // --- Label ---
+    noStroke();
+    fill(isHovered ? '#01FFB9' : '#00FFFF');
     text(this.label, this.x + this.w / 2, this.y + this.h / 2);
+    pop();
   }
 
   isHovered() {
@@ -110,58 +114,9 @@ class Button {
   }
 }
 
-// function drawSelectedScreen(selectedItem) {
-// image(assets.room, 0, 0, width, height);
 
-// let panelWidth = width / 3;
-// let centerX = panelWidth / 2;
-// let centerY = height / 2;
-// let scaleFactor = 1.5;
 
-// // Get item height
-// let itemHeight;
-// if (selectedItem === "wallet") itemHeight = walletItem.baseHeight;
-// else if (selectedItem === "phone") itemHeight = phoneItem.baseHeight;
-// else if (selectedItem === "diary") itemHeight = diaryItem.baseHeight;
 
-// let drawY = centerY - (itemHeight * scaleFactor) / 2;
-
-// // Draw selected item centered in the left panel
-// push();
-// translate(centerX-10, drawY);
-// scale(scaleFactor);
-// if (selectedItem === "wallet") drawWallet(0, 0);
-// else if (selectedItem === "phone") drawPhone(0, 0);
-// else if (selectedItem === "diary") drawDiary(0, 0);
-// pop();
-
-// let btnX = width - 400;
-// let btnW = 300;
-// let btnH = 60;
-// let btnSpacing = 20;
-
-// let buttonConfigs = SettingButtons(selectedItem);
-
-// // Calculate starting Y position to center buttons vertically
-// let totalButtonsHeight = (buttonConfigs.length * btnH) + ((buttonConfigs.length - 1) * btnSpacing);
-// let startY = (height - totalButtonsHeight) / 2;
-
-// let buttons = buttonConfigs.map((config, index) => {
-// let y = startY + index * (btnH + btnSpacing);
-// return new Button(btnX, y, btnW, btnH, config.label, config.action);
-
-// });
-
-// // Display all buttons
-// buttons.forEach(btn => btn.display());
-
-// // Handle button clicks
-// buttons.forEach(btn => {
-//   if (btn.isClicked()) {
-//     ButtonAction(btn.action);
-//   }
-// });
-// }
 
 
 function SettingButtons(selectedItem) {
