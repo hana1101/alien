@@ -2,6 +2,7 @@ let dialogueZib_scene2;
 
 function drawZib2() {
   image(zib2, 0, 0, width, height);
+  DialogueBox.maybeReset("dialogueZib_scene2");
 
   if (!dialogueZib_scene2) {
     let linesZib_scene2 = [

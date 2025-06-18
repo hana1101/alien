@@ -12,6 +12,7 @@ class DialogueBox {
   }
 
   display() {
+    
     let spaceblue = color(10, 10, 40);
     let neongreen = color(0, 255, 153);
     let cyanblue = color(114, 255, 251);
@@ -40,6 +41,9 @@ class DialogueBox {
       this.y + padding,
       this.w - 2 * padding
     );
+    if (this.finished && !this.finishedClicked) {
+      this.reset();
+    }
   }
 
   next() {
@@ -58,24 +62,6 @@ class DialogueBox {
       mouseY < this.y + this.h
     );
   }
-// handleClick() {
-//   if (this.currentLine < this.lines.length - 1) {
-//     this.next();
-//   } else {
-//     this.finished = true;
-//     this.finishedClicked = true;
-//   }
-// }
-
-//   handleClick() {
-//   if (this.currentLine < this.lines.length - 1) {
-//     this.currentLine++;
-//   } else {
-//     this.finished = true;
-//     this.finishedClicked = true;
-//     isDialogueBlocking=false
-//   }
-// }
 
 handleClick() {
   // Only handle click if mouse is over the dialogue box
@@ -103,4 +89,16 @@ handleClick() {
     this.lines = newLines;
     this.reset();
   }
+  static maybeReset(name) {
+    if (pendingDialogueReset === name) {
+      if (window[name]) {
+        window[name].reset();
+        console.log("✅ Reset dialogue:", name);
+      } else {
+        console.warn("⚠️ Dialogue not yet created:", name);
+      }
+      pendingDialogueReset = null;
+    }
+  }
+  
 }

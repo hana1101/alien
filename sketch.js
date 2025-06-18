@@ -21,6 +21,7 @@ let total_stats = 0;
 let endGame = false;
 let totalSuccess = false;
 let dogGame_initialized = false;
+let pendingDialogueReset = null;
 
 let happyEnding1, happyEnding2, happyEnding3, badEnding1, badEnding2, badEnding3;
 let superPowerImg;
@@ -229,6 +230,7 @@ function draw() {
 
 
 function mousePressed() {
+
   //change screen when click
   console.log("mouse pressed at screen:", currentScreen); // Debug line
 
@@ -237,7 +239,7 @@ function mousePressed() {
     previousScreen = currentScreen;
     currentScreen = "startscene/zib1";
   }
-
+  
   if (currentScreen === "startscene/zib1") {
     if (dialogueZib_scene1 && !dialogueZib_scene1.finished) {
       dialogueZib_scene1.handleClick();
@@ -485,11 +487,23 @@ function mousePressed() {
 
 
 
+let justInspectedItem = false
 
 function keyPressed() {
   if (keyCode === ESCAPE) {
     console.log("ESC pressed:", currentScreen, 'prev:', previousScreen);
-  
+    if (currentScreen.startsWith("startscene/zib")) {
+      const match = currentScreen.match(/zib(\d+)/);
+      if (match && match[1]) {
+        let num = parseInt(match[1]);
+        if (num > 1) {
+          currentScreen = `startscene/zib${num - 1}`;
+          pendingDialogueReset = `dialogueZib_scene${num - 1}`;
+          return;
+        }
+      }
+    }
+    
     // 1. ESC inside active game (block)
     if ((currentScreen === "girlfriendGame" && gameStarted) ||
         (currentScreen === "girlfriendFT" && faceTimeStart) ||
@@ -497,6 +511,7 @@ function keyPressed() {
         (currentScreen === "dogGame" && buddyStart)) {
       return;
     }
+    
   
     // 2. ESC from mini-game → go back to play + set selectedItem
     if (['girlfriendGame', 'girlfriendFT', 'doodleGame', 'dogGame'].includes(currentScreen)) {
@@ -539,6 +554,8 @@ function keyPressed() {
       selectedItem = null;
       justInspectedItem = false;
     }
+
+  
   }
   
 
@@ -550,7 +567,6 @@ function keyPressed() {
   }
 }
 
-let justInspectedItem = false
 
 
 
