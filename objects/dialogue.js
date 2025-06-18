@@ -101,6 +101,20 @@ class DialogueBox {
   isOnLastLine() {
     return this.currentLine === this.lines.length - 1 && !this.finished;
   }
+  static maybeReset(name) {
+    console.log("🧪 maybeReset called for", name);
+    if (pendingDialogueReset === name) {
+      console.log("🔄 Match found → Resetting:", name);
+      if (window[name]) {
+        window[name].reset();
+        console.log("✅ Reset dialogue:", name);
+      } else {
+        console.warn("⚠️ Dialogue object not yet created:", name);
+      }
+      pendingDialogueReset = null;
+    }
+  }
+  
 
   setLines(newLines) {
     this.lines = newLines;
