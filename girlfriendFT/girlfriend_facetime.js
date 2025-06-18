@@ -194,7 +194,7 @@ function facetimeEnd(){
     if (success) {
       image(ftsuccess, 0, 0, width, height);
       fill(0, 255, 0);
-      text("정답! Lorem이 맞는 선택이었어요!", width / 2, height / 2);
+      text("정답! 이 맞는 선택이었어요!", width / 2, height / 2);
     } else if (facetimeLife) {
       image(ftfail, 0, 0, width, height);
       fill("red");
