@@ -14,7 +14,9 @@ class DialogueBox {
   }
 
   display() {
-    push();
+    let spaceblue = color(10, 10, 40);
+    let neongreen = color(0, 255, 153);
+    let cyanblue = color(114, 255, 251);
 
     // ---------- 대화 상자 (그라디언트 + 네온 외곽) ----------
     noStroke();
@@ -50,8 +52,9 @@ class DialogueBox {
       this.y + pad,
       this.w - pad * 2
     );
+  }
 
-    // ---------- “다음” 인디케이터 ----------
+  next() {
     if (this.currentLine < this.lines.length - 1) {
       const blink = frameCount % 60 < 30;
       if (blink) {
@@ -71,8 +74,28 @@ class DialogueBox {
       mouseY < this.y + this.h
     );
   }
+// handleClick() {
+//   if (this.currentLine < this.lines.length - 1) {
+//     this.next();
+//   } else {
+//     this.finished = true;
+//     this.finishedClicked = true;
+//   }
+// }
 
-  next() {
+//   handleClick() {
+//   if (this.currentLine < this.lines.length - 1) {
+//     this.currentLine++;
+//   } else {
+//     this.finished = true;
+//     this.finishedClicked = true;
+//     isDialogueBlocking=false
+//   }
+// }
+
+handleClick() {
+  // Only handle click if mouse is over the dialogue box
+  if (this.isHovered()) {
     if (this.currentLine < this.lines.length - 1) {
       this.currentLine++;
     } else {
@@ -106,4 +129,16 @@ class DialogueBox {
     this.lines = newLines;
     this.reset();
   }
+  static maybeReset(name) {
+    if (pendingDialogueReset === name) {
+      if (window[name]) {
+        window[name].reset();
+        console.log("✅ Reset dialogue:", name);
+      } else {
+        console.warn("⚠️ Dialogue not yet created:", name);
+      }
+      pendingDialogueReset = null;
+    }
+  }
+  
 }
