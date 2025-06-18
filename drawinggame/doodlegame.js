@@ -209,7 +209,7 @@ function playDoodleGame() {
   textSize(40);
   textAlign(LEFT, BOTTOM);
   text(`Draw: ${targetLabel}`, 50, 160);
-  doodleTime.display(50, 200, '남은 시간');
+  doodleTime.display(50, 200, '남은 시간',30);
 
   if (dGameOver) {
     // phase 0: 텍스트 정답 표시
