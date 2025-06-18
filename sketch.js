@@ -199,9 +199,9 @@ function draw() {
     playGirlfriendHand();
 
   } else if (currentScreen === "girlfriendFT") {
-    if (!faceTimeStarted) {
-      initializeFaceTime();
-      faceTimeStarted = true;
+      if (!facetimeOver && !faceTimeStarted) {
+        initializeFaceTime();
+        faceTimeStarted = true;
     }
     playFaceTime();
     

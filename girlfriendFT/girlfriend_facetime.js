@@ -94,14 +94,16 @@ function loadStage(idx){
 
 /* ---------- 4) 메인 루프 ---------- */
 function playFaceTime(){
-  if(!faceTimeStart){ ftRules(); return; }
+  if(!faceTimeStart) { ftRules(); return; }
 
   image(facetimebg,0,0,width,height);
   displayStats();
 
   if(facetimeOver){ facetimeEnd(); return; }
 
+  push();
   dialogueFaceTime.display();
+  pop();
 
   if(dialogueFaceTime.finished){
     waitFT.start(); waitFT.update();
