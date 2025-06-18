@@ -66,22 +66,24 @@ function drawSelectedScreen(selectedItem) {
     });
   }
 }
+
+
 function drawPlayScreen() {
   image(assets.roomblur, 0, 0, width, height);
-  let elapsed = millis() - startTime;
-  if (elapsed < 1500) {
-    // D-1
-    textSize(50);
-    textAlign(CENTER, CENTER);
-    fill(255);
-    text("D-1", width / 2, height / 2);
-  } else if (elapsed < 2000) {
-    let alphaVal = map(elapsed, 1900, 2300, 255, 0);
-    textSize(50);
-    textAlign(CENTER, CENTER);
-    fill(255, alphaVal); 
-    text("D-1", width / 2, height / 2);
-  } else {
+  // let elapsed = millis() - startTime;
+  // if (elapsed < 1500) {
+  //   // D-1
+  //   textSize(50);
+  //   textAlign(CENTER, CENTER);
+  //   fill(255);
+  //   text("D-1", width / 2, height / 2);
+  // } else if (elapsed < 2000) {
+  //   let alphaVal = map(elapsed, 1900, 2300, 255, 0);
+  //   textSize(50);
+  //   textAlign(CENTER, CENTER);
+  //   fill(255, alphaVal); 
+  //   text("D-1", width / 2, height / 2);
+  // } else {
     if (!selectedItem) {
       walletItem.display();
       walletItem.drawLabel(30, 40);
@@ -97,23 +99,47 @@ function drawPlayScreen() {
         100,
         300,
         50,
-        "Choose your item",
-        null
+        "Choose your item", 'iteminstruction'
       );
       chooseitem.display();
+      if (chooseitem.isClicked()) {
+        ButtonAction(chooseitem.action);
+      }
+      
       displayStats();
     } else {
       drawSelectedScreen(selectedItem);
       displayStats();
 
     }
+
+  if (showItemPopup) {
+    drawPopup();
   }
+}
+
+function drawPopup() {
+  push();
+  rectMode(CENTER);
+  textAlign(CENTER, CENTER);
+
+  // Semi-transparent background
+  fill(0, 180);
+  noStroke();
+  rect(width / 2, height / 2, 500, 300, 20);
+
+  fill(255);
+  textSize(24);
+  text("Pick carefully. Each item tells a story.", width / 2, height / 2 - 20);
+
+  textSize(16);
+  text("Press ESC to close", width / 2, height / 2 + 60);
+
+  pop(); // ← this was likely the issue before (was missing `()` at end)
 }
 
 
 
-
-let boxInitialized = false;
 
 function drawWorkscreen() {
   if (!boxInitialized) {

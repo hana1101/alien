@@ -25,9 +25,9 @@ let pendingDialogueReset = null;
 let roomnight
 let happyEnding1, happyEnding2, happyEnding3, badEnding1, badEnding2, badEnding3;
 let superPowerImg;
-
 let isDialogueBlocking = false;
 let openSound;
+var showItemPopup = false;
 
 
 function preload() {

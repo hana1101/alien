@@ -112,6 +112,8 @@ function playDoodleGame() {
       rectMode(CENTER);
       textAlign(CENTER, CENTER);
       textSize(32);
+      textFont(neoFont)
+
       let msg = "성공! 클라이언트가 만족했어요!";
       let boxW = textWidth(msg) + 80;
       let boxH = 80;
@@ -144,6 +146,7 @@ function playDoodleGame() {
       rectMode(CENTER);
       textAlign(CENTER, CENTER);
       textSize(32);
+      textFont(neoFont)
       let msg = "💥 실패! 클라이언트가 실망했어요!";
       let boxW = textWidth(msg) + 80;
       let boxH = 80;
@@ -209,6 +212,8 @@ function playDoodleGame() {
   textSize(40);
   textAlign(LEFT, BOTTOM);
   text(`Draw: ${targetLabel}`, 50, 160);
+  textFont(neoFont)
+
   doodleTime.display(50, 200, '남은 시간',30);
 
   if (dGameOver) {
