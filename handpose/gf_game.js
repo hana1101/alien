@@ -353,7 +353,9 @@ function displayGameResults() {
         statsAlreadyChanged = true;
       }
     }
+  push();
   displayStats();
+  pop();
   nextBtnHand.display();
   if (nextBtnHand.isClicked()){
     nextGame();

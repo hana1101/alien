@@ -33,7 +33,7 @@ let openSound;
 function preload() {
   openSound = loadSound('assets/opening.mp3');
   startPlaySound = loadSound('assets/startplay.mp3');
-  // buddySound= loadSound('assets/buddybgm.mp3');
+  buddySound= loadSound('assets/buddybgm.mp3');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
@@ -50,7 +50,7 @@ function preload() {
   success_gfbg = loadImage("assets/laughend.jpg");
   fail_gfbg = loadImage("assets/relationend.jpg");
   // superPowerImg = loadImage("assets/sup.png");
-  superPowerImg = loadImage("assets/sup_pink.png");
+  superPowerImg = loadImage("assets/supPink.png");
   pressfont=loadFont('assets/PressStart2P-Regular.ttf')
   // neoFont = loadFont("assets/neodgm.ttf");
   neoFont = loadFont("assets/dgm.ttf");
