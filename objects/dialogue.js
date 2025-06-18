@@ -51,16 +51,11 @@ class DialogueBox {
       this.w - pad * 2
     );
 
-    // ---------- “다음” 인디케이터 ----------
-    if (this.currentLine < this.lines.length - 1) {
-      const blink = frameCount % 60 < 30;
-      if (blink) {
-        textSize(20);
-        textAlign(RIGHT, BOTTOM);
-        fill(160); // 흐릿한 회색 계열로
-        text("⟶", this.x + this.w - pad, this.y + this.h - pad);
-      }
-    }
+    // ---------- “다음” 인디케이터 (모든 줄에서 항상 표시) ----------
+    textSize(40);
+    textAlign(RIGHT, BOTTOM);
+    fill(160); // 흐릿한 회색 계열
+    text("⟶", this.x + this.w - pad, this.y + this.h - pad);
   }
 
   isHovered() {
@@ -88,7 +83,6 @@ class DialogueBox {
         if (typeof isDialogueBlocking !== "undefined") {
           isDialogueBlocking = false;
           console.log("handleClick called on", this.lines[this.currentLine]);
-
         }
       }
     }
@@ -103,6 +97,7 @@ class DialogueBox {
   isOnLastLine() {
     return this.currentLine === this.lines.length - 1 && !this.finished;
   }
+
   static maybeReset(name) {
     console.log("🧪 maybeReset called for", name);
     if (pendingDialogueReset === name) {
@@ -116,7 +111,6 @@ class DialogueBox {
       pendingDialogueReset = null;
     }
   }
-  
 
   setLines(newLines) {
     this.lines = newLines;
