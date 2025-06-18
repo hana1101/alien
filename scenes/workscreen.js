@@ -50,4 +50,7 @@ if (dialogue && dialogue.isOnLastLine()) {
 
   // if (dialogue.finished && dialogue.finishedClicked){
   //   currentScreen='play'
-  //
+  // }
+
+}
+
