@@ -47,9 +47,9 @@ function handleBackgroundMusic() {
   }
     // --- Handle buddySound (pet screen) ---
 
-  const petscreen = new Set([
-    "pet"
-  ]);
+  // const petscreens = new Set([
+  //   "pet"
+  // ]);
 
   if (petScreen.has (currentScreen)) {
     BuddySoundFadingout=false;
