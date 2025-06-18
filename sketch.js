@@ -1,5 +1,5 @@
 let mgr;
-let assetname = ["background", "room", "workplace", "drawingrule", 'roomnight',"roomblur","zib1", "zib2","zib3","zib4","zib5","zib6","zib7","zib8","zib9","zib10","zib11","zib12","zib13","zib14","diary"];
+let assetname = ["background", "room", "workplace", "drawingrule", "roomblur","zib1", "zib2","zib3","zib4","zib5","zib6","zib7","zib8","zib9","zib10","zib11","zib12","zib13","zib14","diary"];
 let startTime;
 let walletItem, phoneItem, diaryItem;
 let dialogue;
@@ -33,6 +33,7 @@ let openSound;
 function preload() {
   openSound = loadSound('assets/opening.mp3');
   startPlaySound = loadSound('assets/startplay.mp3');
+  buddySound= loadSound('assets/buddybgm.mp3');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
