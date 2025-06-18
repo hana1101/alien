@@ -266,7 +266,7 @@ function handleGameLogic(percentageInside) {
             gameEnded = true;
           }
         }
-        caughtTimer.display(50, 160, "Caught Timer");
+        caughtTimer.display(50, 160, "Caught Timer",20);
       } else {
           caughtTimer.reset();
           isCaught = false;
@@ -287,7 +287,7 @@ function handleGameLogic(percentageInside) {
   }
 
 function displayTimers() {
-  totalTimer.display(50, 125, "남은 시간");
+  totalTimer.display(50, 125, "남은 시간",20);
   
 }
 
