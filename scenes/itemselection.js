@@ -217,7 +217,7 @@ function resetSelectedScreenFlag() {
 }
 function goBackToMainScreen() {
   resetSelectedScreenFlag(); // Reset the flag
-  currentScreen = "main"; // or however you handle screen switching
+  currentScreen = "main"; 
 }
 
 

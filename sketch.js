@@ -15,7 +15,7 @@ let relationship_stats;
 let career_stats;
 let wellbeing_stats;
 let life_stats;
-
+let neoFontBold
 let countGamePlayed = 0;
 let total_stats = 0;
 let endGame = false;
@@ -50,7 +50,9 @@ function preload() {
   // superPowerImg = loadImage("assets/sup.png");
   superPowerImg = loadImage("assets/sup_pink.png");
 
-  neoFont = loadFont("assets/neodgm.ttf");
+  // neoFont = loadFont("assets/neodgm.ttf");
+  neoFont = loadFont("assets/dgm.ttf");
+
 
   zib1 = loadImage("assets/zib1.jpg");
   zib2 = loadImage("assets/zib2.jpg");
@@ -482,104 +484,78 @@ function mousePressed() {
 }
 
 
-// function keyPressed() {
-//   if (keyCode === ESCAPE) {
-//     console.log("esc pressed at screen:", currentScreen); // Debug line
-//     // Don't allow ESC during active games
-//     if ((currentScreen === "girlfriendGame" && gameStarted) ||
-//         (currentScreen === "girlfriendFT" && faceTimeStart) ||
-//         (currentScreen === "doodleGame" && doodleStarted && !dGameOver) ||
-//         (currentScreen === "dogGame" && buddyStart)) { 
-//           return;
-//     }
-    
-//     // Clear selected item first if on play screen
-//     if (currentScreen === "play" && selectedItem) {
-//       selectedItem = null;
-//       resetSelectedScreenFlag(); // Reset when clearing selectedItem
-//       return;
-//     } 
-   
-    
-//     // Go back to previous screen
-//     if (previousScreen) {
-//       resetSelectedScreenFlag(); // Reset when changing screens
-//       currentScreen = previousScreen;
-//       selectedItem = null;
-//     }
-//   }
-//   if (currentScreen==='play' && selectedItem===null) {
-//     resetSelectedScreenFlag(); 
-//     currentScreen= 'zib14'
-//   }
-//   // Skip functionality
-//   if (key === 's' || key === 'S') {
-//     console.log('s pressed', currentScreen)
-//     if (currentScreen.startsWith("startscene/zib")) {
-//       currentScreen = "startscene/zib11";
-//     }
-//   }
-// }
 
-let justInspectedItem = false
 
 function keyPressed() {
   if (keyCode === ESCAPE) {
-    console.log("ESC pressed at screen:", currentScreen);
-
-    // Block ESC in active games
+    console.log("ESC pressed:", currentScreen, 'prev:', previousScreen);
+  
+    // 1. ESC inside active game (block)
     if ((currentScreen === "girlfriendGame" && gameStarted) ||
         (currentScreen === "girlfriendFT" && faceTimeStart) ||
         (currentScreen === "doodleGame" && doodleStarted && !dGameOver) ||
         (currentScreen === "dogGame" && buddyStart)) {
       return;
     }
-
-    //1-1. ESC while game BUT not started play yet
-    // if ((currentScreen === "girlfriendGame" && !gameStarted) ||
-    //     (currentScreen === "girlfriendFT" && !faceTimeStart) ||
-    //     (currentScreen === "doodleGame" && !doodleStarted && !dGameOver) ||
-    //     (currentScreen === "dogGame" && !buddyStart)) {
-    
-    //       console.log(selectedItem);
-    //       currentScreen = "play";
-    // }
-
-    // 1. ESC while inspecting item → return to play
+  
+    // 2. ESC from mini-game → go back to play + set selectedItem
+    if (['girlfriendGame', 'girlfriendFT', 'doodleGame', 'dogGame'].includes(currentScreen)) {
+      let prev = currentScreen;
+  
+      // set item FIRST before switching
+      if (prev === 'girlfriendGame' || prev === 'girlfriendFT') {
+        selectedItem = 'phone';
+      } else if (prev === 'doodleGame') {
+        selectedItem = 'wallet';
+      } else if (prev === 'dogGame') {
+        selectedItem = 'diary';
+      }
+  
+      resetSelectedScreenFlag();
+      currentScreen = 'play';
+      return;
+    }
+  
+    // 3. Close item inspection
     if (selectedItem && currentScreen === "play") {
       selectedItem = null;
       resetSelectedScreenFlag();
       justInspectedItem = true;
       return;
     }
-
-    // 2. ESC after returning from inspection → go to zib14
+  
+    // 4. After inspection → zib14
     if (currentScreen === "play" && !selectedItem && justInspectedItem) {
       currentScreen = "startscene/zib14";
       justInspectedItem = false;
       previousScreen = null;
       return;
     }
-
-    // 3. Normal back logic
+  
+    // 5. Default back
     if (previousScreen) {
       resetSelectedScreenFlag();
       currentScreen = previousScreen;
       selectedItem = null;
-
       justInspectedItem = false;
     }
   }
+  
 
   // Skip logic
   if (key === 's' || key === 'S') {
-    console.log('press S but not conditional')
     if (currentScreen.startsWith("startscene/zib")) {
-      console.log('normal run')
       currentScreen = "startscene/zib11";
     }
   }
 }
+
+let justInspectedItem = false
+
+
+
+
+
 
 
 function nextGame(){

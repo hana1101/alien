@@ -287,3 +287,42 @@
 //     }
 //   }
 // }
+
+// function keyPressed() {
+//   if (keyCode === ESCAPE) {
+//     console.log("esc pressed at screen:", currentScreen); // Debug line
+//     // Don't allow ESC during active games
+//     if ((currentScreen === "girlfriendGame" && gameStarted) ||
+//         (currentScreen === "girlfriendFT" && faceTimeStart) ||
+//         (currentScreen === "doodleGame" && doodleStarted && !dGameOver) ||
+//         (currentScreen === "dogGame" && buddyStart)) { 
+//           return;
+//     }
+    
+//     // Clear selected item first if on play screen
+//     if (currentScreen === "play" && selectedItem) {
+//       selectedItem = null;
+//       resetSelectedScreenFlag(); // Reset when clearing selectedItem
+//       return;
+//     } 
+   
+    
+//     // Go back to previous screen
+//     if (previousScreen) {
+//       resetSelectedScreenFlag(); // Reset when changing screens
+//       currentScreen = previousScreen;
+//       selectedItem = null;
+//     }
+//   }
+//   if (currentScreen==='play' && selectedItem===null) {
+//     resetSelectedScreenFlag(); 
+//     currentScreen= 'zib14'
+//   }
+//   // Skip functionality
+//   if (key === 's' || key === 'S') {
+//     console.log('s pressed', currentScreen)
+//     if (currentScreen.startsWith("startscene/zib")) {
+//       currentScreen = "startscene/zib11";
+//     }
+//   }
+// }

@@ -55,7 +55,7 @@
 // }
 
 class Button {
-  constructor(x, y, w, h, label, action, fontSize = 20) {
+  constructor(x, y, w, h, label, action, fontSize = 25) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -95,8 +95,9 @@ class Button {
     }
     textAlign(CENTER, CENTER);
     textSize(this.fontSize);
-    textFont('Press Start 2P');
-    text(this.label, this.x + this.w / 2, this.y + this.h / 2 + 2);
+    // textFont('Press Start 2P');
+    textFont(neoFont)
+    text(this.label, this.x + this.w / 2, this.y + this.h / 2);
   }
 
   isHovered() {
