@@ -102,11 +102,13 @@ function drawPlayScreen() {
         "Choose your item", 'iteminstruction'
       );
       chooseitem.display();
-      if (chooseitem.isClicked()) {
-        ButtonAction(chooseitem.action);
+      // if (chooseitem.isClicked()) {
+      //   ButtonAction(chooseitem.action);
 
+      // }
+      if (chooseitem.isHovered() && mouseIsPressed && !wasMousePressed) {
+        showItemPopup = true;
       }
-      
       displayStats();
     } else {
       drawSelectedScreen(selectedItem);
