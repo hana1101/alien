@@ -1,5 +1,6 @@
 let openSoundFadingOut = false;
 let startPlaySoundFadingOut = false;
+let buddySoundFadingOut=false;
 
 function handleBackgroundMusic() {
   const introScreens = new Set([
@@ -44,6 +45,18 @@ function handleBackgroundMusic() {
       if (startPlaySound.isPlaying()) startPlaySound.stop();
     }, 1600);
   }
+    // --- Handle buddySound (pet screen) ---
+  if (currentScreen === "pet") {
+    buddySoundFadingOut = false;
+    if (!buddySound.isPlaying()) {
+      buddySound.setVolume(0.2);
+      buddySound.loop();
+    }
+  } else if (buddySound.isPlaying() && !buddySoundFadingOut) {
+    buddySoundFadingOut = true;
+    buddySound.setVolume(0.0, 1.5);
+    setTimeout(() => {
+      if (buddySound.isPlaying()) buddySound.stop();
+    }, 1600);
+  }
 }
-
-  
