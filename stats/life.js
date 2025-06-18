@@ -19,8 +19,10 @@ const heart = [
 /* ---------- 2) 픽셀 하트 그리기 ---------- */
 function drawHeart(x, y, pixelSize) {
   push();
-  fill('#d62839');      // 빨간 픽셀 색
-  noStroke();
+  fill(247, 59, 178);      // 빨간 픽셀 색
+  stroke(245, 22, 52);
+  strokeWeight(1);
+  
   for (let r = 0; r < heart.length; r++) {
     for (let c = 0; c < heart[r].length; c++) {
       if (heart[r][c] === "1") {
@@ -49,11 +51,13 @@ class life{
   
   display(){
     push();
-    noStroke();
-    fill("red");
+    stroke(245, 22, 52);
+    strokeWeight(1);
+    fill(247, 59, 178);
+    
     
     for (let i=0; i<this.lifeCount;i++){
-      drawHeart(-7+this.x+i*40,63,20);
+      drawHeart(+16+this.x+i*55,30,2);
       // circle(this.x+i*30, 65 ,20); 
     }
     
