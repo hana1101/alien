@@ -28,6 +28,9 @@ let superPowerImg;
 let isDialogueBlocking = false;
 let openSound;
 var showItemPopup = false;
+let buddySound;
+let unav;
+let dialogueEnd_scene=null;
 
 
 function preload() {
@@ -55,6 +58,8 @@ function preload() {
   // neoFont = loadFont("assets/neodgm.ttf");
   neoFont = loadFont("assets/dgm.ttf");
   roomnight=  loadImage("assets/roomnight.jpg")
+  unav = loadImage("assets/unav.jpg"); 
+
 
 
   zib1 = loadImage("assets/zib1.jpg");
@@ -218,6 +223,7 @@ function draw() {
       initDogClickGame();
       dogGame_initialized = true;
     }
+  
     playDogClickGame();
   }  else if (currentScreen ==="lifeOver"){
       lifeOverPage();
