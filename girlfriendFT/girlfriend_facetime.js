@@ -30,9 +30,9 @@ function initializeFaceTime() {
   stageFT = 1;
   
   
-  choice1 = new Button(500,340,300,50,"아직 시간 남았는데 이따가 결정할까?",choice1Action);
-  choice2 = new Button(500,400,300,50,"스테이크 먹으로 갈까?",choice2Action);
-  choice3 = new Button(500,460,300,50,"해산물 리조또 어때?",choice3Action);
+  choice1 = new Button(500,340,300,50,"아직 시간 남았는데 이따가 결정할까?",choice1Action, 20);
+  choice2 = new Button(500,400,300,50,"스테이크 먹으로 갈까?",choice2Action,20);
+  choice3 = new Button(500,460,300,50,"해산물 리조또 어때?",choice3Action,20);
   
   let linesGf = [
     "자기야 ! 우리 진짜 오랜만인 것 같아... \n잘 지냈어 ??\n...",

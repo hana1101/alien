@@ -36,7 +36,7 @@ if (dialogue && dialogue.isOnLastLine()) {
   let alpha = 127 + 127 * sin(millis() / 300);
 
   textAlign(RIGHT, BOTTOM);
-  textFont("Press Start 2P");
+  textFont(pressfont); // pixel font
   textSize(14);
   fill(0, 255, 153, alpha);
   let padding = 20;

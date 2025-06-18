@@ -39,7 +39,6 @@ function drawWallet(x, y) {
 //   // stroke(0)
 //   // circle(x+80,y+230,20)
 // }
-
 function drawPhone(x, y) {
   let phoneW = 130;
   let phoneH = 250;
@@ -72,6 +71,7 @@ function drawPhone(x, y) {
   fill(160);
   rect(x + phoneW / 2 - 20, y + phoneH - 16, 40, 4, 2);
 }
+
 
 
 
@@ -120,8 +120,8 @@ function drawDiary(x, y) {
 
   // Gold title text
   fill(255, 215, 100); // gold
-  textSize(26);
-  textFont("Press Start 2P");
+  textSize(35);
+  textFont(neoFont);
   textAlign(CENTER, CENTER);
   text("DIARY", x + diaryW / 2, y + diaryH / 2);
 
@@ -181,12 +181,10 @@ class item {
     pop();
   }
 
-  drawLabel(fontSize = 18, yOffset = 5) {
+  drawLabel(fontSize = 30, yOffset = 5) {
     // Label position independent of scale
-    let labelX = this.x + this.baseWidth / 2;
+    let labelX = (this.x + this.baseWidth / 2)-18;
     let labelY = this.y + this.baseHeight + yOffset;
-
-    textFont("Press Start 2P");
     textSize(fontSize);
     fill(255);
     textAlign(CENTER, CENTER);

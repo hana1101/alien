@@ -50,7 +50,7 @@ function preload() {
   fail_gfbg = loadImage("assets/relationend.jpg");
   // superPowerImg = loadImage("assets/sup.png");
   superPowerImg = loadImage("assets/sup_pink.png");
-
+  pressfont=loadFont('assets/PressStart2P-Regular.ttf')
   // neoFont = loadFont("assets/neodgm.ttf");
   neoFont = loadFont("assets/dgm.ttf");
 
@@ -141,6 +141,9 @@ function setup() {
 
 function draw() {
   handleBackgroundMusic();
+  if (pendingDialogueReset) {
+    DialogueBox.maybeReset(pendingDialogueReset);
+  }
   if (currentScreen === "start") {
     drawStartScreen();
   }else if (currentScreen==="startscene/zib1"){
@@ -241,6 +244,9 @@ function mousePressed() {
   }
   
   if (currentScreen === "startscene/zib1") {
+    if (dialogueZib_scene1 && dialogueZib_scene1.finished) {
+      dialogueZib_scene1.reset();
+    }
     if (dialogueZib_scene1 && !dialogueZib_scene1.finished) {
       dialogueZib_scene1.handleClick();
       console.log(dialogueZib_scene1.lines[dialogueZib_scene1.currentLine]);
@@ -248,11 +254,15 @@ function mousePressed() {
         previousScreen = currentScreen;
         currentScreen = "startscene/zib2";
         console.log("startscene/zib2");
+        
       }
     }
   }
 
   if (currentScreen === "startscene/zib2") {
+    if (dialogueZib_scene2 && dialogueZib_scene2.finished) {
+      dialogueZib_scene2.reset();
+    }
     if (dialogueZib_scene2 && !dialogueZib_scene2.finished) {
       dialogueZib_scene2.handleClick();
       console.log(dialogueZib_scene2.lines[dialogueZib_scene2.currentLine]);
@@ -265,6 +275,9 @@ function mousePressed() {
   }
 
   if (currentScreen === "startscene/zib3") {
+    if (dialogueZib_scene3 && dialogueZib_scene3.finished) {
+      dialogueZib_scene3.reset();
+    }
     if (dialogueZib_scene3 && !dialogueZib_scene3.finished) {
       dialogueZib_scene3.handleClick();
       console.log(dialogueZib_scene3.lines[dialogueZib_scene3.currentLine]);
@@ -277,6 +290,9 @@ function mousePressed() {
   }
 
   if (currentScreen === "startscene/zib4") {
+    if (dialogueZib_scene4 && dialogueZib_scene4.finished) {
+      dialogueZib_scene4.reset();
+    }
     if (dialogueZib_scene4 && !dialogueZib_scene4.finished) {
       dialogueZib_scene4.handleClick();
       console.log(dialogueZib_scene4.lines[dialogueZib_scene4.currentLine]);
@@ -289,6 +305,9 @@ function mousePressed() {
   }
 
   if (currentScreen === "startscene/zib5") {
+    if (dialogueZib_scene5 && dialogueZib_scene5.finished) {
+      dialogueZib_scene5.reset();
+    }
     if (dialogueZib_scene5 && !dialogueZib_scene5.finished) {
       dialogueZib_scene5.handleClick();
       console.log(dialogueZib_scene5.lines[dialogueZib_scene5.currentLine]);
@@ -301,6 +320,9 @@ function mousePressed() {
   }
 
   if (currentScreen === "startscene/zib6") {
+    if (dialogueZib_scene6 && dialogueZib_scene6.finished) {
+      dialogueZib_scene6.reset();
+    }
     if (dialogueZib_scene6 && !dialogueZib_scene6.finished) {
       dialogueZib_scene6.handleClick();
       console.log(dialogueZib_scene6.lines[dialogueZib_scene6.currentLine]);
@@ -313,6 +335,9 @@ function mousePressed() {
   }
 
   if (currentScreen === "startscene/zib7") {
+    if (dialogueZib_scene7 && dialogueZib_scene7.finished) {
+      dialogueZib_scene7.reset();
+    }
     if (dialogueZib_scene7 && !dialogueZib_scene7.finished) {
       dialogueZib_scene7.handleClick();
       console.log(dialogueZib_scene7.lines[dialogueZib_scene7.currentLine]);
@@ -325,6 +350,9 @@ function mousePressed() {
   }
 
   if (currentScreen === "startscene/zib8") {
+    if (dialogueZib_scene8 && dialogueZib_scene8.finished) {
+      dialogueZib_scene8.reset();
+    }
     if (dialogueZib_scene8 && !dialogueZib_scene8.finished) {
       dialogueZib_scene8.handleClick();
       if (dialogueZib_scene8.finished) {
@@ -335,6 +363,9 @@ function mousePressed() {
   }
 
   if (currentScreen === "startscene/zib9") {
+    if (dialogueZib_scene9 && dialogueZib_scene9.finished) {
+      dialogueZib_scene9.reset();
+    }
     if (dialogueZib_scene9 && !dialogueZib_scene9.finished) {
       dialogueZib_scene9.handleClick();
       console.log(dialogueZib_scene9.lines[dialogueZib_scene9.currentLine]);
@@ -347,6 +378,9 @@ function mousePressed() {
   }
 
   if (currentScreen === "startscene/zib10") {
+    if (dialogueZib_scene10 && dialogueZib_scene10.finished) {
+      dialogueZib_scene10.reset();
+    }
     if (dialogueZib_scene10 && !dialogueZib_scene10.finished) {
       dialogueZib_scene10.handleClick();
       console.log(dialogueZib_scene10.lines[dialogueZib_scene10.currentLine]);
@@ -358,6 +392,7 @@ function mousePressed() {
     }
   }
   else if (currentScreen === "startscene/zib11") {
+    
     previousScreen = currentScreen;
     currentScreen = "startscene/zib12";
     console.log("startscene/zib12");
@@ -491,18 +526,8 @@ let justInspectedItem = false
 
 function keyPressed() {
   if (keyCode === ESCAPE) {
-    console.log("ESC pressed:", currentScreen, 'prev:', previousScreen);
-    if (currentScreen.startsWith("startscene/zib")) {
-      const match = currentScreen.match(/zib(\d+)/);
-      if (match && match[1]) {
-        let num = parseInt(match[1]);
-        if (num > 1) {
-          currentScreen = `startscene/zib${num - 1}`;
-          pendingDialogueReset = `dialogueZib_scene${num - 1}`;
-          return;
-        }
-      }
-    }
+
+  
     
     // 1. ESC inside active game (block)
     if ((currentScreen === "girlfriendGame" && gameStarted) ||
@@ -550,15 +575,28 @@ function keyPressed() {
     // 5. Default back
     if (previousScreen) {
       resetSelectedScreenFlag();
+    
+      // ADD THIS BLOCK HERE ↓
+      if (currentScreen.startsWith("startscene/zib")) {
+        const match = currentScreen.match(/zib(\d+)/);
+        if (match) {
+          let num = parseInt(match[1]);
+          if (num > 1) {
+            currentScreen = `startscene/zib${num - 1}`;
+            // Reset the dialogue variable so clicks work
+            window[`dialogueZib_scene${num - 1}`] = null;
+            return;
+          }
+        }
+      }
+      // ADD THIS BLOCK HERE ↑
+    
       currentScreen = previousScreen;
       selectedItem = null;
       justInspectedItem = false;
+      console.log("ESC pressed:", currentScreen, 'prev:', previousScreen);
     }
-
-  
   }
-  
-
   // Skip logic
   if (key === 's' || key === 'S') {
     if (currentScreen.startsWith("startscene/zib")) {
@@ -566,6 +604,7 @@ function keyPressed() {
     }
   }
 }
+
 
 
 
