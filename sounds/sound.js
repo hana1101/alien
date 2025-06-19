@@ -50,6 +50,7 @@ function handleBackgroundMusic() {
     // 페이드아웃 중이라면 즉시 복귀
     buddySoundFadingOut = false;
     if (!buddySound.isPlaying()) {
+      console.log("사운드 시작")
       buddySound.setVolume(0.2); // 원하는 볼륨
       buddySound.loop();         // 반복 재생
     }
@@ -57,7 +58,9 @@ function handleBackgroundMusic() {
     buddySoundFadingOut = true;
     buddySound.setVolume(0.0, 1.5); // 1.5초 동안 볼륨 0으로
     setTimeout(() => {
-      if (buddySound.isPlaying()) buddySound.stop();
+      if (buddySound.isPlaying()) 
+         console.log("사운드 정지");
+        buddySound.stop();
     }, 1600); // 실제 정지는 페이드 끝난 뒤
   }
 }
