@@ -6,10 +6,10 @@ function drawStartScreen() {
   //start button hover -> click
   if (startisHovering()) {
     cursor(HAND);
-    image(assets.startbutton, btn.x - 5, btn.y - 5, btn.w + 10, btn.h + 10);
+    image(assets.startbutton, btn.x - 5, btn.y - 5, btn.w + 10, btn.h + 40);
   } else {
     cursor(ARROW);
-    image(assets.startbutton, btn.x, btn.y, btn.w, btn.h);
+    image(assets.startbutton, btn.x, btn.y, btn.w, btn.h + 20);
   }
 }
 

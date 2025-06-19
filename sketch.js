@@ -112,8 +112,8 @@ function setup() {
   textFont(neoFont);
   textSize(25);
   // textFont("Press Start 2P");
-  btn.x = width / 2 - btn.w / 2;
-  btn.y = height / 2 + 50;
+  btn.x = width / 2 - btn.w / 2 - 140;
+  btn.y = height / 2 + 30;
   startTime = millis();
 
   walletItem = new item(
