@@ -4,6 +4,12 @@ function lifeOverPage() {
   restartButton.display()
 }
 
+function gameSuccess4Page() {
+  image(happyending3, 0, 0, width, height);
+  let restartButton = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame')
+  restartButton.display()
+}
+
 function calculatePointsPage() {
   image(calculateScenebg, 0, 0, width, height);
   displayStats();
@@ -33,16 +39,16 @@ function drawHappyEnding2() {
   dialogueEnd_scene2.display();
 }
 
-
+let dialoguedEnd_scene3;
 function drawHappyEnding3() {
+  image(happyEnding3, 0, 0, width, height);
   if (!dialogueEnd_scene3) {
-    let linesEnd_scene2 = [
+    let linesEnd_scene3 = [
       "하지만 분명한 건, 그날 이후로 일도, 사랑도, 일상도 왠지 모르게 더 잘 풀리는 기분이 들었다는 것.",
       "마치 누군가가 보이지 않는 어딘가에서 작은 응원을 보내준 것처럼."];
     dialogueEnd_scene3 = new DialogueBox(10, 500, 980, 120, linesEnd_scene3);
   }
   dialogueEnd_scene3.display();
-  image(happyEnding3, 0, 0, width, height);
 }
 
 function drawBadEnding1() {
