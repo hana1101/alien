@@ -1,6 +1,9 @@
 let selectedItem = null;
 let justEnteredSelectedScreen = false;
 let screenEnterTime = 0;
+let pulseSpeed = 0.05; // Adjust for faster/slower pulsing
+let minAlpha = 40;     // Minimum alpha for the glow
+let maxAlpha = 120;    // Maximum alpha for the glow
 
 
 function drawSelectedScreen(selectedItem) {
@@ -65,7 +68,7 @@ function drawSelectedScreen(selectedItem) {
       }
     });
   }
-  drawGlowingText('press Esc to come back', 20, 530);
+  drawGlowingText('press Esc to Return', 30, 570);
 
 }
 
@@ -218,20 +221,31 @@ function goBackToMainScreen() {
 }
 
 
+
 function drawGlowingText(txt, x, y) {
   push();
   textAlign(LEFT, TOP);
   textSize(10);
-  textFont(pressfont); // 게임에서 쓰는 폰트
-  // 글로우 효과: 여러 번 그리기
+  textFont(pressfont); // Use your game font
+
+  // Calculate pulsing alpha using sine wave
+  let pulseAlpha = map(
+    sin(frameCount * pulseSpeed),
+    -1, 1,
+    minAlpha, maxAlpha
+  );
+
+  // Glow effect: draw multiple outlines with pulsing alpha
   for (let i = 4; i > 0; i--) {
-    stroke(1, 255, 185, i * 10); // 네온 그린
+    let glowAlpha = pulseAlpha * (i / 4); // Stronger glow closer to text
+    stroke(1, 255, 185, glowAlpha);
     strokeWeight(i);
-    fill(1, 255, 185, i * 10);
+    fill(1, 255, 185, glowAlpha);
     text(txt, x, y);
   }
+
   noStroke();
-  fill(1, 255, 112, 180); // 메인 텍스트 컬러
+  fill(1, 255, 112, 180); // Main text color
   text(txt, x, y);
   pop();
 }
