@@ -3,13 +3,13 @@ let dialogueZib_scene1;
 function drawZib1() {
   image(zib1, 0, 0, width, height);
 
-  if(!dialogueZib_scene1){
+  if (!dialogueZib_scene1) {
     let linesZib_scene1 = [
       "ZIB: 나는 Asgard에서 온 Zib이다.",
       "ZIB: 그냥 기분 전환 삼아, 우주 한 바퀴를 돌 생각이었는데..."];
     dialogueZib_scene1 = new DialogueBox(10, 500, 980, 120, linesZib_scene1);
     console.log("Dialogue object created:", dialogueZib_scene3);
-  } 
+  }
   if (pendingDialogueReset === "dialogueZib_scene1") {
     dialogueZib_scene1.reset();
     pendingDialogueReset = null;
@@ -67,8 +67,8 @@ function drawZib4() {
 
   if (!dialogueZib_scene4) {
     let linesZib_scene4 = [
-    "ZIB: Asgard에 바로 연락해 자동 수리 시스템을 가동했지만, 수리까지 75시간이 소요되고,",
-    "ZIB: 수리가 끝나는 즉시, Asgard로 귀환하게 될 예정이라는 안내를 받았다."];
+      "ZIB: Asgard에 바로 연락해 자동 수리 시스템을 가동했지만, 수리까지 75시간이 소요되고,",
+      "ZIB: 수리가 끝나는 즉시, Asgard로 귀환하게 될 예정이라는 안내를 받았다."];
     dialogueZib_scene4 = new DialogueBox(10, 500, 980, 120, linesZib_scene4);
     setTimeout(() => DialogueBox.maybeReset("dialogueZib_scene4"), 0);
 

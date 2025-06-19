@@ -327,22 +327,88 @@
 //   }
 // }
 
-function drawZib3() {
-    image(zib3, 0, 0, width, height);
+
+// class stats{
   
-    if (!dialogueZib_scene3) {
-      let linesZib_scene3 = [
-        "ZIB: 결국 우주선은 가장 가까운 행성이었던 지구에 불시착했다."];
-      dialogueZib_scene3 = new DialogueBox(10, 500, 980, 120, linesZib_scene3);
+//   constructor(_leftX){ 
+//     this.currentStat = 0;
+//     this.completed = false;
+//     this.leftX = _leftX
+    
+//   }
   
-    }
-    // if (pendingDialogueReset === "dialogueZib_scene3") {
-    //   dialogueZib_scene3.reset();
-    //   pendingDialogueReset = null;
-    //   console.log("✅ Dialogue reset inside drawZib2");
-    // }
+//   display(){
+//     strokeWeight(2);
+//     stroke(255);
+//     fill(10);
+//     rect(this.leftX,55,150,20,10,10);
+
+//     if (this.currentStat > 0) {
+
+//     if (this.completed == true){
+//       fill("green");
+//       this.currentStat = 100;
+//     }
+//     else{
+//       fill("red");
+//     }
   
-    dialogueZib_scene3.display();
+//     // noStroke();
+//     rect(this.leftX,55, 150*(this.currentStat/100),20,10,10);
+//   }
+//     noStroke();
+//     fill("white");
+//     textSize(20);
+//     text(this.currentStat+'%',this.leftX+190,73);
+//   }
   
-  }
+//   increase(){
+//     if (currentScreen === "girlfriendFT"){
+//       this.currentStat = this.currentStat+15;
+//     }
+//     else {
+//       this.currentStat = this.currentStat+30;
+//     }
+//     if (this.currentStat >= 100){
+//       this.completed = true;
+//       this.currentStat = 100;
+//     }
+//     else{
+//       this.completed = false;
+//     }
+    
+//     return this.currentStat;
+//   }
+  
+//     decrease(){
+//     this.currentStat = this.currentStat-5;
+//     this.completed = false;
+//     return this.currentStat;
+//   }
+  
+//   reset(){
+//     this.currentStat = 0;
+//     this.completed = false;
+//   }
+  
+//   }
+
+// function drawZib3() {
+//     image(zib3, 0, 0, width, height);
+  
+//     if (!dialogueZib_scene3) {
+//       let linesZib_scene3 = [
+//         "ZIB: 결국 우주선은 가장 가까운 행성이었던 지구에 불시착했다."];
+//       dialogueZib_scene3 = new DialogueBox(10, 500, 980, 120, linesZib_scene3);
+  
+//     }
+//     // if (pendingDialogueReset === "dialogueZib_scene3") {
+//     //   dialogueZib_scene3.reset();
+//     //   pendingDialogueReset = null;
+//     //   console.log("✅ Dialogue reset inside drawZib2");
+//     // }
+  
+//     dialogueZib_scene3.display();
+  
+//   }
   
