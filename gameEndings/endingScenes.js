@@ -1,5 +1,3 @@
-
-
 function lifeOverPage() {
   image(lifeOverScenebg, 0, 0, width, height);
   let restartButton = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame')
@@ -59,6 +57,13 @@ function drawHappyEnding3() {
   }
   dialogueEnd_scene3.display();
 }
+if (dialogueEnd_scene3.finished && !dialogueEnd_scene3.finishedClicked) {
+  dialogueEnd_scene3.finishedClicked = true; // 중복 방지
+  previousScreen = currentScreen;
+  currentScreen = "gameSuccess4"; // 다음 페이지로 전환
+  console.log("➡ gameSuccess4");
+}
+
 
 function drawBadEnding1() {
   image(badEnding1, 0, 0, width, height);

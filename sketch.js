@@ -523,25 +523,40 @@ function mousePressed() {
   }
 
   if (currentScreen === "calculateGameResults") {
-    if (dialogueEnd_scene0) {
-      if (dialogueEnd_scene0.finished) {
-        dialogueEnd_scene0.reset();
-      } else {
-        dialogueEnd_scene0.handleClick();
-        console.log(dialogueEnd_scene0.lines[dialogueEnd_scene0.currentLine]);
-      }
+    if (dialogueEnd_scene0 && dialogueEnd_scene0.finished) {
+      dialogueEnd_scene1.reset();
+    } if (dialogueEnd_scene0 && !dialogueEnd_scene0.finished) {
+      dialogueEnd_scene0.handleClick();
+      console.log(dialogueEnd_scene0.lines[dialogueEnd_scene0.currentLine]);
+    }
 
-      // 대화가 끝났으면 결과에 따라 다음 화면으로
-      if (dialogueEnd_scene0.finished) {
-        previousScreen = currentScreen;
-        if (totalSuccess === true) {
-          currentScreen = "gameSuccess1";
-        } else {
-          currentScreen = "gameFail1";
-        }
+    // 대화가 끝났으면 결과에 따라 다음 화면으로
+    if (dialogueEnd_scene0.finished) {
+      previousScreen = currentScreen;
+      if (totalSuccess === true) {
+        currentScreen = "gameSuccess1";
+        return;
+      } else {
+        currentScreen = "gameFail1";
+        return;
       }
     }
   }
+
+  //   if (currentScreen === "calculateGameResults") {
+  //   if (dialogueEnd_scene0 && dialogueEnd_scene0.finished) {
+  //     dialogueEnd_scene1.reset();
+  //   }
+  //   if (dialogueEnd_scene0 && !dialogueEnd_scene0.finished) {
+  //     dialogueEnd_scene0.handleClick();
+  //     console.log(dialogueEnd_scene0.lines[dialogueEnd_scene0.currentLine]);
+  //     if (dialogueEnd_scene0.finished) {
+  //       previousScreen = currentScreen;
+  //       console.log("startscene/zib10");
+  //       currentScreen = "gameSuccess1";
+  //     }
+  //   }
+  // }
 
   if (currentScreen === "gameSuccess1") {
     if (dialogueEnd_scene1 && dialogueEnd_scene1.finished) {
