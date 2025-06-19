@@ -31,7 +31,10 @@ var showItemPopup = false;
 let buddySound;
 let drawingSound;
 let unav;
-let dialogueEnd_scene = null;
+let dialogueEnd_scene0 = null;
+let dialogueEnd_scene1 = null;
+let dialogueEnd_scene2 = null;
+let dialogueEnd_scene3 = null;
 let powerSound;
 
 function preload() {
@@ -83,6 +86,7 @@ function preload() {
   //endingScene preloads
   lifeOverScenebg = loadImage("assets/lifezero.jpg");
   calculateScenebg = loadImage("assets/calculate.jpg");
+  happyEnding0 = loadImage("assets/calculate.jpg");
   happyEnding1 = loadImage("assets/happyending1.jpg");
   happyEnding2 = loadImage("assets/happyending2.jpg");
   happyEnding3 = loadImage("assets/happyending3.jpg");
@@ -233,7 +237,9 @@ function draw() {
     lifeOverPage();
   }
   else if (currentScreen === "calculateGameResults") {
-    calculatePointsPage();
+    calculatePointsPage(); //
+  } else if (currentScreen === "gameSuccess0") {
+    drawHappyEnding0();
   } else if (currentScreen === "gameSuccess1") {
     drawHappyEnding1();
   } else if (currentScreen === "gameSuccess2") {
@@ -242,7 +248,7 @@ function draw() {
     drawHappyEnding3();
 
   } else if (currentScreen === "gameSuccess4") {
-    drawhappyEnding3Page();
+    gameSuccess4Page();
 
   } else if (currentScreen === "gameFail1") {
     drawBadEnding1();
@@ -522,41 +528,36 @@ function mousePressed() {
     dialogueFaceTime.handleClick();
   }
 
+
+
   if (currentScreen === "calculateGameResults") {
+    if (totalSuccess === true) {
+      previousScreen = currentScreen;
+      currentScreen = "gameSuccess0";
+      return;
+    }
+    else {
+      previousScreen = currentScreen;
+      currentScreen = "gameFail1";
+      return;
+    }
+  }
+
+  if (currentScreen === "gameSuccess0") {
     if (dialogueEnd_scene0 && dialogueEnd_scene0.finished) {
-      dialogueEnd_scene1.reset();
-    } if (dialogueEnd_scene0 && !dialogueEnd_scene0.finished) {
+      dialogueEnd_scene0.reset();
+    }
+    if (dialogueEnd_scene0 && !dialogueEnd_scene0.finished) {
       dialogueEnd_scene0.handleClick();
       console.log(dialogueEnd_scene0.lines[dialogueEnd_scene0.currentLine]);
-    }
-
-    // 대화가 끝났으면 결과에 따라 다음 화면으로
-    if (dialogueEnd_scene0.finished) {
-      previousScreen = currentScreen;
-      if (totalSuccess === true) {
+      if (dialogueEnd_scene0.finished) {
+        previousScreen = currentScreen;
+        console.log("startscene/zib10");
         currentScreen = "gameSuccess1";
-        return;
-      } else {
-        currentScreen = "gameFail1";
-        return;
       }
     }
   }
 
-  //   if (currentScreen === "calculateGameResults") {
-  //   if (dialogueEnd_scene0 && dialogueEnd_scene0.finished) {
-  //     dialogueEnd_scene1.reset();
-  //   }
-  //   if (dialogueEnd_scene0 && !dialogueEnd_scene0.finished) {
-  //     dialogueEnd_scene0.handleClick();
-  //     console.log(dialogueEnd_scene0.lines[dialogueEnd_scene0.currentLine]);
-  //     if (dialogueEnd_scene0.finished) {
-  //       previousScreen = currentScreen;
-  //       console.log("startscene/zib10");
-  //       currentScreen = "gameSuccess1";
-  //     }
-  //   }
-  // }
 
   if (currentScreen === "gameSuccess1") {
     if (dialogueEnd_scene1 && dialogueEnd_scene1.finished) {
@@ -589,16 +590,16 @@ function mousePressed() {
   }
 
   if (currentScreen === "gameSuccess3") {
-    if (dialogueEnd_scene3 && dialogueEnd_scene3.finished) {
-      gameSuccess4Page.reset(); // need 
-    }
+    // if (dialogueEnd_scene3 && dialogueEnd_scene3.finished) {
+    //   gameSuccess4Page.reset(); // need 
+    // }
     if (dialogueEnd_scene3 && !dialogueEnd_scene3.finished) {
       dialogueEnd_scene3.handleClick();
       console.log(dialogueEnd_scene3.lines[dialogueEnd_scene3.currentLine]);
       if (dialogueEnd_scene3.finished) {
         previousScreen = currentScreen;
         console.log("startscene/zib10");
-        currentScreen = "gameSuccess4Page";
+        currentScreen = "gameSuccess4";
       }
     }
   }
