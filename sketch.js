@@ -38,6 +38,7 @@ let dialogueEnd_scene3 = null;
 let powerSound;
 let lifeOverScenebg;
 let happyending3;
+let restartButton_badEnding;
 
 function preload() {
   openSound = loadSound('assets/opening.mp3');
@@ -278,7 +279,13 @@ function mousePressed() {
     window.location.reload();
     return;
   }
+
   if (currentScreen === 'gameSuccess4') {
+    window.location.reload();
+    return;
+  }
+
+  if (currentScreen === "gameFail2" && restartButton_badEnding) {
     window.location.reload();
     return;
   }
