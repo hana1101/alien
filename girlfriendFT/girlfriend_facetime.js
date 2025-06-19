@@ -67,7 +67,6 @@ const stages = [
       { label: "이번에도 부산 갈까?", result: "correctRelUp" },
       { label: "응, 도쿄 정말 예뻤어", result: "lifeDown" }
     ],
-
     msg: {
       success: "정답! 좋은 아이디어에요!",
       lifeFail: "실패! 누구랑 도쿄에 갔었어요?!",

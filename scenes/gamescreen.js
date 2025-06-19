@@ -74,13 +74,14 @@ function checkMsg() {
     }
     dialogueMsg.display();
 
-    // Pulsing “CLICK HERE TO CONTINUE” prompt
-    textAlign(RIGHT, BOTTOM);
-    let alpha = 127 + 127 * sin(millis() / 300);
-    textFont(pressfont);
-    textSize(12);
-    fill(0, 255, 153, alpha);
-    text("CLICK HERE TO CONTINUE", width - 80, height - 30);
+    //   // Pulsing “CLICK HERE TO CONTINUE” prompt
+    //   textAlign(RIGHT, BOTTOM);
+    //   let alpha = 127 + 127 * sin(millis() / 300);
+    //   textFont(pressfont);
+    //   textSize(12);
+    //   fill(0, 255, 153, alpha);
+    //   text("CLICK HERE TO CONTINUE", width - 80, height - 30);
+    // }
   }
 }
 function enterPhoneScreen() {

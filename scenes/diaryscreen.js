@@ -16,19 +16,19 @@ function drawDiaryscreen() {
   dialogue1.display();
 
 
-  if (dialogue1 && dialogue1.isOnLastLine()) {
-    let alpha = 127 + 127 * sin(millis() / 300);
+  // if (dialogue1 && dialogue1.isOnLastLine()) {
+  //   let alpha = 127 + 127 * sin(millis() / 300);
 
-    textAlign(RIGHT, BOTTOM);
-    textFont(pressfont);
-    textSize(12);
-    fill(0, 255, 153, alpha);
-    let padding = 20;
-    text(
-      "CLICK HERE TO CONTINUE",
-      dialogue1.x + dialogue1.w - padding,
-      dialogue1.y + dialogue1.h - padding
-    );
-  }
+  //   textAlign(RIGHT, BOTTOM);
+  //   textFont(pressfont);
+  //   textSize(12);
+  //   fill(0, 255, 153, alpha);
+  //   let padding = 20;
+  //   text(
+  //     "CLICK HERE TO CONTINUE",
+  //     dialogue1.x + dialogue1.w - padding,
+  //     dialogue1.y + dialogue1.h - padding
+  //   );
+  // }
 
 }
