@@ -48,22 +48,26 @@ function drawingScreen() {
 //   );
 // }
 
-
+function enterPhoneScreen() {
+  dialogueMsg = null;   // clear any previous dialogue
+  isDialogueBlocking = false;
+  msgCheckStart = null;   // reset the 2 s timer
+}
 function checkMsg() {
-  // Start (or restart) the 2-second timer on first entry
+  // 1) On the very first frame, start the timer
   if (msgCheckStart === null) {
     msgCheckStart = millis();
   }
 
-  // Always draw the blurred room & phone immediately
+  // 2) Draw the blurred room & phone immediately
   image(assets.roomblur, 0, 0, width + 50, height + 50);
   push();
   imageMode(CENTER);
   image(assets.phone, width / 2, height / 2, 300, 600);
   pop();
 
-  // Once 2 seconds have elapsed, spawn & display the dialogue
-  if (millis() - msgCheckStart >= 2000) {
+  // 3) After 2 seconds have passed, create & display the dialogue box
+  if (millis() - msgCheckStart >= 1500) {
     if (!dialogueMsg) {
       let linesMsg = [
         "ZIB: 여자친구...?",
@@ -74,22 +78,9 @@ function checkMsg() {
     }
     dialogueMsg.display();
 
-    //   // Pulsing “CLICK HERE TO CONTINUE” prompt
-    //   textAlign(RIGHT, BOTTOM);
-    //   let alpha = 127 + 127 * sin(millis() / 300);
-    //   textFont(pressfont);
-    //   textSize(12);
-    //   fill(0, 255, 153, alpha);
-    //   text("CLICK HERE TO CONTINUE", width - 80, height - 30);
-    // }
+
   }
 }
-function enterPhoneScreen() {
-  dialogueMsg = null;  // clear any old dialogue
-  isDialogueBlocking = false;
-  msgCheckStart = null;  // reset the timer
-}
-
 
 
 
