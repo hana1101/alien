@@ -1,9 +1,13 @@
 let selectedItem = null;
 let justEnteredSelectedScreen = false;
 let screenEnterTime = 0;
-let pulseSpeed = 0.05; // Adjust for faster/slower pulsing
-let minAlpha = 40;     // Minimum alpha for the glow
-let maxAlpha = 120;    // Maximum alpha for the glow
+
+// tweak these to taste
+let pulseSpeed = 0.05;     // how fast it pulses
+let minAlpha = 0;        // fully invisible
+let maxAlpha = 200;      // max glow strength
+let baseSize = 10;       // your base text size
+let scaleAmt = 0.05;
 
 
 function drawSelectedScreen(selectedItem) {
@@ -101,11 +105,12 @@ function drawPlayScreen() {
 
     chooseitem = new Button(
       width / 2 - 150,
-      100,
+      145,
       300,
       50,
       "Choose your item", 'iteminstruction'
     );
+
     chooseitem.display();
     if (chooseitem.isClicked()) {
       ButtonAction(chooseitem.action);
@@ -221,35 +226,41 @@ function goBackToMainScreen() {
 }
 
 
-
 function drawGlowingText(txt, x, y) {
   push();
   textAlign(LEFT, TOP);
-  textSize(10);
-  textFont(pressfont); // Use your game font
+  textFont(pressfont);
 
-  // Calculate pulsing alpha using sine wave
-  let pulseAlpha = map(
-    sin(frameCount * pulseSpeed),
-    -1, 1,
-    minAlpha, maxAlpha
-  );
+  // get a 0→1 oscillation
+  let osc = (sin(frameCount * pulseSpeed) + 1) / 2;
 
-  // Glow effect: draw multiple outlines with pulsing alpha
+  // map that to an alpha between minAlpha and maxAlpha
+  let alpha = lerp(minAlpha, maxAlpha, osc);
+
+  // tiny scale pulse (1-scaleAmt → 1+scaleAmt)
+  let s = 1 + scaleAmt * (osc - 0.5) * 2;
+
+  translate(x, y);
+  scale(s);
+
+  // glow outlines
   for (let i = 4; i > 0; i--) {
-    let glowAlpha = pulseAlpha * (i / 4); // Stronger glow closer to text
+    let glowAlpha = alpha * (i / 4);
     stroke(1, 255, 185, glowAlpha);
     strokeWeight(i);
     fill(1, 255, 185, glowAlpha);
-    text(txt, x, y);
+    textSize(baseSize);
+    text(txt, 0, 0);
   }
 
+  // main text
   noStroke();
-  fill(1, 255, 112, 180); // Main text color
-  text(txt, x, y);
+  fill(1, 255, 112, alpha * 0.9);
+  textSize(baseSize);
+  text(txt, 0, 0);
+
   pop();
 }
-
 
 // function drawSelectedScreen(selectedItem) {
 // image(assets.room, 0, 0, width, height);

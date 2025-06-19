@@ -117,16 +117,18 @@ function setup() {
 
   walletItem = new item(
     width / 5 - 100,
-    height / 3 + 50,
+    height / 3 + 70,
     drawWallet,
     "Wallet",
     0.8,
     250,
     180
   );
+
+  wella = new item()
   phoneItem = new item(
     width / 5 + 270,
-    height / 3 + 20,
+    height / 3 + 40,
     drawPhone,
     "Phone",
     0.8,
@@ -135,7 +137,7 @@ function setup() {
   );
   diaryItem = new item(
     width / 5 + 550,
-    height / 3 - 10,
+    height / 3 + 10,
     drawDiary,
     "Diary",
     0.8,
