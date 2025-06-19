@@ -1,6 +1,7 @@
 let openSoundFadingOut = false;
 let startPlaySoundFadingOut = false;
 let buddySoundFadingOut=false;
+let drawingSoundFadingOut= false;
 
 function handleBackgroundMusic() {
   const introScreens = new Set([
@@ -64,7 +65,7 @@ function handleBackgroundMusic() {
         buddySound.stop();
     }, 1600); // 실제 정지는 페이드 끝난 뒤
   }
-  // 그림
+  // 그림브금 
    if (currentScreen === "doodleGame") {
     // 페이드아웃 중이라면 즉시 복귀
     console.log("should start playing");
@@ -84,7 +85,7 @@ function handleBackgroundMusic() {
     }, 1600); // 실제 정지는 페이드 끝난 뒤
   }
 }
-
+//
 
 //   if (petScreen.has (currentScreen)) {
 //     BuddySoundFadingout=false;
