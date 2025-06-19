@@ -28,11 +28,11 @@ function preloadDogClickGame() {
 
 // 🟡 초기화 함수
 function initDogClickGame() {
-    if (interval) { // 기존 interval이 있다면 먼저 클리어
+  if (interval) { // 기존 interval이 있다면 먼저 클리어
     clearInterval(interval);
   }
-  buddyStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start");
-  nextBtnBuddy = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextGame);
+  buddyStartBtn = new Button(width / 2 - 130 / 2 - 5, height / 2 + 50 + 195, 130, 55, "Start");
+  nextBtnBuddy = new Button(width - 150, height / 2 + 50 + 195, 130, 55, "Next", nextGame);
 
   circles_pet = [];
   haloEffects = [];
@@ -51,89 +51,89 @@ function initDogClickGame() {
 
 // 🟡 게임 메인 루프
 function playDogClickGame() {
-  if(!buddyStart){
+  if (!buddyStart) {
     buddyRulesShow();
     return;
   }
 
 
   if (dogGameOver) {
-    if (!countFlagBuddy){
+    if (!countFlagBuddy) {
       countFlagBuddy = true;
       countGamePlayed++;
     }
     console.log(countGamePlayed);
-    
+
     if (dogPhase === 0) {
-    fill(255);
-    textAlign(CENTER, CENTER);
-    textSize(36);
-    text("Game Over\nFinal Score: " + score, width / 2, height / 2);
-      
-    if (!dogEndTimerStarted) {
-      dogEndTimerStarted = true;
-      setTimeout(() => {
-        dogPhase = 2; // dogend 화면으로 전환
-      }, 3000); // 1.5초 후 전환
-    }
-    return;
-  }
-  if (dogPhase === 1) {
-    if (dogEndImg) {
-      image(dogEndImg, 0, 0, width, height);
-    }
-   if (!dogClientTimerStarted) {
-      dogClientTimerStarted = true;
-      setTimeout(() => {
-        dogPhase = 2;
-      }, 1000); // 1초 후 happy/sad 화면
-    }
-    return;
-  }
-  if (dogPhase === 2) {
-    
-    if (score>=25){
-      image(happyDogImg,0,0,width,height);
-      buddySuccessBox.display(32, neoFont); // GlowBox로 표시
+      fill(255);
+      textAlign(CENTER, CENTER);
+      textSize(36);
+      text("Game Over\nFinal Score: " + score, width / 2, height / 2);
 
-      // textAlign(CENTER); //수정
-      // textSize(32);
-      // fill("green");
-      // text('성공! 강아지가 경계를 풀었어요!', width/2, height/2);//수정
-      if (!statsAlreadChangedBuddy){
-        wellbeing_stats.increase();
-        statsAlreadChangedBuddy = true;
+      if (!dogEndTimerStarted) {
+        dogEndTimerStarted = true;
+        setTimeout(() => {
+          dogPhase = 2; // dogend 화면으로 전환
+        }, 3000); // 1.5초 후 전환
       }
+      return;
     }
-    else{
-      image(sadDogImg,0,0,width,height);
-      // textAlign(CENTER); //수정
-      // textSize(32);
-      // fill("red");
-      // text('실패! 강아지의 신뢰를 잃었어요', width/2, height/2);//수정
-      buddyFailBox.display(32, neoFont); // GlowBox로 표시
-
-      if(!statsAlreadChangedBuddy){
-        life_stats.decrease();
-        statsAlreadChangedBuddy = true;
+    if (dogPhase === 1) {
+      if (dogEndImg) {
+        image(dogEndImg, 0, 0, width, height);
       }
+      if (!dogClientTimerStarted) {
+        dogClientTimerStarted = true;
+        setTimeout(() => {
+          dogPhase = 2;
+        }, 1000); // 1초 후 happy/sad 화면
+      }
+      return;
     }
-    displayStats();
+    if (dogPhase === 2) {
 
-    nextBtnBuddy.display();
-    if (nextBtnBuddy.isClicked()){
-      nextGame();
+      if (score >= 25) {
+        image(happyDogImg, 0, 0, width, height);
+        buddySuccessBox.display(32, neoFont); // GlowBox로 표시
+
+        // textAlign(CENTER); //수정
+        // textSize(32);
+        // fill("green");
+        // text('성공! 강아지가 경계를 풀었어요!', width/2, height/2);//수정
+        if (!statsAlreadChangedBuddy) {
+          wellbeing_stats.increase();
+          statsAlreadChangedBuddy = true;
+        }
+      }
+      else {
+        image(sadDogImg, 0, 0, width, height);
+        // textAlign(CENTER); //수정
+        // textSize(32);
+        // fill("red");
+        // text('실패! 강아지의 신뢰를 잃었어요', width/2, height/2);//수정
+        buddyFailBox.display(32, neoFont); // GlowBox로 표시
+
+        if (!statsAlreadChangedBuddy) {
+          life_stats.decrease();
+          statsAlreadChangedBuddy = true;
+        }
+      }
+      displayStats();
+
+      nextBtnBuddy.display();
+      if (nextBtnBuddy.isClicked()) {
+        nextGame();
+      }
+
+      return;
+    }
   }
 
-    return;
-  }
-  }
-
-  else if (buddyStart){
+  else if (buddyStart) {
     console.log('circles started...');
     image(patMyDog, 0, 0, width, height);
     displayStats();
-    
+
     for (let i = circles_pet.length - 1; i >= 0; i--) {
       circles_pet[i].update();
       circles_pet[i].show();
@@ -155,7 +155,7 @@ function playDogClickGame() {
     fill(255);
     textSize(24);
     noStroke();
-    text("Score: " + score, width/2, height-30);
+    text("Score: " + score, width / 2, height - 30);
   }
 }
 
@@ -293,7 +293,7 @@ class DogFloatingText {
 
   show() {
     textSize(20);
-    fill(this.value > 0 ? color(255, this.opacity) : color(255,0,0, this.opacity));
+    fill(this.value > 0 ? color(255, this.opacity) : color(255, 0, 0, this.opacity));
     text((this.value > 0 ? "+" : "") + this.value, this.x, this.y);
   }
 
@@ -309,7 +309,7 @@ class DogHaloEffect {
     this.radius = 50;
     this.maxRadius = 100;
     this.opacity = 150;
-    this.value=value;
+    this.value = value;
   }
 
   update() {
@@ -319,7 +319,7 @@ class DogHaloEffect {
 
   show() {
     noFill();
-    stroke(this.value > 0 ? color(255, this.opacity) : color(255,0,0, this.opacity));
+    stroke(this.value > 0 ? color(255, this.opacity) : color(255, 0, 0, this.opacity));
     strokeWeight(4);
     ellipse(this.x, this.y, this.radius * 2);
   }
@@ -329,10 +329,10 @@ class DogHaloEffect {
   }
 }
 
-function buddyRulesShow(){
+function buddyRulesShow() {
   image(buddyRules, 0, 0, width, height);
   buddyStartBtn.display();
-  if(buddyStartBtn.isClicked()){
+  if (buddyStartBtn.isClicked()) {
     buddyStart = true;
     interval = setInterval(spawnCircle, 1000);
   }

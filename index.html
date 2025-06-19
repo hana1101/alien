@@ -1,73 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.11.5/lib/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.5/p5.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<html lang="ko">
 
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
 
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8" />
+    canvas {
+      display: block;
+      width: auto !important;
+      height: 100vh !important;
+      margin-inline: auto;
+    }
+  </style>
+</head>
 
-  </head>
-  <body>
-    <main>
-    </main>
-    
-    <script src="sketch.js"></script>
-    <script src="objects/button.js"></script>
+<body>
+  <script src="sketch.js"></script>
+  <script src="sounds/sound.js"></script>
 
-    <script src="objects/pixelated.js"></script>
-    <script src="objects/objects.js"></script>
-        <script src="objects/dialogue.js"></script>
-        
-    <script src="startscene/zib1.js"></script>
-    <script src="startscene/zib2.js"></script>
-    <script src="startscene/zib3.js"></script>
-    <script src="startscene/zib4.js"></script>
-    <script src="startscene/zib5.js"></script>
-    <script src="startscene/zib6.js"></script>
-    <script src="startscene/zib7.js"></script>
-    <script src="startscene/zib8.js"></script>
-    <script src="startscene/zib9.js"></script>
-    <script src="startscene/zib10.js"></script>
-    <script src="startscene/zib11.js"></script>
-    <script src="startscene/zib12.js"></script>
-    <script src="startscene/zib13.js"></script>
-    <script src="startscene/zib14.js"></script>
+  <script src="objects/button.js"></script>
+  <script src="objects/pixelated.js"></script>
+  <script src="objects/objects.js"></script>
+  <script src="objects/dialogue.js"></script>
 
-    <script src="scenes/gamescreen.js"></script>
-    <script src="scenes/itemselection.js"></script>
-    <script src="scenes/workscreen.js"></script>
-    <script src="scenes/diaryscreen.js"></script>
+  <script src="startscene/zib1.js"></script>
+  <script src="startscene/zib2.js"></script>
+  <script src="startscene/zib3.js"></script>
+  <script src="startscene/zib4.js"></script>
+  <script src="startscene/zib5.js"></script>
+  <script src="startscene/zib6.js"></script>
+  <script src="startscene/zib7.js"></script>
+  <script src="startscene/zib8.js"></script>
+  <script src="startscene/zib9.js"></script>
+  <script src="startscene/zib10.js"></script>
+  <script src="startscene/zib11.js"></script>
+  <script src="startscene/zib12.js"></script>
+  <script src="startscene/zib13.js"></script>
+  <script src="startscene/zib14.js"></script>
 
-    <script src="petgame/pet.js"></script>
-    <script src="drawinggame/doodlegame.js"></script>
-    <script src="stats/points.js"></script>
-    <script src="stats/life.js"></script>
-    <script src="stats/stats_control.js"></script>
-    <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
-    <script src="handpose/timer.js"></script>
-    <script src="handpose/circle.js"></script>
-    
+  <script src="scenes/gamescreen.js"></script>
+  <script src="scenes/itemselection.js"></script>
+  <script src="scenes/workscreen.js"></script>
+  <script src="scenes/diaryscreen.js"></script>
 
-    <script src="girlfriendFT/girlfriend_facetime.js"></script>
-    <script src="girlfriendFT/endingFT.js"></script>
-    
-    <!-- <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script> -->
-    <script src="handpose/gf_game.js"></script>
+  <script src="stats/points.js"></script>
+  <script src="stats/life.js"></script>
+  <script src="stats/stats_control.js"></script>
 
-    <script src="gameEndings/endingScenes.js"></script>
+  <script src="handpose/timer.js"></script>
+  <script src="handpose/circle.js"></script>
+  <script src="handpose/gf_game.js"></script>
 
-    <script src="sounds/sound.js"></script>
+  <script src="petgame/pet.js"></script>
+  <script src="drawinggame/doodlegame.js"></script>
+  <script src="girlfriendFT/girlfriend_facetime.js"></script>
+  <script src="girlfriendFT/endingFT.js"></script>
 
+  <script src="gameEndings/endingScenes.js"></script>
+</body>
 
-
-  </body>
 </html>
-
-

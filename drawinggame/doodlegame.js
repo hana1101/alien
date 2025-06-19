@@ -57,7 +57,7 @@ function initDoodleGame() {
   backgroundCanvas.background(255);
 
   startBtnDoodle = new Button(width / 2 - 65, height / 2 + 245, 130, 55, "Start", dGameStartPressed);
-  nextBtnDoodle = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextGame);
+  nextBtnDoodle = new Button(width - 150, height / 2 + 50 + 195, 130, 55, "Next", nextGame);
 
   clearBtn = new Button(620, height / 2 + 245, 100, 40, "CLEAR", clearDrawing);
   resetBtn = new Button(780, height / 2 + 245, 100, 40, "RESTART", resetDoodle);
@@ -75,14 +75,14 @@ function playDoodleGame() {
   if (!doodleStarted) {
     resetDoodleGameVariables();
     resetDoodle();
-    console.log("Doodle Phase",doodlePhase);
+    console.log("Doodle Phase", doodlePhase);
     showDGameStart();
     return;
   }
 
   // doodlePhase가 2일 때는 다른 게임 요소들이 그려지지 않도록 확실히 처리
   if (doodlePhase === 2) {
-    if(!countFlagDoodle){
+    if (!countFlagDoodle) {
       countGamePlayed++;
       countFlagDoodle = true;
     }
@@ -95,7 +95,7 @@ function playDoodleGame() {
     background(0); // 임시로 검은색 배경을 그려 이미지가 제대로 올라오는지 확인
     // let clientImg = isCorrect ? happyClientImg : unhappyClientImg;
 
-    if (isCorrect){
+    if (isCorrect) {
       image(happyClientImg, 0, 0, width, height);
       // push()
       // rectMode(CENTER)
@@ -117,29 +117,29 @@ function playDoodleGame() {
       let msg = "성공! 클라이언트가 만족했어요!";
       let boxW = textWidth(msg) + 80;
       let boxH = 80;
-    
+
       fill(22, 22, 53, 180); // darker semi-transparent
       stroke(1, 255, 185);
       strokeWeight(4);
       rect(width / 2, height / 2, boxW, boxH, 12); // rounded rectangle
-    
+
       // Glow effect (layered stroke)
       stroke(1, 255, 185, 80);
       strokeWeight(10);
       noFill();
       rect(width / 2, height / 2, boxW + 10, boxH + 10, 16);
-    
+
       // Main Text
       noStroke();
       fill("#01FF70"); // neon green
       text(msg, width / 2, height / 2);
       pop();
-      if(!statsAlreadyChangedDoodle){
+      if (!statsAlreadyChangedDoodle) {
         career_stats.increase();
         statsAlreadyChangedDoodle = true;
       }
     }
-    else{
+    else {
       image(unhappyClientImg, 0, 0, width, height);
       push();
       rectMode(CENTER);
@@ -149,25 +149,25 @@ function playDoodleGame() {
       let msg = "실패! 클라이언트가 실망했어요!";
       let boxW = textWidth(msg) + 80;
       let boxH = 80;
-    
+
       // Glow-style background box
       fill(40, 0, 0, 180); // deep red tint
       stroke(255, 50, 50); // bright red
       strokeWeight(4);
       rect(width / 2, height / 2, boxW, boxH, 12);
-    
+
       // Glow outer ring
       stroke(255, 50, 50, 80);
       strokeWeight(10);
       noFill();
       rect(width / 2, height / 2, boxW + 10, boxH + 10, 16);
-    
+
       // Main text
       noStroke();
       fill("#FF4C4C"); // neon reddish
       text(msg, width / 2, height / 2);
       pop();
-      if(!statsAlreadyChangedDoodle){
+      if (!statsAlreadyChangedDoodle) {
         life_stats.decrease();
         statsAlreadyChangedDoodle = true;
       }
@@ -175,9 +175,9 @@ function playDoodleGame() {
 
     displayStats();
     nextBtnDoodle.display();
-    if (nextBtnDoodle.isClicked()){
+    if (nextBtnDoodle.isClicked()) {
       nextGame();
-  }
+    }
 
     return; // doodlePhase 2에서는 이 화면만 표시하고 다른 로직은 실행하지 않습니다.
   }
@@ -188,7 +188,7 @@ function playDoodleGame() {
     clearBtn.display();
     resetBtn.display();
     if (!dGameOver) { // << 게임 오버가 아닐 때만 제출 버튼 표시
-        submitBtn.display(); // << 이 줄 추가
+      submitBtn.display(); // << 이 줄 추가
     }
   }
 
@@ -213,7 +213,7 @@ function playDoodleGame() {
   text(`Draw: ${targetLabel}`, 50, 160);
   textFont(neoFont)
 
-  doodleTime.display(50, 200, '남은 시간',30);
+  doodleTime.display(50, 200, '남은 시간', 30);
 
   if (dGameOver) {
     // phase 0: 텍스트 정답 표시
@@ -234,8 +234,8 @@ function playDoodleGame() {
         }, 3000);
       }
       // return; // 이 return 문은 phase 0일 때만 텍스트를 그리고, 다음 프레임에 바로 phase 1으로 넘어가는 걸 방해할 수 있습니다.
-                 // setTimeout으로 비동기적으로 phase를 바꾸므로, 여기서는 return을 제거하는 것이 좋습니다.
-                 // (단, 텍스트 표시 중 다른 그리기 로직이 실행되지 않도록 주의해야 합니다.)
+      // setTimeout으로 비동기적으로 phase를 바꾸므로, 여기서는 return을 제거하는 것이 좋습니다.
+      // (단, 텍스트 표시 중 다른 그리기 로직이 실행되지 않도록 주의해야 합니다.)
     }
 
     // phase 1: careerend 이미지
@@ -291,7 +291,7 @@ function modelReady() {
 }
 
 function classifyCanvas() {
-if (doodleStarted && !dGameOver) {
+  if (doodleStarted && !dGameOver) {
     backgroundCanvas.background(255);
     backgroundCanvas.image(drawingCanvas, 0, 0);
     backgroundCanvas.loadPixels();
@@ -333,7 +333,7 @@ function gotDResults(res) {
 }
 
 function checkDResult() {
-   if (!results || results.length === 0) {
+  if (!results || results.length === 0) {
     dGameResult = "분류 실패 (no results)";
     isCorrect = false;
     dGameOver = true;

@@ -45,16 +45,16 @@ function drawPhone(x, y) {
 
   // Shadow for depth — darker and more visible
   // noStroke(); 
-    stroke(60);
+  stroke(60);
   strokeWeight(4);
-  fill(60,60,60,200); // more opaque
+  fill(60, 60, 60, 200); // more opaque
   rect(x + 12, y, phoneW, phoneH, 20);
 
   // Phone body
   stroke(60);
   strokeWeight(4);
   // fill(245); // soft body tone (still neutral)
-    fill(255, 248, 235); // warm beige glow, like soft sunlight
+  fill(255, 248, 235); // warm beige glow, like soft sunlight
 
 
   rect(x, y, phoneW, phoneH, 20);
@@ -102,7 +102,7 @@ function drawDiary(x, y) {
   let diaryH = 280;
 
   // Base leather cover
-  stroke(80, 50, 30,90); // dark brown outline
+  stroke(80, 50, 30, 90); // dark brown outline
   strokeWeight(2);
   fill(90, 45, 25); // rich leather brown
   rect(x, y, diaryW, diaryH);
@@ -183,7 +183,7 @@ class item {
 
   drawLabel(fontSize = 20, yOffset = 5) {
     // Label position independent of scale
-    let labelX = (this.x + this.baseWidth / 2)-18;
+    let labelX = (this.x + this.baseWidth / 2) - 18;
     let labelY = this.y + this.baseHeight + yOffset;
     textSize(fontSize);
     fill(255);

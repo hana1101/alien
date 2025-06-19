@@ -40,7 +40,7 @@ class DialogueBox {
 
     // ---------- 텍스트 ----------
     const pad = 24;
-    fill(114, 255, 251); 
+    fill(114, 255, 251);
     textFont(neoFont);
     textSize(24);
     textAlign(LEFT, TOP);

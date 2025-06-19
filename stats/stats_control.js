@@ -1,57 +1,57 @@
-function initialSetStats(){
-    relationship_stats = new stats(50,"#FF69B4");
-    career_stats = new stats(300, "#01FFB9");
-    wellbeing_stats = new stats(550,'#00FFC6' );
-    life_stats = new life(800);
-  }
-  
-function displayStats(){
+function initialSetStats() {
+  relationship_stats = new stats(50, "#FF63DC");
+  career_stats = new stats(300, "#20F183");
+  wellbeing_stats = new stats(550, '#35D9FF');
+  life_stats = new life(800);
+}
+
+function displayStats() {
   push();
   fill("white");
   textSize(15);
   textAlign(LEFT);
   textFont(neoFont)
-  text("Relationship",50,43);
-  text("Career",300,43);
-  text("Well-being",550,43);
-  text("Life", 780,43);
+  text("Relationship", 50, 43);
+  text("Career", 300, 43);
+  text("Well-being", 550, 43);
+  text("Life", 780, 43);
   pop();
-    
+
   relationship_stats.display();
   career_stats.display();
   wellbeing_stats.display();
   life_stats.display();
 }
 
-function pointsMinimumMet(){
-  total_stats = relationship_stats.currentStat+career_stats.currentStat+wellbeing_stats.currentStat;
+function pointsMinimumMet() {
+  total_stats = relationship_stats.currentStat + career_stats.currentStat + wellbeing_stats.currentStat;
   console.log(total_stats);
 
-  if (life_stats.lifeCount === 0 || life_stats.end){
+  if (life_stats.lifeCount === 0 || life_stats.end) {
     console.log("lifeOverScreen");
     currentScreen = "lifeOver";
     endGame = true;
     return;
   }
-  
-  else if (countGamePlayed >= 4){
-    if (total_stats<80){
+
+  else if (countGamePlayed >= 4) {
+    if (total_stats < 80) {
       console.log("gameFailScreen");
       currentScreen = "calculateGameResults"
       endGame = true;
       totalSuccess = false;
-        //gamescene - 이후 minimum Met 확인
+      //gamescene - 이후 minimum Met 확인
     }
-    else if(total_stats>=80){
-       console.log("criteria met");
+    else if (total_stats >= 80) {
+      console.log("criteria met");
       totalSuccess = true;
       currentScreen = "calculateGameResults";
       endGame = true;
       return;
     }
-}
+  }
 
-  else{
+  else {
     console.log("not finished");
   }
 

@@ -1,26 +1,26 @@
 //startbutton;
 let gameStartBtn;
-  
+
 // let bgImage_look, bgImage_notlook; -> inside preload
-  
-//declare timers
-let handTimer, totalTimer, lookSwitchTimer, caughtTimer, lookTime, firstTenSeconds;  
+
+// declare timers
+let handTimer, totalTimer, lookSwitchTimer, caughtTimer, lookTime, firstTenSeconds;
 let firstTenDecreased = false;
-  
-  //declare circles
+
+// declare circles
 // let circles = [];
 // // let currentCircle = null;;
 // let currentCircle = null;
 // let completedCircles = 0;
 // let totalRequired = 3;
 
-//   //declare flags
+// declare flags
 // let gameStarted = false;
 // let isLooking = false;
 // let isCaught = false;
 // let fail = false; //game failed
 // let gameEnded = false;
-  
+
 //statsAlreadChanged flag
 // let statsAlreadyChanged = false;
 
@@ -30,13 +30,13 @@ let currentCircle;
 let completedCircles;
 let totalRequired;
 
-  //declare flags
+//declare flags
 let gameStarted;
 let isLooking;
 let isCaught;
 let fail; //game failed
 let gameEnded;
-  
+
 let statsAlreadChanged;
 
 let handPose, video, videoMask;
@@ -48,14 +48,14 @@ let countGameHand = false;
 
 //gfGameStarted
 
-function initializeGirlfriendHand(){
+function initializeGirlfriendHand() {
 
   // circles = [];
   // currentCircle = null;;
   // // currentCircle = null;
   // completedCircles = 0;
   totalRequired = 3;
-  
+
 
   video = createCapture(VIDEO);
   video.size(width, height);
@@ -66,11 +66,11 @@ function initializeGirlfriendHand(){
   handPose.detectStart(video, gotHands);
   initializeTimers();
 
-    //start button
-  gameStartBtn = new Button(width / 2 - 130 / 2 -5, height / 2 + 50+195, 130,55, "Start", gameStartPressed)
-  nextBtnHand = new Button(width-150, height / 2 + 50+195, 130,55, "Next", nextGame);
-  
-  }
+  //start button
+  gameStartBtn = new Button(width / 2 - 130 / 2 - 5, height / 2 + 50 + 195, 130, 55, "Start", gameStartPressed)
+  nextBtnHand = new Button(width - 150, height / 2 + 50 + 195, 130, 55, "Next", nextGame);
+
+}
 
 function resetGame() {
   gfGameStarted = false;
@@ -88,14 +88,14 @@ function resetGame() {
   isCaught = false;
 
   createNextCircle();
-  
+
   handTimer.reset();
   totalTimer.reset();
   caughtTimer.reset();
   lookSwitchTimer.reset();
   firstTenSeconds.reset();
   lookTime.reset();
-  }
+}
 
 function playGirlfriendHand() {
   if (!gameStarted) {
@@ -104,7 +104,7 @@ function playGirlfriendHand() {
   }
 
   if (gameEnded) {
-    if (!countGameHand){
+    if (!countGameHand) {
       countGameHand = true;
       countGamePlayed++;
     }
@@ -112,7 +112,7 @@ function playGirlfriendHand() {
 
     displayGameResults();
     return;
-    }
+  }
 
   drawBackground();
   drawMaskedVideo();
@@ -133,7 +133,7 @@ function playGirlfriendHand() {
 }
 
 function showGameStart() {
-  image(hand_gameRules,0,0,width,height);
+  image(hand_gameRules, 0, 0, width, height);
   gameStartBtn.display();
 }
 
@@ -184,14 +184,14 @@ function handleLookTimers() {
       lookTime.start();
     }
   } else if (lookTime.active) {
-      lookTime.update();
-      if (lookTime.isComplete()) {
-        isLooking = false;
-        lookSwitchTimer.reset();
-        lookSwitchTimer.start();
-      }
+    lookTime.update();
+    if (lookTime.isComplete()) {
+      isLooking = false;
+      lookSwitchTimer.reset();
+      lookSwitchTimer.start();
     }
   }
+}
 
 function updateAndDisplayCurrentCircle() {
   if (currentCircle) {
@@ -217,12 +217,12 @@ function calculateKeypointsInsideCircle() {
       totalPoints++;
       if (currentCircle && currentCircle.isInside(x, y)) {
         insideCount++;
-        }
-      });
+      }
     });
+  });
 
   return totalPoints > 0 ? insideCount / totalPoints : 0;
-  }
+}
 
 function handleGameLogic(percentageInside) {
   if (totalTimer.isComplete() || fail) return;
@@ -237,14 +237,14 @@ function handleGameLogic(percentageInside) {
     if (completedCircles < totalRequired) {
       createNextCircle();
     } else {
-        currentCircle = null;
-        fail = false;
-        gameEnded = true;
-      }
+      currentCircle = null;
+      fail = false;
+      gameEnded = true;
     }
+  }
 
 
-  if (firstTenSeconds.isComplete() && completedCircles == 0){
+  if (firstTenSeconds.isComplete() && completedCircles == 0) {
     if (!firstTenDecreased) {
       relationship_stats.decrease();
       firstTenDecreased = true;
@@ -260,35 +260,35 @@ function handleGameLogic(percentageInside) {
         caughtTimer.start();
         isCaught = true;
       } else {
-          caughtTimer.update();
-          if (caughtTimer.isComplete()) {
-            fail = true;
-            gameEnded = true;
-          }
+        caughtTimer.update();
+        if (caughtTimer.isComplete()) {
+          fail = true;
+          gameEnded = true;
         }
-        caughtTimer.display(50, 160, "Caught Timer",20);
-      } else {
-          caughtTimer.reset();
-          isCaught = false;
       }
+      caughtTimer.display(50, 160, "Caught Timer", 20);
     } else {
-        caughtTimer.reset();
-        isCaught = false;
-
-      if (percentageInside >= 0.85) {
-        handTimer.start();
-      } else {
-        handTimer.reset();
-      }
-
-      handTimer.update();
-
+      caughtTimer.reset();
+      isCaught = false;
     }
+  } else {
+    caughtTimer.reset();
+    isCaught = false;
+
+    if (percentageInside >= 0.85) {
+      handTimer.start();
+    } else {
+      handTimer.reset();
+    }
+
+    handTimer.update();
+
   }
+}
 
 function displayTimers() {
-  totalTimer.display(50, 125, "남은 시간",20);
-  
+  totalTimer.display(50, 125, "남은 시간", 20);
+
 }
 
 function initializeTimers() {
@@ -298,7 +298,7 @@ function initializeTimers() {
   lookSwitchTimer = new Timer(5);
   firstTenSeconds = new Timer(10);
   lookTime = new Timer(3);
-  }
+}
 
 
 function createNextCircle() {
@@ -330,40 +330,40 @@ function gotHands(results) {
 function displayGameResults() {
   textSize(40);
   if (completedCircles >= totalRequired && !fail) {
-    image(success_gfbg,0,0,width,height);
+    image(success_gfbg, 0, 0, width, height);
     push();
-    fill(0,255,0);
+    fill(0, 255, 0);
     textAlign(CENTER);
     text('성공! 여자친구가 웃었어요!', width / 2, height / 2);
     pop();
-    if (!statsAlreadyChanged){
+    if (!statsAlreadyChanged) {
       relationship_stats.increase();
       statsAlreadyChanged = true;
     }
 
-    } else {
-      image(fail_gfbg,0,0,width,height);
-      push();
-      fill('red');
-      textAlign(CENTER);
-      text('실패! 여자친구가 실망했네요...', width / 2, height / 2);
-      pop();
-      if (!statsAlreadyChanged){
-        life_stats.decrease();
-        statsAlreadyChanged = true;
-      }
+  } else {
+    image(fail_gfbg, 0, 0, width, height);
+    push();
+    fill('red');
+    textAlign(CENTER);
+    text('실패! 여자친구가 실망했네요...', width / 2, height / 2);
+    pop();
+    if (!statsAlreadyChanged) {
+      life_stats.decrease();
+      statsAlreadyChanged = true;
     }
+  }
   push();
   displayStats();
   pop();
   nextBtnHand.display();
-  if (nextBtnHand.isClicked()){
+  if (nextBtnHand.isClicked()) {
     nextGame();
   }
 
   console.log("calculate page");
 
-  }
+}
 
 function isOverlappingFaceArea(x, y, radius) {
   let faceLeft = 220;
