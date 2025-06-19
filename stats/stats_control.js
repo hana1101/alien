@@ -1,7 +1,7 @@
 function initialSetStats(){
-    relationship_stats = new stats(50);
-    career_stats = new stats(300);
-    wellbeing_stats = new stats(550);
+    relationship_stats = new stats(50,"#FF69B4");
+    career_stats = new stats(300, "#01FFB9");
+    wellbeing_stats = new stats(550,'#00FFC6' );
     life_stats = new life(800);
   }
   
@@ -10,6 +10,7 @@ function displayStats(){
   fill("white");
   textSize(15);
   textAlign(LEFT);
+  textFont(neoFont)
   text("Relationship",50,43);
   text("Career",300,43);
   text("Well-being",550,43);
