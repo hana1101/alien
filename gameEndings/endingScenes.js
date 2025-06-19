@@ -1,3 +1,9 @@
+// /* ==== endingScenes.js 맨 첫 줄 근처 ==== */
+// let dialogueEnd_scene0 = null;
+// let dialogueEnd_scene1 = null;
+// let dialogueEnd_scene2 = null;
+// let dialogueEnd_scene3 = null;
+
 function lifeOverPage() {
   image(lifeOverScenebg, 0, 0, width, height);
   let restartButton = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame')
@@ -10,19 +16,23 @@ function gameSuccess4Page() {
   restartButton.display()
 }
 
-let diaglougeEnd_scene0;
 function calculatePointsPage() {
   image(calculateScenebg, 0, 0, width, height);
-  if (!dialogueEnd_scene0) {
+  displayStats();
+}
+
+// let dialogueEnd_scene0;
+function drawHappyEnding0() {
+  image(calculateScenebg, 0, 0, width, height);
+  if (!dialogueEnd_scene0) { //f 
     let lineEnd_scene0 = [
       "ZIB이 다시 DAVE 본체로 돌아가는 중..."];
     dialogueEnd_scene0 = new DialogueBox(10, 500, 980, 120, lineEnd_scene0);
   }
   dialogueEnd_scene0.display();
-  displayStats();
 }
 
-let dialogueEnd_scene1;
+// let dialogueEnd_scene1;
 function drawHappyEnding1() {
   image(happyEnding1, 0, 0, width, height);
   if (!dialogueEnd_scene1) {
@@ -34,7 +44,7 @@ function drawHappyEnding1() {
   dialogueEnd_scene1.display();
 }
 
-let dialogueEnd_scene2;
+// let dialogueEnd_scene2;
 function drawHappyEnding2() {
   image(happyEnding2, 0, 0, width, height);
   if (!dialogueEnd_scene2) {
@@ -46,7 +56,7 @@ function drawHappyEnding2() {
   dialogueEnd_scene2.display();
 }
 
-let dialoguedEnd_scene3;
+// let dialogueEnd_scene3;
 function drawHappyEnding3() {
   image(happyEnding3, 0, 0, width, height);
   if (!dialogueEnd_scene3) {
@@ -56,12 +66,13 @@ function drawHappyEnding3() {
     dialogueEnd_scene3 = new DialogueBox(10, 500, 980, 120, linesEnd_scene3);
   }
   dialogueEnd_scene3.display();
-}
-if (dialogueEnd_scene3.finished && !dialogueEnd_scene3.finishedClicked) {
-  dialogueEnd_scene3.finishedClicked = true; // 중복 방지
-  previousScreen = currentScreen;
-  currentScreen = "gameSuccess4"; // 다음 페이지로 전환
-  console.log("➡ gameSuccess4");
+
+  if (dialogueEnd_scene3.finished && !dialogueEnd_scene3.finishedClicked) {
+    dialogueEnd_scene3.finishedClicked = true; // 중복 방지
+    previousScreen = currentScreen;
+    currentScreen = "gameSuccess4"; // 다음 페이지로 전환
+    console.log("➡ gameSuccess4");
+  }
 }
 
 
