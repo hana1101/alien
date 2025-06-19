@@ -62,19 +62,22 @@ class Button {
 
   // }
   isClicked() {
-    let now = this.isHovered() && mouseIsPressed;
-    let justClicked = now && !this._clickedLastFrame;
-    this._clickedLastFrame = now;
+    let currentlyClicked = this.isHovered() && mouseIsPressed;
 
-    if (justClicked) {
-      if (buttonclicksound && buttonclicksound.isLoaded()) {
-        buttonclicksound.stop();
-        buttonclicksound.play();
+    // Check if this is a new click (wasn't clicked last frame, but is clicked now)
+    if (currentlyClicked && !this._clickedLastFrame) {
+      // Play sound on new click
+      if (buttonClickSound && buttonClickSound.isLoaded()) {
+        buttonClickSound.play();
       }
-      return true;
     }
-    return false;
+
+    // Update the clicked state for next frame
+    this._clickedLastFrame = currentlyClicked;
+
+    return currentlyClicked;
   }
+
 }
 
 
