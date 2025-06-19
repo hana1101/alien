@@ -252,6 +252,12 @@ function mousePressed() {
   //change screen when click
   console.log("mouse pressed at screen:", currentScreen); // Debug line
 
+  if (currentScreen === 'lifeOver') {
+    currentScreen = 'start';
+    selectedItem = null;
+    return;
+  }
+
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
     previousScreen = currentScreen;
