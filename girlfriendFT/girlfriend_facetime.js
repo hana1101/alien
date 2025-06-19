@@ -24,8 +24,8 @@ let ftResultBox = null;
 const stages = [
   { // stage 0
     lines: [
-      "자기야 ! 우리 진짜 오랜만인 것 같아... \n잘 지냈어 ??\n...",
-      "요즘 너무 보고싶당.. \n\n이번주 토요일 데이트가 너무 기대돼 !!\n...",
+      "자기야 ! 우리 진짜 오랜만에 보네..! \n",
+      "빨리 보고싶당.. \n\n이번주 토요일 데이트가 너무 기대돼 !!\n...",
       "\n우리 뭐 먹을까 ??\n..."
     ],
     choices: [
@@ -35,7 +35,7 @@ const stages = [
     ],
     msg: {
       success: "성공! 여자친구가 웃었어요!",
-      lifeFail: "실패! 여자친구는 해산물을 싫어해요!",
+      lifeFail: "실패! 여자친구는 해산물 알러지가 있어요!",
       wrongFail: "실패! 여자친구가 서운해해요."
     }
   },
@@ -44,13 +44,13 @@ const stages = [
     lines: ["모치 먹일 음식이 다 떨어졌네 ㅜㅜ 혹시 오빠가 사다줄 수 있어?"],
     choices: [
       { label: "그래! 당근 사갈게", result: "correctRelUp" },
-      { label: "모치가 제일 좋아하는 게 개껌이지?", result: "lifeDown" },
-      { label: "츄르 넉넉히 사올게!", result: "wrongRelDown" }
+      { label: "모치 개껌 좋아했지?", result: "lifeDown" },
+      { label: "츄르 넉넉히 사갈게!", result: "wrongRelDown" }
     ],
     msg: {
-      success: "정답! 기억력에 여자친구가 감동받았어요!",
-      lifeFail: "실패! 기억력에 여자친구가 실망했어요.",
-      wrongFail: "오답! 성의 없는 여자친구가 반응에 서운해해요."
+      success: "정답! 여자친구가 감동받았어요!",
+      lifeFail: "실패! 모치는 토끼예요",
+      wrongFail: "오답! 모치는 토끼예요"
     }
   },
 
@@ -69,7 +69,7 @@ const stages = [
     ],
     msg: {
       success: "정답! 좋은 아이디어에요!",
-      lifeFail: "실패! 누구랑 도쿄에 갔었어요?!",
+      lifeFail: "실패! 도쿄는 누구랑 갔었나요?!",
       wrongFail: "오답! 여자친구가 서운해해요."
     }
   }
