@@ -18,6 +18,7 @@ let playedFT = false;
 let stageFT;               // stageFT = 인덱스(0,1,…)
 let currentStageCompleteFT = false;
 let fTOverForever = false;
+let ftResultBox = null;
 
 /* ---------- 0) 스테이지 데이터 ---------- */
 const stages = [
@@ -40,11 +41,11 @@ const stages = [
   },
 
   { // stage 1
-    lines: ["모치가 또 난리네..ㅠ"],
+    lines: ["모치 먹일 음식이 다 떨어졌네 ㅜㅜ 혹시 오빠가 사다줄 수 있어?"],
     choices: [
-      { label: "또 충전기 물어뜯었어?", result: "correctRelUp" },
-      { label: "응? 모치가 뭔 사고 쳤었어?", result: "lifeDown" },
-      { label: "헉..대박..", result: "wrongRelDown" }
+      { label: "그래! 당근 사갈게", result: "correctRelUp" },
+      { label: "모치가 제일 좋아하는 게 개껌이지?", result: "lifeDown" },
+      { label: "츄르 넉넉히 사올게!", result: "wrongRelDown" }
     ],
     msg: {
       success: "정답! 기억력에 여자친구가 감동받았어요!",
@@ -54,15 +55,22 @@ const stages = [
   },
 
   { // stage 2
-    lines: ["우리 다음 여행은 어디로 갈까?"],
+    // lines: ["우리 다음 여행은 어디로 갈까?"],
+    // choices: [
+    //   { label: "글쎄 생각나는 곳이 없네..", result: "wrongRelDown" },
+    //   { label: "이번엔 대전 갈까?", result: "correctRelUp" },
+    //   { label: "부산은 가본 적 없는데 어때?", result: "lifeDown" }
+    // ],
+    lines: ["우리 저번에 여행 갔던 데가 정말 좋았잖아!"],
     choices: [
-      { label: "부산 어때?", result: "wrongRelDown" },
-      { label: "이번엔 대전 갈까?", result: "correctRelUp" },
-      { label: "글쎄 생각나는 곳이 없네..", result: "lifeDown" }
+      { label: "우리 같이 여행 간 적 있어?", result: "wrongRelDown" },
+      { label: "이번에도 부산 갈까?", result: "correctRelUp" },
+      { label: "응, 도쿄 정말 예뻤어", result: "lifeDown" }
     ],
+
     msg: {
       success: "정답! 좋은 아이디어에요!",
-      lifeFail: "실패! 부산은 이미 갔었어요!",
+      lifeFail: "실패! 누구랑 도쿄에 갔었어요?!",
       wrongFail: "오답! 여자친구가 서운해해요."
     }
   }
@@ -88,9 +96,9 @@ function loadStage(idx) {
   dialogueFaceTime = new DialogueBox(460, 150, 380, 180, s.lines);
   dialogueFaceTime.reset();
 
-  choice1 = new Button(500, 340, 300, 50, s.choices[0].label, () => handleChoice(s.choices[0].result), 20);
-  choice2 = new Button(500, 400, 300, 50, s.choices[1].label, () => handleChoice(s.choices[1].result), 20);
-  choice3 = new Button(500, 460, 300, 50, s.choices[2].label, () => handleChoice(s.choices[2].result), 20);
+  choice1 = new Button(500, 340, 300, 50, s.choices[0].label, () => handleChoice(s.choices[0].result), 18);
+  choice2 = new Button(500, 400, 300, 50, s.choices[1].label, () => handleChoice(s.choices[1].result), 18);
+  choice3 = new Button(500, 460, 300, 50, s.choices[2].label, () => handleChoice(s.choices[2].result), 18);
 }
 
 /* ---------- 4) 메인 루프 ---------- */
@@ -134,40 +142,96 @@ function handleChoice(result) {
 
 /* ---------- 6) 결과 화면 ---------- */
 
-function facetimeEnd() {
-  const msg = stages[stageFT].msg;
-  textSize(40);
+// function facetimeEnd() {
+//   const msg = stages[stageFT].msg;
+//   textSize(40);
 
-  // 중앙 정렬 설정 추가
-  textAlign(CENTER, CENTER);  // ✨ 추가
-  let textX = width / 2;
-  let textY = height / 2;
+//   // 중앙 정렬 설정 추가
+//   textAlign(CENTER, CENTER);  // ✨ 추가
+//   let textX = width / 2;
+//   let textY = height / 2;
+
+//   if (success) {
+//     image(ftsuccess, 0, 0, width, height);
+//     fill(0, 255, 0);
+//     text(msg.success, textX, textY);
+//   } else if (facetimeLife) {
+//     image(ftfail, 0, 0, width, height);
+//     fill("red");
+//     text(msg.lifeFail, textX, textY);
+//   } else {
+//     image(ftfail, 0, 0, width, height);
+//     fill("red");
+//     text(msg.wrongFail, textX, textY);
+//   }
+
+//   nextBtnFT.display();
+//   if (nextBtnFT.isClicked()) {
+//     stageFT++;
+//     if (stageFT < stages.length) {
+
+//       facetimeOver = success = facetimeLife = choices_show = false;
+//       loadStage(stageFT);
+//     } else {
+//       if (!playedFT) {
+//         countGamePlayed++
+//         playedFT = true
+//       }
+//       nextGame();
+//     }
+//   }
+
+//   displayStats();
+// }
+
+// *---hana's edit---* pretty box
+function facetimeEnd() {
+  const m = stages[stageFT].msg;
+  // pick the correct string
+  let theMessage;
+  let boxType;
 
   if (success) {
     image(ftsuccess, 0, 0, width, height);
-    fill(0, 255, 0);
-    text(msg.success, textX, textY);
+    theMessage = m.success;
+    boxType = 'success';
+
   } else if (facetimeLife) {
     image(ftfail, 0, 0, width, height);
-    fill("red");
-    text(msg.lifeFail, textX, textY);
+    theMessage = m.lifeFail;
+    boxType = 'failure';
+
   } else {
     image(ftfail, 0, 0, width, height);
-    fill("red");
-    text(msg.wrongFail, textX, textY);
+    theMessage = m.wrongFail;
+    boxType = 'failure';
   }
 
+  // (re)create the GlowBox with current message and type
+  ftResultBox = new GlowBox(
+    width / 2,
+    height / 2,
+    theMessage,
+    boxType
+  );
+
+  // display it at size 40, using your desired font
+  ftResultBox.display(40, pressfont);
+
+  // next button
   nextBtnFT.display();
   if (nextBtnFT.isClicked()) {
+    // clear for next stage
+    ftResultBox = null;
+
     stageFT++;
     if (stageFT < stages.length) {
-
       facetimeOver = success = facetimeLife = choices_show = false;
       loadStage(stageFT);
     } else {
       if (!playedFT) {
-        countGamePlayed++
-        playedFT = true
+        countGamePlayed++;
+        playedFT = true;
       }
       nextGame();
     }
@@ -175,6 +239,7 @@ function facetimeEnd() {
 
   displayStats();
 }
+
 
 /* ---------- 7) 룰 화면 ---------- */
 function ftRules() {

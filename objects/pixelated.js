@@ -121,10 +121,7 @@ class GlowBox {
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
     textSize(size);
-
-    if (font) {
-      textFont(font);
-    }
+    textFont(neoFont);
 
     // 텍스트 크기 계산
     let boxW = textWidth(this.message) + this.padding * 2;

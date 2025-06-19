@@ -2,6 +2,12 @@ let selectedItem = null;
 let justEnteredSelectedScreen = false;
 let screenEnterTime = 0;
 
+// tweak these to taste
+let pulseSpeed = 0.05;     // how fast it pulses
+let minAlpha = 80;       // darkest (most transparent)
+let maxAlpha = 200;      // brightest (most opaque)
+let baseSize = 10;
+
 
 function drawSelectedScreen(selectedItem) {
   // Set flag when first entering this screen
@@ -38,7 +44,7 @@ function drawSelectedScreen(selectedItem) {
   else if (selectedItem === "diary") drawDiary(0, 0);
   pop();
 
-  let btnX = width - 400;
+  let btnX = width - 380;
   let btnW = 300;
   let btnH = 60;
   let btnSpacing = 20;
@@ -65,7 +71,7 @@ function drawSelectedScreen(selectedItem) {
       }
     });
   }
-  drawGlowingText('press Esc to come back', 20, 530);
+  drawGlowingText('press Esc to Return', 30, 570);
 
 }
 
@@ -98,11 +104,12 @@ function drawPlayScreen() {
 
     chooseitem = new Button(
       width / 2 - 150,
-      100,
+      145,
       300,
       50,
       "Choose your item", 'iteminstruction'
     );
+
     chooseitem.display();
     if (chooseitem.isClicked()) {
       ButtonAction(chooseitem.action);
@@ -217,25 +224,21 @@ function goBackToMainScreen() {
   currentScreen = "main";
 }
 
-
 function drawGlowingText(txt, x, y) {
   push();
   textAlign(LEFT, TOP);
-  textSize(10);
-  textFont(pressfont); // 게임에서 쓰는 폰트
-  // 글로우 효과: 여러 번 그리기
-  for (let i = 4; i > 0; i--) {
-    stroke(1, 255, 185, i * 10); // 네온 그린
-    strokeWeight(i);
-    fill(1, 255, 185, i * 10);
-    text(txt, x, y);
-  }
+  textFont(pressfont);
+  textSize(baseSize);
+
+  // compute a smooth 0→1→0 oscillation
+  let osc = (sin(frameCount * pulseSpeed) + 1) / 2;
+  let alpha = lerp(minAlpha, maxAlpha, osc);
+
   noStroke();
-  fill(1, 255, 112, 180); // 메인 텍스트 컬러
+  fill(1, 255, 185, alpha);
   text(txt, x, y);
   pop();
 }
-
 
 // function drawSelectedScreen(selectedItem) {
 // image(assets.room, 0, 0, width, height);

@@ -32,20 +32,20 @@ function drawWorkscreen() {
   image(assets.wallet, 0, 0, width, height - 50);
   dialogue.display();
 
-  if (dialogue && dialogue.isOnLastLine()) {
-    let alpha = 127 + 127 * sin(millis() / 300);
+  // if (dialogue && dialogue.isOnLastLine()) {
+  //   let alpha = 127 + 127 * sin(millis() / 300);
 
-    textAlign(RIGHT, BOTTOM);
-    textFont(pressfont); // pixel font
-    textSize(12);
-    fill(0, 255, 153, alpha);
-    let padding = 20;
-    text(
-      "CLICK HERE TO CONTINUE",
-      dialogue.x + dialogue.w - padding,
-      dialogue.y + dialogue.h - padding
-    );
-  }
+  //   textAlign(RIGHT, BOTTOM);
+  //   textFont(pressfont); // pixel font
+  //   textSize(12);
+  //   fill(0, 255, 153, alpha);
+  //   let padding = 20;
+  //   text(
+  //     "CLICK HERE TO CONTINUE",
+  //     dialogue.x + dialogue.w - padding,
+  //     dialogue.y + dialogue.h - padding
+  //   );
+  // }
 
 
   // if (dialogue.finished && dialogue.finishedClicked){

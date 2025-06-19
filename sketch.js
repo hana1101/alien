@@ -5,7 +5,7 @@ let walletItem, phoneItem, diaryItem;
 let dialogue;
 let currentScreen = "start";
 let assets = [];
-let btn = { x: 0, y: 0, w: 130, h: 60 };
+let btn = { x: 0, y: 0, w: 130, h: 80 };
 let gfGameStarted;
 let faceTimeStarted;
 let dialoguezib = null;
@@ -50,8 +50,7 @@ function preload() {
   }
   assets["startbutton"] = loadImage(`assets/startbutton.png`);
   assets["phone"] = loadImage(`assets/phone.png`);
-  // assets["buddyrule1"] = loadImage(`assets/buddyrule1.jpeg`);
-  // assets["figma"] = loadImage(`assets/figma.jpeg`);
+
   handPose = ml5.handPose();
 
   bgImage_notlook = loadImage("assets/notlooking.jpg");
@@ -114,22 +113,24 @@ function setup() {
   textFont(neoFont);
   textSize(25);
   // textFont("Press Start 2P");
-  btn.x = width / 2 - btn.w / 2;
-  btn.y = height / 2 + 50;
+  btn.x = width / 2 - btn.w / 2 - 110;
+  btn.y = height / 2 + 20;
   startTime = millis();
 
   walletItem = new item(
     width / 5 - 100,
-    height / 3 + 50,
+    height / 3 + 70,
     drawWallet,
     "Wallet",
     0.8,
     250,
     180
   );
+
+  wella = new item()
   phoneItem = new item(
     width / 5 + 270,
-    height / 3 + 20,
+    height / 3 + 40,
     drawPhone,
     "Phone",
     0.8,
@@ -138,7 +139,7 @@ function setup() {
   );
   diaryItem = new item(
     width / 5 + 550,
-    height / 3 - 10,
+    height / 3 + 10,
     drawDiary,
     "Diary",
     0.8,
