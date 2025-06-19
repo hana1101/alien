@@ -46,7 +46,7 @@ function drawHappyEnding3() {
 }
 
 function drawBadEnding1() {
-  image(lifezero, 0, 0, width, height);
+  image(badEnding1, 0, 0, width, height);
 }
 function drawBadEnding2() {
   image(badEnding2, 0, 0, width, height);

@@ -1,7 +1,7 @@
 function initialSetStats() {
-  relationship_stats = new stats(50, "#FF69B4");
-  career_stats = new stats(300, "#98fa52");
-  wellbeing_stats = new stats(550, '#00ffdd');
+  relationship_stats = new stats(50, "#FF63DC");
+  career_stats = new stats(300, "#20F183");
+  wellbeing_stats = new stats(550, '#35D9FF');
   life_stats = new life(800);
 }
 
