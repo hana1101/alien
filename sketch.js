@@ -533,11 +533,25 @@ function mousePressed() {
     }
   }
 
-  else if (currentScreen === "gameSuccess2"){
-    console.log("gameSuccess2");
-    previousScreen = currentScreen;
-    currentScreen = "gameSuccess3";
+  if (currentScreen === "gameSuccess2"){
+    if (dialogueEnd_scene2 && dialogueEnd_scene2.finished) {
+      dialogueEnd_scene3.reset();
+    }
+    if (dialogueEnd_scene2 && !dialogueEnd_scene2.finished) {
+      dialogueEnd_scene2.handleClick();
+      console.log(dialogueEnd_scene2.lines[dialogueEnd_scene2.currentLine]);
+      if (dialogueEnd_scene2.finished) {
+        previousScreen = currentScreen;
+        console.log("startscene/zib10");
+        currentScreen = "gameSuccess3";
+      }
+    }
   }
+  // else if (currentScreen === "gameSuccess2"){
+  //   console.log("gameSuccess2");
+  //   previousScreen = currentScreen;
+  //   currentScreen = "gameSuccess3";
+  // }
   if (currentScreen === "gameFail1"){
     console.log("gameFail1");
     previousScreen = currentScreen;

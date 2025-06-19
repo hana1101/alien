@@ -9,7 +9,7 @@ function drawSelectedScreen(selectedItem) {
     justEnteredSelectedScreen = true;
     screenEnterTime = millis();
   }
-  
+
   // image(assets.room, 0, 0, width, height);
   roomnight=  loadImage("assets/roomnight.jpg")
 
@@ -65,6 +65,8 @@ function drawSelectedScreen(selectedItem) {
       }
     });
   }
+  drawGlowingText('press Esc to come back', 20, 620);
+
 }
 
 
@@ -132,7 +134,7 @@ function drawPopup() {
 
   fill(255);
   textSize(20);
-  textFont(pressfont)
+  textFont(neoFont)
   text("Pick carefully. Each item tells a story.", width / 2, height / 2 - 20);
 
   textSize(16);
@@ -215,6 +217,24 @@ function goBackToMainScreen() {
   currentScreen = "main"; 
 }
 
+
+function drawGlowingText(txt, x, y) {
+  push();
+  textAlign(LEFT, TOP);
+  textSize(10);
+  textFont(pressfont); // 게임에서 쓰는 폰트
+  // 글로우 효과: 여러 번 그리기
+  for (let i = 4; i > 0; i--) {
+    stroke(1, 255, 185, i * 10); // 네온 그린
+    strokeWeight(i);
+    fill(1, 255, 185, i * 10);
+    text(txt, x, y);
+  }
+  noStroke();
+  fill(1,255,112,180); // 메인 텍스트 컬러
+  text(txt, x, y);
+  pop();
+}
 
 
 // function drawSelectedScreen(selectedItem) {

@@ -29,7 +29,7 @@ function drawWorkscreen() {
     isDialogueBlocking= true; // 🟢 BLOCK input while dialogue is active
   }
 
-  image(assets.wallet, 0, 0, width, height);
+  image(assets.wallet, 0, 0, width, height-50);
   dialogue.display();
   
 if (dialogue && dialogue.isOnLastLine()) {
