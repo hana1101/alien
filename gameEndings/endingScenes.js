@@ -35,9 +35,15 @@ function drawHappyEnding2(){
 
 
 function drawHappyEnding3(){
+    if (!dialogueEnd_scene3) {
+    let linesEnd_scene2 = [
+    "하지만 분명한 건, 그날 이후로 일도, 사랑도, 일상도 왠지 모르게 더 잘 풀리는 기분이 들었다는 것.",
+    "마치 누군가가 보이지 않는 어딘가에서 작은 응원을 보내준 것처럼."];
+    dialogueEnd_scene3 = new DialogueBox(10, 500, 980, 120, linesEnd_scene3);
+  }
+  dialogueEnd_scene3.display();
     image(happyEnding3,0,0,width,height);
 }
-
 
 function drawBadEnding1(){
     image(badEnding1,0,0,width,height);
