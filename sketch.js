@@ -30,7 +30,7 @@ let openSound;
 var showItemPopup = false;
 let buddySound;
 let unav;
-let dialogueEnd_scene=null;
+let dialogueEnd_scene= null;
 
 
 function preload() {
