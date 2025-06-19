@@ -21,15 +21,15 @@ let waitButton
 function drawWorkscreen() {
   if (!dialogue) {
     let lines = [
-      "ZIB: 오 작업실이네",
-      "ZIB: 내가 지구에서 있는동안 할 수 있는 경험은 다 해보고 가야지",
-      "ZIB: 그럼 이 친구 직업이..",
+      "ZIB: 이게... 지구의 돈인가? 몇 푼도 없잖아.",
+      "ZIB: 영수증은 왜 이렇게 많아... 다 밀린 건가?",
+      "ZIB: 명함도 있네. 직업이... 아티스트였어?",
     ];
     dialogue = new DialogueBox(10, 500, 980, 120, lines);
     isDialogueBlocking= true; // 🟢 BLOCK input while dialogue is active
   }
 
-  image(assets.workplace, 0, 0, width, height);
+  image(assets.wallet, 0, 0, width, height);
   dialogue.display();
   
 if (dialogue && dialogue.isOnLastLine()) {
