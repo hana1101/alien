@@ -26,26 +26,26 @@ function drawWorkscreen() {
       "ZIB: 명함도 있네. 직업이... 아티스트였어?",
     ];
     dialogue = new DialogueBox(10, 500, 980, 120, lines);
-    isDialogueBlocking= true; // 🟢 BLOCK input while dialogue is active
+    isDialogueBlocking = true; // 🟢 BLOCK input while dialogue is active
   }
 
-  image(assets.wallet, 0, 0, width, height-50);
+  image(assets.wallet, 0, 0, width, height - 50);
   dialogue.display();
-  
-if (dialogue && dialogue.isOnLastLine()) {
-  let alpha = 127 + 127 * sin(millis() / 300);
 
-  textAlign(RIGHT, BOTTOM);
-  textFont(pressfont); // pixel font
-  textSize(12);
-  fill(0, 255, 153, alpha);
-  let padding = 20;
-  text(
-    "CLICK HERE TO CONTINUE",
-    dialogue.x + dialogue.w - padding,
-    dialogue.y + dialogue.h - padding
-  );
-}
+  if (dialogue && dialogue.isOnLastLine()) {
+    let alpha = 127 + 127 * sin(millis() / 300);
+
+    textAlign(RIGHT, BOTTOM);
+    textFont(pressfont); // pixel font
+    textSize(12);
+    fill(0, 255, 153, alpha);
+    let padding = 20;
+    text(
+      "CLICK HERE TO CONTINUE",
+      dialogue.x + dialogue.w - padding,
+      dialogue.y + dialogue.h - padding
+    );
+  }
 
 
   // if (dialogue.finished && dialogue.finishedClicked){

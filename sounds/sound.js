@@ -1,8 +1,8 @@
 let openSoundFadingOut = false;
 let startPlaySoundFadingOut = false;
-let buddySoundFadingOut=false;
-let drawingSoundFadingOut= false;
-let powerSoundFadingOut= false;
+let buddySoundFadingOut = false;
+let drawingSoundFadingOut = false;
+let powerSoundFadingOut = false;
 
 function handleBackgroundMusic() {
   const introScreens = new Set([
@@ -47,7 +47,7 @@ function handleBackgroundMusic() {
       if (startPlaySound.isPlaying()) startPlaySound.stop();
     }, 1600);
   }
-    /* ---------- Handle buddySound (pet screen) ---------- */
+  /* ---------- Handle buddySound (pet screen) ---------- */
   if (currentScreen === "dogGame") {
     // 페이드아웃 중이라면 즉시 복귀
     console.log("should start playing");
@@ -61,13 +61,13 @@ function handleBackgroundMusic() {
     buddySoundFadingOut = true;
     buddySound.setVolume(0.0, 1.5); // 1.5초 동안 볼륨 0으로
     setTimeout(() => {
-      if (buddySound.isPlaying()) 
-         console.log("사운드 정지");
-        buddySound.stop();
+      if (buddySound.isPlaying())
+        console.log("사운드 정지");
+      buddySound.stop();
     }, 1600); // 실제 정지는 페이드 끝난 뒤
   }
   // 그림브금 
-   if (currentScreen === "doodleGame") {
+  if (currentScreen === "doodleGame") {
     // 페이드아웃 중이라면 즉시 복귀
     console.log("should start playing");
     drawingSoundFadingOut = false;
@@ -80,9 +80,9 @@ function handleBackgroundMusic() {
     drawingSoundFadingOut = true;
     drawingSound.setVolume(0.0, 1.5); // 1.5초 동안 볼륨 0으로
     setTimeout(() => {
-      if (drawingSound.isPlaying()) 
-         console.log("사운드 정지");
-        drawingSound.stop();
+      if (drawingSound.isPlaying())
+        console.log("사운드 정지");
+      drawingSound.stop();
     }, 1600); // 실제 정지는 페이드 끝난 뒤
   }
 
@@ -100,9 +100,9 @@ function handleBackgroundMusic() {
     powerSoundFadingOut = true;
     powerSound.setVolume(0.0, 1.5); // 1.5초 동안 볼륨 0으로
     setTimeout(() => {
-      if (powerSound.isPlaying()) 
-         console.log("사운드 정지");
-        powerSound.stop();
+      if (powerSound.isPlaying())
+        console.log("사운드 정지");
+      powerSound.stop();
     }, 1600); // 실제 정지는 페이드 끝난 뒤
   }
 }

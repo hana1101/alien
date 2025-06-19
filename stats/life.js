@@ -22,7 +22,7 @@ function drawHeart(x, y, pixelSize) {
   fill(247, 59, 178);      // 빨간 픽셀 색
   stroke(245, 22, 52);
   strokeWeight(1);
-  
+
   for (let r = 0; r < heart.length; r++) {
     for (let c = 0; c < heart[r].length; c++) {
       if (heart[r][c] === "1") {
@@ -39,42 +39,42 @@ function drawHeart(x, y, pixelSize) {
 }
 
 
-class life{
-  
-  constructor(_x,_y){ 
+class life {
+
+  constructor(_x, _y) {
     //this.life = [];
     this.lifeCount = 3;
     this.end = false;
     this.x = _x;
-    
+
   }
-  
-  display(){
+
+  display() {
     push();
     stroke(245, 22, 52);
     strokeWeight(1);
     fill(247, 59, 178);
-    
-    
-    for (let i=0; i<this.lifeCount;i++){
-      drawHeart(+16+this.x+i*55,30,2);
+
+
+    for (let i = 0; i < this.lifeCount; i++) {
+      drawHeart(+16 + this.x + i * 55, 30, 2);
       // circle(this.x+i*30, 65 ,20); 
     }
-    
+
     pop();
   }
-  
-    decrease(){
-      this.lifeCount--;
-      if (this.lifeCount === 0){
-        this.end = true;
-      }
-  
+
+  decrease() {
+    this.lifeCount--;
+    if (this.lifeCount === 0) {
+      this.end = true;
+    }
+
   }
-  
-  reset(){
+
+  reset() {
     this.lifeCount = 3;
     this.end = false;
   }
-  
-  }
+
+}

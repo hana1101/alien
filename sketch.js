@@ -1,5 +1,5 @@
 let mgr;
-let assetname = ["roomnight", "background", "room", "workplace","wallet", "drawingrule", "roomblur","zib1", "zib2","zib3","zib4","zib5","zib6","zib7","zib8","zib9","zib10","zib11","zib12","zib13","zib14","diary"];
+let assetname = ["roomnight", "background", "room", "workplace", "wallet", "drawingrule", "roomblur", "zib1", "zib2", "zib3", "zib4", "zib5", "zib6", "zib7", "zib8", "zib9", "zib10", "zib11", "zib12", "zib13", "zib14", "diary"];
 let startTime;
 let walletItem, phoneItem, diaryItem;
 let dialogue;
@@ -31,14 +31,15 @@ var showItemPopup = false;
 let buddySound;
 let drawingSound;
 let unav;
-let dialogueEnd_scene= null;
-
+let dialogueEnd_scene = null;
+let powerSound;
 
 function preload() {
   openSound = loadSound('assets/opening.mp3');
   startPlaySound = loadSound('assets/startplay.mp3');
-  buddySound= loadSound('assets/buddybgm.mp3');
-  drawingSound= loadSound('assets/drawingbgm.mp3');
+  buddySound = loadSound('assets/buddybgm.mp3');
+  drawingSound = loadSound('assets/drawingbgm.mp3');
+  powerSound = loadSound('assets/superbgm.mp3');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
@@ -56,11 +57,11 @@ function preload() {
   fail_gfbg = loadImage("assets/relationend.jpg");
   // superPowerImg = loadImage("assets/sup.png");
   superPowerImg = loadImage("assets/supPink.png");
-  pressfont=loadFont('assets/PressStart2P-Regular.ttf')
+  pressfont = loadFont('assets/PressStart2P-Regular.ttf')
   // neoFont = loadFont("assets/neodgm.ttf");
   neoFont = loadFont("assets/dgm.ttf");
-  roomnight=  loadImage("assets/roomnight.jpg")
-  unav = loadImage("assets/unav.jpg"); 
+  roomnight = loadImage("assets/roomnight.jpg")
+  unav = loadImage("assets/unav.jpg");
 
 
 
@@ -90,7 +91,7 @@ function preload() {
   badEnding2 = loadImage("assets/badending2.jpg");
 
   facetimebg = loadImage("assets/facetime.jpg");
-  callgamerule= loadImage("assets/callgamerule.jpg");
+  callgamerule = loadImage("assets/callgamerule.jpg");
   ftfail = loadImage("assets/ftfail.jpg");
   ftsuccess = loadImage("assets/ftsuccess.jpg");
 
@@ -156,46 +157,46 @@ function draw() {
   }
   if (currentScreen === "start") {
     drawStartScreen();
-  }else if (currentScreen==="startscene/zib1"){
-  drawZib1();
-  }else if (currentScreen === "startscene/zib2"){
-  drawZib2();
-  }else if (currentScreen === "startscene/zib3"){
-  drawZib3(); 
-  }else if (currentScreen === "startscene/zib4"){
-  drawZib4(); 
-  }else if (currentScreen === "startscene/zib5"){
-  drawZib5();
-  }else if (currentScreen === "startscene/zib6"){
-  drawZib6();
-  }else if (currentScreen === "startscene/zib7"){
-  drawZib7();
-  }else if (currentScreen === "startscene/zib8"){
-  drawZib8();
-  }else if (currentScreen === "startscene/zib9"){
-  drawZib9();
-  }else if (currentScreen === "startscene/zib10"){
-  drawZib10();
-  }else if (currentScreen === "startscene/zib11"){
-  drawZib11();
-  }else if (currentScreen === "startscene/zib12"){
-  drawZib12();
-  }else if (currentScreen === "startscene/zib13"){
-  drawZib13();
-  }else if (currentScreen === "startscene/zib14"){
-  drawZib14();
+  } else if (currentScreen === "startscene/zib1") {
+    drawZib1();
+  } else if (currentScreen === "startscene/zib2") {
+    drawZib2();
+  } else if (currentScreen === "startscene/zib3") {
+    drawZib3();
+  } else if (currentScreen === "startscene/zib4") {
+    drawZib4();
+  } else if (currentScreen === "startscene/zib5") {
+    drawZib5();
+  } else if (currentScreen === "startscene/zib6") {
+    drawZib6();
+  } else if (currentScreen === "startscene/zib7") {
+    drawZib7();
+  } else if (currentScreen === "startscene/zib8") {
+    drawZib8();
+  } else if (currentScreen === "startscene/zib9") {
+    drawZib9();
+  } else if (currentScreen === "startscene/zib10") {
+    drawZib10();
+  } else if (currentScreen === "startscene/zib11") {
+    drawZib11();
+  } else if (currentScreen === "startscene/zib12") {
+    drawZib12();
+  } else if (currentScreen === "startscene/zib13") {
+    drawZib13();
+  } else if (currentScreen === "startscene/zib14") {
+    drawZib14();
 
   } else if (currentScreen === "play") {
     drawPlayScreen();
   } else if (currentScreen === "work") {
     drawWorkscreen();
-  }else if (currentScreen ==="readDiary") {
+  } else if (currentScreen === "readDiary") {
     drawDiaryscreen(); //수정
 
-  // else if (currentScreen === "drawing") {
-  //   drawingScreen();
-  // }
-}else if (currentScreen === "checkMsg") {
+    // else if (currentScreen === "drawing") {
+    //   drawingScreen();
+    // }
+  } else if (currentScreen === "checkMsg") {
     checkMsg();
   } else if (currentScreen === "girlfriendGame") {
     if (!gfGameStarted) {
@@ -205,19 +206,19 @@ function draw() {
     }
     playGirlfriendHand();
 
-  } else if (currentScreen === "fTOver"){
+  } else if (currentScreen === "fTOver") {
     endingSceneFT();
 
-  }else if (currentScreen === "girlfriendFT") {
-      if (!facetimeOver && !faceTimeStarted) {
-        initializeFaceTime();
-        faceTimeStarted = true;
+  } else if (currentScreen === "girlfriendFT") {
+    if (!facetimeOver && !faceTimeStarted) {
+      initializeFaceTime();
+      faceTimeStarted = true;
     }
     playFaceTime();
-    
-  } else if (currentScreen === "doodleGame"){
-      playDoodleGame();
-  } else if (currentScreen === "dogGame"){
+
+  } else if (currentScreen === "doodleGame") {
+    playDoodleGame();
+  } else if (currentScreen === "dogGame") {
     // dogGame이 처음 시작될 때만 초기화
     // 이 플래그는 dogGame_initialized처럼 새로운 전역 변수로 선언해야 합니다.
     // let dogGame_initialized = false; (setup() 또는 전역 변수 선언부에 추가)
@@ -225,22 +226,22 @@ function draw() {
       initDogClickGame();
       dogGame_initialized = true;
     }
-  
+
     playDogClickGame();
-  }  else if (currentScreen ==="lifeOver"){
-      lifeOverPage();
+  } else if (currentScreen === "lifeOver") {
+    lifeOverPage();
   }
-    else if (currentScreen === "calculateGameResults"){
-      calculatePointsPage();
-  } else if (currentScreen === "gameSuccess1"){
+  else if (currentScreen === "calculateGameResults") {
+    calculatePointsPage();
+  } else if (currentScreen === "gameSuccess1") {
     drawHappyEnding1();
-  } else if (currentScreen === "gameSuccess2"){
+  } else if (currentScreen === "gameSuccess2") {
     drawHappyEnding2();
-  } else if (currentScreen === "gameSuccess3"){
+  } else if (currentScreen === "gameSuccess3") {
     drawHappyEnding3();
-  } else if (currentScreen === "gameFail1"){
+  } else if (currentScreen === "gameFail1") {
     drawBadEnding1();
-  } else if (currentScreen === "gameFail2"){
+  } else if (currentScreen === "gameFail2") {
     drawBadEnding2();
   }
 }
@@ -256,7 +257,7 @@ function mousePressed() {
     previousScreen = currentScreen;
     currentScreen = "startscene/zib1";
   }
-  
+
   if (currentScreen === "startscene/zib1") {
     if (dialogueZib_scene1 && dialogueZib_scene1.finished) {
       dialogueZib_scene1.reset();
@@ -268,7 +269,7 @@ function mousePressed() {
         previousScreen = currentScreen;
         currentScreen = "startscene/zib2";
         console.log("startscene/zib2");
-        
+
       }
     }
   }
@@ -406,7 +407,7 @@ function mousePressed() {
     }
   }
   else if (currentScreen === "startscene/zib11") {
-    
+
     previousScreen = currentScreen;
     currentScreen = "startscene/zib12";
     console.log("startscene/zib12");
@@ -446,38 +447,38 @@ function mousePressed() {
       }
     }
   }
-  
+
   else if (currentScreen === "work" && dialogue) {
     dialogue.handleClick();
-  
+
     if (dialogue.finishedClicked && !isDialogueBlocking) {
       previousScreen = currentScreen;
       currentScreen = "play";
-      selectedItem = 'wallet'; 
+      selectedItem = 'wallet';
       dialogue = null;
     }
   }
-  
-  else if (currentScreen==="readDiary" && dialogue1) {
+
+  else if (currentScreen === "readDiary" && dialogue1) {
     dialogue1.handleClick();
-  
+
     if (dialogue1.finishedClicked) {
       previousScreen = currentScreen;
       currentScreen = "play";
       selectedItem = 'diary';
       dialogue1 = null;
     }
-  } 
-  
-  else if (currentScreen==='checkMsg' && dialogueMsg) {
+  }
+
+  else if (currentScreen === 'checkMsg' && dialogueMsg) {
     dialogueMsg.handleClick();
     if (dialogueMsg.finishedClicked) {
-    previousScreen = currentScreen;
-    currentScreen='play';
-    selectedItem='phone';
-    // dialogueMsg=null;
+      previousScreen = currentScreen;
+      currentScreen = 'play';
+      selectedItem = 'phone';
+      // dialogueMsg=null;
+    }
   }
-}
 
   else if (currentScreen === "doodleGame") {
     mousePressedDoodleGame();
@@ -496,7 +497,7 @@ function mousePressed() {
       mousePressedDogClickGame();
     }
   }
-//? is this gf game
+  //? is this gf game
   if (!gameStarted && gameStartBtn && gameStartBtn.isHovered()) {
     gameStartBtn.action();
   }
@@ -505,20 +506,20 @@ function mousePressed() {
     dialogueFaceTime.handleClick();
   }
 
-  if (currentScreen === "calculateGameResults"){
-    if (totalSuccess === true){
+  if (currentScreen === "calculateGameResults") {
+    if (totalSuccess === true) {
       previousScreen = currentScreen;
       currentScreen = "gameSuccess1";
       return;
     }
-    else{
+    else {
       previousScreen = currentScreen;
       currentScreen = "gameFail1";
       return;
     }
   }
 
-  if (currentScreen === "gameSuccess1"){
+  if (currentScreen === "gameSuccess1") {
     if (dialogueEnd_scene1 && dialogueEnd_scene1.finished) {
       dialogueEnd_scene2.reset();
     }
@@ -533,7 +534,7 @@ function mousePressed() {
     }
   }
 
-  if (currentScreen === "gameSuccess2"){
+  if (currentScreen === "gameSuccess2") {
     if (dialogueEnd_scene2 && dialogueEnd_scene2.finished) {
       dialogueEnd_scene3.reset();
     }
@@ -552,12 +553,12 @@ function mousePressed() {
   //   previousScreen = currentScreen;
   //   currentScreen = "gameSuccess3";
   // }
-  if (currentScreen === "gameFail1"){
+  if (currentScreen === "gameFail1") {
     console.log("gameFail1");
     previousScreen = currentScreen;
     currentScreen = "gameFail2";
   }
-  else if (currentScreen === "gameFail2"){
+  else if (currentScreen === "gameFail2") {
     console.log("gameFail2");
   }
 }
@@ -569,21 +570,21 @@ let justInspectedItem = false
 function keyPressed() {
   if (keyCode === ESCAPE) {
 
-  
-    
+
+
     // 1. ESC inside active game (block)
     if ((currentScreen === "girlfriendGame" && gameStarted) ||
-        (currentScreen === "girlfriendFT" && faceTimeStart) ||
-        (currentScreen === "doodleGame" && doodleStarted && !dGameOver) ||
-        (currentScreen === "dogGame" && buddyStart)) {
+      (currentScreen === "girlfriendFT" && faceTimeStart) ||
+      (currentScreen === "doodleGame" && doodleStarted && !dGameOver) ||
+      (currentScreen === "dogGame" && buddyStart)) {
       return;
     }
-    
-  
+
+
     // 2. ESC from mini-game → go back to play + set selectedItem
     if (['girlfriendGame', 'girlfriendFT', 'doodleGame', 'dogGame'].includes(currentScreen)) {
       let prev = currentScreen;
-  
+
       // set item FIRST before switching
       if (prev === 'girlfriendGame' || prev === 'girlfriendFT') {
         selectedItem = 'phone';
@@ -592,12 +593,12 @@ function keyPressed() {
       } else if (prev === 'dogGame') {
         selectedItem = 'diary';
       }
-  
+
       resetSelectedScreenFlag();
       currentScreen = 'play';
       return;
     }
-  
+
     // 3. Close item inspection
     if (selectedItem && currentScreen === "play") {
       selectedItem = null;
@@ -605,7 +606,7 @@ function keyPressed() {
       justInspectedItem = true;
       return;
     }
-  
+
     // 4. After inspection → zib14
     if (currentScreen === "play" && !selectedItem && justInspectedItem) {
       currentScreen = "startscene/zib14";
@@ -613,11 +614,11 @@ function keyPressed() {
       previousScreen = null;
       return;
     }
-  
+
     // 5. Default back
     if (previousScreen) {
       resetSelectedScreenFlag();
-    
+
       // ADD THIS BLOCK HERE ↓
       if (currentScreen.startsWith("startscene/zib")) {
         const match = currentScreen.match(/zib(\d+)/);
@@ -632,7 +633,7 @@ function keyPressed() {
         }
       }
       // ADD THIS BLOCK HERE ↑
-    
+
       currentScreen = previousScreen;
       selectedItem = null;
       justInspectedItem = false;
@@ -655,29 +656,29 @@ function keyPressed() {
 
 
 
-function nextGame(){
+function nextGame() {
   console.log('came here');
   pointsMinimumMet();
-  
-  if (!endGame){
-    if (currentScreen !== "girlfriendGame" && currentScreen !== "girlfriendFT" && currentScreen !== "fTOver"){
-      if (currentScreen === "doodleGame"){
+
+  if (!endGame) {
+    if (currentScreen !== "girlfriendGame" && currentScreen !== "girlfriendFT" && currentScreen !== "fTOver") {
+      if (currentScreen === "doodleGame") {
         resetDoodleGameVariables();
-      }else if (currentScreen === "dogGame"){
+      } else if (currentScreen === "dogGame") {
         resetDogGameVariables();
       }
-      selectedItem=null;
+      selectedItem = null;
       currentScreen = "play";
     }
-    if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT" || currentScreen === "fTOver"){
-      if (currentScreen === "girlfriendGame"){
+    if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT" || currentScreen === "fTOver") {
+      if (currentScreen === "girlfriendGame") {
         resetGame();
       }
-      selectedItem="phone";
+      selectedItem = "phone";
       console.log('hi');
       console.log(selectedItem);
       currentScreen = "play";
-      
+
     }
 
   }

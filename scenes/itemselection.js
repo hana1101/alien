@@ -1,4 +1,4 @@
-let selectedItem=null;
+let selectedItem = null;
 let justEnteredSelectedScreen = false;
 let screenEnterTime = 0;
 
@@ -11,7 +11,7 @@ function drawSelectedScreen(selectedItem) {
   }
 
   // image(assets.room, 0, 0, width, height);
-  roomnight=  loadImage("assets/roomnight.jpg")
+  roomnight = loadImage("assets/roomnight.jpg")
 
   image(roomnight, 0, 0, width, height);
 
@@ -31,7 +31,7 @@ function drawSelectedScreen(selectedItem) {
 
   // Draw selected item centered in the left panel
   push();
-  translate(centerX-10, drawY);
+  translate(centerX - 10, drawY);
   scale(scaleFactor);
   if (selectedItem === "wallet") drawWallet(0, 0);
   else if (selectedItem === "phone") drawPhone(0, 0);
@@ -86,36 +86,36 @@ function drawPlayScreen() {
   //   fill(255, alphaVal); 
   //   text("D-1", width / 2, height / 2);
   // } else {
-    if (!selectedItem) {
-      walletItem.display();
-      walletItem.drawLabel(20, 40);
+  if (!selectedItem) {
+    walletItem.display();
+    walletItem.drawLabel(20, 40);
 
-      phoneItem.display();
-      phoneItem.drawLabel(20, 0);
+    phoneItem.display();
+    phoneItem.drawLabel(20, 0);
 
-      diaryItem.display();
-      diaryItem.drawLabel(20, 0);
+    diaryItem.display();
+    diaryItem.drawLabel(20, 0);
 
-      chooseitem = new Button(
-        width / 2 - 150,
-        100,
-        300,
-        50,
-        "Choose your item", 'iteminstruction'
-      );
-      chooseitem.display();
-      if (chooseitem.isClicked()) {
-        ButtonAction(chooseitem.action);
-      }
-      // if (chooseitem.isHovered() && mouseIsPressed && !wasMousePressed) {
-      //   showItemPopup = true;
-      
-      displayStats();
-    } else {
-      drawSelectedScreen(selectedItem);
-      displayStats();
-
+    chooseitem = new Button(
+      width / 2 - 150,
+      100,
+      300,
+      50,
+      "Choose your item", 'iteminstruction'
+    );
+    chooseitem.display();
+    if (chooseitem.isClicked()) {
+      ButtonAction(chooseitem.action);
     }
+    // if (chooseitem.isHovered() && mouseIsPressed && !wasMousePressed) {
+    //   showItemPopup = true;
+
+    displayStats();
+  } else {
+    drawSelectedScreen(selectedItem);
+    displayStats();
+
+  }
 
   if (showItemPopup) {
     drawPopup();
@@ -214,7 +214,7 @@ function resetSelectedScreenFlag() {
 }
 function goBackToMainScreen() {
   resetSelectedScreenFlag(); // Reset the flag
-  currentScreen = "main"; 
+  currentScreen = "main";
 }
 
 
@@ -231,7 +231,7 @@ function drawGlowingText(txt, x, y) {
     text(txt, x, y);
   }
   noStroke();
-  fill(1,255,112,180); // 메인 텍스트 컬러
+  fill(1, 255, 112, 180); // 메인 텍스트 컬러
   text(txt, x, y);
   pop();
 }

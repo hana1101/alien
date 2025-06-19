@@ -1,12 +1,12 @@
 // class stats{
-  
+
 //   constructor(_leftX){ 
 //     this.currentStat = 0;
 //     this.completed = false;
 //     this.leftX = _leftX
-    
+
 //   }
-  
+
 //   display(){
 //     strokeWeight(2);
 //     stroke(255);
@@ -22,7 +22,7 @@
 //     else{
 //       fill("red");
 //     }
-  
+
 //     // noStroke();
 //     rect(this.leftX,55, 150*(this.currentStat/100),20,10,10);
 //   }
@@ -31,7 +31,7 @@
 //     textSize(20);
 //     text(this.currentStat+'%',this.leftX+190,73);
 //   }
-  
+
 //   increase(){
 //     if (currentScreen === "girlfriendFT"){
 //       this.currentStat = this.currentStat+15;
@@ -46,21 +46,21 @@
 //     else{
 //       this.completed = false;
 //     }
-    
+
 //     return this.currentStat;
 //   }
-  
+
 //     decrease(){
 //     this.currentStat = this.currentStat-5;
 //     this.completed = false;
 //     return this.currentStat;
 //   }
-  
+
 //   reset(){
 //     this.currentStat = 0;
 //     this.completed = false;
 //   }
-  
+
 //   }
 
 class stats {
