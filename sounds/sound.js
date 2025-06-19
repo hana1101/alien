@@ -75,7 +75,7 @@ function handleBackgroundMusic() {
       drawingSound.setVolume(0.2); // 원하는 볼륨
       drawingSound.loop();         // 반복 재생
     }
-  } else if (drawingSound.isPlaying() && !drawingFadingOut) {
+  } else if (drawingSound.isPlaying() && !drawingSoundFadingOut) {
     drawingSoundFadingOut = true;
     drawingSound.setVolume(0.0, 1.5); // 1.5초 동안 볼륨 0으로
     setTimeout(() => {
