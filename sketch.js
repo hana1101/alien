@@ -29,6 +29,7 @@ let isDialogueBlocking = false;
 let openSound;
 var showItemPopup = false;
 let buddySound;
+let drawingSound;
 let unav;
 let dialogueEnd_scene= null;
 
@@ -37,6 +38,7 @@ function preload() {
   openSound = loadSound('assets/opening.mp3');
   startPlaySound = loadSound('assets/startplay.mp3');
   buddySound= loadSound('assets/buddybgm.mp3');
+  drawingSound= loadSound('assets/drawingbgm.mp3');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);

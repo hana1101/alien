@@ -64,14 +64,27 @@ function handleBackgroundMusic() {
         buddySound.stop();
     }, 1600); // 실제 정지는 페이드 끝난 뒤
   }
+  // 그림
+   if (currentScreen === "doodleGame") {
+    // 페이드아웃 중이라면 즉시 복귀
+    console.log("should start playing");
+    drawingSoundFadingOut = false;
+    if (!drawingSound.isPlaying()) {
+      console.log("사운드 시작")
+      drawingSound.setVolume(0.2); // 원하는 볼륨
+      drawingSound.loop();         // 반복 재생
+    }
+  } else if (drawingSound.isPlaying() && !drawingFadingOut) {
+    drawingSoundFadingOut = true;
+    drawingSound.setVolume(0.0, 1.5); // 1.5초 동안 볼륨 0으로
+    setTimeout(() => {
+      if (drawingSound.isPlaying()) 
+         console.log("사운드 정지");
+        drawingSound.stop();
+    }, 1600); // 실제 정지는 페이드 끝난 뒤
+  }
 }
- // ← 이 줄은 원래 있던 handleBackgroundMusic의 마지막 닫는 괄호
 
-    // --- Handle buddySound (pet screen) ---
-
-  // const petscreens = new Set([
-  //   "pet"
-  // ]);
 
 //   if (petScreen.has (currentScreen)) {
 //     BuddySoundFadingout=false;
