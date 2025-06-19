@@ -640,6 +640,7 @@ function keyPressed() {
 function nextGame(){
   console.log('came here');
   pointsMinimumMet();
+  
   if (!endGame){
     if (currentScreen !== "girlfriendGame" && currentScreen !== "girlfriendFT" && currentScreen !== "fTOver"){
       if (currentScreen === "doodleGame"){
