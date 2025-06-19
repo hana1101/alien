@@ -40,11 +40,11 @@ const stages = [
   },
 
   { // stage 1
-    lines: ["모치가 또 난리네..ㅠ"],
+    lines: ["모치 먹일 음식이 다 떨어졌네 ㅜㅜ 혹시 오빠가 사다줄 수 있어?"],
     choices: [
-      { label: "또 충전기 물어뜯었어?", result: "correctRelUp" },
-      { label: "응? 모치가 뭔 사고 쳤었어?", result: "lifeDown" },
-      { label: "헉..대박..", result: "wrongRelDown" }
+      { label: "그래! 당근 사갈게", result: "correctRelUp" },
+      { label: "모치가 제일 좋아하는 건 개껌이었지?", result: "lifeDown" },
+      { label: "츄르 넉넉히 사올게!", result: "wrongRelDown" }
     ],
     msg: {
       success: "정답! 기억력에 여자친구가 감동받았어요!",

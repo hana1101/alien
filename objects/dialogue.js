@@ -52,10 +52,16 @@ class DialogueBox {
     );
 
     // ---------- “다음” 인디케이터 (모든 줄에서 항상 표시) ----------
-    textSize(40);
+    // textSize(40);
+    // textAlign(RIGHT, BOTTOM);
+    // fill(160); // 흐릿한 회색 계열
+    // text("⟶", this.x + this.w - pad, this.y + this.h - pad);
     textAlign(RIGHT, BOTTOM);
-    fill(160); // 흐릿한 회색 계열
-    text("⟶", this.x + this.w - pad, this.y + this.h - pad);
+    textFont(pressfont);
+    textSize(9);
+    let alpha = 127 + 127 * sin(millis() / 300);
+    fill(0, 255, 153, alpha);
+    text("CLICK HERE TO CONTINUE", this.x + this.w - 16, this.y + this.h - 12);
   }
 
   isHovered() {

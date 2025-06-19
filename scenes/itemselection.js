@@ -4,10 +4,9 @@ let screenEnterTime = 0;
 
 // tweak these to taste
 let pulseSpeed = 0.05;     // how fast it pulses
-let minAlpha = 0;        // fully invisible
-let maxAlpha = 200;      // max glow strength
-let baseSize = 10;       // your base text size
-let scaleAmt = 0.05;
+let minAlpha = 80;       // darkest (most transparent)
+let maxAlpha = 200;      // brightest (most opaque)
+let baseSize = 10;
 
 
 function drawSelectedScreen(selectedItem) {
@@ -225,40 +224,19 @@ function goBackToMainScreen() {
   currentScreen = "main";
 }
 
-
 function drawGlowingText(txt, x, y) {
   push();
   textAlign(LEFT, TOP);
   textFont(pressfont);
+  textSize(baseSize);
 
-  // get a 0→1 oscillation
+  // compute a smooth 0→1→0 oscillation
   let osc = (sin(frameCount * pulseSpeed) + 1) / 2;
-
-  // map that to an alpha between minAlpha and maxAlpha
   let alpha = lerp(minAlpha, maxAlpha, osc);
 
-  // tiny scale pulse (1-scaleAmt → 1+scaleAmt)
-  let s = 1 + scaleAmt * (osc - 0.5) * 2;
-
-  translate(x, y);
-  scale(s);
-
-  // glow outlines
-  for (let i = 4; i > 0; i--) {
-    let glowAlpha = alpha * (i / 4);
-    stroke(1, 255, 185, glowAlpha);
-    strokeWeight(i);
-    fill(1, 255, 185, glowAlpha);
-    textSize(baseSize);
-    text(txt, 0, 0);
-  }
-
-  // main text
   noStroke();
-  fill(1, 255, 112, alpha * 0.9);
-  textSize(baseSize);
-  text(txt, 0, 0);
-
+  fill(1, 255, 185, alpha);
+  text(txt, x, y);
   pop();
 }
 

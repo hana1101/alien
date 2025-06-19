@@ -6,6 +6,7 @@ let gameStartBtn;
 // declare timers
 let handTimer, totalTimer, lookSwitchTimer, caughtTimer, lookTime, firstTenSeconds;
 let firstTenDecreased = false;
+let successgfBox, failuregfBox;
 
 // declare circles
 // let circles = [];
@@ -328,14 +329,32 @@ function gotHands(results) {
 }
 
 function displayGameResults() {
+  if (!successgfBox) {
+    successgfBox = new GlowBox(
+      width / 2,
+      height / 2,
+      '성공! 여자친구가 웃었어요!',
+      'success'
+    );
+  }
+  if (!failuregfBox) {
+    failuregfBox = new GlowBox(
+      width / 2,
+      height / 2,
+      '실패! 여자친구가 실망했네요...',
+      'failure'
+    );
+  }
   textSize(40);
   if (completedCircles >= totalRequired && !fail) {
     image(success_gfbg, 0, 0, width, height);
-    push();
-    fill(0, 255, 0);
-    textAlign(CENTER);
-    text('성공! 여자친구가 웃었어요!', width / 2, height / 2);
-    pop();
+    successgfBox.display(32, pressfont);
+
+    // push();
+    // fill(0, 255, 0);
+    // textAlign(CENTER);
+    // text('성공! 여자친구가 웃었어요!', width / 2, height / 2);
+    // pop();
     if (!statsAlreadyChanged) {
       relationship_stats.increase();
       statsAlreadyChanged = true;
@@ -343,11 +362,13 @@ function displayGameResults() {
 
   } else {
     image(fail_gfbg, 0, 0, width, height);
-    push();
-    fill('red');
-    textAlign(CENTER);
-    text('실패! 여자친구가 실망했네요...', width / 2, height / 2);
-    pop();
+    // push();
+    // fill('red');
+    // textAlign(CENTER);
+    // text('실패! 여자친구가 실망했네요...', width / 2, height / 2);
+    // pop();
+    failuregfBox.display(32, pressfont);
+
     if (!statsAlreadyChanged) {
       life_stats.decrease();
       statsAlreadyChanged = true;
@@ -364,6 +385,7 @@ function displayGameResults() {
   console.log("calculate page");
 
 }
+
 
 function isOverlappingFaceArea(x, y, radius) {
   let faceLeft = 220;
