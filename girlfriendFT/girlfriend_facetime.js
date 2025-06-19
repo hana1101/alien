@@ -29,7 +29,7 @@ const stages = [
     ],
     choices: [
       { label: "조금 있다가 결정할까?", result: "wrongRelDown" },
-      { label: "스테이크 먹으로 갈까?", result: "correctRelUp" },
+      { label: "스테이크 먹으러 갈까?", result: "correctRelUp" },
       { label: "해산물 리조또 어때?", result: "lifeDown" }
     ],
     msg: {

@@ -86,6 +86,7 @@ function preload() {
   happyEnding1 = loadImage("assets/happyending1.jpg");
   happyEnding2 = loadImage("assets/happyending2.jpg");
   happyEnding3 = loadImage("assets/happyending3.jpg");
+  happyEnding4 = loadImage("assets/happyending3.jpg");
 
   badEnding1 = loadImage("assets/badending1.jpg");
   badEnding2 = loadImage("assets/badending2.jpg");
@@ -239,6 +240,10 @@ function draw() {
     drawHappyEnding2();
   } else if (currentScreen === "gameSuccess3") {
     drawHappyEnding3();
+
+  } else if (currentScreen === "gameSuccess4") {
+    drawhappyEnding3Page();
+
   } else if (currentScreen === "gameFail1") {
     drawBadEnding1();
   } else if (currentScreen === "gameFail2") {
@@ -253,6 +258,11 @@ function mousePressed() {
   console.log("mouse pressed at screen:", currentScreen); // Debug line
 
   if (currentScreen === 'lifeOver') {
+    window.location.reload();
+    return;
+  }
+
+  if (currentScreen === 'happyEnding4') {
     window.location.reload();
     return;
   }
@@ -554,6 +564,22 @@ function mousePressed() {
       }
     }
   }
+
+  if (currentScreen === "gameSuccess3") {
+    if (dialogueEnd_scene3 && dialogueEnd_scene3.finished) {
+      gameSuccess4Page.reset(); // need 
+    }
+    if (dialogueEnd_scene3 && !dialogueEnd_scene3.finished) {
+      dialogueEnd_scene3.handleClick();
+      console.log(dialogueEnd_scene3.lines[dialogueEnd_scene3.currentLine]);
+      if (dialogueEnd_scene3.finished) {
+        previousScreen = currentScreen;
+        console.log("startscene/zib10");
+        currentScreen = "gameSuccess4Page";
+      }
+    }
+  }
+
   // else if (currentScreen === "gameSuccess2"){
   //   console.log("gameSuccess2");
   //   previousScreen = currentScreen;
