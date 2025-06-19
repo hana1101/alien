@@ -52,6 +52,7 @@ function enterPhoneScreen() {
   dialogueMsg = null;   // clear any previous dialogue
   isDialogueBlocking = false;
   msgCheckStart = null;   // reset the 2 s timer
+
 }
 function checkMsg() {
   // 1) On the very first frame, start the timer
@@ -77,8 +78,6 @@ function checkMsg() {
       isDialogueBlocking = true;
     }
     dialogueMsg.display();
-
-
   }
 }
 
