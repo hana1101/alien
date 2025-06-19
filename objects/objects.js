@@ -181,7 +181,7 @@ class item {
     pop();
   }
 
-  drawLabel(fontSize = 30, yOffset = 5) {
+  drawLabel(fontSize = 20, yOffset = 5) {
     // Label position independent of scale
     let labelX = (this.x + this.baseWidth / 2)-18;
     let labelY = this.y + this.baseHeight + yOffset;

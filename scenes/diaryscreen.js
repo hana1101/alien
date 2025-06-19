@@ -21,7 +21,7 @@ if (dialogue1 && dialogue1.isOnLastLine()) {
 
   textAlign(RIGHT, BOTTOM);
   textFont(pressfont);
-  textSize(14);
+  textSize(12);
   fill(0, 255, 153, alpha);
   let padding = 20;
   text(

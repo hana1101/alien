@@ -40,10 +40,10 @@ function drawingScreen() {
     let alpha = 127 + 127 * sin(millis() / 300);
 
     textFont(pressfont);
-    textSize(14);
+    textSize(12);
     fill(0, 255, 153, alpha);
     text(
-      "CLICK HERE TO CONTINUE", width-80, height-50
+      "CLICK HERE TO CONTINUE", width-80, height-30
     );
   }
 
