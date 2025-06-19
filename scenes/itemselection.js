@@ -65,7 +65,7 @@ function drawSelectedScreen(selectedItem) {
       }
     });
   }
-  drawGlowingText('press Esc to come back', 20, 620);
+  drawGlowingText('press Esc to come back', 20, 530);
 
 }
 
