@@ -1,3 +1,9 @@
+function showEndingPage(isGood = true) {
+  image(isGood ? happyending3 : lifeOverScenebg, 0, 0, width, height);
+  let restartButton = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame')
+  restartButton.display()
+}
+
 function lifeOverPage() {
   image(lifeOverScenebg, 0, 0, width, height);
   let restartButton = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame')
@@ -10,8 +16,15 @@ function gameSuccess4Page() {
   restartButton.display()
 }
 
+let diaglougeEnd_scene0;
 function calculatePointsPage() {
   image(calculateScenebg, 0, 0, width, height);
+  if (!dialogueEnd_scene0) {
+    let lineEnd_scene0 = [
+      "ZIB이 다시 DAVE 본체로 돌아가는 중..."];
+    dialogueEnd_scene0 = new DialogueBox(10, 500, 980, 120, lineEnd_scene0);
+  }
+  dialogueEnd_scene0.display();
   displayStats();
 }
 
