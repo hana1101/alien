@@ -38,7 +38,7 @@ function drawSelectedScreen(selectedItem) {
   else if (selectedItem === "diary") drawDiary(0, 0);
   pop();
 
-  let btnX = width - 400;
+  let btnX = width - 380;
   let btnW = 300;
   let btnH = 60;
   let btnSpacing = 20;
