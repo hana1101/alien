@@ -26,7 +26,7 @@ function drawHappyEnding2(){
     image(happyEnding2,0,0,width,height);
     if (!dialogueEnd_scene2) {
     let linesEnd_scene2 = [
-    "어젯밤 꿈에 외계인이 나왔는데… 왠지 진짜 같았단 말이지.",
+    "DAVE: 어젯밤 꿈에 외계인이 나왔는데… 왠지 진짜 같았단 말이지.",
     "데이브는 중얼거리며, 꿈이 단순한 상상이었는지, 실제로 일어난 일이었는지 끝내 확신할 수 없었다."];
     dialogueEnd_scene2 = new DialogueBox(10, 500, 980, 120, linesEnd_scene2);
   }
