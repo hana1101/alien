@@ -10,6 +10,7 @@
 //   restartButton.display()
 // }
 
+
 function showEndingPage(isGood = true) {
   let bg = isGood ? happyending3 : lifeOverScenebg;
   image(bg, 0, 0, width, height);
@@ -81,6 +82,11 @@ function drawHappyEnding3() {
 function drawBadEnding1() {
   image(badEnding1, 0, 0, width, height);
 }
+
 function drawBadEnding2() {
   image(badEnding2, 0, 0, width, height);
+  if (!restartButton_badEnding) {
+    restartButton_badEnding = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame');
+  }
+  restartButton_badEnding.display();
 }

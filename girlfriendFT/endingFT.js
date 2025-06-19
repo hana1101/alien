@@ -1,4 +1,4 @@
-let nextBtnEndFT
+let nextBtnEndFT = null
 
 function endingSceneFT() {
     image(unav, 0, 0, width, height);
@@ -6,7 +6,9 @@ function endingSceneFT() {
     // push();
     // text(CENTER);
     // textAlign("Cant play again");
-    nextBtnEndFT = new Button(width - 150, height / 2 + 50 + 195, 130, 55, "Next", nextGame);
+    if (!nextBtnEndFT) {
+        nextBtnEndFT = new Button(width - 150, height / 2 + 50 + 195, 130, 55, "Next", nextGame);
+    }
     nextBtnEndFT.display();
 
     if (nextBtnEndFT.isClicked()) {
