@@ -253,14 +253,14 @@ function mousePressed() {
   console.log("mouse pressed at screen:", currentScreen); // Debug line
 
   if (currentScreen === 'lifeOver') {
-    currentScreen = 'start';
-    selectedItem = null;
+    window.location.reload();
     return;
   }
 
   if (currentScreen === "start" && startisHovering()) {
     console.log("START BUTTON CLICKED"); // Debug line
     previousScreen = currentScreen;
+
     currentScreen = "startscene/zib1";
   }
 
