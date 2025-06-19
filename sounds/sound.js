@@ -46,7 +46,7 @@ function handleBackgroundMusic() {
     }, 1600);
   }
     /* ---------- Handle buddySound (pet screen) ---------- */
-  if (currentScreen === "pet") {
+  if (currentScreen === "dogGame") {
     // 페이드아웃 중이라면 즉시 복귀
     buddySoundFadingOut = false;
     if (!buddySound.isPlaying()) {
