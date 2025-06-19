@@ -86,13 +86,13 @@ function drawPlayScreen() {
   // } else {
     if (!selectedItem) {
       walletItem.display();
-      walletItem.drawLabel(30, 40);
+      walletItem.drawLabel(20, 40);
 
       phoneItem.display();
-      phoneItem.drawLabel(30, 0);
+      phoneItem.drawLabel(20, 0);
 
       diaryItem.display();
-      diaryItem.drawLabel(30, 0);
+      diaryItem.drawLabel(20, 0);
 
       chooseitem = new Button(
         width / 2 - 150,
@@ -102,13 +102,12 @@ function drawPlayScreen() {
         "Choose your item", 'iteminstruction'
       );
       chooseitem.display();
-      // if (chooseitem.isClicked()) {
-      //   ButtonAction(chooseitem.action);
-
-      // }
-      if (chooseitem.isHovered() && mouseIsPressed && !wasMousePressed) {
-        showItemPopup = true;
+      if (chooseitem.isClicked()) {
+        ButtonAction(chooseitem.action);
       }
+      // if (chooseitem.isHovered() && mouseIsPressed && !wasMousePressed) {
+      //   showItemPopup = true;
+      
       displayStats();
     } else {
       drawSelectedScreen(selectedItem);
@@ -132,14 +131,15 @@ function drawPopup() {
   rect(width / 2, height / 2, 500, 300, 20);
 
   fill(255);
-  textSize(24);
+  textSize(20);
+  textFont(pressfont)
   text("Pick carefully. Each item tells a story.", width / 2, height / 2 - 20);
 
   textSize(16);
-  text("Click anywhere to close", width / 2, height / 2 + 60);
+  text("Release to close", width / 2, height / 2 + 60);
 
   // Simple click detection to close popup
-  if (mouseIsPressed) {
+  if (chooseitem.isClicked()) {
     showItemPopup = false;
   }
 

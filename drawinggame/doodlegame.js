@@ -147,7 +147,7 @@ function playDoodleGame() {
       textAlign(CENTER, CENTER);
       textSize(32);
       textFont(neoFont)
-      let msg = "💥 실패! 클라이언트가 실망했어요!";
+      let msg = "실패! 클라이언트가 실망했어요!";
       let boxW = textWidth(msg) + 80;
       let boxH = 80;
     
