@@ -55,15 +55,22 @@ const stages = [
   },
 
   { // stage 2
-    lines: ["우리 다음 여행은 어디로 갈까?"],
+    // lines: ["우리 다음 여행은 어디로 갈까?"],
+    // choices: [
+    //   { label: "글쎄 생각나는 곳이 없네..", result: "wrongRelDown" },
+    //   { label: "이번엔 대전 갈까?", result: "correctRelUp" },
+    //   { label: "부산은 가본 적 없는데 어때?", result: "lifeDown" }
+    // ],
+    lines: ["우리 저번에 여행 갔던 데가 정말 좋았잖아!"],
     choices: [
-      { label: "글쎄 생각나는 곳이 없네..", result: "wrongRelDown" },
-      { label: "이번엔 대전 갈까?", result: "correctRelUp" },
-      { label: "부산은 가본 적 없는데 어때?", result: "lifeDown" }
+      { label: "우리 같이 여행 간 적 있어?", result: "wrongRelDown" },
+      { label: "이번에도 부산 갈까?", result: "correctRelUp" },
+      { label: "응, 도쿄 정말 예뻤어", result: "lifeDown" }
     ],
+
     msg: {
       success: "정답! 좋은 아이디어에요!",
-      lifeFail: "실패! 부산은 이미 갔었어요!",
+      lifeFail: "실패! 누구랑 도쿄에 갔었어요?!",
       wrongFail: "오답! 여자친구가 서운해해요."
     }
   }
