@@ -2,6 +2,7 @@ let openSoundFadingOut = false;
 let startPlaySoundFadingOut = false;
 let buddySoundFadingOut=false;
 let drawingSoundFadingOut= false;
+let powerSoundFadingOut= false;
 
 function handleBackgroundMusic() {
   const introScreens = new Set([
@@ -82,6 +83,26 @@ function handleBackgroundMusic() {
       if (drawingSound.isPlaying()) 
          console.log("사운드 정지");
         drawingSound.stop();
+    }, 1600); // 실제 정지는 페이드 끝난 뒤
+  }
+
+  // superpower브금
+  if (currentScreen === "girlfriendGame") {
+    // 페이드아웃 중이라면 즉시 복귀
+    console.log("should start playing");
+    powerSoundFadingOut = false;
+    if (!powerSound.isPlaying()) {
+      console.log("사운드 시작")
+      powerSound.setVolume(0.2); // 원하는 볼륨
+      powerSound.loop();         // 반복 재생
+    }
+  } else if (powerSound.isPlaying() && !powerSoundFadingOut) {
+    powerSoundFadingOut = true;
+    powerSound.setVolume(0.0, 1.5); // 1.5초 동안 볼륨 0으로
+    setTimeout(() => {
+      if (powerSound.isPlaying()) 
+         console.log("사운드 정지");
+        powerSound.stop();
     }, 1600); // 실제 정지는 페이드 끝난 뒤
   }
 }
