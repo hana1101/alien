@@ -131,7 +131,8 @@ function drawPopup() {
   rect(width / 2, height / 2, 500, 300, 20);
 
   fill(255);
-  textSize(24);
+  textSize(20);
+  textFont(pressfont)
   text("Pick carefully. Each item tells a story.", width / 2, height / 2 - 20);
 
   textSize(16);
