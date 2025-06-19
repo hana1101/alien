@@ -24,6 +24,8 @@ function preloadDogClickGame() {
   dogEndImg = loadImage("assets/dogend.jpg");
   happyDogImg = loadImage("assets/buddysuccess 1.jpg");
   sadDogImg = loadImage("assets/buddyfail 1.jpg");
+  buddybutton = loadSound('assets/buddybutton.mp3')
+  wrongbuddy = loadSound('assets/wrongbuddy.mp3')
 }
 
 // 🟡 초기화 함수
@@ -166,6 +168,18 @@ function mousePressedDogClickGame() {
   for (let i = circles_pet.length - 1; i >= 0; i--) {
     let result = circles_pet[i].checkClick(mouseX, mouseY);
     if (result !== 0) {
+      // Play different sounds based on result
+      if (result > 0) {
+        if (buddybutton && buddybutton.isLoaded()) {
+          buddybutton.stop();
+          buddybutton.play();
+        }
+      } else if (result < 0) {
+        if (wrongbuddy && wrongbuddy.isLoaded()) {
+          wrongbuddy.stop();
+          wrongbuddy.play();
+        }
+      }
       score += result;
       floatingTexts.push(new DogFloatingText(circles_pet[i].x, circles_pet[i].y, result));
       haloEffects.push(new DogHaloEffect(circles_pet[i].x, circles_pet[i].y, result));
