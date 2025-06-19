@@ -1,19 +1,21 @@
-// /* ==== endingScenes.js 맨 첫 줄 근처 ==== */
-// let dialogueEnd_scene0 = null;
-// let dialogueEnd_scene1 = null;
-// let dialogueEnd_scene2 = null;
-// let dialogueEnd_scene3 = null;
+// function lifeOverPage() {
+//   image(lifeOverScenebg, 0, 0, width, height);
+//   let restartButton = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame')
+//   restartButton.display()
+// }
 
-function lifeOverPage() {
-  image(lifeOverScenebg, 0, 0, width, height);
-  let restartButton = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame')
-  restartButton.display()
-}
+// function gameSuccess4Page() {
+//   image(happyending3, 0, 0, width, height);
+//   let restartButton = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame')
+//   restartButton.display()
+// }
 
-function gameSuccess4Page() {
-  image(happyending3, 0, 0, width, height);
-  let restartButton = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame')
-  restartButton.display()
+function showEndingPage(isGood = true) {
+  let bg = isGood ? happyending3 : lifeOverScenebg;
+  image(bg, 0, 0, width, height);
+
+  let restartButton = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame');
+  restartButton.display();
 }
 
 function calculatePointsPage() {
