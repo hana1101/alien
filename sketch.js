@@ -37,6 +37,7 @@ let dialogueEnd_scene2 = null;
 let dialogueEnd_scene3 = null;
 let powerSound;
 let lifeOverScenebg;
+let happyending3;
 
 function preload() {
   openSound = loadSound('assets/opening.mp3');
@@ -65,6 +66,7 @@ function preload() {
   neoFont = loadFont("assets/dgm.ttf");
   roomnight = loadImage("assets/roomnight.jpg")
   unav = loadImage("assets/unav.jpg");
+  happyending3 = loadImage("assets/happyending3.jpg");
 
 
 
@@ -237,9 +239,10 @@ function draw() {
 
     playDogClickGame();
   }
+
   if (currentScreen === "lifeOver") {
     showEndingPage(false); // bad ending
-  } else if (currentScreen === 'gameSuccess4') {
+  } if (currentScreen === 'gameSuccess4') {
     showEndingPage(true);  // good ending
   }
   else if (currentScreen === "calculateGameResults") {
@@ -272,6 +275,10 @@ function mousePressed() {
   }
 
   if (currentScreen === 'happyEnding4') {
+    window.location.reload();
+    return;
+  }
+  if (currentScreen === 'gameSuccess4') {
     window.location.reload();
     return;
   }
