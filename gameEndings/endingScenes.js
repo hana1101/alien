@@ -10,8 +10,15 @@ function gameSuccess4Page() {
   restartButton.display()
 }
 
+let diaglougeEnd_scene0;
 function calculatePointsPage() {
   image(calculateScenebg, 0, 0, width, height);
+  if (!dialogueEnd_scene0) {
+    let lineEnd_scene0 = [
+      "ZIB이 다시 DAVE 본체로 돌아가는 중..."];
+    dialogueEnd_scene0 = new DialogueBox(10, 500, 980, 120, lineEnd_scene0);
+  }
+  dialogueEnd_scene0.display();
   displayStats();
 }
 
@@ -50,6 +57,13 @@ function drawHappyEnding3() {
   }
   dialogueEnd_scene3.display();
 }
+if (dialogueEnd_scene3.finished && !dialogueEnd_scene3.finishedClicked) {
+  dialogueEnd_scene3.finishedClicked = true; // 중복 방지
+  previousScreen = currentScreen;
+  currentScreen = "gameSuccess4"; // 다음 페이지로 전환
+  console.log("➡ gameSuccess4");
+}
+
 
 function drawBadEnding1() {
   image(badEnding1, 0, 0, width, height);
