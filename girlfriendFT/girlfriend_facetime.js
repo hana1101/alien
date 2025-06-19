@@ -13,7 +13,7 @@ let ftStartBtn;
 let nextBtnFT;
 let waitFT;
 
-let playedFT;
+let playedFT=false;
 
 let stageFT;               // stageFT = 인덱스(0,1,…)
 let currentStageCompleteFT = false;
@@ -161,10 +161,14 @@ function facetimeEnd(){
   if(nextBtnFT.isClicked()){
     stageFT++;
     if(stageFT < stages.length){
+      
       facetimeOver = success = facetimeLife = choices_show = false;
       loadStage(stageFT);
     } else {
-      fTOverForever = true;
+      if (!playedFT){
+    countGamePlayed++
+    playedFT = true
+}
       nextGame();
     }
   }
