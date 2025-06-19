@@ -347,7 +347,7 @@ function displayGameResults() {
   }
   textSize(40);
   if (completedCircles >= totalRequired && !fail) {
-    image(success_gfbg, 0, 0, width, height);
+    image(success_gfbg, 0, 30, width, height);
     successgfBox.display(32, pressfont);
 
     // push();
