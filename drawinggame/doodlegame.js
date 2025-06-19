@@ -118,7 +118,6 @@ function playDoodleGame() {
       let boxW = textWidth(msg) + 80;
       let boxH = 80;
     
-      // Glow-style background box
       fill(22, 22, 53, 180); // darker semi-transparent
       stroke(1, 255, 185);
       strokeWeight(4);
