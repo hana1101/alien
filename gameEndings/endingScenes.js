@@ -1,8 +1,4 @@
-function showEndingPage(isGood = true) {
-  image(isGood ? happyending3 : lifeOverScenebg, 0, 0, width, height);
-  let restartButton = new Button(width / 2 - 100, height - 150, 200, 70, 'Replay Game', 'replayGame')
-  restartButton.display()
-}
+
 
 function lifeOverPage() {
   image(lifeOverScenebg, 0, 0, width, height);
