@@ -25,8 +25,8 @@ const stages = [
   { // stage 0
     lines: [
       "자기야 ! 우리 진짜 오랜만에 보네..! \n",
-      "빨리 보고싶당.. \n\n이번주 토요일 데이트가 너무 기대돼 !!\n...",
-      "\n우리 뭐 먹을까 ??\n..."
+      "빨리 보고싶당.. \n\n이번주 토요일 데이트가 너무 기대돼 !!\n",
+      "\n우리 뭐 먹을까 ??\n"
     ],
     choices: [
       { label: "조금 있다가 결정할까?", result: "wrongRelDown" },
@@ -102,6 +102,10 @@ function loadStage(idx) {
 
 /* ---------- 4) 메인 루프 ---------- */
 function playFaceTime() {
+  if (playedFT) {          // playedFT 는 게임 완료 시 true 로 세팅되어 있음
+    endingSceneFT();       // unav + Next 버튼
+    return;                // facetimebg 를 그리지 않고 탈출
+  }
   if (!faceTimeStart) { ftRules(); return; }
 
   image(facetimebg, 0, 0, width, height);
