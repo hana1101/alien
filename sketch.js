@@ -523,17 +523,37 @@ function mousePressed() {
   }
 
   if (currentScreen === "calculateGameResults") {
-    if (totalSuccess === true) {
-      previousScreen = currentScreen;
-      currentScreen = "gameSuccess1";
-      return;
+  if (dialogueEnd_scene0) {
+    if (dialogueEnd_scene0.finished) {
+      dialogueEnd_scene0.reset();
+    } else {
+      dialogueEnd_scene0.handleClick();
+      console.log(dialogueEnd_scene0.lines[dialogueEnd_scene0.currentLine]);
     }
-    else {
+
+    // 대화가 끝났으면 결과에 따라 다음 화면으로
+    if (dialogueEnd_scene0.finished) {
       previousScreen = currentScreen;
-      currentScreen = "gameFail1";
-      return;
+      if (totalSuccess === true) {
+        currentScreen = "gameSuccess1";
+      } else {
+        currentScreen = "gameFail1";
+      }
     }
-  }
+      }
+}
+  // if (currentScreen === "calculateGameResults") {
+  //   if (totalSuccess === true) {
+  //     previousScreen = currentScreen;
+  //     currentScreen = "gameSuccess1";
+  //     return;
+  //   }
+  //   else {
+  //     previousScreen = currentScreen;
+  //     currentScreen = "gameFail1";
+  //     return;
+  //   }
+  // }
 
   if (currentScreen === "gameSuccess1") {
     if (dialogueEnd_scene1 && dialogueEnd_scene1.finished) {
@@ -693,27 +713,54 @@ function nextGame() {
   pointsMinimumMet();
 
   if (!endGame) {
-    if (currentScreen !== "girlfriendGame" && currentScreen !== "girlfriendFT" && currentScreen !== "fTOver") {
-      if (currentScreen === "doodleGame") {
-        resetDoodleGameVariables();
-      } else if (currentScreen === "dogGame") {
-        resetDogGameVariables();
-      }
+    // Doodle Game 또는 Dog Game 처리
+    if (currentScreen === "doodleGame") { // doodleGame일 때만 해당 로직 실행
+      resetDoodleGameVariables(); // doodleGame 관련 변수 초기화
+      selectedItem = null;
+      currentScreen = "play"; // 화면을 'play'로 설정
+      console.log("Doodle Game finished, moving to play screen."); // 디버깅용 로그 추가
+    } else if (currentScreen === "dogGame") { // dogGame일 때만 해당 로직 실행
+      resetDogGameVariables();
       selectedItem = null;
       currentScreen = "play";
     }
-    if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT" || currentScreen === "fTOver") {
+    // Girlfriend Game 또는 Girlfriend FT 처리
+    else if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT" || currentScreen === "fTOver") {
       if (currentScreen === "girlfriendGame") {
-        resetGame();
+        resetGame(); // Girlfriend Game 관련 변수 초기화
       }
       selectedItem = "phone";
       console.log('hi');
       console.log(selectedItem);
       currentScreen = "play";
-
     }
-
+    // 다른 게임 타입이 추가될 경우 여기에 로직 추가
   }
+  // console.log('came here');
+  // pointsMinimumMet();
+
+  // if (!endGame) {
+  //   if (currentScreen !== "girlfriendGame" && currentScreen !== "girlfriendFT" && currentScreen !== "fTOver") {
+  //     if (currentScreen === "doodleGame") {
+  //       resetDoodleGameVariables();
+  //     } else if (currentScreen === "dogGame") {
+  //       resetDogGameVariables();
+  //     }
+  //     selectedItem = null;
+  //     currentScreen = "play";
+  //   }
+  //   if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT" || currentScreen === "fTOver") {
+  //     if (currentScreen === "girlfriendGame") {
+  //       resetGame();
+  //     }
+  //     selectedItem = "phone";
+  //     console.log('hi');
+  //     console.log(selectedItem);
+  //     currentScreen = "play";
+
+  //   }
+
+  // }
 }
 
 
