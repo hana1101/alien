@@ -36,6 +36,7 @@ let dialogueEnd_scene1 = null;
 let dialogueEnd_scene2 = null;
 let dialogueEnd_scene3 = null;
 let powerSound;
+let lifeOverScenebg;
 
 function preload() {
   openSound = loadSound('assets/opening.mp3');
@@ -90,6 +91,7 @@ function preload() {
   happyEnding2 = loadImage("assets/happyending2.jpg");
   happyEnding3 = loadImage("assets/happyending3.jpg");
   happyEnding4 = loadImage("assets/happyending3.jpg");
+  lifeOverScenebg = loadImage("assets/lifezero.jpg");
 
   badEnding1 = loadImage("assets/badending1.jpg");
   badEnding2 = loadImage("assets/badending2.jpg");
@@ -234,8 +236,11 @@ function draw() {
     }
 
     playDogClickGame();
-  } else if (currentScreen === "lifeOver") {
-    lifeOverPage();
+  }
+  if (currentScreen === "lifeOver") {
+    showEndingPage(false); // bad ending
+  } else if (currentScreen === 'gameSuccess4') {
+    showEndingPage(true);  // good ending
   }
   else if (currentScreen === "calculateGameResults") {
     calculatePointsPage(); //
@@ -247,9 +252,6 @@ function draw() {
     drawHappyEnding2();
   } else if (currentScreen === "gameSuccess3") {
     drawHappyEnding3();
-
-  } else if (currentScreen === "gameSuccess4") {
-    gameSuccess4Page();
 
   } else if (currentScreen === "gameFail1") {
     drawBadEnding1();
