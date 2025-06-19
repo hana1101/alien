@@ -37,7 +37,7 @@ let dialogueEnd_scene2 = null;
 let dialogueEnd_scene3 = null;
 let powerSound;
 let lifeOverScenebg;
-let happyending3;
+let buttonclicksound; // preload this in preload()
 
 function preload() {
   openSound = loadSound('assets/opening.mp3');
@@ -45,7 +45,7 @@ function preload() {
   buddySound = loadSound('assets/buddybgm.mp3');
   drawingSound = loadSound('assets/drawingbgm.mp3');
   powerSound = loadSound('assets/superbgm.mp3');
-
+  buttonclicksound = loadSound(assets / button2.mp3)
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
   }
@@ -66,7 +66,6 @@ function preload() {
   neoFont = loadFont("assets/dgm.ttf");
   roomnight = loadImage("assets/roomnight.jpg")
   unav = loadImage("assets/unav.jpg");
-  happyending3 = loadImage("assets/happyending3.jpg");
 
 
 
@@ -103,7 +102,6 @@ function preload() {
   ftfail = loadImage("assets/ftfail.jpg");
   ftsuccess = loadImage("assets/ftsuccess.jpg");
 
-  // zib12 = loadImage("assets/zib12.jpg");
   preloadDoodleAssets();
   preloadDogClickGame();
 
@@ -239,10 +237,9 @@ function draw() {
 
     playDogClickGame();
   }
-
   if (currentScreen === "lifeOver") {
     showEndingPage(false); // bad ending
-  } if (currentScreen === 'gameSuccess4') {
+  } else if (currentScreen === 'gameSuccess4') {
     showEndingPage(true);  // good ending
   }
   else if (currentScreen === "calculateGameResults") {
@@ -275,10 +272,6 @@ function mousePressed() {
   }
 
   if (currentScreen === 'happyEnding4') {
-    window.location.reload();
-    return;
-  }
-  if (currentScreen === 'gameSuccess4') {
     window.location.reload();
     return;
   }
