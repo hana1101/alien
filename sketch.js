@@ -469,11 +469,15 @@ function mousePressed() {
     }
   } 
   
-  else if (currentScreen==='checkMsg') {
+  else if (currentScreen==='checkMsg' && dialogueMsg) {
+    dialogueMsg.handleClick();
+    if (dialogueMsg.finishedClicked) {
     previousScreen = currentScreen;
     currentScreen='play';
     selectedItem='phone';
+    // dialogueMsg=null;
   }
+}
 
   else if (currentScreen === "doodleGame") {
     mousePressedDoodleGame();

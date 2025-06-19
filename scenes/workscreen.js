@@ -37,7 +37,7 @@ if (dialogue && dialogue.isOnLastLine()) {
 
   textAlign(RIGHT, BOTTOM);
   textFont(pressfont); // pixel font
-  textSize(14);
+  textSize(12);
   fill(0, 255, 153, alpha);
   let padding = 20;
   text(
