@@ -48,6 +48,7 @@ function handleBackgroundMusic() {
     /* ---------- Handle buddySound (pet screen) ---------- */
   if (currentScreen === "dogGame") {
     // 페이드아웃 중이라면 즉시 복귀
+    console.log("should start playing");
     buddySoundFadingOut = false;
     if (!buddySound.isPlaying()) {
       console.log("사운드 시작")
