@@ -116,11 +116,11 @@ class GlowBox {
     };
   }
 
-  display(textSize = 32, font = neoFont) {
+  display(size = 32, font = neoFont) {
     push();
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
-    textSize(textSize);
+    textSize(size);
 
     if (font) {
       textFont(font);
@@ -128,7 +128,7 @@ class GlowBox {
 
     // 텍스트 크기 계산
     let boxW = textWidth(this.message) + this.padding * 2;
-    let boxH = textSize + this.padding * 2;
+    let boxH = size + this.padding * 2;
 
     let currentColors = this.colors[this.type];
 
@@ -153,20 +153,20 @@ class GlowBox {
   }
 
   // 애니메이션 효과를 위한 메서드들
-  displayWithPulse(textSize = 32, font = null, pulseSpeed = 0.1) {
+  displayWithPulse(size = 32, font = null, pulseSpeed = 0.1) {
     let pulse = sin(frameCount * pulseSpeed) * 0.2 + 1;
 
     push();
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
-    textSize(textSize);
+    textSize(size);
 
     if (font) {
       textFont(font);
     }
 
     let boxW = textWidth(this.message) + this.padding * 2;
-    let boxH = textSize + this.padding * 2;
+    let boxH = size + this.padding * 2;
 
     let currentColors = this.colors[this.type];
 
@@ -191,20 +191,20 @@ class GlowBox {
   }
 
   // 페이드 인 효과
-  displayWithFadeIn(textSize = 32, font = null, fadeProgress = 1) {
+  displayWithFadeIn(size = 32, font = null, fadeProgress = 1) {
     let alpha = fadeProgress * 255;
 
     push();
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
-    textSize(textSize);
+    textSize(size);
 
     if (font) {
       textFont(font);
     }
 
     let boxW = textWidth(this.message) + this.padding * 2;
-    let boxH = textSize + this.padding * 2;
+    let boxH = size + this.padding * 2;
 
     let currentColors = this.colors[this.type];
 
