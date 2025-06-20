@@ -57,17 +57,17 @@ class Button {
       mouseY > this.y && mouseY < this.y + this.h;
   }
 
-  // isClicked() {
-  //   return this.isHovered() && mouseIsPressed;
+  isClicked() {
+    return this.isHovered() && mouseIsPressed;
 
-  // }
+  }
   isClicked() {
     let currentlyClicked = this.isHovered() && mouseIsPressed;
 
     // Check if this is a new click (wasn't clicked last frame, but is clicked now)
 
-    if (currentlyClicked && !this._clickedLastFrame) { ////없앱니다잠시
-      // Play sound on new click
+    if (currentlyClicked && !this._clickedLastFrame) {
+      //Play sound on new click
       if (buttonClickSound && buttonClickSound.isLoaded()) {
         buttonClickSound.play();
       }

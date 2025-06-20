@@ -4,6 +4,8 @@ let buddySoundFadingOut = false;
 let drawingSoundFadingOut = false;
 let powerSoundFadingOut = false;
 let ftSoundFadingOut = false;
+let badendSoundFadingOut = false;
+let goodendSoundFadingOut = false;
 
 function handleBackgroundMusic() {
   const introScreens = new Set([
@@ -22,6 +24,10 @@ function handleBackgroundMusic() {
     "fTOver",       // if you want music on the “over” screen too
     "girlfriendFT"  // your actual FaceTime game screen
   ]);
+
+  // const badendScreens = new Set([
+  //   "badEnding1", "badEnding2,"lifeOverScenebg"
+  // ]);
 
   // --- Handle openSound (intro music) ---
   if (introScreens.has(currentScreen)) {
