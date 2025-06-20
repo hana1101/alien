@@ -166,7 +166,13 @@ function setup() {
 
 }
 function draw() {
-  image(glowCursor, mouseX - 8, mouseY - 8); // Draw cursor at mouse position
+  if (glowCursor) {
+    // offset so the “tip” of the arrow lands where we click:
+    let hotspotX = 0;
+    let hotspotY = 0;
+    image(glowCursor, mouseX - hotspotX, mouseY - hotspotY);
+  }
+  // image(glowCursor, mouseX - 8, mouseY - 8); // Draw cursor at mouse position
 
   handleBackgroundMusic();
   if (pendingDialogueReset) {
@@ -220,6 +226,9 @@ function draw() {
 
   } else if (currentScreen === "play") {
     drawPlayScreen();
+    if (currentScreen === 'itempopup') {
+      drawPopup()
+    }
 
   } else if (currentScreen === "work") {
     drawWorkscreen();
