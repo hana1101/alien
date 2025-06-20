@@ -16,7 +16,7 @@ function drawHappyEnding0() {
   image(calculateScenebg, 0, 0, width, height);
   if (!dialogueEnd_scene0) { //f 
     let lineEnd_scene0 = [
-      "낯설었던 지구에서 정체를 들키지 않은 ZIB, DAVE 본체로 복귀하는 중..."];
+      "낯설었던 지구에서 72시간동안 정체를 들키지 않은 ZIB, DAVE 본체로 복귀하는 중..."];
     dialogueEnd_scene0 = new DialogueBox(10, 500, 980, 120, lineEnd_scene0);
   }
   dialogueEnd_scene0.display();

@@ -65,8 +65,8 @@ function initDoodleGame() {
   startBtnDoodle = new Button(width / 2 - 65, height / 2 + 245, 130, 55, "Start", dGameStartPressed);
   nextBtnDoodle = new Button(width - 150, height / 2 + 50 + 195, 130, 55, "Next", nextGame);
 
-  clearBtn = new Button(620, height / 2 + 245, 100, 40, "CLEAR", clearDrawing);
-  resetBtn = new Button(780, height / 2 + 245, 100, 40, "RESTART", resetDoodle);
+  clearBtn = new Button(620, height / 2 + 245, 120, 50, "CLEAR", clearDrawing);
+  resetBtn = new Button(780, height / 2 + 245, 120, 50, "CHANGE WORD", resetDoodle);
   submitBtn = new Button(400, height / 2 + 230, 130, 55, "SUBMIT", submitDoodleDrawing);
 
   doodleClassifier = ml5.imageClassifier("DoodleNet", modelReady);
