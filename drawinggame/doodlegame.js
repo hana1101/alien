@@ -183,6 +183,7 @@ function playDoodleGame() {
     nextBtnDoodle.display();
     if (nextBtnDoodle.isClicked()) {
       nextGame();
+      return;
     }
 
     return; // doodlePhase 2에서는 이 화면만 표시하고 다른 로직은 실행하지 않습니다.
