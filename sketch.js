@@ -1,11 +1,11 @@
 let mgr;
-let assetname = ["roomnight", "background", "room", "workplace", "wallet", "drawingrule", "roomblur", "zib1", "zib2", "zib3", "zib4", "zib5", "zib6", "zib7", "zib8", "zib9", "zib10", "zib11", "zib12", "zib13", "zib14", "diary"];
+let assetname = ["roomnight", "background", "room", "workplace", 'relationend2', "wallet", "drawingrule", "roomblur", "zib1", "zib2", "zib3", "zib4", "zib5", "zib6", "zib7", "zib8", "zib9", "zib10", "zib11", "zib12", "zib13", "zib14", "diary"];
 let startTime;
 let walletItem, phoneItem, diaryItem;
 let dialogue;
 let currentScreen = "start";
 let assets = [];
-let btn = { x: 0, y: 0, w: 130, h: 80 };
+let btn = { x: 0, y: 0, w: 130, h: 60 };
 let gfGameStarted;
 let faceTimeStarted;
 let dialoguezib = null;
@@ -41,9 +41,6 @@ let happyending3;
 let restartButton_badEnding;
 let buttonClickSound;
 let ftsong;
-let goodending;
-let badending;
-
 function preload() {
   openSound = loadSound('assets/opening.mp3');
   startPlaySound = loadSound('assets/startplay.mp3');
@@ -52,16 +49,17 @@ function preload() {
   powerSound = loadSound('assets/superbgm.mp3');
   buttonClickSound = loadSound('assets/button2.mp3');//
   ftsong = loadSound('assets/ftsong.mp3');
-  badendingSound = loadSound('assets/badending2.mp3');
-  goodendingSound = loadSound('assets/happyendingbgm.mp3');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
   }
   assets["startbutton"] = loadImage(`assets/startbutton.png`);
   assets["phone"] = loadImage(`assets/phone.png`);
-
+  relationend2 = loadImage('assets/relationend2.jpg')
+  ufo = loadImage('assets/ufo.png')
   handPose = ml5.handPose();
+  glowCursor = loadImage('assets/cursorglow.png');
+
 
   bgImage_notlook = loadImage("assets/notlooking.jpg");
   bgImage_look = loadImage("assets/looking.jpg");
@@ -118,12 +116,13 @@ function preload() {
 
 function setup() {
   createCanvas(1000, 625);
+  // cursor(glowCursor, 8, 8);
+  noCursor(); // Hide system cursor
 
   textFont(neoFont);
   textSize(25);
-  // textFont("Press Start 2P");
-  btn.x = width / 2 - btn.w / 2 - 110;
-  btn.y = height / 2 + 20;
+  btn.x = width / 2 - btn.w / 2 - 20;
+  btn.y = height / 2 + 40;
   startTime = millis();
 
   walletItem = new item(
@@ -167,6 +166,8 @@ function setup() {
 
 }
 function draw() {
+  image(glowCursor, mouseX - 8, mouseY - 8); // Draw cursor at mouse position
+
   handleBackgroundMusic();
   if (pendingDialogueReset) {
     DialogueBox.maybeReset(pendingDialogueReset);
