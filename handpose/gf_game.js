@@ -50,6 +50,7 @@ let nextBtnHand;
 let countGameHand = false;
 
 //gfGameStarted
+let gfwowPlayed = false;
 
 function initializeGirlfriendHand() {
 
@@ -388,8 +389,15 @@ function displayGameResults() {
   }
   textSize(40);
   if (completedCircles >= totalRequired && !fail) {
-    if (!statsAlreadyChanged && gfwow && gfwow.play) {
+    // if (!statsAlreadyChanged && gfwow && gfwow.play) {
+    //   gfwow.play();
+    // }
+
+    if (!gfwowPlayed) {
+      gfwow.rate(1.8);  // 2× normal speed/pitch
+
       gfwow.play();
+      gfwowPlayed = true;
     }
 
     image(success_gfbg, 0, 30, width, height);
@@ -424,7 +432,11 @@ function displayGameResults() {
   pop();
   nextBtnHand.display();
   if (nextBtnHand.isClicked()) {
+    gfwowPlayed = false;
+
     nextGame();
+
+
   }
 
   console.log("calculate page");
