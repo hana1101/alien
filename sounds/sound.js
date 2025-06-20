@@ -3,6 +3,7 @@ let startPlaySoundFadingOut = false;
 let buddySoundFadingOut = false;
 let drawingSoundFadingOut = false;
 let powerSoundFadingOut = false;
+let ftSoundFadingOut = false;
 
 function handleBackgroundMusic() {
   const introScreens = new Set([
@@ -16,6 +17,10 @@ function handleBackgroundMusic() {
 
   const playScreens = new Set([
     "play", "work", "readDiary", "checkMsg"
+  ]);
+  const facetimeScreens = new Set([
+    "fTOver",       // if you want music on the “over” screen too
+    "girlfriendFT"  // your actual FaceTime game screen
   ]);
 
   // --- Handle openSound (intro music) ---
@@ -105,6 +110,23 @@ function handleBackgroundMusic() {
       powerSound.stop();
     }, 1600); // 실제 정지는 페이드 끝난 뒤
   }
+  // --- Handle ftsong (FaceTime background music) ---
+
+
+  if (facetimeScreens.has(currentScreen)) {
+    ftSoundFadingOut = false;
+    if (!ftsong.isPlaying()) {
+      ftsong.setVolume(0.4);
+      ftsong.loop();
+    }
+  } else if (ftsong.isPlaying() && !ftSoundFadingOut) {
+    ftSoundFadingOut = true;
+    ftsong.setVolume(0.0, 1.5);
+    setTimeout(() => {
+      if (ftsong.isPlaying()) ftsong.stop();
+    }, 1600);
+  }
+
 }
 //
 

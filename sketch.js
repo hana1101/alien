@@ -39,9 +39,8 @@ let powerSound;
 let lifeOverScenebg;
 let happyending3;
 let restartButton_badEnding;
-let buttonClickSound;//
-
-
+let buttonClickSound;
+let ftsong;
 function preload() {
   openSound = loadSound('assets/opening.mp3');
   startPlaySound = loadSound('assets/startplay.mp3');
@@ -49,6 +48,7 @@ function preload() {
   drawingSound = loadSound('assets/drawingbgm.mp3');
   powerSound = loadSound('assets/superbgm.mp3');
   buttonClickSound = loadSound('assets/button2.mp3');//
+  ftsong = loadSound('assets/ftsong.mp3');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);

@@ -71,7 +71,7 @@ function drawSelectedScreen(selectedItem) {
       }
     });
   }
-  drawGlowingText('press Esc to Return', 30, 570);
+  drawGlowingText('press Esc to Return');
 
 }
 
@@ -224,18 +224,16 @@ function goBackToMainScreen() {
   currentScreen = "main";
 }
 
-function drawGlowingText(txt, x, y) {
+function drawGlowingText(txt, x = 10, y = height - baseSize - 10) {
+  // blink on/off every 30 frames (~0.5s at 60fps)
+  const blinkOn = frameCount % 40 < 20;
+  if (!blinkOn) return;
   push();
-  textAlign(LEFT, TOP);
   textFont(pressfont);
   textSize(baseSize);
-
-  // compute a smooth 0→1→0 oscillation
-  let osc = (sin(frameCount * pulseSpeed) + 1) / 2;
-  let alpha = lerp(minAlpha, maxAlpha, osc);
-
+  textAlign(LEFT, TOP);
   noStroke();
-  fill(1, 255, 185, alpha);
+  fill(1, 255, 185, 200);  // your desired teal glow color
   text(txt, x, y);
   pop();
 }

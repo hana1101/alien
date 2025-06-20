@@ -248,5 +248,7 @@ function facetimeEnd() {
 function ftRules() {
   image(callgamerule, 0, 0, width, height);
   ftStartBtn.display();
+
   if (ftStartBtn.isClicked()) { faceTimeStart = true; }
+  drawGlowingText('Press Esc to go back')
 }
