@@ -15,6 +15,23 @@ let msgCheckStart = null;
 //   }
 
 // }
+function drawTealGlow(x, y, w, h) {
+  let centerX = x + w / 2;
+  let centerY = y + h / 2;
+  let maxR = Math.max(w, h) * 0.8; // Much smaller glow radius
+
+  // Create multiple layers for natural falloff
+  for (let r = maxR; r > 0; r -= 1) { // Smaller steps for smoother gradient
+    // Use exponential falloff for more natural light behavior
+    let normalizedR = r / maxR;
+    let alpha = pow(1 - normalizedR, 3) * 25; // Exponential falloff, lower max alpha
+
+    fill(0, 255, 200, alpha); // teal, very transparent
+    noStroke();
+    ellipse(centerX, centerY, r, r); // Keep it circular for more natural light
+  }
+}
+
 function drawStartScreen() {
   image(assets.background, 0, 0, width, height);
 
@@ -29,18 +46,8 @@ function drawStartScreen() {
     cursor(HAND);
 
     // — teal glow behind the button —
-    push();
-    noStroke();
-    let glowCenterX = btn.x + btn.w / 2;
-    let glowCenterY = btn.y + btn.h / 2;
-    let maxGlow = max(btn.w, btn.h) * 1.6; // adjust for desired spread
+    drawTealGlow(btn.x, btn.y + 10, btn.w + 30, btn.h + 30);
 
-    for (let r = maxGlow; r > 0; r -= 8) {
-      let alpha = map(r, 0, maxGlow, 0, 90); // 90 = max alpha, adjust for strength
-      fill(0, 255, 200, alpha); // teal color with fading alpha
-      ellipse(glowCenterX, glowCenterY, r, r * 0.6); // elliptical glow
-    }
-    pop();
     // draw the button over it
     image(
       assets.startbutton,

@@ -112,6 +112,8 @@ function drawPlayScreen() {
 
     chooseitem.display();
     if (chooseitem.isClicked()) {
+      showItemPopup = true;         // ← open the popup
+
       ButtonAction(chooseitem.action);
     }
     // if (chooseitem.isHovered() && mouseIsPressed && !wasMousePressed) {
@@ -148,13 +150,19 @@ function drawPopup() {
   text("Release to close", width / 2, height / 2 + 60);
 
   // Simple click detection to close popup
-  if (chooseitem.isClicked()) {
-    showItemPopup = false;
-  }
+  // if (chooseitem.isClicked()) {
+  //   showItemPopup = false;
+  // }
 
   pop();
 }
-
+function mouseReleased() {
+  // if the popup is up, any click (release) will close it:
+  if (showItemPopup) {
+    showItemPopup = false;
+    return;      // consume this click so you don’t immediately re–open it
+  }
+}
 
 
 
@@ -225,7 +233,7 @@ function goBackToMainScreen() {
 }
 
 function drawGlowingText(txt, x = 10, y = height - baseSize - 10) {
-  const interval = 400; // ms
+  const interval = 500; // ms
   const phase = Math.floor(millis() / interval) % 2;
   if (phase === 0) {
     push();

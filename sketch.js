@@ -46,6 +46,7 @@ let wrongSFX
 let gfwow
 let relationend2
 let ufo
+let glowCursor
 function preload() {
   openSound = loadSound('assets/opening.mp3');
   startPlaySound = loadSound('assets/startplay.mp3');
@@ -65,6 +66,8 @@ function preload() {
   relationend2 = loadImage('assets/relationend2.jpg')
   ufo = loadImage('assets/ufo.png')
   handPose = ml5.handPose();
+  glowCursor = loadImage('assets/cursorglow.png');
+
 
   bgImage_notlook = loadImage("assets/notlooking.jpg");
   bgImage_look = loadImage("assets/looking.jpg");
@@ -121,10 +124,11 @@ function preload() {
 
 function setup() {
   createCanvas(1000, 625);
+  // cursor(glowCursor, 8, 8);
+  noCursor(); // Hide system cursor
 
   textFont(neoFont);
   textSize(25);
-  // textFont("Press Start 2P");
   btn.x = width / 2 - btn.w / 2 - 20;
   btn.y = height / 2 + 40;
   startTime = millis();
@@ -170,6 +174,8 @@ function setup() {
 
 }
 function draw() {
+  image(glowCursor, mouseX - 8, mouseY - 8); // Draw cursor at mouse position
+
   handleBackgroundMusic();
   if (pendingDialogueReset) {
     DialogueBox.maybeReset(pendingDialogueReset);
