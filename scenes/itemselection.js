@@ -113,7 +113,7 @@ function drawPlayScreen() {
     chooseitem.display();
     if (chooseitem.isClicked()) {
       showItemPopup = true;         // ← open the popup
-
+      currentScreen = 'itempopup'
       ButtonAction(chooseitem.action);
     }
     // if (chooseitem.isHovered() && mouseIsPressed && !wasMousePressed) {
