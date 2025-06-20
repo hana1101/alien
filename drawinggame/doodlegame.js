@@ -78,17 +78,15 @@ function initDoodleGame() {
 }
 
 function playDoodleGame() {
-  if (currentScreen !== "doodleGame") return;
+  if (currentScreen !== "doodleGame") {
+    return;
+  }
 
   if (!doodleStarted) {
-    resetDoodleGameVariables();
-    resetDoodle();
-    console.log("Doodle Phase", doodlePhase);
     showDGameStart();
     return;
   }
 
-  // doodlePhase가 2일 때는 다른 게임 요소들이 그려지지 않도록 확실히 처리
   if (doodlePhase === 2) {
     if (!countFlagDoodle) {
       countGamePlayed++;
@@ -97,6 +95,8 @@ function playDoodleGame() {
 
     console.log(countGamePlayed);
     console.log("🎯 phase 2: 클라이언트 반응 이미지 표시 단계");
+
+    background(0);
 
     // 화면을 확실히 덮는 배경을 그려줍니다.
     // 이전 디버깅용 보라색 사각형을 제거하고, 클라이언트 이미지만 그립니다.
@@ -180,14 +180,14 @@ function playDoodleGame() {
         statsAlreadyChangedDoodle = true;
       }
     }
-
     displayStats();
-    nextBtnDoodle.display();
-    if (nextBtnDoodle.isClicked()) {
-      nextGame();
-      return;
-    }
+    nextBtnDoodle.display(); // 버튼은 계속 그려줍니다.
 
+    // **이 if (nextBtnDoodle.isClicked()) 블록을 삭제합니다.**
+    // if (nextBtnDoodle.isClicked()) {
+    //   nextGame();
+    //   return;
+    // }
     return; // doodlePhase 2에서는 이 화면만 표시하고 다른 로직은 실행하지 않습니다.
   }
 
@@ -384,9 +384,28 @@ function doodleGameResults() {
 function mousePressedDoodleGame() {
   if (!doodleStarted && startBtnDoodle && startBtnDoodle.isHovered()) {
     startBtnDoodle.action();
-  } else if (doodleStarted && !dGameOver && submitBtn && submitBtn.isHovered()) { // << 이 else if 블록 추가
+  } else if (doodleStarted && !dGameOver && submitBtn && submitBtn.isHovered()) {
     submitBtn.action();
   }
+  // **여기! doodlePhase가 2일 때 nextBtnDoodle 클릭을 처리합니다.**
+  else if (doodlePhase === 2 && nextBtnDoodle && nextBtnDoodle.isHovered()) {
+    nextBtnDoodle.action(); // nextGame 함수가 여기에 연결되어 있으므로 nextGame이 호출됩니다.
+  }
+}
+
+// resetDoodleGameVariables 함수 내에서 countFlagDoodle도 초기화되었는지 확인
+function resetDoodleGameVariables() {
+  doodlePhase = 0;
+  doodleStarted = false;
+  dGameOver = false;
+  showFinalScreen = false;
+  clientImageTimerStarted = false;
+  endImageTimerStarted = false;
+  countFlagDoodle = false; // 이 부분을 명확히 'false'로 초기화해야 합니다.
+  statsAlreadyChangedDoodle = false;
+  clearDrawing();
+  pickRandomKeyword();
+  doodleTime.reset();
 }
 
 function submitDoodleDrawing() {
@@ -395,19 +414,4 @@ function submitDoodleDrawing() {
     doodleTime.forceComplete(); // 시간을 즉시 종료
     checkDResult(); // 결과를 판정
   }
-}
-
-function resetDoodleGameVariables() {
-  doodlePhase = 0; // 초기 페이즈로 되돌림
-  doodleStarted = false; // 게임 시작 전 상태로 되돌림
-  dGameOver = false; // 게임 오버 상태 해제
-  showFinalScreen = false; // 최종 화면 표시 상태 해제
-  clientImageTimerStarted = false; // 타이머 플래그 초기화
-  endImageTimerStarted = false; // 타이머 플래그 초기화
-  //countFlagDoodle = false;
-  statsAlreadyChangedDoodle = false;
-  // 필요한 경우 clearDrawing() 또는 resetDoodle()을 호출하여 캔버스를 초기화
-  // clearDrawing(); // 캔버스 초기화
-  // pickRandomKeyword(); // 새로운 키워드 선택 (선택 사항)
-  // doodleTime.reset(); // 타이머 초기화 (선택 사항)
 }
