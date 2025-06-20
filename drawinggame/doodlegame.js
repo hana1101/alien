@@ -78,6 +78,8 @@ function initDoodleGame() {
 }
 
 function playDoodleGame() {
+  if (currentScreen !== "doodleGame") return;
+
   if (!doodleStarted) {
     resetDoodleGameVariables();
     resetDoodle();
