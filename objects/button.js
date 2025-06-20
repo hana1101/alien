@@ -58,29 +58,24 @@ class Button {
   }
 
   isClicked() {
-    return this.isHovered() && mouseIsPressed;
+    let currentlyPressed = this.isHovered() && mouseIsPressed; // 현재 마우스가 버튼 위에 있고 눌려있는가?
+    let wasClicked = false;
 
-  }
-  isClicked() {
-    let currentlyClicked = this.isHovered() && mouseIsPressed;
-
-    // Check if this is a new click (wasn't clicked last frame, but is clicked now)
-
-    if (currentlyClicked && !this._clickedLastFrame) {
-      //Play sound on new click
+    // 현재 눌려있고, 이전 프레임에는 눌려있지 않았다면 새로운 클릭으로 간주
+    if (currentlyPressed && !this._clickedLastFrame) {
+      wasClicked = true;
+      // Play sound on new click
       if (buttonClickSound && buttonClickSound.isLoaded()) {
         buttonClickSound.play();
       }
     }
 
-    // Update the clicked state for next frame
-    this._clickedLastFrame = currentlyClicked;
+    // 다음 프레임을 위해 현재 클릭 상태를 저장
+    this._clickedLastFrame = currentlyPressed;
 
-    return currentlyClicked;
+    return wasClicked; // 한 번의 클릭에 대해 한 번만 true를 반환
   }
-
 }
-
 
 function SettingButtons(selectedItem) {
   const configs = {
