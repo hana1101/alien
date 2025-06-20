@@ -135,6 +135,12 @@ function playFaceTime() {
 
 /* ---------- 5) 선택 처리 ---------- */
 function handleChoice(result) {
+  if (result === 'correctRelUp') {
+    correctSFX.play(0, 1.4, 1, 0.4);     // optional: start at 0.4s, 1.4× speed
+  } else {
+    wrongSFX.play(0, 1, 1, 0);           // any non-correct is “wrong”
+  }
+
   facetimeOver = true;
   switch (result) {
     case "correctRelUp": relationship_stats.increase(); success = true; break;

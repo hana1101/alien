@@ -24,7 +24,9 @@ let successgfBox, failuregfBox;
 
 //statsAlreadChanged flag
 // let statsAlreadyChanged = false;
-
+let showEnding = false;
+let endingStartTime = 0;
+let caughtEnding = false;
 
 let circles;
 let currentCircle;
@@ -99,6 +101,7 @@ function resetGame() {
 }
 
 function playGirlfriendHand() {
+
   if (!gameStarted) {
     showGameStart();
     return;
@@ -117,7 +120,6 @@ function playGirlfriendHand() {
 
   drawBackground();
   drawMaskedVideo();
-
   handleLookTimers();
   updateAndDisplayCurrentCircle();
 
@@ -130,6 +132,24 @@ function playGirlfriendHand() {
 
   if (totalTimer.isComplete() || fail) {
     gameEnded = true;
+  }
+  if (caughtEnding) {
+    image(relationend2, 0, 0, width, height);
+
+    let gfwarning = new GlowBox(
+      width / 2,
+      height / 2,
+      '경고! 여자친구가 의심하기 시작했어요!',
+      'failure'
+    );
+    gfwarning.display(32, pressfont);
+
+    nextBtnHand.display();
+    if (nextBtnHand.isClicked()) {
+      caughtEnding = false;
+      nextGame();
+    }
+    return;
   }
 }
 
@@ -263,8 +283,10 @@ function handleGameLogic(percentageInside) {
       } else {
         caughtTimer.update();
         if (caughtTimer.isComplete()) {
+          caughtEnding = true;
           fail = true;
           gameEnded = true;
+
         }
       }
       caughtTimer.display(50, 160, "Caught Timer", 20);
@@ -329,6 +351,25 @@ function gotHands(results) {
 }
 
 function displayGameResults() {
+  if (caughtEnding) {
+    image(assets.relationend2, 0, 0, width, height);
+
+    let gfwarning = new GlowBox(
+      width / 2,
+      height / 2,
+      '경고! 여자친구가 의심하기 시작했어요!',
+      'failure'
+    );
+    gfwarning.display(32, pressfont);
+
+    nextBtnHand.display();
+    if (nextBtnHand.isClicked()) {
+      // reset the flag for next time
+      caughtEnding = false;
+      nextGame();
+    }
+    return;
+  }
   if (!successgfBox) {
     successgfBox = new GlowBox(
       width / 2,

@@ -1,5 +1,5 @@
 let mgr;
-let assetname = ["roomnight", "background", "room", "workplace", "wallet", "drawingrule", "roomblur", "zib1", "zib2", "zib3", "zib4", "zib5", "zib6", "zib7", "zib8", "zib9", "zib10", "zib11", "zib12", "zib13", "zib14", "diary"];
+let assetname = ["roomnight", "background", "room", "workplace", 'relationend2', "wallet", "drawingrule", "roomblur", "zib1", "zib2", "zib3", "zib4", "zib5", "zib6", "zib7", "zib8", "zib9", "zib10", "zib11", "zib12", "zib13", "zib14", "diary"];
 let startTime;
 let walletItem, phoneItem, diaryItem;
 let dialogue;
@@ -41,6 +41,10 @@ let happyending3;
 let restartButton_badEnding;
 let buttonClickSound;
 let ftsong;
+let correctSFX
+let wrongSFX
+let gfwow
+let relationend2
 function preload() {
   openSound = loadSound('assets/opening.mp3');
   startPlaySound = loadSound('assets/startplay.mp3');
@@ -49,12 +53,15 @@ function preload() {
   powerSound = loadSound('assets/superbgm.mp3');
   buttonClickSound = loadSound('assets/button2.mp3');//
   ftsong = loadSound('assets/ftsong.mp3');
-
+  correctSFX = loadSound('assets/correct.mp3');
+  wrongSFX = loadSound('assets/gfhuh.mp3');
+  gfwow = loadSound('assets/gfwow.mp3')
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
   }
   assets["startbutton"] = loadImage(`assets/startbutton.png`);
   assets["phone"] = loadImage(`assets/phone.png`);
+  relationend2 = loadImage('assets/relationend2.jpg')
 
   handPose = ml5.handPose();
 

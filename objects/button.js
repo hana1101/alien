@@ -85,6 +85,14 @@ function SettingButtons(selectedItem) {
 }
 
 function ButtonAction(action) {
+  if (buttonClickSound && buttonClickSound.play) {
+    buttonClickSound.play(
+      0,    // delay before playing (sec)
+      1.4,  // playback rate (1.4× faster)
+      1,    // amplitude (0–1)
+      0.4   // cueStart: where in the file to begin (sec)
+    );
+  }
   switch (action) {
     case "startscene/zib1":
       console.log("zib1_screen");
