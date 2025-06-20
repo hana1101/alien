@@ -775,8 +775,14 @@ function nextGame() {
     if (currentScreen !== "girlfriendGame" && currentScreen !== "girlfriendFT" && currentScreen !== "fTOver") {
       if (currentScreen === "doodleGame") {
         resetDoodleGameVariables();
+        selectedItem = null;
+        currentScreen = "play";
+        return;
       } else if (currentScreen === "dogGame") {
-        resetDogGameVariables();
+          resetDogGameVariables();
+          selectedItem = null;
+          currentScreen = "play";
+          return;
       }
       selectedItem = null;
       currentScreen = "play";
