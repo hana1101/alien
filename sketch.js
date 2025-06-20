@@ -46,6 +46,7 @@ let goodendSound;
 let correctSFX
 let wrongSFX
 let gfwow
+let relationend2;
 
 function preload() {
   openSound = loadSound('assets/opening.mp3');
@@ -60,6 +61,7 @@ function preload() {
   correctSFX = loadSound('assets/correct.mp3');
   wrongSFX = loadSound('assets/gfhuh.mp3');
   gfwow = loadSound('assets/gfwow.mp3');
+  relationend2 = loadImage('assets/relationend2.jpg');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
