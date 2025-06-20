@@ -140,29 +140,29 @@ function handleBackgroundMusic() {
 
   if (badendScreens.has(currentScreen)) {
     badendSoundFadingOut = false;
-    if (!badending2.isPlaying()) {
-      badending2.setVolume(0.4);
-      badending2.loop();
+    if (!badendSound.isPlaying()) {
+      badendSound.setVolume(0.4);
+      badendSound.loop();
     }
-  } else if (badending2.isPlaying() && !badendSoundFadingOut) {
+  } else if (badendSound.isPlaying() && !badendSoundFadingOut) {
     badendSoundFadingOut = true;
-    badending2.setVolume(0.0, 1.5);
+    badendSound.setVolume(0.0, 1.5);
     setTimeout(() => {
-      if (badending2.isPlaying()) badending2.stop();
+      if (badendSound.isPlaying()) badendSound.stop();
     }, 1600);
   }
 
   if (goodendScreens.has(currentScreen)) {
     goodendSoundFadingOut = false;
-    if (!happyendingbgm.isPlaying()) {
-      happyendingbgm.setVolume(0.4);
-      happyendingbgm.loop();
+    if (!goodendSound.isPlaying()) {
+      goodendSound.setVolume(0.4);
+      goodendSound.loop();
     }
-  } else if (happyendingbgm.isPlaying() && !goodendSoundFadingOut) {
+  } else if (goodendSound.isPlaying() && !goodendSoundFadingOut) {
     goodendSoundFadingOut = true;
-    happyendingbgm.setVolume(0.0, 1.5);
+    goodendSound.setVolume(0.0, 1.5);
     setTimeout(() => {
-      if (happyendingbgm.isPlaying()) happyendingbgm.stop();
+      if (goodendSound.isPlaying()) goodendSound.stop();
     }, 1600);
   }
 

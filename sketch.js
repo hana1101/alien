@@ -43,6 +43,8 @@ let buttonClickSound;
 let ftsong;
 let badendSound;
 let goodendSound;
+let correctSFX
+let wrongSFX
 
 function preload() {
   openSound = loadSound('assets/opening.mp3');
@@ -54,6 +56,8 @@ function preload() {
   ftsong = loadSound('assets/ftsong.mp3');
   badendSound = loadSound('assets/badending2.mp3');
   goodendSound = loadSound('assets/happyendingbgm.mp3');
+  correctSFX = loadSound('assets/correct.mp3');
+  wrongSFX = loadSound('assets/gfhuh.mp3');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
