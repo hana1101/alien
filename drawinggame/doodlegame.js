@@ -389,6 +389,8 @@
 //   // pickRandomKeyword(); // 새로운 키워드 선택 (선택 사항)
 //   // doodleTime.reset(); // 타이머 초기화 (선택 사항)
 // }
+
+
 let doodlePhase = 0;
 // 0 = 게임 진행 중
 // 1 = 정답/오답 텍스트 표시
