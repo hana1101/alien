@@ -16,7 +16,7 @@ function drawHappyEnding0() {
   image(calculateScenebg, 0, 0, width, height);
   if (!dialogueEnd_scene0) { //f 
     let lineEnd_scene0 = [
-      "ZIB이 다시 DAVE 본체로 돌아가는 중..."];
+      "낯설었던 지구에서 정체를 들키지 않은 ZIB, DAVE 본체로 복귀하는 중..."];
     dialogueEnd_scene0 = new DialogueBox(10, 500, 980, 120, lineEnd_scene0);
   }
   dialogueEnd_scene0.display();
@@ -27,8 +27,9 @@ function drawHappyEnding1() {
   image(happyEnding1, 0, 0, width, height);
   if (!dialogueEnd_scene1) {
     let linesEnd_scene1 = [
-      "정체를 들키지 않고 Dave의 삶에 변화를 준 Zib는,",
-      "우주선 수리가 완료되자 무사히 Asgard 행성으로 귀환할 수 있었다."];
+      "비록 인간의 감정, DAVE의 우울감을 이해하진 못했지만, Dave의 삶에 작은 변화를 준 ZIB는,",
+      "우주선 수리가 완료되자 무사히 Asgard 행성으로 귀환할 수 있었다.",
+      "ZIB는 이번 여정을, 만족스러웠던 기억으로 간직하게 될 것이다."];
     dialogueEnd_scene1 = new DialogueBox(10, 500, 980, 120, linesEnd_scene1);
   }
   dialogueEnd_scene1.display();
