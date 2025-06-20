@@ -25,9 +25,14 @@ function handleBackgroundMusic() {
     "girlfriendFT"  // your actual FaceTime game screen
   ]);
 
-  // const badendScreens = new Set([
-  //   "badEnding1", "badEnding2,"lifeOverScenebg"
-  // ]);
+  const badendScreens = new Set([
+    "gameFail1", "bgameFail2", "lifeOver"
+  ]);
+
+  const goodendScreens = new Set([
+    "gameSuccess0", "gameSuccess1", "gameSuccess2", "gameSuccess3"
+  ]);
+
 
   // --- Handle openSound (intro music) ---
   if (introScreens.has(currentScreen)) {
@@ -132,6 +137,35 @@ function handleBackgroundMusic() {
       if (ftsong.isPlaying()) ftsong.stop();
     }, 1600);
   }
+
+  if (badendScreens.has(currentScreen)) {
+    badendSoundFadingOut = false;
+    if (!badending2.isPlaying()) {
+      badending2.setVolume(0.4);
+      badending2.loop();
+    }
+  } else if (badending2.isPlaying() && !badendSoundFadingOut) {
+    badendSoundFadingOut = true;
+    badending2.setVolume(0.0, 1.5);
+    setTimeout(() => {
+      if (badending2.isPlaying()) badending2.stop();
+    }, 1600);
+  }
+
+  if (goodendScreens.has(currentScreen)) {
+    goodendSoundFadingOut = false;
+    if (!happyendingbgm.isPlaying()) {
+      happyendingbgm.setVolume(0.4);
+      happyendingbgm.loop();
+    }
+  } else if (happyendingbgm.isPlaying() && !goodendSoundFadingOut) {
+    goodendSoundFadingOut = true;
+    happyendingbgm.setVolume(0.0, 1.5);
+    setTimeout(() => {
+      if (happyendingbgm.isPlaying()) happyendingbgm.stop();
+    }, 1600);
+  }
+
 
 }
 //
