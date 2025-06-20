@@ -45,6 +45,7 @@ let badendSound;
 let goodendSound;
 let correctSFX
 let wrongSFX
+let gfwow
 
 function preload() {
   openSound = loadSound('assets/opening.mp3');
@@ -58,6 +59,7 @@ function preload() {
   goodendSound = loadSound('assets/happyendingbgm.mp3');
   correctSFX = loadSound('assets/correct.mp3');
   wrongSFX = loadSound('assets/gfhuh.mp3');
+  gfwow = loadSound('assets/gfwow.mp3');
 
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
