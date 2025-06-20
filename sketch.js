@@ -41,12 +41,6 @@ let happyending3;
 let restartButton_badEnding;
 let buttonClickSound;
 let ftsong;
-let correctSFX
-let wrongSFX
-let gfwow
-let relationend2
-let ufo
-let glowCursor
 function preload() {
   openSound = loadSound('assets/opening.mp3');
   startPlaySound = loadSound('assets/startplay.mp3');
@@ -55,9 +49,7 @@ function preload() {
   powerSound = loadSound('assets/superbgm.mp3');
   buttonClickSound = loadSound('assets/button2.mp3');//
   ftsong = loadSound('assets/ftsong.mp3');
-  correctSFX = loadSound('assets/correct.mp3');
-  wrongSFX = loadSound('assets/gfhuh.mp3');
-  gfwow = loadSound('assets/gfwow.mp3')
+
   for (let name of assetname) {
     assets[name] = loadImage(`assets/${name}.jpg`);
   }
@@ -294,12 +286,10 @@ function draw() {
 
   } else if (currentScreen === "gameFail1") {
     drawBadEnding1();
-
   } else if (currentScreen === "gameFail2") {
     drawBadEnding2();
   }
-
-} // end of draw()
+}
 
 
 function mousePressed() {
