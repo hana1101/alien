@@ -69,7 +69,7 @@ function preload() {
   relationend2 = loadImage('assets/relationend2.jpg')
   ufo = loadImage('assets/ufo.png')
   handPose = ml5.handPose();
-  glowCursor = loadImage('assets/cursorglow.png');
+  // glowCursor = loadImage('assets/cursorglow.png');
 
 
   bgImage_notlook = loadImage("assets/notlooking.jpg");
@@ -177,12 +177,12 @@ function setup() {
 
 }
 function draw() {
-  if (glowCursor) {
-    // offset so the “tip” of the arrow lands where we click:
-    let hotspotX = 0;
-    let hotspotY = 0;
-    image(glowCursor, mouseX - hotspotX, mouseY - hotspotY);
-  }
+  // if (glowCursor) {
+  //   // offset so the “tip” of the arrow lands where we click:
+  //   let hotspotX = 0;
+  //   let hotspotY = 0;
+  //   image(glowCursor, mouseX - hotspotX, mouseY - hotspotY);
+  // }
   // image(glowCursor, mouseX - 8, mouseY - 8); // Draw cursor at mouse position
 
   handleBackgroundMusic();
