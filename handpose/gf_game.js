@@ -5,7 +5,7 @@ let gameStartBtn;
 
 // declare timers
 let handTimer, totalTimer, lookSwitchTimer, caughtTimer, lookTime, firstTenSeconds;
-let firstTenDecreased = false;
+let firstTenDecreased;
 let successgfBox, failuregfBox;
 
 // declare circles
@@ -40,7 +40,7 @@ let isCaught;
 let fail; //game failed
 let gameEnded;
 
-let statsAlreadChanged;
+let statsAlreadyChanged;
 
 let handPose, video, videoMask;
 // let hands = [];
@@ -85,6 +85,7 @@ function resetGame() {
   gameStarted = false;
   gameEnded = false;
   statsAlreadyChanged = false;
+  firstTenDecreased = false;
 
 
   //declare flags
@@ -363,6 +364,12 @@ function displayGameResults() {
     );
     gfwarning.display(32, pressfont);
 
+    if (!statsAlreadyChanged) {
+      life_stats.decrease();
+      console.log(life_stats.lifeCount);
+      statsAlreadyChanged = true;
+    }
+
     nextBtnHand.display();
     if (nextBtnHand.isClicked()) {
       // reset the flag for next time
@@ -424,6 +431,7 @@ function displayGameResults() {
 
     if (!statsAlreadyChanged) {
       life_stats.decrease();
+      console.log(life_stats.lifeCount);
       statsAlreadyChanged = true;
     }
   }
