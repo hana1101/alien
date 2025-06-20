@@ -780,6 +780,7 @@ function nextGame() {
       }
       selectedItem = null;
       currentScreen = "play";
+      return;
     }
     if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT" || currentScreen === "fTOver") {
       if (currentScreen === "girlfriendGame") {
@@ -789,6 +790,7 @@ function nextGame() {
       console.log('hi');
       console.log(selectedItem);
       currentScreen = "play";
+      return;
 
     }
 
