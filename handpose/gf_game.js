@@ -125,6 +125,7 @@ function playGirlfriendHand() {
   handleLookTimers();
   updateAndDisplayCurrentCircle();
 
+
   let percentageInside = calculateKeypointsInsideCircle();
 
   handleGameLogic(percentageInside);
