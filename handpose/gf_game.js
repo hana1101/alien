@@ -388,6 +388,10 @@ function displayGameResults() {
   }
   textSize(40);
   if (completedCircles >= totalRequired && !fail) {
+    if (!statsAlreadyChanged && gfwow && gfwow.play) {
+      gfwow.play();
+    }
+
     image(success_gfbg, 0, 30, width, height);
     successgfBox.display(32, pressfont);
 
