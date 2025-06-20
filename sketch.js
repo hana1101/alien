@@ -5,7 +5,7 @@ let walletItem, phoneItem, diaryItem;
 let dialogue;
 let currentScreen = "start";
 let assets = [];
-let btn = { x: 0, y: 0, w: 130, h: 80 };
+let btn = { x: 0, y: 0, w: 130, h: 60 };
 let gfGameStarted;
 let faceTimeStarted;
 let dialoguezib = null;
@@ -45,6 +45,7 @@ let correctSFX
 let wrongSFX
 let gfwow
 let relationend2
+let ufo
 function preload() {
   openSound = loadSound('assets/opening.mp3');
   startPlaySound = loadSound('assets/startplay.mp3');
@@ -62,7 +63,7 @@ function preload() {
   assets["startbutton"] = loadImage(`assets/startbutton.png`);
   assets["phone"] = loadImage(`assets/phone.png`);
   relationend2 = loadImage('assets/relationend2.jpg')
-
+  ufo = loadImage('assets/ufo.png')
   handPose = ml5.handPose();
 
   bgImage_notlook = loadImage("assets/notlooking.jpg");
@@ -124,8 +125,8 @@ function setup() {
   textFont(neoFont);
   textSize(25);
   // textFont("Press Start 2P");
-  btn.x = width / 2 - btn.w / 2 - 110;
-  btn.y = height / 2 + 20;
+  btn.x = width / 2 - btn.w / 2 - 20;
+  btn.y = height / 2 + 40;
   startTime = millis();
 
   walletItem = new item(
