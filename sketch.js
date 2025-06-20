@@ -762,48 +762,42 @@ function keyPressed() {
 }
 
 
-
-
-
-
-
-
-
 function nextGame() {
-  console.log('came here');
+  console.log('nextGame called. Current Screen BEFORE change:', currentScreen);
   pointsMinimumMet();
 
-  if (!endGame) {
-    if (currentScreen !== "girlfriendGame" && currentScreen !== "girlfriendFT" && currentScreen !== "fTOver") {
-      if (currentScreen === "doodleGame") {
-        resetDoodleGameVariables();
-        selectedItem = null;
-        currentScreen = "play";
-        return;
-      } else if (currentScreen === "dogGame") {
-          resetDogGameVariables();
-          selectedItem = null;
-          currentScreen = "play";
-          return;
-      }
-      selectedItem = null;
-      currentScreen = "play";
-      return;
-    }
-    if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT" || currentScreen === "fTOver") {
-      if (currentScreen === "girlfriendGame") {
-        resetGame();
-      }
-      selectedItem = "phone";
-      console.log('hi');
-      console.log(selectedItem);
-      currentScreen = "play";
-      return;
-
-    }
-
+  if (endGame) { // 게임 종료 상태면 더 이상 진행하지 않음
+    return;
   }
+
+  if (currentScreen === "doodleGame") {
+    resetDoodleGameVariables(); //
+    selectedItem = null;
+    currentScreen = "play";
+    console.log("Doodle Game finished, moving to play screen. currentScreen is now:", currentScreen);
+    return;
+  }
+
+  if (currentScreen === "dogGame") {
+    resetDogGameVariables();
+    selectedItem = null;
+    currentScreen = "play";
+    console.log("Dog Game finished, moving to play screen. currentScreen is now:", currentScreen);
+    return;
+  }
+
+  if (currentScreen === "girlfriendGame" || currentScreen === "girlfriendFT" || currentScreen === "fTOver") {
+    if (currentScreen === "girlfriendGame") {
+      resetGame();
+    }
+    selectedItem = "phone";
+    currentScreen = "play";
+    console.log("GF Game/FT finished, moving to play screen. currentScreen is now:", currentScreen);
+    return;
+  }
+
+  // 혹시 모를 상황을 대비한 기본 처리 (여기에 도달하면 로직 오류일 가능성)
+  console.warn("nextGame: Unexpected currentScreen:", currentScreen, "Setting to play as fallback.");
+  selectedItem = null;
+  currentScreen = "play";
 }
-
-
-
